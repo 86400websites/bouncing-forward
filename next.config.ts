@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 /**
  * Security headers per TECH-ARCHITECTURE.md §13.
- * CSP is added in sprint 2 once the exact third-party surface is known
+ * CSP is added in sprint 15 (launch-hardening) once the third-party surface is final
  * (next/font self-hosts, so the allow-list starts near-empty) — adding it
  * blind risks breaking Next's inline runtime. Tracked in SPRINT-PLAN.md.
  */

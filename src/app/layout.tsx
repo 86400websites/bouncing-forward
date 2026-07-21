@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { bodyFont, displayFont } from "@/lib/fonts";
+import { MotionProvider } from "@/components/motion/motion-provider";
+import { SiteFooter } from "@/components/site/site-footer";
+import { SiteHeader } from "@/components/site/site-header";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -24,7 +27,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <main id="main">{children}</main>
+        <MotionProvider>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );
