@@ -12,7 +12,7 @@
 | # | Branch | Task | Notes / gates |
 |---|---|---|---|
 | 1 | `feature/design-tokens` | globals.css tokens + next/font (Archivo 700/800, Source Serif 4 400/600) + shadcn theming per DESIGN.md §3–4 | Visual gate: token sample page on Preview |
-| 2 | `feature/site-shell` | Nav (label constant in `src/lib/site.ts`), footer (3 columns + Part of Half a Life), motion primitives (`FadeIn`, `SlideUp`, `Stagger`, `Reveal` with `useReducedMotion`), base metadata, security headers in `next.config.ts` | CSP allow-list starts tight: self + fonts none (next/font self-hosts) |
+| 2 | `feature/site-shell` | Nav (label constant in `src/lib/site.ts`), footer (3 columns + Part of Half a Life), motion primitives (`FadeIn`, `SlideUp`, `Stagger`, `StaggerItem` with `useReducedMotion`), base metadata | CSP moved to sprint 15: the allow-list isn't final until Turnstile/analytics land, and a premature CSP breaks Next's inline runtime |
 | 3 | `feature/home-page` | Full Home per copy deck | Copy verbatim; image slots per DESIGN.md §9 |
 | 4 | `feature/book-page` | The Book | Testimonials render as supplied placeholders; Amazon CTA disabled state |
 | 5 | `feature/compass-and-path-page` | Framework deep-dive page | Numbered 01–04 card unit becomes reusable |
