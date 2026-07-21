@@ -1,0 +1,116 @@
+import Link from "next/link";
+
+/**
+ * "Begin Your Crossing" — the site-wide email capture (copy deck, every page).
+ *
+ * Sprint 8 wires this to /api/newsletter → Mailchimp with zod validation,
+ * rate limiting, and the Taking Stock Inventory delivery. Until that endpoint
+ * exists, the form renders disabled with an honest note — we never fake a
+ * successful subscription.
+ */
+export function BeginYourCrossing({
+  heading = "Begin Your Crossing",
+  body = "The direction you need hasn't disappeared — it's just waiting to be found. Get the free Taking Stock Inventory and a monthly note on turning hardship into forward motion.",
+  showFaqLink = false,
+}: {
+  heading?: string;
+  body?: string;
+  showFaqLink?: boolean;
+}) {
+  return (
+    <section
+      id="begin-your-crossing"
+      aria-labelledby="byc-heading"
+      className="scroll-mt-24 bg-muted"
+    >
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 id="byc-heading" className="text-3xl font-extrabold sm:text-4xl">
+            {heading}
+          </h2>
+          <p className="mt-4 text-muted-foreground">{body}</p>
+
+          <form
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center"
+            aria-describedby="byc-status"
+          >
+            <label htmlFor="byc-first-name" className="sr-only">
+              First name
+            </label>
+            <input
+              id="byc-first-name"
+              name="firstName"
+              type="text"
+              autoComplete="given-name"
+              placeholder="First name"
+              disabled
+              className="rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-60 sm:w-44"
+            />
+            <label htmlFor="byc-email" className="sr-only">
+              Email address
+            </label>
+            <input
+              id="byc-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Email address"
+              disabled
+              className="rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-60 sm:w-64"
+            />
+            <button
+              type="submit"
+              disabled
+              className="rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p id="byc-status" className="mt-3 text-sm text-muted-foreground">
+            Sign-ups open at launch — the newsletter connects in sprint 8.
+          </p>
+
+          {showFaqLink ? (
+            <p className="mt-6 text-sm text-muted-foreground">
+              Have a question?{" "}
+              <span className="cursor-default font-semibold">
+                FAQ coming soon
+              </span>
+            </p>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Small helper for CTAs whose destination doesn't exist yet — never a dead link. */
+export function ComingSoonCta({ label }: { label: string }) {
+  return (
+    <span className="inline-flex cursor-default items-center rounded-full border border-border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
+      {label} — Coming Soon
+    </span>
+  );
+}
+
+export function PrimaryCta({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    >
+      {label}
+    </Link>
+  );
+}
+
+export function SecondaryCta({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex items-center rounded-full border border-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    >
+      {label}
+    </Link>
+  );
+}
