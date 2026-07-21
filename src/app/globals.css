@@ -66,16 +66,23 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* S0: system stacks. Sprint 1 swaps in next/font variables
-     (Archivo display / Source Serif 4 body) per DESIGN.md §4. */
-  --font-display: system-ui, sans-serif;
-  --font-body: Georgia, "Times New Roman", serif;
+  /* Sprint 1: self-hosted variable fonts via next/font/local (src/lib/fonts.ts) */
+  --font-display: var(--font-display-src), system-ui, sans-serif;
+  --font-body: var(--font-body-src), Georgia, "Times New Roman", serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  font-size: 1.0625rem; /* 17px mobile */
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem; /* 18px desktop */
+  }
 }
 
 h1,
