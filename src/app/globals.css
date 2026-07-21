@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ============================================================
+   Bouncing Forward — design tokens (DESIGN.md §3, contrast-verified)
+   Light mode only. Do not add a dark block.
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --brand-primary: #0d2741;
+  --brand-primary-hover: #16395c;
+  --brand-accent: #0ca1d9; /* graphics on white; text only on navy */
+  --brand-accent-text: #067ca8; /* AA-safe accent for text on white */
+
+  /* shadcn/ui tokens */
+  --background: #ffffff;
+  --foreground: #0d2741;
+  --card: #ffffff;
+  --card-foreground: #0d2741;
+  --popover: #ffffff;
+  --popover-foreground: #0d2741;
+  --primary: #0d2741;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f6fa;
+  --secondary-foreground: #0d2741;
+  --muted: #f1f6fa;
+  --muted-foreground: #42586e;
+  --accent: #0ca1d9;
+  --accent-foreground: #0d2741;
+  --destructive: #b3261e;
+  --destructive-foreground: #ffffff;
+  --border: #dce6ee;
+  --input: #dce6ee;
+  --ring: #0ca1d9;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-text: var(--brand-accent-text);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* S0: system stacks. Sprint 1 swaps in next/font variables
+     (Archivo display / Source Serif 4 body) per DESIGN.md §4. */
+  --font-display: system-ui, sans-serif;
+  --font-body: Georgia, "Times New Roman", serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
