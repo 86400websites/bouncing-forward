@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { bodyFont, displayFont } from "@/lib/fonts";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <body className="antialiased">
         <a
           href="#main"
