@@ -86,9 +86,22 @@ export function BeginYourCrossing({
 }
 
 /** Small helper for CTAs whose destination doesn't exist yet — never a dead link. */
-export function ComingSoonCta({ label }: { label: string }) {
+export function ComingSoonCta({
+  label,
+  invert = false,
+}: {
+  label: string;
+  invert?: boolean;
+}) {
   return (
-    <span className="inline-flex cursor-default items-center rounded-full border border-border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
+    <span
+      className={cn(
+        "inline-flex cursor-default items-center rounded-full border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold",
+        invert
+          ? "border-primary-foreground/30 text-primary-foreground/70"
+          : "border-border text-muted-foreground",
+      )}
+    >
       {label} — Coming Soon
     </span>
   );
