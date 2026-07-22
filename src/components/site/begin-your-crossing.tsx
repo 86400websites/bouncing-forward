@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 /**
  * "Begin Your Crossing" — the site-wide email capture (copy deck, every page).
@@ -93,22 +94,48 @@ export function ComingSoonCta({ label }: { label: string }) {
   );
 }
 
-export function PrimaryCta({ href, label }: { href: string; label: string }) {
+export function PrimaryCta({
+  href,
+  label,
+  invert = false,
+}: {
+  href: string;
+  label: string;
+  invert?: boolean;
+}) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      className={cn(
+        "inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        invert
+          ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+          : "bg-primary text-primary-foreground hover:bg-brand-primary-hover",
+      )}
     >
       {label}
     </Link>
   );
 }
 
-export function SecondaryCta({ href, label }: { href: string; label: string }) {
+export function SecondaryCta({
+  href,
+  label,
+  invert = false,
+}: {
+  href: string;
+  label: string;
+  invert?: boolean;
+}) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center rounded-full border border-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      className={cn(
+        "inline-flex items-center rounded-full border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        invert
+          ? "border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
+          : "border-primary text-primary hover:bg-muted",
+      )}
     >
       {label}
     </Link>
