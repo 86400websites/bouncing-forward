@@ -170,57 +170,58 @@ export default function StoriesPage() {
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 pt-16 pb-16 sm:px-6 sm:pt-20 sm:pb-20 lg:px-8 lg:pt-24 lg:pb-24">
-        <div className="max-w-3xl">
-          <FadeIn>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-              Stories
-            </p>
-          </FadeIn>
-          <SlideUp>
-            <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
-              Loss doesn’t end your story. It’s where you find out what you’re
-              building next.
-            </h1>
-          </SlideUp>
-          <div className="mt-6 space-y-4 text-lg leading-relaxed">
-            <SlideUp delay={0.06}>
-              <p>
-                It’s one thing to read a framework. It’s another to meet someone
-                who lived it. These are real people — not famous, not public
-                figures by trade — who turned devastation into direction: a
-                gang-scarred township, a Rio favela, a Ladakhi mountain village,
-                a Rwandan genocide, a Mumbai café counter.
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <FadeIn>
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                Stories
               </p>
+            </FadeIn>
+            <SlideUp>
+              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+                Loss doesn’t end your story. It’s where you find out what you’re
+                building next.
+              </h1>
             </SlideUp>
-            <SlideUp delay={0.1}>
-              <p>
-                Everywhere you look, there are people who are not{" "}
-                <em>finished</em> by what happened to them. They are{" "}
-                <strong className="font-semibold">unfinished</strong> —
-                unfinished purpose, unfinished contribution, unfinished forward
-                motion.
-              </p>
-            </SlideUp>
-            <SlideUp delay={0.14}>
-              <p>
-                What they had wasn’t luck. It was one honest decision to keep
-                crossing. These stories are the permission to make yours.
-              </p>
-            </SlideUp>
+            <div className="mt-6 space-y-4 text-lg leading-relaxed">
+              <SlideUp delay={0.06}>
+                <p>
+                  It’s one thing to read a framework. It’s another to meet
+                  someone who lived it. These are real people — not famous, not
+                  public figures by trade — who turned devastation into
+                  direction: a gang-scarred township, a Rio favela, a Ladakhi
+                  mountain village, a Rwandan genocide, a Mumbai café counter.
+                </p>
+              </SlideUp>
+              <SlideUp delay={0.1}>
+                <p>
+                  Everywhere you look, there are people who are not{" "}
+                  <em>finished</em> by what happened to them. They are{" "}
+                  <strong className="font-semibold">unfinished</strong> —
+                  unfinished purpose, unfinished contribution, unfinished
+                  forward motion.
+                </p>
+              </SlideUp>
+              <SlideUp delay={0.14}>
+                <p>
+                  What they had wasn’t luck. It was one honest decision to keep
+                  crossing. These stories are the permission to make yours.
+                </p>
+              </SlideUp>
+            </div>
           </div>
-        </div>
-        <FadeIn delay={0.1}>
-          <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-xl">
+          <FadeIn delay={0.1}>
             <Image
               src="/assets/home/compass-stepping-stones.jpg"
-              alt="Stepping stones on a path leading across dim ground toward light in the distance"
-              fill
+              alt="A person seated outdoors holding a compass, looking out over mountains and a pine forest"
+              width={1448}
+              height={1086}
               priority
-              sizes="(min-width: 1280px) 1216px, 100vw"
-              className="object-cover"
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="w-full rounded-xl"
             />
-          </div>
-        </FadeIn>
+          </FadeIn>
+        </div>
       </section>
 
       {/* ── Where it began — featured story ──────────────────── */}
