@@ -5,27 +5,33 @@ import { cn } from "@/lib/utils";
  * The signature numbered 01–04 framework unit (DESIGN.md §6).
  *
  * Shared by The Book (sprint 4) and The Compass & The Path (sprint 5):
- * number in Archivo 800 · illustration · heading · optional italic book
- * quote (with hairline accent rule) · one plain line.
+ * number in Archivo 800 · illustration · heading · optional subtitle ·
+ * optional italic book quote (with hairline accent rule) · optional plain line.
  *
- * Book's "What's Inside" uses the lighter form — number + illustration +
- * heading + descriptor, no quote. Compass & Path passes the book quote too.
+ * `headingLevel` keeps the page outline correct: Book nests these under a
+ * group h3 (so cards are h4), Compass & Path nests them directly under the
+ * section h2 (so cards are h3).
  */
 export function NumberedCard({
   index,
   image,
   title,
-  descriptor,
+  subtitle,
   quote,
+  descriptor,
+  headingLevel = "h4",
   className,
 }: {
   index: string;
   image: { src: string; alt: string };
   title: string;
-  descriptor: string;
+  subtitle?: string;
   quote?: string;
+  descriptor?: string;
+  headingLevel?: "h3" | "h4";
   className?: string;
 }) {
+  const headingClass = "mt-1 text-lg font-bold leading-snug";
   return (
     <article
       className={cn(
@@ -45,15 +51,26 @@ export function NumberedCard({
       <p className="mt-5 font-[family-name:var(--font-display)] text-sm font-extrabold tracking-[0.08em] text-brand-accent-text">
         {index}
       </p>
-      <h4 className="mt-1 text-lg font-bold leading-snug">{title}</h4>
+      {headingLevel === "h3" ? (
+        <h3 className={headingClass}>{title}</h3>
+      ) : (
+        <h4 className={headingClass}>{title}</h4>
+      )}
+      {subtitle ? (
+        <p className="mt-1 text-sm font-semibold text-muted-foreground">
+          {subtitle}
+        </p>
+      ) : null}
       {quote ? (
         <blockquote className="mt-3 border-l-2 border-brand-accent pl-4 text-sm italic leading-relaxed text-muted-foreground">
           {quote}
         </blockquote>
       ) : null}
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-        {descriptor}
-      </p>
+      {descriptor ? (
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          {descriptor}
+        </p>
+      ) : null}
     </article>
   );
 }
