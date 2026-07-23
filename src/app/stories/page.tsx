@@ -7,10 +7,7 @@ import {
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
-import {
-  IllustrationPlaceholder,
-  StoryCard,
-} from "@/components/site/story-card";
+import { StoryCard } from "@/components/site/story-card";
 
 export const metadata: Metadata = {
   title: "Stories",
@@ -128,7 +125,10 @@ const stories = [
       "Twelve when his father died, he inherited the family’s land in a Ladakhi village at 14,000 feet, where the soil is thin and most young men leave. He stayed. Now called Mitti Ka Aadmi — the man of the earth — he grows thirty crop varieties where agronomists said only barley could survive.",
     closing:
       "Adaptability was never about becoming someone new. It was about staying rooted, and asking the ground itself what it still had to give.",
-    image: null,
+    image: {
+      src: "/assets/stories/urgain-farm.jpg",
+      alt: "Isometric illustration — terraced fields and a farmer working high mountain land",
+    },
   },
   {
     category: "Path · Imagine & Action",
@@ -139,7 +139,10 @@ const stories = [
       "In 2006, authorities told 600 families in a São Paulo favela they’d need to leave to make way for a park. Lia decided the conversation wasn’t over — leading her neighbours in greening and organising the favela itself, proving removal wasn’t the only route to renewal. The eviction never happened.",
     closing:
       "Imagining a future isn’t dreaming past your circumstances. It’s standing inside them and redesigning what’s possible from where you already are.",
-    image: null,
+    image: {
+      src: "/assets/stories/lia-village.jpg",
+      alt: "Isometric illustration — a hillside neighbourhood of homes among greenery and trees",
+    },
   },
   {
     category: "Compass · Adaptability & Imagine",
@@ -150,7 +153,10 @@ const stories = [
       "Nine years old when the 2004 tsunami stopped less than three kilometres from his home in Aceh — close enough to destroy his school. The wreckage he walked through as a boy became the reason he now works as an engineer in disaster preparedness, designing the resilient schools that might have saved more of what he lost.",
     closing:
       "Imagination isn’t escaping the disaster. It’s staring straight at it until you can see the thing that should exist instead.",
-    image: null,
+    image: {
+      src: "/assets/stories/rifqi-tsunami.jpg",
+      alt: "Isometric illustration — a large stylised wave rising toward a coastal shoreline",
+    },
   },
   {
     category: "Path · Action & Legacy",
@@ -276,8 +282,14 @@ export default function StoriesPage() {
               </SlideUp>
             </div>
             <FadeIn delay={0.1}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
-                <IllustrationPlaceholder label="Featured image coming soon" />
+              <div className="relative aspect-[3/2] overflow-hidden rounded-xl border border-border">
+                <Image
+                  src="/assets/stories/hikmat-road-safety.jpg"
+                  alt="Isometric illustration — children playing safely beside a marked road and playground, the work of the Hikmat Road Safety Program"
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover"
+                />
               </div>
             </FadeIn>
           </div>
@@ -303,8 +315,8 @@ export default function StoriesPage() {
         </Stagger>
         <FadeIn>
           <p className="mt-6 text-sm italic text-muted-foreground">
-            Four illustrations (Urgain, Lia Esperança, Rifqi, the Bhargavas) are
-            still being commissioned — shown as placeholders until they land.
+            One illustration (the Bhargavas) is still being commissioned — shown
+            as a placeholder until it lands.
           </p>
         </FadeIn>
       </section>
