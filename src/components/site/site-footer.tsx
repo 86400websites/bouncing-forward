@@ -103,7 +103,9 @@ export function SiteFooter() {
                 <ComingSoon label="Podcast" />
               </li>
               <li>
-                <ComingSoon label="Blog" />
+                <Link href="/blog" className="transition-colors hover:text-brand-accent">
+                  The Journal
+                </Link>
               </li>
               <li>
                 <ComingSoon label="Contact" />

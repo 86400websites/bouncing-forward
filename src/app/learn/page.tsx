@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
@@ -41,6 +42,7 @@ const cards = [
     title: "The Bouncing Forward Journal",
     body: "A 30-day companion journal plus short, practical notes you can read in five minutes and use the same day. One story, one prompt, one small move — drawn from the framework and from real life.",
     cta: "Read Now",
+    href: "/blog",
     image: {
       src: "/assets/learn/open-book.jpg",
       alt: "An open journal ready to write in",
@@ -100,9 +102,18 @@ export default function LearnPage() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {c.body}
                   </p>
-                  <span className="mt-5 inline-block cursor-default font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
-                    {c.cta} → Coming Soon
-                  </span>
+                  {"href" in c && c.href ? (
+                    <Link
+                      href={c.href}
+                      className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    >
+                      {c.cta} →
+                    </Link>
+                  ) : (
+                    <span className="mt-5 inline-block cursor-default font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
+                      {c.cta} → Coming Soon
+                    </span>
+                  )}
                 </div>
               </article>
             </StaggerItem>
