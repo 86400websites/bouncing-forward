@@ -24,7 +24,7 @@ function isActive(pathname: string, href: string) {
 
 function hasChildren(
   item: NavItem,
-): item is { label: string; children: { href: string; label: string }[] } {
+): item is { label: string; href?: string; children: { href: string; label: string }[] } {
   return "children" in item;
 }
 
@@ -141,11 +141,20 @@ function DesktopDropdown({
   item,
   pathname,
 }: {
-  item: { label: string; children: { href: string; label: string }[] };
+  item: { label: string; href?: string; children: { href: string; label: string }[] };
   pathname: string;
 }) {
   const [open, setOpen] = useState(false);
-  const groupActive = item.children.some((c) => isActive(pathname, c.href));
+  const groupActive =
+    (item.href && isActive(pathname, item.href)) ||
+    item.children.some((c) => isActive(pathname, c.href));
+
+  const labelClasses = cn(
+    "font-[family-name:var(--font-display)] text-sm transition-colors",
+    groupActive
+      ? "font-bold text-foreground"
+      : "font-semibold text-muted-foreground hover:text-foreground",
+  );
 
   return (
     <div
@@ -153,21 +162,30 @@ function DesktopDropdown({
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button
-        type="button"
-        aria-haspopup="menu"
-        aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
+      <div
         className={cn(
-          "flex items-center gap-1 border-b-2 border-transparent pb-0.5 font-[family-name:var(--font-display)] text-sm transition-colors",
-          groupActive
-            ? "border-brand-accent font-bold text-foreground"
-            : "font-semibold text-muted-foreground hover:text-foreground",
+          "flex items-center gap-1 border-b-2 pb-0.5",
+          groupActive ? "border-brand-accent" : "border-transparent",
         )}
       >
-        {item.label}
-        <ChevronDownIcon className="size-3.5" aria-hidden="true" />
-      </button>
+        {item.href ? (
+          <Link href={item.href} className={labelClasses}>
+            {item.label}
+          </Link>
+        ) : (
+          <span className={labelClasses}>{item.label}</span>
+        )}
+        <button
+          type="button"
+          aria-haspopup="menu"
+          aria-expanded={open}
+          aria-label={`${item.label} menu`}
+          onClick={() => setOpen((o) => !o)}
+          className="text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          <ChevronDownIcon className="size-3.5" aria-hidden="true" />
+        </button>
+      </div>
       <div
         role="menu"
         className={cn(
@@ -194,23 +212,39 @@ function DesktopDropdown({
 function MobileGroup({
   item,
 }: {
-  item: { label: string; children: { href: string; label: string }[] };
+  item: { label: string; href?: string; children: { href: string; label: string }[] };
 }) {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-      >
-        {item.label}
-        <ChevronDownIcon
-          className={cn("size-4 transition-transform", open && "rotate-180")}
-          aria-hidden="true"
-        />
-      </button>
+      <div className="flex items-center justify-between">
+        {item.href ? (
+          <SheetClose asChild>
+            <Link
+              href={item.href}
+              className="flex-1 rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          </SheetClose>
+        ) : (
+          <span className="flex-1 px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold text-muted-foreground">
+            {item.label}
+          </span>
+        )}
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-label={`${item.label} submenu`}
+          onClick={() => setOpen((o) => !o)}
+          className="rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          <ChevronDownIcon
+            className={cn("size-4 transition-transform", open && "rotate-180")}
+            aria-hidden="true"
+          />
+        </button>
+      </div>
       <div
         className={cn(
           "ml-3 flex-col border-l border-border pl-2",
