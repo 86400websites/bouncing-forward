@@ -1,49 +1,82 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import {
+  FadeIn,
+  SlideUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
+import { AssessBlock } from "@/components/site/assess-block";
 import {
   BeginYourCrossing,
-  ComingSoonCta,
+  ExternalCta,
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
+import { IllustrationPlaceholder } from "@/components/site/story-card";
+import { AMAZON_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
+  title: { absolute: "Bouncing Forward | Grief Doesn’t Get the Last Word" },
   description:
-    "Loss isn't the finish line. Bouncing Forward is the compass and the path for the crossing — a 4-Element framework and a 4-Step model for anyone standing at the edge of their hardest chapter.",
+    "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
 };
 
-/* Copy source: Bouncing_Forward_Website_Copy.docx — Page 1, verbatim. */
+/* Copy source: BF-Website-Copy-For-Sozana-2.docx — Home (/), verbatim. */
 
 const whoBullets = [
-  "You've been handed a loss you didn't choose, and you're tired of pretending you're fine.",
-  "You're tired of platitudes about \u201Ceverything happens for a reason.\u201D",
-  "You still feel the pull to build something — you just don't know where to start.",
+  "You’ve been handed a loss you didn’t choose, and you’re tired of pretending you’re fine.",
+  "You’re tired of empty comfort — “everything happens for a reason.”",
+  "Something in you isn’t finished — you just don’t know where to start.",
   "You want a way forward, not a silver lining.",
-  "You want a framework grounded in a real story, not a theory.",
 ];
 
 const fourWays = [
   {
     title: "Learn",
-    body: "Discover the framework through the book, a guided course, and honest conversations about grief, purpose, and rebuilding.",
-    href: "/learn",
+    body: "Ten guided modules across the 4 Elements and 4 Steps — a short video, a companion guide, and your own plan as you go.",
+    href: "/course",
+    cta: "Start Learning →",
   },
   {
     title: "Practice",
-    body: "Put it to work. The 4 Elements, the 4 Steps, the Taking Stock Inventory — built for the middle of real life, not a classroom.",
+    body: "The 4 Elements and 4 Steps, built for the middle of real life — not a classroom.",
     href: "/compass-and-path",
+    cta: "Put It to Work →",
   },
   {
     title: "Assess",
-    body: "Which lights are burning bright, and which have gone faint? Take the Compass & Path Check and see where you actually stand.",
+    body: "Which lights are burning bright, and which have gone faint? Find out where you stand.",
     href: "/assess",
+    cta: "Take the Check →",
   },
   {
     title: "Stories",
-    body: "Real people — from Cape Town to Rio to Ladakh — who turned loss into direction. See how they crossed, and find permission for your own crossing.",
+    body: "Real people, from Cape Town to Rio to Ladakh, who turned loss into direction.",
     href: "/stories",
+    cta: "Meet Them →",
+  },
+];
+
+const blogCards = [
+  {
+    slug: "losses-nobody-sends-flowers-for",
+    title: "The Losses Nobody Sends Flowers For",
+    standfirst:
+      "Some grief arrives without a funeral, a card, or anyone acknowledging it happened.",
+  },
+  {
+    slug: "when-there-is-no-goodbye",
+    title: "When There Is No Goodbye",
+    standfirst:
+      "Grieving someone who is still here — and the loss that never quite finishes.",
+  },
+  {
+    slug: "grief-is-not-a-staircase",
+    title: "Grief Is Not a Staircase",
+    standfirst:
+      "Nobody moves through loss in a straight line. The line was never real.",
   },
 ];
 
@@ -60,34 +93,36 @@ export default function HomePage() {
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl">
-                Not Back. Forward.
+              <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
+                Grief doesn’t get the last word.
               </h1>
             </SlideUp>
-            <SlideUp delay={0.08}>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-                Loss isn&apos;t the finish line. It&apos;s the forest you have
-                to cross — and on the other side is the person you&apos;re
-                capable of becoming.
+            <SlideUp delay={0.06}>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed">
+                Loss isn’t the finish line. It’s the forest between who you were
+                and who you’re capable of becoming.
               </p>
-              <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-                Bouncing Forward is the compass and the path for that crossing:
-                a 4-Element framework and a 4-Step model, built from a real
-                story, for anyone standing at the edge of their own hardest
-                chapter.
+            </SlideUp>
+            <SlideUp delay={0.1}>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed">
+                The 4-Element Compass. The 4-Step Path. Built from a real story,
+                for anyone standing at the edge of their hardest chapter.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <PrimaryCta href="/assess" label="Start With One Question →" />
                 <SecondaryCta href="/book" label="Read the Book" />
               </div>
+              <p className="mt-3 text-sm italic text-muted-foreground">
+                2nd edition coming soon.
+              </p>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
             <Image
               src="/assets/home/hero-forest.jpg"
-              alt="A traveller holding a glowing compass at the edge of a dense forest, stepping stones leading toward light on the far side"
+              alt="A traveller at the edge of a forest, light breaking through the trees ahead"
               width={1448}
               height={1086}
               priority
@@ -96,49 +131,55 @@ export default function HomePage() {
             />
           </FadeIn>
         </div>
-
         <FadeIn>
-          <figure className="mx-auto max-w-3xl py-14 text-center sm:py-16">
-            <blockquote className="text-xl italic leading-relaxed sm:text-2xl">
-              &ldquo;Not going back to who you were. Going forward to who you
-              are capable of becoming.&rdquo;
+          <figure className="mx-auto mt-12 max-w-3xl border-l-2 border-brand-accent pl-5">
+            <blockquote className="text-lg italic leading-relaxed sm:text-xl">
+              “Not going back to who you were. Going forward to who you are
+              capable of becoming.”
             </blockquote>
-            <figcaption className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
+            <figcaption className="mt-2 font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
               — Maher Kaddoura
             </figcaption>
           </figure>
         </FadeIn>
       </section>
 
-      {/* ── Two Tools ────────────────────────────────────────── */}
-      <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+      {/* ── Two tools ────────────────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
             <SlideUp>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                Two tools
-              </p>
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+              <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
                 A Compass and a Path for the Hardest Seasons
               </h2>
-              <p className="mt-6 leading-relaxed">
-                Most books about loss tell you how to <em>survive</em> it. This
-                one shows you how to <em>cross</em> it.
-              </p>
-              <p className="mt-4 leading-relaxed">
-                The Bouncing Forward framework rests on two tools, not one.{" "}
-                <strong className="font-semibold">The 4-Element Compass</strong>{" "}
-                — Resilience, Adaptability, Optimism, Support — four lights that
-                show you which way is forward, even in the dark.{" "}
-                <strong className="font-semibold">The 4-Step Path</strong> —
-                Accept, Reflect, Imagine, Action — the sequence that turns
-                standing still into movement, one foot at a time.
-              </p>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                A compass without a path leaves you oriented but frozen. A path
-                without a compass moves you, but you don&apos;t know if
-                you&apos;re headed anywhere real. Together, they get you across.
-              </p>
+            </SlideUp>
+            <div className="mt-6 space-y-4 text-lg leading-relaxed">
+              <SlideUp delay={0.06}>
+                <p>
+                  Most books help you survive loss. This one shows you where to
+                  go next.
+                </p>
+              </SlideUp>
+              <SlideUp delay={0.1}>
+                <p>
+                  The 4-Element Compass — Resilience, Adaptability, Optimism,
+                  Support. Four lights that show you which way is forward.
+                </p>
+              </SlideUp>
+              <SlideUp delay={0.14}>
+                <p>
+                  The 4-Step Path — Accept, Reflect, Imagine, Action. The
+                  sequence that turns standing still into movement.
+                </p>
+              </SlideUp>
+              <SlideUp delay={0.18}>
+                <p>
+                  One gives you direction. The other gives you motion. Together,
+                  they take you into the next chapter.
+                </p>
+              </SlideUp>
+            </div>
+            <SlideUp delay={0.22}>
               <div className="mt-8">
                 <PrimaryCta
                   href="#begin-your-crossing"
@@ -146,123 +187,163 @@ export default function HomePage() {
                 />
               </div>
             </SlideUp>
-            <FadeIn delay={0.1}>
-              <Image
-                src="/assets/framework/diagram-compass-path.jpg"
-                alt="The Bouncing Forward framework diagram: Resilience, Adaptability, Optimism and Support form an outer compass frame around the inner path loop of Accept, Reflect, Imagine and Action"
-                width={2000}
-                height={2000}
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="mx-auto w-full max-w-lg rounded-xl"
-              />
-            </FadeIn>
           </div>
+          <FadeIn delay={0.1}>
+            <Image
+              src="/assets/framework/diagram-compass-path.jpg"
+              alt="The Bouncing Forward compass and path diagram — Resilience, Adaptability, Optimism and Support around Accept, Reflect, Imagine and Action"
+              width={2000}
+              height={2000}
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="mx-auto w-full max-w-lg rounded-xl"
+            />
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── Who is it for ────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <FadeIn className="order-last lg:order-first">
-            <Image
-              src="/assets/home/who-is-this-for.jpg"
-              alt="A quiet, human moment — someone pausing mid-thought, journal in hand"
-              width={1448}
-              height={1086}
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="w-full rounded-xl"
-            />
-          </FadeIn>
-          <div>
-            <SlideUp>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                Who is it for
-              </p>
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-                Who is this for?
-              </h2>
-              <p className="mt-6 leading-relaxed">
-                If you&apos;re looking for a five-step plan to make the pain
-                disappear, this isn&apos;t it. But if you&apos;ve had the phone
-                call — or the diagnosis, or the morning that split your life in
-                two — and you&apos;re ready to build something from what&apos;s
-                left, you&apos;re exactly where you need to be.
-              </p>
-            </SlideUp>
-            <Stagger className="mt-8 space-y-3">
-              {whoBullets.map((b) => (
-                <StaggerItem key={b} className="flex gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2.5 size-1.5 shrink-0 rounded-full bg-brand-accent"
+      {/* ── Who is this for ──────────────────────────────────── */}
+      <section className="bg-muted">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn className="order-last lg:order-first">
+              <Image
+                src="/assets/home/who-is-this-for.jpg"
+                alt="A quiet, reflective human moment"
+                width={1448}
+                height={1086}
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="w-full rounded-xl"
+              />
+            </FadeIn>
+            <div>
+              <SlideUp>
+                <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+                  Who is this for?
+                </h2>
+              </SlideUp>
+              <SlideUp delay={0.06}>
+                <p className="mt-6 text-lg leading-relaxed">
+                  This isn’t a plan to make the pain disappear. It’s for the day
+                  you decide your story keeps going.
+                </p>
+              </SlideUp>
+              <Stagger className="mt-6 space-y-3">
+                {whoBullets.map((b) => (
+                  <StaggerItem key={b}>
+                    <div className="flex gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent"
+                      />
+                      <p className="leading-relaxed">{b}</p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+              <SlideUp delay={0.1}>
+                <div className="mt-8">
+                  <ExternalCta
+                    href={AMAZON_URL}
+                    label="Read the First Chapter Free →"
                   />
-                  <p className="leading-relaxed">{b}</p>
-                </StaggerItem>
-              ))}
-            </Stagger>
-            <SlideUp delay={0.1}>
-              <div className="mt-8">
-                <ComingSoonCta label="Read the First Chapter Free" />
-              </div>
-            </SlideUp>
+                </div>
+              </SlideUp>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Four ways to begin ───────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <SlideUp>
+          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            Choose Your Path
+          </h2>
+        </SlideUp>
+        <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {fourWays.map((w) => (
+            <StaggerItem key={w.title} className="h-full">
+              <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6">
+                <h3 className="text-xl font-bold">{w.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {w.body}
+                </p>
+                <Link
+                  href={w.href}
+                  className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  {w.cta}
+                </Link>
+              </article>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </section>
+
+      {/* ── From the blog ────────────────────────────────────── */}
       <section className="bg-muted">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-              Four ways to begin
-            </p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-extrabold leading-tight sm:text-4xl">
-              Choose your path into Bouncing Forward
+            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+              Honest words for the hardest seasons
             </h2>
           </SlideUp>
-          <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {fourWays.map((w) => (
-              <StaggerItem key={w.title}>
+          <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
+            {blogCards.map((post) => (
+              <StaggerItem key={post.slug} className="h-full">
                 <Link
-                  href={w.href}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  href={`/blog/${post.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  <h3 className="text-xl font-bold">{w.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {w.body}
-                  </p>
-                  <span className="mt-5 font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors group-hover:text-foreground">
-                    Explore →
-                  </span>
+                  <div className="relative aspect-[16/9]">
+                    <IllustrationPlaceholder />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-lg font-bold leading-snug group-hover:text-brand-accent-text">
+                      {post.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {post.standfirst}
+                    </p>
+                    <span className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text">
+                      Read the post →
+                    </span>
+                  </div>
                 </Link>
               </StaggerItem>
             ))}
           </Stagger>
+          <FadeIn>
+            <div className="mt-10">
+              <PrimaryCta href="/blog" label="Read all posts →" />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── Email capture ────────────────────────────────────── */}
-      <BeginYourCrossing showFaqLink />
+      {/* ── Assess block (shared navy pre-footer) ────────────── */}
+      <AssessBlock />
 
-      {/* ── Closing reflection (navy band) ───────────────────── */}
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <p className="italic text-primary-foreground/75">
-              Take a moment. Ask yourself, honestly:
-            </p>
-            <p className="mt-8 text-3xl font-extrabold sm:text-4xl">
-              Why did this happen?
-            </p>
-            <p className="mt-4 text-3xl font-extrabold sm:text-4xl">
-              What does this ask of me?
-            </p>
-            <p className="mt-8 italic leading-relaxed text-primary-foreground/75">
-              You don&apos;t need the answer to the first one. Only the courage
-              to ask the second.
-            </p>
-          </FadeIn>
-        </div>
+      {/* ── Newsletter ───────────────────────────────────────── */}
+      <BeginYourCrossing />
+
+      {/* ── Closing reflection ───────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <FadeIn className="mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-extrabold leading-tight sm:text-3xl">
+            Take a moment. Ask yourself, honestly:
+          </h2>
+          <p className="mt-6 font-[family-name:var(--font-display)] text-3xl font-extrabold italic sm:text-4xl">
+            Why did this happen?
+          </p>
+          <p className="mt-3 font-[family-name:var(--font-display)] text-3xl font-extrabold italic sm:text-4xl">
+            What does this ask of me?
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            You don’t need the answer to the first one. Only the courage to ask
+            the second.
+          </p>
+        </FadeIn>
       </section>
     </>
   );

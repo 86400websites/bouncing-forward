@@ -16,8 +16,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const post = getPost(slug);
   if (!post) return { title: "Post not found" };
   return {
-    title: post.title,
-    description: post.subtitle,
+    title: { absolute: post.seoTitle },
+    description: post.seoDescription,
+    openGraph: {
+      type: "article",
+      title: post.seoTitle,
+      description: post.seoDescription,
+    },
   };
 }
 

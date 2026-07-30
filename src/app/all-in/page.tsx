@@ -1,0 +1,254 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { FadeIn, SlideUp } from "@/components/motion/primitives";
+import {
+  BeginYourCrossing,
+  ExternalCta,
+  PrimaryCta,
+} from "@/components/site/begin-your-crossing";
+import { ClaimAccessForm } from "@/components/site/claim-access-form";
+import { IllustrationPlaceholder } from "@/components/site/story-card";
+import { AMAZON_URL } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: "All In | The Complete Bouncing Forward Experience" },
+  description:
+    "The full course, the 30-Day Journal, the workbooks, and your Check results kept season by season. Included free with the book.",
+  openGraph: {
+    title: "All In | The Complete Bouncing Forward Experience",
+    description:
+      "The full course, the 30-Day Journal, the workbooks, and your Check results kept season by season. Included free with the book.",
+  },
+};
+
+/* Copy source: BF-Website-Copy-For-Sozana-2.docx — All In (/all-in), verbatim. */
+
+const NEWSLETTER_HEADING = "Begin Your Next Chapter";
+const NEWSLETTER_BODY =
+  "The direction you need hasn’t disappeared — it’s waiting to be found. Get the free Taking Stock Inventory, plus a monthly note on finding your way forward.";
+
+export default function AllInPage() {
+  return (
+    <>
+      {/* ── Hero (#a-inside) ─────────────────────────────────── */}
+      <section
+        id="a-inside"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-16 pb-16 sm:px-6 sm:pt-20 sm:pb-20 lg:px-8 lg:pt-24 lg:pb-24"
+      >
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <FadeIn>
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                All In — Everything, Together
+              </p>
+            </FadeIn>
+            <SlideUp>
+              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+                One decision. Everything open.
+              </h1>
+            </SlideUp>
+            <SlideUp delay={0.08}>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed">
+                All In is the complete Bouncing Forward experience — the full
+                course, the journal, the workbooks, your Check results kept
+                season by season, and a special monthly newsletter written for
+                the hardest seasons. It comes free with the book, because going
+                all in on your next chapter shouldn’t require a second decision.
+              </p>
+            </SlideUp>
+            <SlideUp delay={0.16}>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <PrimaryCta href="#a-claim" label="Claim Your Access →" />
+                <ExternalCta href={AMAZON_URL} label="Buy the Book →" />
+              </div>
+            </SlideUp>
+          </div>
+          <FadeIn delay={0.1}>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
+              <IllustrationPlaceholder label="All In collection image coming soon" />
+            </div>
+          </FadeIn>
+        </div>
+
+        <FadeIn>
+          <div className="mt-16 border-t border-border pt-12 text-center">
+            <h2 className="mx-auto max-w-2xl text-2xl font-extrabold leading-tight sm:text-3xl">
+              Everything the framework offers, in one place.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              The complete course, every guide, every tool — open from day one,
+              in whatever order your season asks for.
+            </p>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* ── The 30-Day Journal (#a-journal) ──────────────────── */}
+      <section className="bg-muted">
+        <div
+          id="a-journal"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        >
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <SlideUp>
+                <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                  All In · Included
+                </p>
+                <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+                  The 30-Day Journal
+                </h2>
+              </SlideUp>
+              <SlideUp delay={0.06}>
+                <p className="mt-6 text-lg leading-relaxed">
+                  Thirty days of guided reflection — one honest page at a time,
+                  each day with its own prompt and its own quote. Not homework.
+                  Company.
+                </p>
+              </SlideUp>
+            </div>
+            <FadeIn delay={0.1}>
+              <Image
+                src="/assets/all-in/journal-cover.png"
+                alt="The Bouncing Forward Personal Journal — 30 Days to Bounce Forward"
+                width={1055}
+                height={1491}
+                sizes="(min-width: 1024px) 40vw, 80vw"
+                className="mx-auto w-full max-w-xs rounded-xl shadow-lg"
+              />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── The Workbooks (#a-workbooks) ─────────────────────── */}
+      <section
+        id="a-workbooks"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+      >
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <FadeIn className="order-last lg:order-first">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
+              <IllustrationPlaceholder label="Workbook set image coming soon" />
+            </div>
+          </FadeIn>
+          <div>
+            <SlideUp>
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                All In · Included
+              </p>
+              <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+                The Workbooks
+              </h2>
+            </SlideUp>
+            <SlideUp delay={0.06}>
+              <p className="mt-6 text-lg leading-relaxed">
+                The four chapter workbooks, gathered as one take-home set — the
+                exercises from every part of the framework, ready to write in,
+                keep, and return to.
+              </p>
+            </SlideUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ── The Check — full version (#a-check) ──────────────── */}
+      <section className="bg-muted">
+        <div
+          id="a-check"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        >
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <SlideUp>
+                <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                  All In · Included
+                </p>
+                <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+                  The Compass &amp; Path Check — full version
+                </h2>
+              </SlideUp>
+              <SlideUp delay={0.06}>
+                <p className="mt-6 text-lg leading-relaxed">
+                  The free Check tells you where you stand today. The full
+                  version remembers — your lights and your step, kept season by
+                  season, so you can watch the tending work.
+                </p>
+              </SlideUp>
+            </div>
+            <FadeIn delay={0.1}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
+                <IllustrationPlaceholder label="Check screen image coming soon" />
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Live Sessions + Monthly Letter (#a-live, #a-letter) ── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="grid gap-6 md:grid-cols-2">
+          <SlideUp>
+            <div id="a-live" className="h-full scroll-mt-24 rounded-lg border border-border bg-card p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                All In · Included
+              </p>
+              <h2 className="mt-3 text-2xl font-bold leading-snug">
+                Live Sessions
+              </h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Monthly live sessions with Maher — honest conversation, questions
+                answered, and the framework walked together in real time.
+              </p>
+            </div>
+          </SlideUp>
+          <SlideUp delay={0.06}>
+            <div id="a-letter" className="h-full scroll-mt-24 rounded-lg border border-border bg-card p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                All In · Included
+              </p>
+              <h2 className="mt-3 text-2xl font-bold leading-snug">
+                The Monthly Letter
+              </h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                A special monthly newsletter, for members only — on bouncing
+                forward from your hardest season. Longer and closer than the
+                public note: one honest theme each month, written for wherever
+                this season finds you.
+              </p>
+            </div>
+          </SlideUp>
+        </div>
+      </section>
+
+      {/* ── Claim Your Access (#a-claim, navy) ───────────────── */}
+      <section className="bg-primary text-primary-foreground">
+        <div
+          id="a-claim"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        >
+          <FadeIn className="max-w-2xl">
+            <h2 className="text-3xl font-extrabold sm:text-4xl">
+              Claim Your Access
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
+              Bought the book? Your access code is inside. Enter it here and
+              everything opens.
+            </p>
+            <ClaimAccessForm />
+            <div className="mt-8">
+              <ExternalCta
+                href={AMAZON_URL}
+                label="Don’t have the book yet? Buy on Amazon →"
+                invert
+              />
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Newsletter ───────────────────────────────────────── */}
+      <BeginYourCrossing heading={NEWSLETTER_HEADING} body={NEWSLETTER_BODY} />
+    </>
+  );
+}

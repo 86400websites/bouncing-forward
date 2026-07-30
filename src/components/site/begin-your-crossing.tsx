@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
- * "Begin Your Crossing" — the site-wide email capture (copy deck, every page).
+ * The site-wide email capture (BF-Website-Copy — "Begin Your Next Chapter").
  *
  * Sprint 8 wires this to /api/newsletter → Mailchimp with zod validation,
  * rate limiting, and the Taking Stock Inventory delivery. Until that endpoint
@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils";
  * successful subscription.
  */
 export function BeginYourCrossing({
-  heading = "Begin Your Crossing",
-  body = "The direction you need hasn't disappeared — it's just waiting to be found. Get the free Taking Stock Inventory and a monthly note on turning hardship into forward motion.",
+  heading = "Begin Your Next Chapter",
+  body = "The direction you need hasn’t disappeared — it’s waiting to be found. Get the free Taking Stock Inventory, plus a monthly note on finding your way forward.",
   showFaqLink = false,
 }: {
   heading?: string;
@@ -152,5 +152,32 @@ export function SecondaryCta({
     >
       {label}
     </Link>
+  );
+}
+
+/** External CTA (e.g. Amazon). Opens in a new tab with safe rel. */
+export function ExternalCta({
+  href,
+  label,
+  invert = false,
+}: {
+  href: string;
+  label: string;
+  invert?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        "inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        invert
+          ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+          : "bg-primary text-primary-foreground hover:bg-brand-primary-hover",
+      )}
+    >
+      {label}
+    </a>
   );
 }

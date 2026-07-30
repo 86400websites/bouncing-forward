@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MenuIcon } from "lucide-react";
+import { useState } from "react";
+import { ChevronDownIcon, MenuIcon } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -12,8 +13,20 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NAV_LINKS, PRIMARY_CTA, SITE_NAME } from "@/lib/site";
+import { NAV_ITEMS, PRIMARY_CTA, SITE_NAME, type NavItem } from "@/lib/site";
 import { cn } from "@/lib/utils";
+
+function isActive(pathname: string, href: string) {
+  const path = href.split("#")[0];
+  if (path === "/") return pathname === "/";
+  return pathname === path || pathname.startsWith(`${path}/`);
+}
+
+function hasChildren(
+  item: NavItem,
+): item is { label: string; children: { href: string; label: string }[] } {
+  return "children" in item;
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -21,7 +34,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE_NAME} — home`}>
+        <Link
+          href="/"
+          className="flex items-center gap-2.5"
+          aria-label={`${SITE_NAME} — home`}
+        >
           <Image
             src="/assets/logo/bf-mark.jpg"
             alt=""
@@ -36,25 +53,30 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop */}
-        <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
-          {NAV_LINKS.map((l) => {
-            const active = pathname === l.href || pathname.startsWith(`${l.href}/`);
-            return (
+        <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+          {NAV_ITEMS.map((item) =>
+            hasChildren(item) ? (
+              <DesktopDropdown
+                key={item.label}
+                item={item}
+                pathname={pathname}
+              />
+            ) : (
               <Link
-                key={l.href}
-                href={l.href}
-                aria-current={active ? "page" : undefined}
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(pathname, item.href) ? "page" : undefined}
                 className={cn(
                   "border-b-2 border-transparent pb-0.5 font-[family-name:var(--font-display)] text-sm transition-colors",
-                  active
+                  isActive(pathname, item.href)
                     ? "border-brand-accent font-bold text-foreground"
-                    : "font-semibold text-muted-foreground hover:text-foreground"
+                    : "font-semibold text-muted-foreground hover:text-foreground",
                 )}
               >
-                {l.label}
+                {item.label}
               </Link>
-            );
-          })}
+            ),
+          )}
           <Link
             href={PRIMARY_CTA.href}
             className="rounded-full bg-primary px-5 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -71,29 +93,34 @@ export function SiteHeader() {
           >
             <MenuIcon className="size-6" />
           </SheetTrigger>
-          <SheetContent side="right" className="p-6">
+          <SheetContent side="right" className="overflow-y-auto p-6">
             <SheetTitle>{SITE_NAME}</SheetTitle>
-            <SheetDescription className="sr-only">Site navigation</SheetDescription>
+            <SheetDescription className="sr-only">
+              Site navigation
+            </SheetDescription>
             <nav aria-label="Mobile" className="mt-4 flex flex-col gap-1">
-              {NAV_LINKS.map((l) => {
-                const active = pathname === l.href || pathname.startsWith(`${l.href}/`);
-                return (
-                  <SheetClose asChild key={l.href}>
+              {NAV_ITEMS.map((item) =>
+                hasChildren(item) ? (
+                  <MobileGroup key={item.label} item={item} />
+                ) : (
+                  <SheetClose asChild key={item.href}>
                     <Link
-                      href={l.href}
-                      aria-current={active ? "page" : undefined}
+                      href={item.href}
+                      aria-current={
+                        isActive(pathname, item.href) ? "page" : undefined
+                      }
                       className={cn(
                         "rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base transition-colors",
-                        active
+                        isActive(pathname, item.href)
                           ? "bg-muted font-bold text-foreground"
-                          : "font-semibold text-muted-foreground hover:bg-muted hover:text-foreground"
+                          : "font-semibold text-muted-foreground hover:bg-muted hover:text-foreground",
                       )}
                     >
-                      {l.label}
+                      {item.label}
                     </Link>
                   </SheetClose>
-                );
-              })}
+                ),
+              )}
               <SheetClose asChild>
                 <Link
                   href={PRIMARY_CTA.href}
@@ -107,5 +134,101 @@ export function SiteHeader() {
         </Sheet>
       </div>
     </header>
+  );
+}
+
+function DesktopDropdown({
+  item,
+  pathname,
+}: {
+  item: { label: string; children: { href: string; label: string }[] };
+  pathname: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const groupActive = item.children.some((c) => isActive(pathname, c.href));
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        className={cn(
+          "flex items-center gap-1 border-b-2 border-transparent pb-0.5 font-[family-name:var(--font-display)] text-sm transition-colors",
+          groupActive
+            ? "border-brand-accent font-bold text-foreground"
+            : "font-semibold text-muted-foreground hover:text-foreground",
+        )}
+      >
+        {item.label}
+        <ChevronDownIcon className="size-3.5" aria-hidden="true" />
+      </button>
+      <div
+        role="menu"
+        className={cn(
+          "absolute left-0 top-full z-50 w-60 rounded-lg border border-border bg-card p-2 shadow-lg",
+          open ? "block" : "hidden",
+        )}
+      >
+        {item.children.map((c) => (
+          <Link
+            key={c.href}
+            href={c.href}
+            role="menuitem"
+            tabIndex={open ? undefined : -1}
+            className="block rounded-md px-3 py-2 font-[family-name:var(--font-display)] text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            {c.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MobileGroup({
+  item,
+}: {
+  item: { label: string; children: { href: string; label: string }[] };
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        className="flex w-full items-center justify-between rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      >
+        {item.label}
+        <ChevronDownIcon
+          className={cn("size-4 transition-transform", open && "rotate-180")}
+          aria-hidden="true"
+        />
+      </button>
+      <div
+        className={cn(
+          "ml-3 flex-col border-l border-border pl-2",
+          open ? "flex" : "hidden",
+        )}
+      >
+        {item.children.map((c) => (
+          <SheetClose asChild key={c.href}>
+            <Link
+              href={c.href}
+              tabIndex={open ? undefined : -1}
+              className="rounded-md px-3 py-2.5 font-[family-name:var(--font-display)] text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {c.label}
+            </Link>
+          </SheetClose>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -4,11 +4,15 @@ import { SITE_URL } from "@/lib/site";
 const routes = [
   "",
   "/book",
-  "/learn",
+  "/course",
   "/compass-and-path",
   "/stories",
   "/about",
   "/assess",
+  "/workshops",
+  "/contact",
+  "/all-in",
+  "/blog",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

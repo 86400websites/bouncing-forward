@@ -14,19 +14,57 @@ export const SITE_TAGLINE =
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
+/** Live Amazon listing (BF-Website-Copy + mockup). Opens in a new tab. */
+export const AMAZON_URL =
+  "https://www.amazon.com/Bouncing-Forward-Hardships-Stepping-Resilience/dp/B0DWRVYCHS";
+
 /**
  * ⚠️ AWAITING MAHER/HEATHER SIGN-OFF (DESIGN.md §12).
  * The route slug /compass-and-path never changes; only this label does.
- * Alternative under consideration: "Practice".
+ * The revised mockup labels it "Resources".
  */
-export const COMPASS_PATH_NAV_LABEL = "The Compass & The Path";
+export const COMPASS_PATH_NAV_LABEL = "Resources";
 
-export const NAV_LINKS = [
+/**
+ * Top-level navigation, modelled on BF-Website-Mockup.html.
+ * A NavItem is either a flat link or a dropdown with children.
+ * Some destinations (/course, /all-in, /workshops, /contact) are built in
+ * later steps; links are wired now and resolve as those pages land.
+ */
+export type NavChild = { href: string; label: string };
+export type NavItem =
+  | { href: string; label: string }
+  | { label: string; children: NavChild[] };
+
+export const NAV_ITEMS: NavItem[] = [
   { href: "/book", label: "The Book" },
-  { href: "/learn", label: "Learn" },
-  { href: "/compass-and-path", label: COMPASS_PATH_NAV_LABEL },
-  { href: "/stories", label: "Stories" },
-  { href: "/about", label: "About" },
-] as const;
+  { href: "/about", label: "The Author" },
+  { href: "/course", label: "The Course" },
+  {
+    label: "Resources",
+    children: [
+      { href: "/compass-and-path#compass", label: "The 4-Element Compass" },
+      { href: "/compass-and-path#path", label: "The 4-Step Path" },
+      { href: "/compass-and-path#inventory", label: "Taking Stock Inventory" },
+      { href: "/assess", label: "The Compass & Path Check" },
+      { href: "/stories", label: "Stories" },
+      { href: "/blog", label: "Blog" },
+    ],
+  },
+  {
+    label: "All In",
+    children: [
+      { href: "/all-in#a-inside", label: "What’s Inside" },
+      { href: "/all-in#a-journal", label: "The 30-Day Journal" },
+      { href: "/all-in#a-workbooks", label: "The Workbooks" },
+      { href: "/all-in#a-check", label: "The Check — Full Version" },
+      { href: "/all-in#a-live", label: "Live Sessions" },
+      { href: "/all-in#a-letter", label: "The Monthly Letter" },
+      { href: "/all-in#a-claim", label: "Claim Your Access" },
+    ],
+  },
+  { href: "/workshops", label: "Workshops" },
+  { href: "/contact", label: "Contact" },
+];
 
-export const PRIMARY_CTA = { href: "/assess", label: "Start Your Crossing" } as const;
+export const PRIMARY_CTA = { href: "/assess", label: "Take the Check" } as const;

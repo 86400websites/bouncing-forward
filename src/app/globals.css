@@ -12,6 +12,7 @@
   --brand-primary-hover: #16395c;
   --brand-accent: #0ca1d9; /* graphics on white; text only on navy */
   --brand-accent-text: #067ca8; /* AA-safe accent for text on white */
+  --brand-gold: #f2c94c; /* the compass "lights" on the Check results (graphics only) */
 
   /* shadcn/ui tokens */
   --background: #ffffff;
@@ -60,6 +61,7 @@
   --color-brand-primary-hover: var(--brand-primary-hover);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-text: var(--brand-accent-text);
+  --color-brand-gold: var(--brand-gold);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
