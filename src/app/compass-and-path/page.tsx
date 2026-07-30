@@ -1,31 +1,39 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import {
+  FadeIn,
+  SlideUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
+import { AssessBlock } from "@/components/site/assess-block";
 import {
   BeginYourCrossing,
-  ComingSoonCta,
+  ExternalCta,
   PrimaryCta,
-  SecondaryCta,
 } from "@/components/site/begin-your-crossing";
 import { NumberedCard } from "@/components/site/numbered-card";
+import { AMAZON_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "The Compass & The Path",
+  title: { absolute: "Free Grief Resources | The Compass & the Path" },
   description:
-    "Reading is understanding. Practice is crossing. Four elements to steady how you’re oriented, four steps to move you forward, and the tools to begin today.",
+    "Put the framework to work: the 4-Element Compass, the 4-Step Path, the free Taking Stock Inventory, and the Compass & Path Check.",
+  openGraph: {
+    title: "Free Grief Resources | The Compass & the Path",
+    description:
+      "Put the framework to work: the 4-Element Compass, the 4-Step Path, the free Taking Stock Inventory, and the Compass & Path Check.",
+  },
 };
 
-/* Copy source: Bouncing_Forward_Website_Copy.docx — Page 4 (Practice), verbatim. */
+/* Copy source: BF-Website-Copy-For-Sozana-2.docx — Resources (/compass-and-path), verbatim. */
 
 const compass = [
   {
     index: "01",
     title: "Resilience",
-    subtitle: "Weathering the Storms of Adversity",
-    quote:
-      "Resilience is the unexpected light that emerges in the darkest times, transforming personal tragedy into shared purpose and a renewed direction.",
     descriptor:
       "Not toughness. The bamboo that bends almost flat in a storm — and stands back up when it passes.",
     image: {
@@ -36,22 +44,16 @@ const compass = [
   {
     index: "02",
     title: "Adaptability",
-    subtitle: "Navigating the Rapids of Change",
-    quote:
-      "Adaptability is the decision to dance with change rather than be swept away by it.",
     descriptor:
       "Loss takes more than a person or a plan — it takes a version of you. Adaptability is finding the shape of who’s left.",
     image: {
       src: "/assets/framework/adaptability.jpg",
-      alt: "Isometric illustration for Adaptability — a figure steering through moving water",
+      alt: "Isometric illustration for Adaptability — steering through moving water",
     },
   },
   {
     index: "03",
     title: "Optimism",
-    subtitle: "Lighting the Path Through the Darkness",
-    quote:
-      "Optimism is not pretending the forest is a meadow. It is choosing to believe there is a way through.",
     descriptor:
       "Not forced positivity. A small, stubborn, renewable conviction that something good can still emerge.",
     image: {
@@ -62,11 +64,8 @@ const compass = [
   {
     index: "04",
     title: "Support",
-    subtitle: "Weaving a Net of Collective Strength",
-    quote:
-      "No one crosses any significant forest alone. Every great transformation was made possible by someone who stood beside the traveller when they could not stand by themselves.",
     descriptor:
-      "Support flows both ways, or it doesn’t flow at all. Let people in — and let yourself be one of theirs.",
+      "No one faces any significant forest alone. Support flows both ways, or it doesn’t flow at all. Let people in — and let yourself be one of theirs.",
     image: {
       src: "/assets/framework/support.jpg",
       alt: "Isometric illustration for Support — hands forming a net of strength",
@@ -78,9 +77,6 @@ const path = [
   {
     index: "01",
     title: "Accept",
-    subtitle: "Embracing the Inevitable",
-    quote:
-      "Acceptance is not surrender. It is the bridge between who you were before the loss and who you are still capable of becoming.",
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
@@ -91,9 +87,6 @@ const path = [
   {
     index: "02",
     title: "Reflect",
-    subtitle: "Uncovering Insight From Grief",
-    quote:
-      "Reflection transforms pain into purpose — turning what happened to us into what we do with it.",
     descriptor:
       "Not rumination. The disciplined, sometimes uncomfortable practice of asking: what does this ask of me?",
     image: {
@@ -104,9 +97,6 @@ const path = [
   {
     index: "03",
     title: "Imagine",
-    subtitle: "Defining the Path Forward",
-    quote:
-      "Bouncing Forward requires clear goals — specific, named destinations that organize every step that follows.",
     descriptor:
       "A vision has a name and a deadline. Give your loss somewhere to go.",
     image: {
@@ -117,9 +107,6 @@ const path = [
   {
     index: "04",
     title: "Action",
-    subtitle: "Catalyzing Change Through Initiative",
-    quote:
-      "Turning vision into reality demands action. Not perfect action. Not fearless action. Just the next step, taken.",
     descriptor:
       "You will never feel fully ready. Begin anyway — the doing creates the readiness that waiting never will.",
     image: {
@@ -142,41 +129,27 @@ const tools = [
   },
   {
     title: "The Compass & Path Check",
-    body: "A short, honest check across all eight dimensions of the framework. See which lights are burning bright, and which need your attention.",
-    cta: { kind: "link" as const, href: "/assess", label: "Take the assessment →" },
+    body: "Eight questions. A few honest minutes. See which lights are burning bright, which have gone faint — and which step of the path you’re standing on.",
+    cta: { kind: "link" as const, href: "/assess", label: "Take the Check →" },
   },
 ];
 
-function TryItFree({
-  text,
-  cta,
-  className,
-}: {
-  text: string;
-  cta: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <FadeIn>
-      <div
-        className={cn(
-          "mt-10 flex flex-col gap-5 rounded-lg border border-border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8",
-          className,
-        )}
-      >
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-            Try it free
-          </p>
-          <p className="mt-2 max-w-2xl leading-relaxed">{text}</p>
-        </div>
-        <div className="shrink-0">{cta}</div>
-      </div>
-    </FadeIn>
-  );
-}
+const explore = [
+  {
+    title: "Stories",
+    body: "Real people, from Cape Town to Rio to Ladakh, who turned loss into direction.",
+    href: "/stories",
+    cta: "Meet them →",
+  },
+  {
+    title: "The Blog",
+    body: "Honest words for the hardest seasons — the things nobody tells you about loss, named plainly.",
+    href: "/blog",
+    cta: "Read →",
+  },
+];
 
-export default function CompassAndPathPage() {
+export default function ResourcesPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -185,21 +158,21 @@ export default function CompassAndPathPage() {
           <div>
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                The Compass &amp; The Path
+                Resources
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
-                Reading is understanding. Practice is crossing.
+              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+                Reading is understanding. Practice is the way through.
               </h1>
             </SlideUp>
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                A framework you only understand is just an idea. A framework you{" "}
-                <em>use</em> becomes a way through. This is where Bouncing
-                Forward stops being a book and starts being your own crossing —
-                four elements to steady how you’re oriented, four steps to move
-                you forward, and the tools to begin today.
+                A framework you only understand is just an idea. A framework you
+                use becomes a way forward. This is where Bouncing Forward stops
+                being a book and starts being your own next chapter — four
+                elements to steady how you’re oriented, four steps to move you
+                forward, and the tools to begin today.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
@@ -214,7 +187,7 @@ export default function CompassAndPathPage() {
           <FadeIn delay={0.1}>
             <Image
               src="/assets/framework/compass-lantern-stepping-stones.jpg"
-              alt="Hands holding a lantern and compass above stepping stones leading across a dark forest floor toward light"
+              alt="Hands holding a lantern and compass above stepping stones across a dark forest floor toward light"
               width={1535}
               height={1024}
               priority
@@ -225,7 +198,7 @@ export default function CompassAndPathPage() {
         </div>
       </section>
 
-      {/* ── The Framework ────────────────────────────────────── */}
+      {/* ── The framework ────────────────────────────────────── */}
       <section className="bg-muted">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -242,9 +215,8 @@ export default function CompassAndPathPage() {
                 <p className="mt-6 text-lg leading-relaxed">
                   Bouncing Forward ={" "}
                   <strong className="font-semibold">A Compass</strong> (which way
-                  is forward){" "}
-                  <strong className="font-semibold">+ A Path</strong> (how you
-                  get there)
+                  is forward) <strong className="font-semibold">+ A Path</strong>{" "}
+                  (how you get there)
                 </p>
               </SlideUp>
               <SlideUp delay={0.1}>
@@ -254,7 +226,7 @@ export default function CompassAndPathPage() {
                   readiness that may never come. A path with no compass gets you
                   moving, but you can circle for years without knowing it.
                   Together, one gives you direction, the other gives you motion —
-                  and that’s how a forest gets crossed.
+                  and that’s how you make it through the forest.
                 </p>
               </SlideUp>
               <SlideUp delay={0.14}>
@@ -268,7 +240,7 @@ export default function CompassAndPathPage() {
             <FadeIn delay={0.1}>
               <Image
                 src="/assets/framework/diagram-compass-path.jpg"
-                alt="The Bouncing Forward compass and path diagram: an outer ring of Resilience, Adaptability, Optimism and Support around an inner loop of Accept, Reflect, Imagine and Action"
+                alt="The Bouncing Forward compass and path diagram"
                 width={2000}
                 height={2000}
                 sizes="(min-width: 1024px) 45vw, 100vw"
@@ -279,8 +251,11 @@ export default function CompassAndPathPage() {
         </div>
       </section>
 
-      {/* ── How you're oriented — the 4-Element Compass ──────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      {/* ── The 4-Element Compass (#compass) ─────────────────── */}
+      <section
+        id="compass"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+      >
         <SlideUp>
           <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
             How You’re Oriented
@@ -290,10 +265,10 @@ export default function CompassAndPathPage() {
           </h2>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed">
             Life is marked by storms. Our identity isn’t shaped by the storm
-            itself — it’s shaped by the choices we make while crossing it. These
-            four elements aren’t a sequence. Think of them as four lights always
-            burning inside you. The brighter you keep each one, the clearer your
-            way forward.
+            itself — it’s shaped by the choices we make while weathering it.
+            These four elements aren’t a sequence. Think of them as four lights
+            always burning inside you. The brighter you keep each one, the
+            clearer your way forward.
           </p>
         </SlideUp>
         <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -303,16 +278,25 @@ export default function CompassAndPathPage() {
             </StaggerItem>
           ))}
         </Stagger>
-        <TryItFree
-          className="bg-muted"
-          text="Try the 4-Element Compass in the free Taking Stock Inventory — a taste of these questions straight from the book."
-          cta={<PrimaryCta href="#begin-your-crossing" label="Get the Free Inventory" />}
-        />
+        <FadeIn>
+          <div className="mt-10 flex flex-col gap-5 rounded-lg border border-border bg-muted p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <p className="max-w-2xl leading-relaxed">
+              Try it free: the 4-Element Compass is in the free Taking Stock
+              Inventory — a taste of these questions straight from the book.
+            </p>
+            <div className="shrink-0">
+              <PrimaryCta href="#begin-your-crossing" label="Get the Free Inventory" />
+            </div>
+          </div>
+        </FadeIn>
       </section>
 
-      {/* ── How you move — the 4-Step Path ───────────────────── */}
+      {/* ── The 4-Step Path (#path) ──────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div
+          id="path"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        >
           <SlideUp>
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
               How You Move
@@ -330,20 +314,18 @@ export default function CompassAndPathPage() {
           <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {path.map((p) => (
               <StaggerItem key={p.title} className="h-full">
-                <NumberedCard {...p} headingLevel="h3" />
+                <NumberedCard {...p} headingLevel="h3" className="bg-card" />
               </StaggerItem>
             ))}
           </Stagger>
-          <TryItFree
-            className="bg-card"
-            text="Explore the Reflection Companion — the “Reflect On…” prompts from every chapter, gathered in one place."
-            cta={<ComingSoonCta label="Explore the Reflection Companion" />}
-          />
         </div>
       </section>
 
-      {/* ── Put it to work — three tools ─────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      {/* ── Put it to work (#inventory) ──────────────────────── */}
+      <section
+        id="inventory"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+      >
         <SlideUp>
           <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
             Put It to Work
@@ -381,34 +363,64 @@ export default function CompassAndPathPage() {
         </Stagger>
       </section>
 
-      {/* ── Begin Your Crossing capture ──────────────────────── */}
-      <BeginYourCrossing showFaqLink />
-
-      {/* ── Closing reflection (navy band) ───────────────────── */}
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-extrabold sm:text-4xl">
-              Which light has gone faint?
+      {/* ── Start with the source ────────────────────────────── */}
+      <section className="bg-muted">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+          <SlideUp>
+            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+              Read the first chapter free.
             </h2>
-            <p className="mt-4 italic leading-relaxed text-primary-foreground/75">
-              Noticing is the beginning of the practice.
+            <p className="mt-6 text-lg leading-relaxed">
+              The framework began as a book — and the first chapter is free to
+              read right now. Meet the story behind the Compass and the Path
+              before you buy.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <PrimaryCta
-                href="/assess"
-                label="Take the Compass &amp; Path Check"
-                invert
-              />
-              <SecondaryCta
-                href="#begin-your-crossing"
-                label="Get the Free Inventory"
-                invert
+            <div className="mt-8 flex justify-center">
+              <ExternalCta
+                href={AMAZON_URL}
+                label="Read the First Chapter Free →"
               />
             </div>
-          </FadeIn>
+          </SlideUp>
         </div>
       </section>
+
+      {/* ── More to explore ──────────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <SlideUp>
+          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            Keep going
+          </h2>
+        </SlideUp>
+        <Stagger className="mt-10 grid gap-6 sm:grid-cols-2">
+          {explore.map((e) => (
+            <StaggerItem key={e.title} className="h-full">
+              <Link
+                href={e.href}
+                className={cn(
+                  "group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-md sm:p-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+                )}
+              >
+                <h3 className="text-xl font-bold group-hover:text-brand-accent-text">
+                  {e.title}
+                </h3>
+                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                  {e.body}
+                </p>
+                <span className="mt-5 font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text">
+                  {e.cta}
+                </span>
+              </Link>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </section>
+
+      {/* ── Assess block (shared navy pre-footer) ────────────── */}
+      <AssessBlock />
+
+      {/* ── Newsletter ───────────────────────────────────────── */}
+      <BeginYourCrossing />
     </>
   );
 }

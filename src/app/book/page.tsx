@@ -3,14 +3,20 @@ import Image from "next/image";
 import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
-  ComingSoonCta,
+  ExternalCta,
 } from "@/components/site/begin-your-crossing";
 import { NumberedCard } from "@/components/site/numbered-card";
+import { AMAZON_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "The Book",
+  title: { absolute: "The Book | Bouncing Forward by Maher Kaddoura" },
   description:
-    "Not another book about moving on. Bouncing Forward hands you a framework — four elements and four steps — to actively build a life from what’s left.",
+    "Not another book about moving on — a practical framework for life after loss: four elements, four steps, one real story. Read the first chapter free.",
+  openGraph: {
+    title: "The Book | Bouncing Forward by Maher Kaddoura",
+    description:
+      "Not another book about moving on — a practical framework for life after loss: four elements, four steps, one real story. Read the first chapter free.",
+  },
 };
 
 /* Copy source: Bouncing_Forward_Website_Copy.docx — Page 2 (The Book), verbatim. */
@@ -148,7 +154,7 @@ export default function BookPage() {
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8">
-                <ComingSoonCta label="Buy on Amazon" />
+                <ExternalCta href={AMAZON_URL} label="Buy on Amazon →" />
               </div>
             </SlideUp>
           </div>
@@ -319,7 +325,7 @@ export default function BookPage() {
             The direction you’re looking for is already inside you.
           </h2>
           <div className="mt-8 flex justify-center">
-            <ComingSoonCta label="Buy on Amazon" />
+            <ExternalCta href={AMAZON_URL} label="Buy on Amazon →" />
           </div>
         </FadeIn>
       </section>

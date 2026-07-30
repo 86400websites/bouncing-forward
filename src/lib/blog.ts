@@ -18,15 +18,20 @@ export type Post = {
   slug: string;
   title: string;
   subtitle: string;
+  seoTitle: string;
+  seoDescription: string;
   blocks: Block[];
 };
 
 export const POSTS: Post[] = [
   {
     number: 1,
-    slug: "the-losses-nobody-sends-flowers-for",
+    slug: "losses-nobody-sends-flowers-for",
     title: "The Losses Nobody Sends Flowers For",
     subtitle: "Some grief arrives without a funeral, a card, or anyone acknowledging it happened.",
+    seoTitle: "The Losses Nobody Sends Flowers For | Bouncing Forward",
+    seoDescription:
+      "Some grief arrives without a funeral or a card. If something was taken that you didn’t choose to lose, it counts — and naming it is where it starts.",
     blocks: [
       { type: "p", text: "When someone dies, the world has a script. People arrive. Food appears in your kitchen. There is a date, a gathering, a sequence of things that happen in an order." },
       { type: "p", text: "But there are losses that come with no script at all." },
@@ -73,6 +78,9 @@ export const POSTS: Post[] = [
     slug: "when-there-is-no-goodbye",
     title: "When There Is No Goodbye",
     subtitle: "Grieving someone who is still here — and the loss that never quite finishes.",
+    seoTitle: "When There Is No Goodbye | Bouncing Forward",
+    seoDescription:
+      "Grieving someone who is still here — dementia, estrangement, addiction — and how to live alongside a loss that never quite finishes.",
     blocks: [
       { type: "p", text: "Most grief has a moment you can point to. A date. A phone call. A before and an after with a clear line between them." },
       { type: "p", text: "You can say the date out loud. Other people recognise it as a thing that happened." },
@@ -109,9 +117,12 @@ export const POSTS: Post[] = [
   },
   {
     number: 3,
-    slug: "why-month-eight-is-harder-than-week-two",
+    slug: "why-month-eight-is-harder",
     title: "Why Month Eight Is Harder Than Week Two",
     subtitle: "The loss inside the loss, and why it arrives long after everyone stops asking.",
+    seoTitle: "Why Month Eight Is Harder Than Week Two | Bouncing Forward",
+    seoDescription:
+      "The second wave of losses hides inside the first, arriving long after the casseroles stop. Knowing it’s coming changes everything.",
     blocks: [
       { type: "p", text: "In the first weeks, you were held up by something close to adrenaline. There were arrangements. People. Things that had to be done by Friday." },
       { type: "p", text: "You were also, quite possibly, not really feeling it yet. The first weeks are frequently a kind of numbness that gets mistaken by everyone, including you, for coping remarkably well." },
@@ -152,6 +163,9 @@ export const POSTS: Post[] = [
     slug: "grief-is-not-a-staircase",
     title: "Grief Is Not a Staircase",
     subtitle: "Nobody moves through loss in a straight line. The line was never real.",
+    seoTitle: "Grief Is Not a Staircase | Bouncing Forward",
+    seoDescription:
+      "Real grief doesn’t climb through tidy stages — it swings. Your pace is the right pace, because it’s the one you’re actually walking.",
     blocks: [
       { type: "p", text: "Somewhere along the way we were handed the idea that grief runs in stages. That you pass through them in order, one at a time, and arrive somewhere called acceptance." },
       { type: "p", text: "You may even be able to name them. Most people can, roughly, and most people have privately checked their own progress against them at some point." },
@@ -192,6 +206,9 @@ export const POSTS: Post[] = [
     slug: "grief-lives-in-the-body",
     title: "Grief Lives in the Body",
     subtitle: "The exhaustion, the fog, the appetite that vanished — and why none of it means you are losing your grip.",
+    seoTitle: "Grief Lives in the Body | Bouncing Forward",
+    seoDescription:
+      "The exhaustion, the fog, the appetite that vanished. Why grief is physical, why it’s temporary, and the small things that genuinely help.",
     blocks: [
       { type: "p", text: "People expect grief to be sadness. They are unprepared for what it does to the body." },
       { type: "p", text: "They are unprepared, too, for how physical the first days can be — the shaking, the cold that will not go, the sense of having been hit by something at speed." },
@@ -233,6 +250,9 @@ export const POSTS: Post[] = [
     slug: "the-date-your-body-remembers",
     title: "The Date Your Body Remembers",
     subtitle: "Anniversaries, ambushes, and the ordinary Tuesday that takes you apart.",
+    seoTitle: "The Date Your Body Remembers | Bouncing Forward",
+    seoDescription:
+      "Anniversaries, ambushes, and the supermarket aisle at half past four. Decide before the day arrives — and tell one person it’s coming.",
     blocks: [
       { type: "p", text: "You wake up heavy for no reason. Everything is slightly harder. You cannot account for it, and you spend the day slightly at odds with yourself." },
       { type: "p", text: "It has happened to almost everyone who has lost something, and almost nobody mentions it, so most people assume it is peculiar to them." },
@@ -272,6 +292,9 @@ export const POSTS: Post[] = [
     slug: "the-friends-who-disappeared",
     title: "The Friends Who Disappeared",
     subtitle: "Loss quietly rearranges everyone around you, and nobody warns you it is coming.",
+    seoTitle: "The Friends Who Disappeared | Bouncing Forward",
+    seoDescription:
+      "Loss rearranges everyone around you. Why people vanish, who surprises you, and the quiet power of asking for one specific thing.",
     blocks: [
       { type: "p", text: "Nobody prepares you for this part. Loss does not only take the thing you lost. It reorganises every relationship you have." },
       { type: "p", text: "It is one of the losses inside the loss, and it frequently hurts more than people expect, arriving as it does when there is least capacity to absorb it." },
@@ -313,6 +336,9 @@ export const POSTS: Post[] = [
     slug: "you-do-not-have-to-let-go",
     title: "You Do Not Have to Let Go",
     subtitle: "The advice to move on has confused more people than it has ever helped.",
+    seoTitle: "You Do Not Have to Let Go | Bouncing Forward",
+    seoDescription:
+      "“Move on” is the advice that keeps people stuck. You were never asked to choose between keeping them and going forward.",
     blocks: [
       { type: "p", text: "At some point, someone will suggest that it is time to let go. To move on. To close that chapter and begin the next one." },
       { type: "p", text: "It often arrives with a timescale attached, which makes it worse. A year is usually mentioned, as though grief had been consulted about the calendar." },
@@ -350,9 +376,12 @@ export const POSTS: Post[] = [
   },
   {
     number: 9,
-    slug: "when-people-say-this-will-make-you-stronger",
+    slug: "this-will-make-you-stronger",
     title: "When People Say This Will Make You Stronger",
     subtitle: "Something can grow out of loss. It is not owed, and it is never the point.",
+    seoTitle: "When People Say This Will Make You Stronger | Bouncing Forward",
+    seoDescription:
+      "Something can grow out of loss — but growth is not the entrance fee for recovery, and it is never the reason it happened.",
     blocks: [
       { type: "p", text: "Somebody will say it, usually early, usually with real warmth. This will make you stronger. You'll come out of this a better person. One day you'll see why this happened." },
       { type: "p", text: "It is often said by people who have not been through anything comparable, which is not a criticism so much as an explanation." },
@@ -389,9 +418,12 @@ export const POSTS: Post[] = [
   },
   {
     number: 10,
-    slug: "becoming-someone-who-has-been-through-something",
+    slug: "someone-who-has-been-through-something",
     title: "Becoming Someone Who Has Been Through Something",
     subtitle: "Not recovery. Not closure. Something quieter, and considerably more useful.",
+    seoTitle: "Becoming Someone Who Has Been Through Something",
+    seoDescription:
+      "Not recovery, not closure — something quieter. The loss becomes load-bearing, and you become someone with something to offer.",
     blocks: [
       { type: "p", text: "There is a word people keep reaching for, and it does not fit. Closure." },
       { type: "p", text: "People will use it kindly and often. They will ask whether you have found any, as though it were a set of keys." },

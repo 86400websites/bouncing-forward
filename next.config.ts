@@ -24,6 +24,27 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
+  async redirects() {
+    // Blog slugs realigned to the canonical SEO doc; keep old URLs alive.
+    const blog: [string, string][] = [
+      ["the-losses-nobody-sends-flowers-for", "losses-nobody-sends-flowers-for"],
+      ["why-month-eight-is-harder-than-week-two", "why-month-eight-is-harder"],
+      ["when-people-say-this-will-make-you-stronger", "this-will-make-you-stronger"],
+      [
+        "becoming-someone-who-has-been-through-something",
+        "someone-who-has-been-through-something",
+      ],
+    ];
+    return [
+      // Learn was renamed to The Course in the revised brief.
+      { source: "/learn", destination: "/course", permanent: true },
+      ...blog.map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}`,
+        permanent: true,
+      })),
+    ];
+  },
 };
 
 export default nextConfig;

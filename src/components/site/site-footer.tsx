@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { COMPASS_PATH_NAV_LABEL, SITE_NAME } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
 
 /**
  * Footer per the copy deck (Home footer, reused on every page).
@@ -19,15 +19,16 @@ function ComingSoon({ label }: { label: string }) {
 
 const exploreLinks = [
   { href: "/book", label: "The Book" },
-  { href: "/learn", label: "Learn" },
-  { href: "/compass-and-path", label: COMPASS_PATH_NAV_LABEL },
-  { href: "/stories", label: "Stories" },
-  { href: "/about", label: "About Maher" },
+  { href: "/about", label: "The Author" },
+  { href: "/course", label: "The Course" },
+  { href: "/compass-and-path", label: "Resources" },
+  { href: "/all-in", label: "All In" },
+  { href: "/workshops", label: "Workshops" },
 ];
 
 const compassPathLinks = [
-  { href: "/compass-and-path#compass", label: "The 4 Elements" },
-  { href: "/compass-and-path#path", label: "The 4 Steps" },
+  { href: "/compass-and-path#compass", label: "The 4-Element Compass" },
+  { href: "/compass-and-path#path", label: "The 4-Step Path" },
   { href: "#begin-your-crossing", label: "Taking Stock Inventory" },
   { href: "/assess", label: "Compass & Path Check" },
 ];
@@ -51,7 +52,7 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-5 font-[family-name:var(--font-display)] text-xl font-extrabold">
-              Not Back. Forward.
+              Grief doesn’t get the last word.
             </p>
             <p className="mt-3 max-w-xs italic leading-relaxed text-primary-foreground/75">
               &ldquo;Not going back to who you were. Going forward to who you
@@ -104,11 +105,13 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link href="/blog" className="transition-colors hover:text-brand-accent">
-                  The Journal
+                  Blog
                 </Link>
               </li>
               <li>
-                <ComingSoon label="Contact" />
+                <Link href="/contact" className="transition-colors hover:text-brand-accent">
+                  Contact
+                </Link>
               </li>
             </ul>
           </nav>

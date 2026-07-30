@@ -4,15 +4,24 @@ import { bodyFont, displayFont } from "@/lib/fonts";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
-import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Not Back. Forward.`,
+    default: "Bouncing Forward | Grief Doesn’t Get the Last Word",
     template: `%s · ${SITE_NAME}`,
   },
-  description: SITE_TAGLINE,
+  description:
+    "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: "Bouncing Forward | Grief Doesn’t Get the Last Word",
+    description:
+      "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
+    images: [{ url: "/assets/book/cover-3d.jpeg" }],
+  },
 };
 
 export default function RootLayout({

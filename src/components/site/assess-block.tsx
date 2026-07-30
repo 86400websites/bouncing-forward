@@ -1,0 +1,82 @@
+import Link from "next/link";
+
+/*
+ * Shared navy pre-footer "Assess block" (BF-Website-Copy — Home & Resources).
+ * IMAGE 4 / 27 is "a compass with two lights lit, two dimmed" — rendered here
+ * as a small static SVG (no commissioned asset needed), matching the live
+ * Check's gold-light language.
+ */
+function MiniCompass() {
+  const cx = 90;
+  const cy = 90;
+  const r = 62;
+  // N & E lit (bright gold), S & W dim (faint) — "two lit, two dimmed".
+  const lights = [
+    { x: cx, y: cy - r, lit: true }, // N
+    { x: cx + r, y: cy, lit: true }, // E
+    { x: cx, y: cy + r, lit: false }, // S
+    { x: cx - r, y: cy, lit: false }, // W
+  ];
+  return (
+    <svg
+      viewBox="0 0 180 180"
+      role="img"
+      aria-label="A compass with two lights burning bright and two gone faint."
+      className="mx-auto w-full max-w-[220px]"
+    >
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+      <circle cx={cx} cy={cy} r={r * 0.6} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+      <line x1={cx} y1={cy - r} x2={cx} y2={cy + r} stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+      <line x1={cx - r} y1={cy} x2={cx + r} y2={cy} stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+      <circle cx={cx} cy={cy} r="2.5" fill="rgba(255,255,255,0.5)" />
+      {lights.map((l, i) => (
+        <g key={i}>
+          <circle
+            cx={l.x}
+            cy={l.y}
+            r={l.lit ? 20 : 9}
+            fill="var(--brand-gold)"
+            opacity={l.lit ? 0.45 : 0.18}
+          />
+          <circle
+            cx={l.x}
+            cy={l.y}
+            r={l.lit ? 9 : 4}
+            fill="var(--brand-gold)"
+            opacity={l.lit ? 1 : 0.55}
+          />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+export function AssessBlock() {
+  return (
+    <section className="bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+              Which of your lights have gone faint?
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-primary-foreground/85">
+              Resilience. Adaptability. Optimism. Support. Eight questions will
+              show you which are burning — and which need tending. Nothing to
+              sign up for, nothing to pay.
+            </p>
+            <Link
+              href="/assess"
+              className="mt-8 inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              Take the Check →
+            </Link>
+          </div>
+          <div className="hidden lg:block">
+            <MiniCompass />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
