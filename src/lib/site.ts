@@ -34,7 +34,7 @@ export const COMPASS_PATH_NAV_LABEL = "Resources";
 export type NavChild = { href: string; label: string };
 export type NavItem =
   | { href: string; label: string }
-  | { label: string; children: NavChild[] };
+  | { label: string; href?: string; children: NavChild[] };
 
 export const NAV_ITEMS: NavItem[] = [
   { href: "/book", label: "The Book" },
@@ -42,6 +42,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/course", label: "The Course" },
   {
     label: "Resources",
+    href: "/compass-and-path",
     children: [
       { href: "/compass-and-path#compass", label: "The 4-Element Compass" },
       { href: "/compass-and-path#path", label: "The 4-Step Path" },
@@ -53,6 +54,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "All In",
+    href: "/all-in",
     children: [
       { href: "/all-in#a-inside", label: "What’s Inside" },
       { href: "/all-in#a-journal", label: "The 30-Day Journal" },
