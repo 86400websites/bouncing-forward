@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import {
+  FadeIn,
+  SlideUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
   ExternalCta,
@@ -66,7 +71,7 @@ const path = [
     title: "Accept",
     descriptor: "Embracing the inevitable",
     image: {
-      src: "/assets/framework/accept.jpg",
+      src: "/assets/framework/accept.png",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -75,7 +80,7 @@ const path = [
     title: "Reflect",
     descriptor: "Uncovering insight from grief",
     image: {
-      src: "/assets/framework/reflect.jpg",
+      src: "/assets/framework/reflect.png",
       alt: "Isometric illustration for Reflect — still water mirroring the sky",
     },
   },
@@ -93,7 +98,7 @@ const path = [
     title: "Action",
     descriptor: "Catalyzing change through initiative",
     image: {
-      src: "/assets/framework/action.jpg",
+      src: "/assets/framework/action.png",
       alt: "Isometric illustration for Action — a first step taken on the path",
     },
   },
@@ -134,12 +139,12 @@ export default function BookPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 The Book
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 text-4xl leading-[1.08] font-extrabold sm:text-5xl lg:text-6xl">
                 Not another book about moving on.
               </h1>
             </SlideUp>
@@ -148,8 +153,8 @@ export default function BookPage() {
                 Most books about loss ask you to accept it and wait for time to
                 help. This one hands you a framework — four elements and four
                 steps — to actively build a life from what’s left. Not advice to
-                “stay strong.” A compass and a path for the forest you’re already
-                standing in.
+                “stay strong.” A compass and a path for the forest you’re
+                already standing in.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
@@ -174,9 +179,9 @@ export default function BookPage() {
 
       {/* ── The Promise ──────────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               The Promise
             </h2>
           </SlideUp>
@@ -207,12 +212,12 @@ export default function BookPage() {
       </section>
 
       {/* ── What's Inside ────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             What’s Inside
           </p>
-          <h2 className="mt-4 max-w-2xl text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 max-w-2xl text-3xl leading-tight font-extrabold sm:text-4xl">
             Two tools. One way through.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed">
@@ -229,7 +234,7 @@ export default function BookPage() {
           <SlideUp>
             <h3 className="text-lg font-bold sm:text-xl">
               The 4-Element Compass{" "}
-              <span className="font-normal text-muted-foreground">
+              <span className="text-muted-foreground font-normal">
                 — How you’re oriented
               </span>
             </h3>
@@ -237,7 +242,7 @@ export default function BookPage() {
           <Stagger className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {compass.map((c) => (
               <StaggerItem key={c.title} className="h-full">
-                <NumberedCard {...c} />
+                <NumberedCard {...c} iconClassName="bg-white" />
               </StaggerItem>
             ))}
           </Stagger>
@@ -248,7 +253,7 @@ export default function BookPage() {
           <SlideUp>
             <h3 className="text-lg font-bold sm:text-xl">
               The 4-Step Path{" "}
-              <span className="font-normal text-muted-foreground">
+              <span className="text-muted-foreground font-normal">
                 — How you move
               </span>
             </h3>
@@ -256,24 +261,24 @@ export default function BookPage() {
           <Stagger className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {path.map((p) => (
               <StaggerItem key={p.title} className="h-full">
-                <NumberedCard {...p} />
+                <NumberedCard {...p} iconClassName="bg-white" />
               </StaggerItem>
             ))}
           </Stagger>
         </div>
 
         <FadeIn>
-          <p className="mt-12 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-12 max-w-3xl text-lg leading-relaxed">
             And to put it to work from page one — the{" "}
-            <strong className="font-semibold text-foreground">
+            <strong className="text-foreground font-semibold">
               Taking Stock Inventory &amp; Personal Action Plan
             </strong>
             , the{" "}
-            <strong className="font-semibold text-foreground">
+            <strong className="text-foreground font-semibold">
               Reflection Companion
             </strong>
             , and the{" "}
-            <strong className="font-semibold text-foreground">
+            <strong className="text-foreground font-semibold">
               Compass &amp; Path Check
             </strong>
             .
@@ -283,23 +288,23 @@ export default function BookPage() {
 
       {/* ── What Readers Say ─────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               What Readers Say
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
               Don’t just take our word for it.
             </h2>
           </SlideUp>
           <Stagger className="mt-10 grid gap-6 sm:grid-cols-2">
             {testimonials.map((t, i) => (
               <StaggerItem key={i} className="h-full">
-                <figure className="flex h-full flex-col rounded-lg border border-border bg-card p-6 sm:p-8">
-                  <blockquote className="flex-1 text-lg italic leading-relaxed">
+                <figure className="border-border bg-card flex h-full flex-col rounded-lg border p-6 sm:p-8">
+                  <blockquote className="flex-1 text-lg leading-relaxed italic">
                     “{t.quote}”
                   </blockquote>
-                  <figcaption className="mt-5 font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
+                  <figcaption className="text-muted-foreground mt-5 font-[family-name:var(--font-display)] text-sm font-bold">
                     — {t.name}
                     {t.role ? (
                       <span className="font-normal">, {t.role}</span>
@@ -310,7 +315,7 @@ export default function BookPage() {
             ))}
           </Stagger>
           <FadeIn>
-            <p className="mt-6 text-sm italic text-muted-foreground">
+            <p className="text-muted-foreground mt-6 text-sm italic">
               Placeholder endorsements, written in the book’s voice — real
               reader quotes replace these before launch.
             </p>
@@ -319,9 +324,9 @@ export default function BookPage() {
       </section>
 
       {/* ── Closing CTA ──────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
             The direction you’re looking for is already inside you.
           </h2>
           <div className="mt-8 flex justify-center">

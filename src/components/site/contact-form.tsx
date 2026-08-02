@@ -15,8 +15,10 @@ const CONTACT_EMAIL = "heatherswart@live.co.za";
 
 const SUBJECTS = [
   "Tell me more about Bouncing Forward",
+  "Tell me more about All In",
   "Enquire about booking a workshop",
   "Enquire about upcoming events",
+  "I’d like to share my story",
 ];
 
 export function ContactForm() {

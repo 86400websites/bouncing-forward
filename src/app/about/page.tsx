@@ -1,187 +1,26 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
-  ComingSoonCta,
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
-import { NumberedCard } from "@/components/site/numbered-card";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Free Grief Resources | The Compass & the Path" },
+  title: { absolute: "About Maher Kaddoura | Bouncing Forward" },
   description:
-    "Put the framework to work: the 4-Element Compass, the 4-Step Path, the free Taking Stock Inventory, and the Compass & Path Check.",
+    "After losing his son Hikmat, Maher Kaddoura turned grief into direction — road safety work that saves lives, and the framework behind Bouncing Forward.",
   openGraph: {
-    title: "Free Grief Resources | The Compass & the Path",
+    title: "About Maher Kaddoura | Bouncing Forward",
     description:
-      "Put the framework to work: the 4-Element Compass, the 4-Step Path, the free Taking Stock Inventory, and the Compass & Path Check.",
+      "After losing his son Hikmat, Maher Kaddoura turned grief into direction — road safety work that saves lives, and the framework behind Bouncing Forward.",
   },
 };
 
-/* Copy source: Bouncing_Forward_Website_Copy.docx — Page 4 (Practice), verbatim. */
+/* Copy source: Website_Rebrief_31_July_2026.docx — The Author (/about), verbatim. */
 
-const compass = [
-  {
-    index: "01",
-    title: "Resilience",
-    subtitle: "Weathering the Storms of Adversity",
-    quote:
-      "Resilience is the unexpected light that emerges in the darkest times, transforming personal tragedy into shared purpose and a renewed direction.",
-    descriptor:
-      "Not toughness. The bamboo that bends almost flat in a storm — and stands back up when it passes.",
-    image: {
-      src: "/assets/framework/resilience-a.jpg",
-      alt: "Isometric illustration for Resilience — bamboo bending in a storm",
-    },
-  },
-  {
-    index: "02",
-    title: "Adaptability",
-    subtitle: "Navigating the Rapids of Change",
-    quote:
-      "Adaptability is the decision to dance with change rather than be swept away by it.",
-    descriptor:
-      "Loss takes more than a person or a plan — it takes a version of you. Adaptability is finding the shape of who’s left.",
-    image: {
-      src: "/assets/framework/adaptability.jpg",
-      alt: "Isometric illustration for Adaptability — a figure steering through moving water",
-    },
-  },
-  {
-    index: "03",
-    title: "Optimism",
-    subtitle: "Lighting the Path Through the Darkness",
-    quote:
-      "Optimism is not pretending the forest is a meadow. It is choosing to believe there is a way through.",
-    descriptor:
-      "Not forced positivity. A small, stubborn, renewable conviction that something good can still emerge.",
-    image: {
-      src: "/assets/framework/optimism.jpg",
-      alt: "Isometric illustration for Optimism — a lantern lighting a dark path",
-    },
-  },
-  {
-    index: "04",
-    title: "Support",
-    subtitle: "Weaving a Net of Collective Strength",
-    quote:
-      "No one crosses any significant forest alone. Every great transformation was made possible by someone who stood beside the traveller when they could not stand by themselves.",
-    descriptor:
-      "Support flows both ways, or it doesn’t flow at all. Let people in — and let yourself be one of theirs.",
-    image: {
-      src: "/assets/framework/support.jpg",
-      alt: "Isometric illustration for Support — hands forming a net of strength",
-    },
-  },
-];
-
-const path = [
-  {
-    index: "01",
-    title: "Accept",
-    subtitle: "Embracing the Inevitable",
-    quote:
-      "Acceptance is not surrender. It is the bridge between who you were before the loss and who you are still capable of becoming.",
-    descriptor:
-      "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
-    image: {
-      src: "/assets/framework/accept.jpg",
-      alt: "Isometric illustration for Accept — a bridge across a divide",
-    },
-  },
-  {
-    index: "02",
-    title: "Reflect",
-    subtitle: "Uncovering Insight From Grief",
-    quote:
-      "Reflection transforms pain into purpose — turning what happened to us into what we do with it.",
-    descriptor:
-      "Not rumination. The disciplined, sometimes uncomfortable practice of asking: what does this ask of me?",
-    image: {
-      src: "/assets/framework/reflect.jpg",
-      alt: "Isometric illustration for Reflect — still water mirroring the sky",
-    },
-  },
-  {
-    index: "03",
-    title: "Imagine",
-    subtitle: "Defining the Path Forward",
-    quote:
-      "Bouncing Forward requires clear goals — specific, named destinations that organize every step that follows.",
-    descriptor:
-      "A vision has a name and a deadline. Give your loss somewhere to go.",
-    image: {
-      src: "/assets/framework/imagine.jpg",
-      alt: "Isometric illustration for Imagine — a named destination on the horizon",
-    },
-  },
-  {
-    index: "04",
-    title: "Action",
-    subtitle: "Catalyzing Change Through Initiative",
-    quote:
-      "Turning vision into reality demands action. Not perfect action. Not fearless action. Just the next step, taken.",
-    descriptor:
-      "You will never feel fully ready. Begin anyway — the doing creates the readiness that waiting never will.",
-    image: {
-      src: "/assets/framework/action.jpg",
-      alt: "Isometric illustration for Action — a first step taken on the path",
-    },
-  },
-];
-
-const tools = [
-  {
-    title: "The Taking Stock Inventory & Personal Action Plan",
-    body: "An honest, eight-part inventory straight from the book — rate how brightly each Element is burning and how accessible each Step feels right now, then build a specific 30-day plan.",
-    cta: { kind: "link" as const, href: "#begin-your-crossing", label: "Download free →" },
-  },
-  {
-    title: "The Reflection Companion",
-    body: "Every “Reflect On…” question from the book, organised by Element and Step. Pick one a week. No pressure, just honesty.",
-    cta: { kind: "soon" as const, label: "Explore" },
-  },
-  {
-    title: "The Compass & Path Check",
-    body: "A short, honest check across all eight dimensions of the framework. See which lights are burning bright, and which need your attention.",
-    cta: { kind: "link" as const, href: "/assess", label: "Take the assessment →" },
-  },
-];
-
-function TryItFree({
-  text,
-  cta,
-  className,
-}: {
-  text: string;
-  cta: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <FadeIn>
-      <div
-        className={cn(
-          "mt-10 flex flex-col gap-5 rounded-lg border border-border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8",
-          className,
-        )}
-      >
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-            Try it free
-          </p>
-          <p className="mt-2 max-w-2xl leading-relaxed">{text}</p>
-        </div>
-        <div className="shrink-0">{cta}</div>
-      </div>
-    </FadeIn>
-  );
-}
-
-export default function CompassAndPathPage() {
+export default function AboutPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -190,230 +29,225 @@ export default function CompassAndPathPage() {
           <div>
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                The Compass &amp; The Path
+                The Author
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
-                Reading is understanding. Practice is crossing.
+              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+                I turned the worst night of my life into the direction for the
+                rest of it.
               </h1>
             </SlideUp>
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                A framework you only understand is just an idea. A framework you{" "}
-                <em>use</em> becomes a way through. This is where Bouncing
-                Forward stops being a book and starts being your own crossing —
-                four elements to steady how you’re oriented, four steps to move
-                you forward, and the tools to begin today.
+                I’m Maher Kaddoura. Civil engineer by training. Consultant by
+                profession. Father, first and always. Bouncing Forward is the
+                book I wish someone had handed me in that hospital corridor in
+                Amman, in January 2008 — long before I had a framework, a model,
+                or any idea that the worst thing that had ever happened to me
+                would become the thing that gave my life its fullest meaning.
               </p>
-            </SlideUp>
-            <SlideUp delay={0.16}>
-              <div className="mt-8">
-                <PrimaryCta
-                  href="#begin-your-crossing"
-                  label="Download the Free Taking Stock Inventory"
-                />
-              </div>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/framework/compass-lantern-stepping-stones.jpg"
-              alt="Hands holding a lantern and compass above stepping stones leading across a dark forest floor toward light"
-              width={1535}
-              height={1024}
+              src="/assets/about/maher-portrait.jpg"
+              alt="Portrait of Maher Kaddoura"
+              width={700}
+              height={708}
               priority
               sizes="(min-width: 1024px) 45vw, 100vw"
-              className="w-full rounded-xl"
+              className="mx-auto w-full max-w-md rounded-xl"
             />
           </FadeIn>
         </div>
       </section>
 
-      {/* ── The Framework ────────────────────────────────────── */}
+      {/* ── Where it starts ──────────────────────────────────── */}
+      <section className="bg-muted">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+          <SlideUp>
+            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              Where it starts
+            </p>
+          </SlideUp>
+          <SlideUp delay={0.06}>
+            <blockquote className="mt-6 border-l-2 border-brand-accent pl-5 text-xl italic leading-relaxed sm:text-2xl">
+              “Not going back to who you were. Going forward to who you are
+              capable of becoming.”
+            </blockquote>
+          </SlideUp>
+          <SlideUp delay={0.1}>
+            <p className="mt-8 text-lg leading-relaxed">
+              At fifteen, I explored Europe with a sleeping bag and a restless
+              curiosity. I studied Civil Engineering at Nottingham University,
+              then found my calling in management — working with the US Army in
+              Jordan, helping establish Accenture’s Middle East practice, and
+              building consulting firms of my own. I have visited ninety
+              countries and two hundred and fifty cities, and sat with people of
+              every faith and tradition along the way. In all that travelling, I
+              found one truth that crosses every border: the person who knows
+              they are not facing the dark alone can endure almost anything.
+            </p>
+          </SlideUp>
+        </div>
+      </section>
+
+      {/* ── The turning point ────────────────────────────────── */}
+      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <SlideUp>
+          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            The turning point
+          </p>
+          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            The call came at 2am.
+          </h2>
+        </SlideUp>
+        <div className="mt-6 space-y-4 text-lg leading-relaxed">
+          <SlideUp delay={0.06}>
+            <p>
+              Before I picked up, I already knew. You develop a sense for it. My
+              son Hikmat — seventeen years old, full of life, at the edge of
+              adulthood — had been struck by a car in Amman. The driver fled. My
+              wife and I raced to the hospital. She wept. I prayed. Both of us
+              suspended between hope and its opposite.
+            </p>
+          </SlideUp>
+          <SlideUp delay={0.1}>
+            <p>
+              I didn’t know it then — but in that hospital, in the days that
+              followed, and in the years of work that came after — something was
+              being given to me. Not instead of the pain. Alongside it. A
+              direction. A reason to keep building when everything in me wanted
+              to stop.
+            </p>
+          </SlideUp>
+          <SlideUp delay={0.14}>
+            <p>I call it Bouncing Forward.</p>
+          </SlideUp>
+        </div>
+      </section>
+
+      {/* ── What I learned the hard way ──────────────────────── */}
       <section className="bg-muted">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SlideUp>
                 <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                  The Framework
+                  What I learned the hard way
                 </p>
                 <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-                  Two tools. Not a formula.
+                  Acceptance isn’t surrender.
                 </h2>
               </SlideUp>
-              <SlideUp delay={0.06}>
-                <p className="mt-6 text-lg leading-relaxed">
-                  Bouncing Forward ={" "}
-                  <strong className="font-semibold">A Compass</strong> (which way
-                  is forward){" "}
-                  <strong className="font-semibold">+ A Path</strong> (how you
-                  get there)
-                </p>
-              </SlideUp>
-              <SlideUp delay={0.1}>
-                <p className="mt-4 leading-relaxed text-muted-foreground">
-                  Not addition of convenience — dependence. A compass with no
-                  path leaves you oriented and standing still, waiting for a
-                  readiness that may never come. A path with no compass gets you
-                  moving, but you can circle for years without knowing it.
-                  Together, one gives you direction, the other gives you motion —
-                  and that’s how a forest gets crossed.
-                </p>
-              </SlideUp>
-              <SlideUp delay={0.14}>
-                <blockquote className="mt-8 border-l-2 border-brand-accent pl-5 text-xl italic leading-relaxed sm:text-2xl">
-                  The compass doesn’t tell you where you’re going. It tells you
-                  which direction is forward — even when the trees are too dense
-                  to see.
-                </blockquote>
-              </SlideUp>
+              <div className="mt-6 space-y-4 text-lg leading-relaxed">
+                <SlideUp delay={0.06}>
+                  <p>
+                    I am not going to rearrange the furniture of my son’s memory
+                    as though he never existed. Acceptance meant acknowledging
+                    the full truth: Hikmat was here. He was taken before his
+                    time. That fact will never change. The question I had to
+                    answer every morning wasn’t “how do I go back?” It was “who
+                    am I, carrying this, going forward?”
+                  </p>
+                </SlideUp>
+                <SlideUp delay={0.1}>
+                  <p>
+                    That question gave birth to the Hikmat Road Safety Program —
+                    a project that has since built over 1,200 playgrounds, marked
+                    260 schools in high-risk zones, and identified 1,800
+                    dangerous locations across Jordan’s roads. It taught me that
+                    real acceptance isn’t giving up. It’s saying: this is where I
+                    am — now what can I build from here?
+                  </p>
+                </SlideUp>
+                <SlideUp delay={0.14}>
+                  <p>
+                    I am not unique in this. The same capacity lives in you. If I
+                    could turn my worst chapter forward, so can you.
+                  </p>
+                </SlideUp>
+              </div>
             </div>
             <FadeIn delay={0.1}>
               <Image
-                src="/assets/framework/diagram-compass-path.jpg"
-                alt="The Bouncing Forward compass and path diagram: an outer ring of Resilience, Adaptability, Optimism and Support around an inner loop of Accept, Reflect, Imagine and Action"
-                width={2000}
-                height={2000}
+                src="/assets/stories/hikmat-road-safety.jpg"
+                alt="Illustration of the Hikmat Road Safety Program — children playing safely beside a marked road"
+                width={1535}
+                height={1024}
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                className="mx-auto w-full max-w-lg rounded-xl"
+                className="w-full rounded-xl"
               />
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ── How you're oriented — the 4-Element Compass ──────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      {/* ── Why Bouncing Forward ─────────────────────────────── */}
+      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <SlideUp>
           <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-            How You’re Oriented
+            Why Bouncing Forward
           </p>
           <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-            The 4-Element Compass
+            Because no one hands you a map for this part.
           </h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-            Life is marked by storms. Our identity isn’t shaped by the storm
-            itself — it’s shaped by the choices we make while crossing it. These
-            four elements aren’t a sequence. Think of them as four lights always
-            burning inside you. The brighter you keep each one, the clearer your
-            way forward.
-          </p>
         </SlideUp>
-        <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {compass.map((c) => (
-            <StaggerItem key={c.title} className="h-full">
-              <NumberedCard {...c} headingLevel="h3" />
-            </StaggerItem>
-          ))}
-        </Stagger>
-        <TryItFree
-          className="bg-muted"
-          text="Try the 4-Element Compass in the free Taking Stock Inventory — a taste of these questions straight from the book."
-          cta={<PrimaryCta href="#begin-your-crossing" label="Get the Free Inventory" />}
-        />
-      </section>
-
-      {/* ── How you move — the 4-Step Path ───────────────────── */}
-      <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-          <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-              How You Move
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-              The 4-Step Path
-            </h2>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-              The compass opens your eyes. The path moves your feet. These four
-              steps aren’t a formula and they don’t move in a straight line —
-              least of all in grief. But they’re stepping stones: one foot in
-              front of the other, with intention, rather than simply enduring.
+        <div className="mt-6 space-y-4 text-lg leading-relaxed">
+          <SlideUp delay={0.06}>
+            <p>
+              Everywhere I look, I see people carrying a loss they were never
+              given the tools to face. Not because they lack strength — because
+              no one ever handed them a compass, or told them there was a path at
+              all.
             </p>
           </SlideUp>
-          <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {path.map((p) => (
-              <StaggerItem key={p.title} className="h-full">
-                <NumberedCard {...p} headingLevel="h3" />
-              </StaggerItem>
-            ))}
-          </Stagger>
-          <TryItFree
-            className="bg-card"
-            text="Explore the Reflection Companion — the “Reflect On…” prompts from every chapter, gathered in one place."
-            cta={<ComingSoonCta label="Explore the Reflection Companion" />}
-          />
+          <SlideUp delay={0.1}>
+            <p>
+              I wrote Bouncing Forward to hand you both — and a practical way to
+              use them. Not platitudes. Not a five-step cure for grief. A
+              framework, grounded in a real hospital corridor and a real road in
+              Jordan, built to be used in the middle of real life. Because the
+              most dangerous thing about loss isn’t the pain. It’s letting the
+              pain be the only thing that ever gets built from it.
+            </p>
+          </SlideUp>
+          <SlideUp delay={0.14}>
+            <p>
+              Hikmat did not die for nothing. His name means wisdom, in Arabic.
+              He earned it.
+            </p>
+          </SlideUp>
         </div>
       </section>
 
-      {/* ── Put it to work — three tools ─────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-        <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-            Put It to Work
-          </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-            Three tools to begin
-          </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-            You don’t have to absorb all eight at once. Start with one of these.
-          </p>
-        </SlideUp>
-        <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
-          {tools.map((t) => (
-            <StaggerItem key={t.title} className="h-full">
-              <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6">
-                <h3 className="text-lg font-bold leading-snug">{t.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {t.body}
-                </p>
-                {t.cta.kind === "link" ? (
-                  <Link
-                    href={t.cta.href}
-                    className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                  >
-                    {t.cta.label}
-                  </Link>
-                ) : (
-                  <span className="mt-5 inline-block cursor-default font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
-                    {t.cta.label} — Coming Soon
-                  </span>
-                )}
-              </article>
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </section>
-
-      {/* ── Begin Your Crossing capture ──────────────────────── */}
-      <BeginYourCrossing showFaqLink />
-
-      {/* ── Closing reflection (navy band) ───────────────────── */}
+      {/* ── Closing (navy band) ──────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-extrabold sm:text-4xl">
-              Which light has gone faint?
+            <h2 className="text-2xl font-extrabold leading-tight sm:text-3xl">
+              Take a moment. Ask yourself, honestly:
             </h2>
-            <p className="mt-4 italic leading-relaxed text-primary-foreground/75">
-              Noticing is the beginning of the practice.
+            <p className="mt-6 font-[family-name:var(--font-display)] text-2xl font-extrabold italic sm:text-3xl">
+              Why did this happen?
+            </p>
+            <p className="mt-3 font-[family-name:var(--font-display)] text-2xl font-extrabold italic sm:text-3xl">
+              What does this ask of me?
+            </p>
+            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/85">
+              You don’t need the answer yet. Just the courage to ask.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <PrimaryCta
-                href="/assess"
-                label="Take the Compass &amp; Path Check"
-                invert
-              />
-              <SecondaryCta
-                href="#begin-your-crossing"
-                label="Get the Free Inventory"
-                invert
-              />
+              <SecondaryCta href="/book" label="Read the Book" invert />
+              <PrimaryCta href="/assess" label="Take the Check →" invert />
             </div>
           </FadeIn>
         </div>
       </section>
+
+      {/* ── Newsletter ───────────────────────────────────────── */}
+      <BeginYourCrossing />
     </>
   );
 }

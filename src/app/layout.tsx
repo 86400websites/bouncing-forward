@@ -4,6 +4,7 @@ import { bodyFont, displayFont } from "@/lib/fonts";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { PageFoot } from "@/components/site/page-foot";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         <MotionProvider>
           <SiteHeader />
           <main id="main">{children}</main>
+          <PageFoot />
           <SiteFooter />
         </MotionProvider>
       </body>
