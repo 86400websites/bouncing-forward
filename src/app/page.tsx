@@ -10,12 +10,10 @@ import {
 import { AssessBlock } from "@/components/site/assess-block";
 import {
   BeginYourCrossing,
-  ExternalCta,
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
 import { IllustrationPlaceholder } from "@/components/site/story-card";
-import { AMAZON_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Bouncing Forward | Grief Doesn’t Get the Last Word" },
@@ -89,7 +87,7 @@ export default function HomePage() {
           <div>
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                Turn the page
+                From here, FORWARD.
               </p>
             </FadeIn>
             <SlideUp>
@@ -111,8 +109,8 @@ export default function HomePage() {
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <PrimaryCta href="/assess" label="Start With One Question →" />
-                <SecondaryCta href="/book" label="Read the Book" />
+                <PrimaryCta href="/book" label="Read the Book" />
+                <SecondaryCta href="/assess" label="Start With One Question →" />
               </div>
               <p className="mt-3 text-sm italic text-muted-foreground">
                 2nd edition coming soon.
@@ -240,14 +238,6 @@ export default function HomePage() {
                   </StaggerItem>
                 ))}
               </Stagger>
-              <SlideUp delay={0.1}>
-                <div className="mt-8">
-                  <ExternalCta
-                    href={AMAZON_URL}
-                    label="Read the First Chapter Free →"
-                  />
-                </div>
-              </SlideUp>
             </div>
           </div>
         </div>

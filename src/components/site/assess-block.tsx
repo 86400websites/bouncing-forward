@@ -7,22 +7,23 @@ import Link from "next/link";
  * Check's gold-light language.
  */
 function MiniCompass() {
-  const cx = 90;
-  const cy = 90;
-  const r = 62;
+  const cx = 150;
+  const cy = 110;
+  const r = 58;
   // N & E lit (bright gold), S & W dim (faint) — "two lit, two dimmed".
+  // Each light carries its Element title (re-brief: "add the titles to each of the lights").
   const lights = [
-    { x: cx, y: cy - r, lit: true }, // N
-    { x: cx + r, y: cy, lit: true }, // E
-    { x: cx, y: cy + r, lit: false }, // S
-    { x: cx - r, y: cy, lit: false }, // W
+    { x: cx, y: cy - r, lit: true, label: "RESILIENCE", lx: cx, ly: cy - r - 16, anchor: "middle" as const },
+    { x: cx + r, y: cy, lit: true, label: "ADAPTABILITY", lx: cx + r + 12, ly: cy + 4, anchor: "start" as const },
+    { x: cx, y: cy + r, lit: false, label: "OPTIMISM", lx: cx, ly: cy + r + 22, anchor: "middle" as const },
+    { x: cx - r, y: cy, lit: false, label: "SUPPORT", lx: cx - r - 12, ly: cy + 4, anchor: "end" as const },
   ];
   return (
     <svg
-      viewBox="0 0 180 180"
+      viewBox="0 0 320 210"
       role="img"
-      aria-label="A compass with two lights burning bright and two gone faint."
-      className="mx-auto w-full max-w-[220px]"
+      aria-label="A compass whose four lights — Resilience, Adaptability, Optimism and Support — show two burning bright and two gone faint."
+      className="mx-auto w-full max-w-[300px]"
     >
       <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
       <circle cx={cx} cy={cy} r={r * 0.6} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
@@ -45,6 +46,19 @@ function MiniCompass() {
             fill="var(--brand-gold)"
             opacity={l.lit ? 1 : 0.55}
           />
+          <text
+            x={l.lx}
+            y={l.ly}
+            textAnchor={l.anchor}
+            dominantBaseline="middle"
+            className="font-[family-name:var(--font-display)]"
+            fontSize="10"
+            fontWeight="700"
+            letterSpacing="0.06em"
+            fill="rgba(255,255,255,0.85)"
+          >
+            {l.label}
+          </text>
         </g>
       ))}
     </svg>

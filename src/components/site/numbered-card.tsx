@@ -21,6 +21,7 @@ export function NumberedCard({
   descriptor,
   headingLevel = "h4",
   className,
+  iconClassName,
 }: {
   index: string;
   image: { src: string; alt: string };
@@ -30,6 +31,7 @@ export function NumberedCard({
   descriptor?: string;
   headingLevel?: "h3" | "h4";
   className?: string;
+  iconClassName?: string;
 }) {
   const headingClass = "mt-1 text-lg font-bold leading-snug";
   return (
@@ -39,7 +41,12 @@ export function NumberedCard({
         className,
       )}
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-muted">
+      <div
+        className={cn(
+          "relative aspect-[4/3] overflow-hidden rounded-md",
+          iconClassName ?? "bg-muted",
+        )}
+      >
         <Image
           src={image.src}
           alt={image.alt}

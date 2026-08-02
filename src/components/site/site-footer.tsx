@@ -1,37 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SITE_NAME } from "@/lib/site";
+import { NAV_ITEMS, PRIMARY_CTA, SITE_NAME, type NavItem } from "@/lib/site";
 
-/**
- * Footer per the copy deck (Home footer, reused on every page).
- * "No dead links ship": destinations without a live page render as
- * non-link "coming soon" text until their phase arrives
- * (SITEMAP-AND-FEATURES.md §2).
+/*
+ * Footer. Re-brief 31 Jul 2026: the footer menu mirrors the header menu.
+ * It is derived from the same NAV_ITEMS source so the two never drift —
+ * flat top-level links (plus the Log In CTA) in one column, and each
+ * dropdown group (Resources, All In) as its own column of child links.
  */
 
-function ComingSoon({ label }: { label: string }) {
-  return (
-    <span className="cursor-default text-primary-foreground/45">
-      {label} <span className="text-xs">· soon</span>
-    </span>
-  );
+function isFlat(item: NavItem): item is { href: string; label: string } {
+  return !("children" in item);
+}
+function isGroup(
+  item: NavItem,
+): item is { label: string; href?: string; children: { href: string; label: string }[] } {
+  return "children" in item;
 }
 
-const exploreLinks = [
-  { href: "/book", label: "The Book" },
-  { href: "/about", label: "The Author" },
-  { href: "/course", label: "The Course" },
-  { href: "/compass-and-path", label: "Resources" },
-  { href: "/all-in", label: "All In" },
-  { href: "/workshops", label: "Workshops" },
+const flatLinks = [
+  ...NAV_ITEMS.filter(isFlat),
+  { href: PRIMARY_CTA.href, label: PRIMARY_CTA.label },
 ];
-
-const compassPathLinks = [
-  { href: "/compass-and-path#compass", label: "The 4-Element Compass" },
-  { href: "/compass-and-path#path", label: "The 4-Step Path" },
-  { href: "#begin-your-crossing", label: "Taking Stock Inventory" },
-  { href: "/assess", label: "Compass & Path Check" },
-];
+const groups = NAV_ITEMS.filter(isGroup);
 
 export function SiteFooter() {
   return (
@@ -60,27 +51,12 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <nav aria-label="Explore">
+          <nav aria-label="Menu">
             <p className="font-[family-name:var(--font-display)] text-xs font-bold uppercase tracking-[0.08em] text-brand-accent">
-              Explore
+              Menu
             </p>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {exploreLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="transition-colors hover:text-brand-accent">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Compass and Path">
-            <p className="font-[family-name:var(--font-display)] text-xs font-bold uppercase tracking-[0.08em] text-brand-accent">
-              Compass &amp; Path
-            </p>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              {compassPathLinks.map((l) => (
+              {flatLinks.map((l) => (
                 <li key={l.label}>
                   <Link href={l.href} className="transition-colors hover:text-brand-accent">
                     {l.label}
@@ -90,31 +66,28 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-label="Connect">
-            <p className="font-[family-name:var(--font-display)] text-xs font-bold uppercase tracking-[0.08em] text-brand-accent">
-              Connect
-            </p>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              <li>
-                <Link href="#begin-your-crossing" className="transition-colors hover:text-brand-accent">
-                  Newsletter
-                </Link>
-              </li>
-              <li>
-                <ComingSoon label="Podcast" />
-              </li>
-              <li>
-                <Link href="/blog" className="transition-colors hover:text-brand-accent">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="transition-colors hover:text-brand-accent">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          {groups.map((group) => (
+            <nav key={group.label} aria-label={group.label}>
+              <p className="font-[family-name:var(--font-display)] text-xs font-bold uppercase tracking-[0.08em] text-brand-accent">
+                {group.href ? (
+                  <Link href={group.href} className="transition-colors hover:text-brand-accent/80">
+                    {group.label}
+                  </Link>
+                ) : (
+                  group.label
+                )}
+              </p>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {group.children.map((c) => (
+                  <li key={c.href}>
+                    <Link href={c.href} className="transition-colors hover:text-brand-accent">
+                      {c.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-primary-foreground/15 pt-6 text-sm text-primary-foreground/65 sm:flex-row sm:items-center sm:justify-between">

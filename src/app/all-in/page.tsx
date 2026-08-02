@@ -185,20 +185,22 @@ export default function AllInPage() {
         </div>
       </section>
 
-      {/* ── Live Sessions + Monthly Letter (#a-live, #a-letter) ── */}
+      {/* ── The Course + Monthly Letter (#a-course, #a-letter) ── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <div className="grid gap-6 md:grid-cols-2">
           <SlideUp>
-            <div id="a-live" className="h-full scroll-mt-24 rounded-lg border border-border bg-card p-6 sm:p-8">
+            <div id="a-course" className="h-full scroll-mt-24 rounded-lg border border-border bg-card p-6 sm:p-8">
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
                 All In · Included
               </p>
               <h2 className="mt-3 text-2xl font-bold leading-snug">
-                Live Sessions
+                The Course
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                Monthly live sessions with Maher — honest conversation, questions
-                answered, and the framework walked together in real time.
+                The complete Bouncing Forward course — all ten guided modules
+                across the 4 Elements and 4 Steps, each with a short video, a
+                companion guide, and space to build your own plan. Yours in full,
+                included with All In.
               </p>
             </div>
           </SlideUp>

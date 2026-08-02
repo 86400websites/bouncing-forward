@@ -60,7 +60,7 @@ export const NAV_ITEMS: NavItem[] = [
       { href: "/all-in#a-journal", label: "The 30-Day Journal" },
       { href: "/all-in#a-workbooks", label: "The Workbooks" },
       { href: "/all-in#a-check", label: "The Check — Full Version" },
-      { href: "/all-in#a-live", label: "Live Sessions" },
+      { href: "/all-in#a-course", label: "The Course" },
       { href: "/all-in#a-letter", label: "The Monthly Letter" },
       { href: "/all-in#a-claim", label: "Claim Your Access" },
     ],
@@ -69,4 +69,9 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/contact", label: "Contact" },
 ];
 
-export const PRIMARY_CTA = { href: "/assess", label: "Take the Check" } as const;
+/**
+ * Menu CTA. Re-brief 31 Jul 2026 replaced "Take the Check" with "Log In".
+ * No auth system exists yet, so it points at the All In members entry
+ * (Claim Your Access) — update to the real login route when it exists.
+ */
+export const PRIMARY_CTA = { href: "/all-in#a-claim", label: "Log In" } as const;
