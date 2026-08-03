@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
-import { BeginYourCrossing, PrimaryCta, SecondaryCta } from "@/components/site/begin-your-crossing";
+import {
+  BeginYourCrossing,
+  PrimaryCta,
+  SecondaryCta,
+} from "@/components/site/begin-your-crossing";
 import { IllustrationPlaceholder } from "@/components/site/story-card";
 import { StoriesGrid, type Story } from "@/components/site/stories-grid";
 
@@ -109,7 +113,10 @@ const stories: Story[] = [
   },
   {
     headline: "A Smile That Never Left the Road",
-    image: null,
+    image: {
+      src: "/assets/stories/Image 50_Smile that never ends.jpg",
+      alt: "A Smile that never ends",
+    },
     story:
       "Their eleven-year-old daughter was killed in a road accident in Jaipur. They kept living, and then they built something — naming their road safety trust Muskaan, after their daughter, whose name meant smile. Over two decades on, it trains schoolchildren across Jaipur and runs campaigns with traffic police.",
     quote:
@@ -125,12 +132,12 @@ export default function StoriesPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 Stories
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 Loss doesn’t end your story. It’s where you find out what you’re
                 building next.
               </h1>
@@ -150,7 +157,7 @@ export default function StoriesPage() {
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
+            <div className="border-border relative aspect-[4/3] overflow-hidden rounded-xl border">
               <IllustrationPlaceholder label="Stories hero image coming soon" />
             </div>
           </FadeIn>
@@ -159,29 +166,32 @@ export default function StoriesPage() {
 
       {/* ── Featured story ───────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               Featured story
             </p>
           </SlideUp>
           <div className="mt-6 grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SlideUp>
-                <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+                <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
                   From a Hospital Corridor to a Road That Saves Lives
                 </h2>
               </SlideUp>
               <div className="mt-6 space-y-4 text-lg leading-relaxed">
                 <SlideUp delay={0.06}>
                   <p>
-                    When Maher lost his son Hikmat to a hit-and-run in Amman, his
-                    world split in two. There was a version of him that wanted to
-                    disappear quietly into the grief.
+                    When Maher lost his son Hikmat to a hit-and-run in Amman,
+                    his world split in two. There was a version of him that
+                    wanted to disappear quietly into the grief.
                   </p>
                 </SlideUp>
                 <SlideUp delay={0.1}>
-                  <p>Instead, he asked a different question: How do I make this better?</p>
+                  <p>
+                    Instead, he asked a different question: How do I make this
+                    better?
+                  </p>
                 </SlideUp>
                 <SlideUp delay={0.14}>
                   <p>
@@ -214,9 +224,9 @@ export default function StoriesPage() {
       </section>
 
       {/* ── Story cards ──────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
             Tap a story to read it in full.
           </p>
         </SlideUp>
@@ -227,12 +237,12 @@ export default function StoriesPage() {
 
       {/* ── Your turn ────────────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               Your turn
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
               Have you bounced forward?
             </h2>
           </SlideUp>
@@ -259,12 +269,12 @@ export default function StoriesPage() {
 
       {/* ── Closing (navy band) ──────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               Every one of these people stood at the edge of the same forest.
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
+            <p className="text-primary-foreground/85 mt-4 text-lg leading-relaxed">
               Then they found their own way through.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

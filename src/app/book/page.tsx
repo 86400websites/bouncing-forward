@@ -32,7 +32,7 @@ const compass = [
     title: "Resilience",
     descriptor: "Weathering the storms of adversity",
     image: {
-      src: "/assets/framework/resilience-a.jpg",
+      src: "/assets/framework/resilience.png",
       alt: "Isometric illustration for Resilience — bamboo bending in a storm",
     },
   },

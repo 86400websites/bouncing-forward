@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FadeIn,
@@ -7,7 +8,6 @@ import {
   StaggerItem,
 } from "@/components/motion/primitives";
 import { BeginYourCrossing } from "@/components/site/begin-your-crossing";
-import { IllustrationPlaceholder } from "@/components/site/story-card";
 import { POSTS } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -59,7 +59,13 @@ export default function BlogPage() {
                   className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   <div className="relative aspect-[16/9]">
-                    <IllustrationPlaceholder />
+                    <Image
+                      src={post.heroImage}
+                      alt={post.title}
+                      fill
+                      sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <h2 className="text-lg font-bold leading-snug group-hover:text-brand-accent-text">

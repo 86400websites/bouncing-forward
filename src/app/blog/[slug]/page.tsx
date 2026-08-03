@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
@@ -61,6 +62,20 @@ export default async function BlogPostPage({ params }: Params) {
           <div className="mt-8 h-px w-full bg-border" />
         </header>
 
+        {/* ── Hero image ─────────────────────────────────────── */}
+        <div className="mx-auto max-w-3xl px-5 pt-10 sm:px-6 lg:px-8">
+          <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
+            <Image
+              src={post.heroImage}
+              alt={post.title}
+              fill
+              sizes="(min-width: 768px) 48rem, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+
         {/* ── Post body ──────────────────────────────────────── */}
         <div className="mx-auto max-w-3xl px-5 pb-16 sm:px-6 lg:px-8 sm:pb-20 lg:pb-24">
           {post.blocks.map((block, i) => {
@@ -84,39 +99,22 @@ export default async function BlogPostPage({ params }: Params) {
                   </blockquote>
                 );
               case "image":
-                return (
-                  <figure
-                    key={i}
-                    className="my-10 rounded-lg border border-border bg-muted p-8 text-center"
-                  >
-                    <svg
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                      className="mx-auto size-9 text-brand-accent"
-                    >
-                      <circle
-                        cx="24"
-                        cy="24"
-                        r="20"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        opacity="0.5"
+                return block.src ? (
+                  <figure key={i} className="my-10">
+                    <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
+                      <Image
+                        src={block.src}
+                        alt={block.text}
+                        fill
+                        sizes="(min-width: 768px) 48rem, 100vw"
+                        className="object-cover"
                       />
-                      <path
-                        d="M24 8 L28 24 L24 40 L20 24 Z"
-                        fill="currentColor"
-                        opacity="0.85"
-                      />
-                    </svg>
-                    <figcaption className="mt-3 text-sm italic text-muted-foreground">
+                    </div>
+                    <figcaption className="mt-3 text-center text-sm italic text-muted-foreground">
                       {block.text}
                     </figcaption>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-                      Illustration coming soon
-                    </p>
                   </figure>
-                );
+                ) : null;
               case "closing":
                 return (
                   <p
