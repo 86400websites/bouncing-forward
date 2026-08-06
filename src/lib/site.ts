@@ -46,10 +46,10 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { href: "/compass-and-path#compass", label: "The 4-Element Compass" },
       { href: "/compass-and-path#path", label: "The 4-Step Path" },
-      { href: "/compass-and-path#inventory", label: "Taking Stock Inventory" },
       { href: "/assess", label: "The Compass & Path Check" },
       { href: "/stories", label: "Stories" },
       { href: "/blog", label: "Blog" },
+      { href: "/podcast", label: "Podcast" },
     ],
   },
   {
@@ -58,8 +58,6 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { href: "/all-in#a-inside", label: "What’s Inside" },
       { href: "/all-in#a-journal", label: "The 30-Day Journal" },
-      { href: "/all-in#a-workbooks", label: "The Workbooks" },
-      { href: "/all-in#a-check", label: "The Check — Full Version" },
       { href: "/all-in#a-course", label: "The Course" },
       { href: "/all-in#a-letter", label: "The Monthly Letter" },
       { href: "/all-in#a-claim", label: "Claim Your Access" },

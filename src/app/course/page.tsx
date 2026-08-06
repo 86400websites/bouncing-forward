@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
   ComingSoonCta,
-  PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 
 export const metadata: Metadata = {
-  title: { absolute: "The Course | Ten Guided Modules | Bouncing Forward" },
+  title: { absolute: "The Course | Nine Guided Modules | Bouncing Forward" },
   description:
-    "Ten guided modules across the 4 Elements and 4 Steps — short videos, companion guides, and your own plan as you go. US$99, free with All In.",
+    "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In: $99 for everything.",
   openGraph: {
-    title: "The Course | Ten Guided Modules | Bouncing Forward",
+    title: "The Course | Nine Guided Modules | Bouncing Forward",
     description:
-      "Ten guided modules across the 4 Elements and 4 Steps — short videos, companion guides, and your own plan as you go. US$99, free with All In.",
+      "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In: $99 for everything.",
   },
 };
 
@@ -44,8 +44,9 @@ export default function CoursePage() {
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
                 The book gives you the compass and the path. The course walks
-                them with you — ten guided modules, built for the weeks when
-                reading isn’t enough and you need someone to go first.
+                them with you — nine guided modules presenting the full
+                framework, built for the weeks when reading isn’t enough and you
+                need someone to go first.
               </p>
             </SlideUp>
           </div>
@@ -77,10 +78,10 @@ export default function CoursePage() {
           <div className="mt-6 space-y-4 text-lg leading-relaxed">
             <SlideUp delay={0.06}>
               <p>
-                The book’s companion course. Ten guided modules across the 4
-                Elements and 4 Steps — each with a short video, a downloadable
-                companion guide, and space to build your own Taking Stock plan as
-                you go.
+                The book’s companion course. Nine guided modules presenting the
+                framework — the 4-Element Compass and the 4-Step Path — each with
+                a short video, a downloadable companion guide, and space to build
+                your own plan as you go.
               </p>
             </SlideUp>
             <SlideUp delay={0.1}>
@@ -89,8 +90,9 @@ export default function CoursePage() {
           </div>
           <SlideUp delay={0.14}>
             <p className="mt-6 font-semibold">
-              US$99 — the full ten-module course, yours to keep. Included free
-              with All In.
+              The course is part of All In — $99 for everything. A downloadable
+              copy of the book, all nine modules, the journal, a premium monthly
+              newsletter, and everything new we add to Bouncing Forward.
             </p>
           </SlideUp>
           <SlideUp delay={0.18}>
@@ -171,11 +173,12 @@ export default function CoursePage() {
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <ComingSoonCta label="Start the Course" invert />
-              <PrimaryCta
-                href="#begin-your-crossing"
-                label="Get the Free Taking Stock Inventory"
-                invert
-              />
+              <Link
+                href="/all-in"
+                className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                Go All In — $99 · Everything Included
+              </Link>
             </div>
           </FadeIn>
         </div>

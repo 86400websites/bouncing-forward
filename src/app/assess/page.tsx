@@ -4,11 +4,11 @@ import { CompassCheck } from "@/components/assess/compass-check";
 export const metadata: Metadata = {
   title: { absolute: "The Compass & Path Check | Free Self-Check" },
   description:
-    "Eight questions. A few honest minutes. See which of your four lights are burning bright, which have gone faint — and where you stand on the path.",
+    "Eight questions. Two minutes of honest reflection. See which of your four lights are burning bright, which have gone faint — and where you stand on the path.",
   openGraph: {
     title: "The Compass & Path Check | Free Self-Check",
     description:
-      "Eight questions. A few honest minutes. See which of your four lights are burning bright, which have gone faint — and where you stand on the path.",
+      "Eight questions. Two minutes of honest reflection. See which of your four lights are burning bright, which have gone faint — and where you stand on the path.",
   },
 };
 

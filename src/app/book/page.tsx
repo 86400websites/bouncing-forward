@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import {
   FadeIn,
@@ -119,7 +120,7 @@ const testimonials = [
   },
   {
     quote:
-      "Honest, unsentimental, and useful. The Taking Stock Inventory got me writing again within a week.",
+      "Honest, unsentimental, and useful. It got me writing again within a week.",
     name: "Reader name",
     role: null,
   },
@@ -159,8 +160,21 @@ export default function BookPage() {
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8">
-                <ExternalCta href={AMAZON_URL} label="Buy on Amazon →" />
+                <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $14.45" />
               </div>
+              <p className="mt-3 text-sm italic text-muted-foreground">
+                2nd edition coming soon.
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Want everything?{" "}
+                <Link
+                  href="/all-in"
+                  className="font-semibold text-brand-accent-text underline-offset-2 hover:underline"
+                >
+                  Go All In — $99
+                </Link>
+                , downloadable copy of the book included.
+              </p>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
@@ -271,13 +285,9 @@ export default function BookPage() {
           <p className="text-muted-foreground mt-12 max-w-3xl text-lg leading-relaxed">
             And to put it to work from page one — the{" "}
             <strong className="text-foreground font-semibold">
-              Taking Stock Inventory &amp; Personal Action Plan
-            </strong>
-            , the{" "}
-            <strong className="text-foreground font-semibold">
               Reflection Companion
-            </strong>
-            , and the{" "}
+            </strong>{" "}
+            and the{" "}
             <strong className="text-foreground font-semibold">
               Compass &amp; Path Check
             </strong>
@@ -330,7 +340,7 @@ export default function BookPage() {
             The direction you’re looking for is already inside you.
           </h2>
           <div className="mt-8 flex justify-center">
-            <ExternalCta href={AMAZON_URL} label="Buy on Amazon →" />
+            <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $14.45" />
           </div>
         </FadeIn>
       </section>

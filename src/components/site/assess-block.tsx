@@ -65,7 +65,7 @@ function MiniCompass() {
   );
 }
 
-export function AssessBlock() {
+export function AssessBlock({ showGoAllIn = false }: { showGoAllIn?: boolean }) {
   return (
     <section className="bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
@@ -75,16 +75,27 @@ export function AssessBlock() {
               Which of your lights have gone faint?
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-primary-foreground/85">
-              Resilience. Adaptability. Optimism. Support. Eight questions will
-              show you which are burning — and which need tending. Nothing to
+              Resilience. Adaptability. Optimism. Support. Two minutes of honest
+              reflection will show you which lights are burning — and which need
+              tending. It’s where the Bouncing Forward journey begins. Nothing to
               sign up for, nothing to pay.
             </p>
-            <Link
-              href="/assess"
-              className="mt-8 inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              Take the Check →
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/assess"
+                className="inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                Take the Check →
+              </Link>
+              {showGoAllIn ? (
+                <Link
+                  href="/all-in"
+                  className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  Go All In — $99
+                </Link>
+              ) : null}
+            </div>
           </div>
           <div className="hidden lg:block">
             <MiniCompass />
