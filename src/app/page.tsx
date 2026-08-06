@@ -33,7 +33,7 @@ const whoBullets = [
 const fourWays = [
   {
     title: "Learn",
-    body: "Ten guided modules across the 4 Elements and 4 Steps — a short video, a companion guide, and your own plan as you go.",
+    body: "Nine guided modules presenting the framework — the Compass and the Path — with a short video for each of the nine modules, and your own plan as you go.",
     href: "/course",
     cta: "Start Learning →",
   },
@@ -45,7 +45,7 @@ const fourWays = [
   },
   {
     title: "Assess",
-    body: "Which lights are burning bright, and which have gone faint? Find out where you stand.",
+    body: "Two minutes of honest reflection — see which lights are burning bright, and which have gone faint.",
     href: "/assess",
     cta: "Take the Check →",
   },
@@ -179,10 +179,12 @@ export default function HomePage() {
             </div>
             <SlideUp delay={0.22}>
               <div className="mt-8">
-                <PrimaryCta
-                  href="#begin-your-crossing"
-                  label="Download the Free Taking Stock Inventory"
-                />
+                <Link
+                  href="/all-in"
+                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  Go All In — $99
+                </Link>
               </div>
             </SlideUp>
           </div>

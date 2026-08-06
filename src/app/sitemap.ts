@@ -13,6 +13,7 @@ const routes = [
   "/contact",
   "/all-in",
   "/blog",
+  "/podcast",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

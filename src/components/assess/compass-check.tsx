@@ -128,15 +128,16 @@ function Intro({ onStart }: { onStart: () => void }) {
   return (
     <div className="rounded-xl border border-border bg-card p-6 text-center sm:p-10">
       <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-        Free · Eight Questions · A Few Honest Minutes
+        Free · Eight Questions · Two Honest Minutes
       </p>
       <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
         Which of your lights have gone faint?
       </h2>
       <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed">
-        Resilience. Adaptability. Optimism. Support. Eight questions will show
-        you which are burning — and which need tending — and where you’re
-        standing on the path.
+        Two minutes of honest reflection. That’s how the Bouncing Forward
+        journey starts — not with a plan, just with the truth about where you
+        stand. Eight questions will show you which of your four lights are
+        burning bright, which have gone faint, and where you are on the path.
       </p>
       <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">
         Nothing to sign up for, nothing to pay. Your answers stay on this page.

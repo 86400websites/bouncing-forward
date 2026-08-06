@@ -122,8 +122,8 @@ export default function WorkshopsPage() {
             to your context — whether your organisation is navigating
             retrenchments, supporting a bereaved team, or simply building the
             kind of workplace where hard seasons don’t have to be hidden.
-            Participants leave with the workbook, the Taking Stock Inventory, and
-            a way forward that outlasts the session.
+            Participants leave with the workbook and a way forward that outlasts
+            the session.
           </p>
         </SlideUp>
         <SlideUp delay={0.1}>

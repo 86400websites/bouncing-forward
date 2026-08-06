@@ -20,11 +20,11 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: { absolute: "Free Grief Resources | The Compass & the Path" },
   description:
-    "Put the framework to work: the 4-Element Compass, the 4-Step Path, the free Taking Stock Inventory, and the Compass & Path Check.",
+    "Put the framework to work: the 4-Element Compass, the 4-Step Path, and the Compass & Path Check.",
   openGraph: {
     title: "Free Grief Resources | The Compass & the Path",
     description:
-      "Put the framework to work: the 4-Element Compass, the 4-Step Path, the free Taking Stock Inventory, and the Compass & Path Check.",
+      "Put the framework to work: the 4-Element Compass, the 4-Step Path, and the Compass & Path Check.",
   },
 };
 
@@ -80,7 +80,7 @@ const path = [
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
-      src: "/assets/framework/accept.jpg",
+      src: "/assets/framework/accept.png",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -118,18 +118,13 @@ const path = [
 
 const tools = [
   {
-    title: "The Taking Stock Inventory & Personal Action Plan",
-    body: "An honest, eight-part inventory straight from the book — rate how brightly each Element is burning and how accessible each Step feels right now, then build a specific 30-day plan.",
-    cta: { kind: "link" as const, href: "#begin-your-crossing", label: "Download free →" },
-  },
-  {
     title: "The Reflection Companion",
     body: "Every “Reflect On…” question from the book, organised by Element and Step. Pick one a week. No pressure, just honesty.",
     cta: { kind: "soon" as const, label: "Explore" },
   },
   {
     title: "The Compass & Path Check",
-    body: "Eight questions. A few honest minutes. See which lights are burning bright, which have gone faint — and which step of the path you’re standing on.",
+    body: "Two minutes of honest reflection across all eight dimensions of the framework. See where you stand — and where your Bouncing Forward journey begins.",
     cta: { kind: "link" as const, href: "/assess", label: "Take the Check →" },
   },
 ];
@@ -157,12 +152,12 @@ export default function ResourcesPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 Resources
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 Reading is understanding. Practice is the way through.
               </h1>
             </SlideUp>
@@ -177,10 +172,12 @@ export default function ResourcesPage() {
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8">
-                <PrimaryCta
-                  href="#begin-your-crossing"
-                  label="Download the Free Taking Stock Inventory"
-                />
+                <Link
+                  href="/all-in"
+                  className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  Go All In — $99
+                </Link>
               </div>
             </SlideUp>
           </div>
@@ -200,37 +197,38 @@ export default function ResourcesPage() {
 
       {/* ── The framework ────────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SlideUp>
-                <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                   The Framework
                 </p>
-                <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+                <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
                   Two tools. Not a formula.
                 </h2>
               </SlideUp>
               <SlideUp delay={0.06}>
                 <p className="mt-6 text-lg leading-relaxed">
                   Bouncing Forward ={" "}
-                  <strong className="font-semibold">A Compass</strong> (which way
-                  is forward) <strong className="font-semibold">+ A Path</strong>{" "}
-                  (how you get there)
+                  <strong className="font-semibold">A Compass</strong> (which
+                  way is forward){" "}
+                  <strong className="font-semibold">+ A Path</strong> (how you
+                  get there)
                 </p>
               </SlideUp>
               <SlideUp delay={0.1}>
-                <p className="mt-4 leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-4 leading-relaxed">
                   Not addition of convenience — dependence. A compass with no
                   path leaves you oriented and standing still, waiting for a
                   readiness that may never come. A path with no compass gets you
                   moving, but you can circle for years without knowing it.
-                  Together, one gives you direction, the other gives you motion —
-                  and that’s how you make it through the forest.
+                  Together, one gives you direction, the other gives you motion
+                  — and that’s how you make it through the forest.
                 </p>
               </SlideUp>
               <SlideUp delay={0.14}>
-                <blockquote className="mt-8 border-l-2 border-brand-accent pl-5 text-xl italic leading-relaxed sm:text-2xl">
+                <blockquote className="border-brand-accent mt-8 border-l-2 pl-5 text-xl leading-relaxed italic sm:text-2xl">
                   The compass doesn’t tell you where you’re going. It tells you
                   which direction is forward — even when the trees are too dense
                   to see.
@@ -254,13 +252,13 @@ export default function ResourcesPage() {
       {/* ── The 4-Element Compass (#compass) ─────────────────── */}
       <section
         id="compass"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
       >
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             How You’re Oriented
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             The 4-Element Compass
           </h2>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed">
@@ -279,13 +277,14 @@ export default function ResourcesPage() {
           ))}
         </Stagger>
         <FadeIn>
-          <div className="mt-10 flex flex-col gap-5 rounded-lg border border-border bg-muted p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="border-border bg-muted mt-10 flex flex-col gap-5 rounded-lg border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <p className="max-w-2xl leading-relaxed">
-              Try it free: the 4-Element Compass is in the free Taking Stock
-              Inventory — a taste of these questions straight from the book.
+              Try it now — Two minutes of honest reflection with the free
+              Compass &amp; Path Check. See which of your four lights are
+              burning bright.
             </p>
             <div className="shrink-0">
-              <PrimaryCta href="#begin-your-crossing" label="Get the Free Inventory" />
+              <PrimaryCta href="/assess" label="Take the Check →" />
             </div>
           </div>
         </FadeIn>
@@ -295,13 +294,13 @@ export default function ResourcesPage() {
       <section className="bg-muted">
         <div
           id="path"
-          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
         >
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               How You Move
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
               The 4-Step Path
             </h2>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed">
@@ -324,14 +323,14 @@ export default function ResourcesPage() {
       {/* ── Put it to work (#inventory) ──────────────────────── */}
       <section
         id="inventory"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
       >
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             Put It to Work
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-            Three tools to begin
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
+            Two tools to begin
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed">
             You don’t have to absorb all eight at once. Start with one of these.
@@ -340,20 +339,20 @@ export default function ResourcesPage() {
         <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
           {tools.map((t) => (
             <StaggerItem key={t.title} className="h-full">
-              <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6">
-                <h3 className="text-lg font-bold leading-snug">{t.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+              <article className="border-border bg-card flex h-full flex-col rounded-lg border p-6">
+                <h3 className="text-lg leading-snug font-bold">{t.title}</h3>
+                <p className="text-muted-foreground mt-3 flex-1 text-sm leading-relaxed">
                   {t.body}
                 </p>
                 {t.cta.kind === "link" ? (
                   <Link
                     href={t.cta.href}
-                    className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    className="text-brand-accent-text hover:text-foreground focus-visible:outline-ring mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                   >
                     {t.cta.label}
                   </Link>
                 ) : (
-                  <span className="mt-5 inline-block cursor-default font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
+                  <span className="text-muted-foreground mt-5 inline-block cursor-default font-[family-name:var(--font-display)] text-sm font-bold">
                     {t.cta.label} — Coming Soon
                   </span>
                 )}
@@ -365,9 +364,9 @@ export default function ResourcesPage() {
 
       {/* ── Start with the source ────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               Read the first chapter free.
             </h2>
             <p className="mt-6 text-lg leading-relaxed">
@@ -386,9 +385,9 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── More to explore ──────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
             Keep going
           </h2>
         </SlideUp>
@@ -398,16 +397,16 @@ export default function ResourcesPage() {
               <Link
                 href={e.href}
                 className={cn(
-                  "group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-md sm:p-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+                  "group border-border bg-card focus-visible:outline-ring flex h-full flex-col rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 sm:p-8",
                 )}
               >
-                <h3 className="text-xl font-bold group-hover:text-brand-accent-text">
+                <h3 className="group-hover:text-brand-accent-text text-xl font-bold">
                   {e.title}
                 </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-3 flex-1 leading-relaxed">
                   {e.body}
                 </p>
-                <span className="mt-5 font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text">
+                <span className="text-brand-accent-text mt-5 font-[family-name:var(--font-display)] text-sm font-bold">
                   {e.cta}
                 </span>
               </Link>
@@ -417,7 +416,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── Assess block (shared navy pre-footer) ────────────── */}
-      <AssessBlock />
+      <AssessBlock showGoAllIn />
 
       {/* ── Newsletter ───────────────────────────────────────── */}
       <BeginYourCrossing />

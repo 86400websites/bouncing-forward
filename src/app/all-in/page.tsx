@@ -13,11 +13,11 @@ import { AMAZON_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "All In | The Complete Bouncing Forward Experience" },
   description:
-    "The full course, the 30-Day Journal, the workbooks, and your Check results kept season by season. Included free with the book.",
+    "$99 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
   openGraph: {
     title: "All In | The Complete Bouncing Forward Experience",
     description:
-      "The full course, the 30-Day Journal, the workbooks, and your Check results kept season by season. Included free with the book.",
+      "$99 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
   },
 };
 
@@ -49,18 +49,21 @@ export default function AllInPage() {
             </SlideUp>
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                All In is the complete Bouncing Forward experience — the full
-                course, the journal, the workbooks, your Check results kept
-                season by season, and a special monthly newsletter written for
-                the hardest seasons. It comes free with the book, because going
-                all in on your next chapter shouldn’t require a second decision.
+                All In is the complete Bouncing Forward experience — a
+                downloadable copy of the book, the full nine-module course, the
+                journal, and a premium monthly newsletter written for the hardest
+                seasons. One decision, $99, everything open — including
+                everything new we add to Bouncing Forward, as it lands.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap gap-4">
-                <PrimaryCta href="#a-claim" label="Claim Your Access →" />
-                <ExternalCta href={AMAZON_URL} label="Buy the Book →" />
+                <PrimaryCta href="#a-claim" label="Go All In — $99 →" />
+                <ExternalCta href={AMAZON_URL} label="Buy Just the Book — $14.45 →" />
               </div>
+              <p className="mt-3 text-sm italic text-muted-foreground">
+                2nd edition coming soon.
+              </p>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
@@ -121,70 +124,6 @@ export default function AllInPage() {
         </div>
       </section>
 
-      {/* ── The Workbooks (#a-workbooks) ─────────────────────── */}
-      <section
-        id="a-workbooks"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
-      >
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <FadeIn className="order-last lg:order-first">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
-              <IllustrationPlaceholder label="Workbook set image coming soon" />
-            </div>
-          </FadeIn>
-          <div>
-            <SlideUp>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                All In · Included
-              </p>
-              <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
-                The Workbooks
-              </h2>
-            </SlideUp>
-            <SlideUp delay={0.06}>
-              <p className="mt-6 text-lg leading-relaxed">
-                The four chapter workbooks, gathered as one take-home set — the
-                exercises from every part of the framework, ready to write in,
-                keep, and return to.
-              </p>
-            </SlideUp>
-          </div>
-        </div>
-      </section>
-
-      {/* ── The Check — full version (#a-check) ──────────────── */}
-      <section className="bg-muted">
-        <div
-          id="a-check"
-          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
-        >
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <SlideUp>
-                <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                  All In · Included
-                </p>
-                <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
-                  The Compass &amp; Path Check — full version
-                </h2>
-              </SlideUp>
-              <SlideUp delay={0.06}>
-                <p className="mt-6 text-lg leading-relaxed">
-                  The free Check tells you where you stand today. The full
-                  version remembers — your lights and your step, kept season by
-                  season, so you can watch the tending work.
-                </p>
-              </SlideUp>
-            </div>
-            <FadeIn delay={0.1}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
-                <IllustrationPlaceholder label="Check screen image coming soon" />
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
       {/* ── The Course + Monthly Letter (#a-course, #a-letter) ── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <div className="grid gap-6 md:grid-cols-2">
@@ -197,10 +136,10 @@ export default function AllInPage() {
                 The Course
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                The complete Bouncing Forward course — all ten guided modules
-                across the 4 Elements and 4 Steps, each with a short video, a
-                companion guide, and space to build your own plan. Yours in full,
-                included with All In.
+                The complete Bouncing Forward course — all nine guided modules
+                presenting the framework, the Compass and the Path, each with a
+                short video, a companion guide, and space to build your own plan.
+                Yours in full, included with All In.
               </p>
             </div>
           </SlideUp>
@@ -223,6 +162,27 @@ export default function AllInPage() {
         </div>
       </section>
 
+      {/* ── Everything New, as It Lands ──────────────────────── */}
+      <section className="bg-muted">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+          <SlideUp>
+            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              All In · Included
+            </p>
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+              Everything New, as It Lands
+            </h2>
+          </SlideUp>
+          <SlideUp delay={0.06}>
+            <p className="mt-6 text-lg leading-relaxed">
+              Bouncing Forward keeps growing — new tools, new resources, new ways
+              through. Whatever we add next is already yours. Going all in means
+              never buying it twice.
+            </p>
+          </SlideUp>
+        </div>
+      </section>
+
       {/* ── Claim Your Access (#a-claim, navy) ───────────────── */}
       <section className="bg-primary text-primary-foreground">
         <div
@@ -234,14 +194,22 @@ export default function AllInPage() {
               Claim Your Access
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
-              Bought the book? Your access code is inside. Enter it here and
-              everything opens.
+              Go All In for $99 and everything opens — a downloadable copy of the
+              book included. Already a member? Enter your access code below.
             </p>
+            <div className="mt-8">
+              <a
+                href="#a-claim"
+                className="inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                Go All In — $99
+              </a>
+            </div>
             <ClaimAccessForm />
             <div className="mt-8">
               <ExternalCta
                 href={AMAZON_URL}
-                label="Don’t have the book yet? Buy on Amazon →"
+                label="Prefer to start with just the book? Buy on Amazon — $14.45 →"
                 invert
               />
             </div>
