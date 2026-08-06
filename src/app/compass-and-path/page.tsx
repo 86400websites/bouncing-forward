@@ -37,7 +37,7 @@ const compass = [
     descriptor:
       "Not toughness. The bamboo that bends almost flat in a storm — and stands back up when it passes.",
     image: {
-      src: "/assets/framework/resilience-a.jpg",
+      src: "/assets/framework/resilience.png",
       alt: "Isometric illustration for Resilience — bamboo bending in a storm",
     },
   },
@@ -80,7 +80,7 @@ const path = [
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
-      src: "/assets/framework/accept.png",
+      src: "/assets/framework/accept.jpg",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -90,7 +90,7 @@ const path = [
     descriptor:
       "Not rumination. The disciplined, sometimes uncomfortable practice of asking: what does this ask of me?",
     image: {
-      src: "/assets/framework/reflect.jpg",
+      src: "/assets/framework/reflect.png",
       alt: "Isometric illustration for Reflect — still water mirroring the sky",
     },
   },
@@ -110,7 +110,7 @@ const path = [
     descriptor:
       "You will never feel fully ready. Begin anyway — the doing creates the readiness that waiting never will.",
     image: {
-      src: "/assets/framework/action.jpg",
+      src: "/assets/framework/action.png",
       alt: "Isometric illustration for Action — a first step taken on the path",
     },
   },
@@ -272,7 +272,7 @@ export default function ResourcesPage() {
         <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {compass.map((c) => (
             <StaggerItem key={c.title} className="h-full">
-              <NumberedCard {...c} headingLevel="h3" />
+              <NumberedCard {...c} headingLevel="h3" iconClassName="bg-white" />
             </StaggerItem>
           ))}
         </Stagger>
@@ -313,7 +313,12 @@ export default function ResourcesPage() {
           <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {path.map((p) => (
               <StaggerItem key={p.title} className="h-full">
-                <NumberedCard {...p} headingLevel="h3" className="bg-card" />
+                <NumberedCard
+                  {...p}
+                  headingLevel="h3"
+                  className="bg-card"
+                  iconClassName="bg-white"
+                />
               </StaggerItem>
             ))}
           </Stagger>
