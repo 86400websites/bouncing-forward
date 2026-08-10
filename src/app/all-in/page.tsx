@@ -7,7 +7,6 @@ import {
   PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 import { ClaimAccessForm } from "@/components/site/claim-access-form";
-import { IllustrationPlaceholder } from "@/components/site/story-card";
 import { AMAZON_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -67,9 +66,15 @@ export default function AllInPage() {
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
-              <IllustrationPlaceholder label="All In collection image coming soon" />
-            </div>
+            <Image
+              src="/assets/all-in/all-in-hero.png"
+              alt="Everything included in All In — the book, the course, the journal and more, together"
+              width={1448}
+              height={1086}
+              priority
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="w-full rounded-xl"
+            />
           </FadeIn>
         </div>
 

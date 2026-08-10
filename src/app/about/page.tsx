@@ -172,10 +172,10 @@ export default function AboutPage() {
             </div>
             <FadeIn delay={0.1}>
               <Image
-                src="/assets/stories/hikmat-road-safety.jpg"
-                alt="Illustration of the Hikmat Road Safety Program — children playing safely beside a marked road"
-                width={1535}
-                height={1024}
+                src="/assets/about/acceptance-not-surrender.png"
+                alt="Illustration of the Hikmat Road Safety Program — a marked school-zone crossing keeping children safe"
+                width={1448}
+                height={1086}
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="w-full rounded-xl"
               />

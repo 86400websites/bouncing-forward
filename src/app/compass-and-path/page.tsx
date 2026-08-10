@@ -18,11 +18,11 @@ import { AMAZON_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Free Grief Resources | The Compass & the Path" },
+  title: { absolute: "Free Resources | The Compass & the Path" },
   description:
     "Put the framework to work: the 4-Element Compass, the 4-Step Path, and the Compass & Path Check.",
   openGraph: {
-    title: "Free Grief Resources | The Compass & the Path",
+    title: "Free Resources | The Compass & the Path",
     description:
       "Put the framework to work: the 4-Element Compass, the 4-Step Path, and the Compass & Path Check.",
   },
@@ -80,7 +80,7 @@ const path = [
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
-      src: "/assets/framework/accept.jpg",
+      src: "/assets/framework/accept.png",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -306,8 +306,9 @@ export default function ResourcesPage() {
             <p className="mt-6 max-w-3xl text-lg leading-relaxed">
               The compass opens your eyes. The path moves your feet. These four
               steps aren’t a formula and they don’t move in a straight line —
-              least of all in grief. But they’re stepping stones: one foot in
-              front of the other, with intention, rather than simply enduring.
+              least of all after a setback. But they’re stepping stones: one
+              foot in front of the other, with intention, rather than simply
+              enduring.
             </p>
           </SlideUp>
           <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
