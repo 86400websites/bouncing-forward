@@ -79,7 +79,7 @@ const path = [
   {
     index: "02",
     title: "Reflect",
-    descriptor: "Uncovering insight from grief",
+    descriptor: "Uncovering insight from a setback",
     image: {
       src: "/assets/framework/reflect.png",
       alt: "Isometric illustration for Reflect — still water mirroring the sky",
@@ -108,7 +108,7 @@ const path = [
 const testimonials = [
   {
     quote:
-      "I thought I had to choose between grieving and moving forward. This book showed me they’re the same motion.",
+      "I thought I had to choose between sitting with a setback and moving forward. This book showed me they’re the same motion.",
     name: "Reader name",
     role: "bereaved parent",
   },
@@ -208,7 +208,7 @@ export default function BookPage() {
             </SlideUp>
             <SlideUp delay={0.08}>
               <p>
-                What they don’t tell you is this: grief, faced alone and without
+                What they don’t tell you is this: a setback, faced alone and without
                 direction, doesn’t get easier — it just gets quieter, and
                 quieter isn’t the same as better. This book is the invitation to
                 ask a different question. Not “why did this happen to me?” but

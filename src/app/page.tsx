@@ -16,15 +16,15 @@ import {
 import { IllustrationPlaceholder } from "@/components/site/story-card";
 
 export const metadata: Metadata = {
-  title: { absolute: "Bouncing Forward | Grief Doesn’t Get the Last Word" },
+  title: { absolute: "Bouncing Forward | Setbacks Don’t Get the Last Word" },
   description:
-    "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
+    "A compass and a path for life after a setback. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
 };
 
 /* Copy source: BF-Website-Copy-For-Sozana-2.docx — Home (/), verbatim. */
 
 const whoBullets = [
-  "You’ve been handed a loss you didn’t choose, and you’re tired of pretending you’re fine.",
+  "You’ve been handed a setback you didn’t choose, and you’re tired of pretending you’re fine.",
   "You’re tired of empty comfort — “everything happens for a reason.”",
   "Something in you isn’t finished — you just don’t know where to start.",
   "You want a way forward, not a silver lining.",
@@ -45,9 +45,9 @@ const fourWays = [
   },
   {
     title: "Assess",
-    body: "Two minutes of honest reflection — see which lights are burning bright, and which have gone faint.",
+    body: "A few minutes. Complete privacy. No right answers, no timeline, no one keeping score.",
     href: "/assess",
-    cta: "Take the Check →",
+    cta: "Find out where here is",
   },
   {
     title: "Stories",
@@ -62,19 +62,19 @@ const blogCards = [
     slug: "losses-nobody-sends-flowers-for",
     title: "The Losses Nobody Sends Flowers For",
     standfirst:
-      "Some grief arrives without a funeral, a card, or anyone acknowledging it happened.",
+      "Some setbacks arrive without a funeral, a card, or anyone acknowledging they happened.",
   },
   {
     slug: "when-there-is-no-goodbye",
     title: "When There Is No Goodbye",
     standfirst:
-      "Grieving someone who is still here — and the loss that never quite finishes.",
+      "Losing someone who is still here — and the loss that never quite finishes.",
   },
   {
     slug: "grief-is-not-a-staircase",
-    title: "Grief Is Not a Staircase",
+    title: "A Setback Is Not a Staircase",
     standfirst:
-      "Nobody moves through loss in a straight line. The line was never real.",
+      "Nobody moves through a setback in a straight line. The line was never real.",
   },
 ];
 
@@ -92,12 +92,12 @@ export default function HomePage() {
             </FadeIn>
             <SlideUp>
               <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
-                Grief doesn’t get the last word.
+                The setback wasn’t your choice. The next step is.
               </h1>
             </SlideUp>
             <SlideUp delay={0.06}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                Loss isn’t the finish line. It’s the forest between who you were
+                A setback isn’t the finish line. It’s the forest between who you were
                 and who you’re capable of becoming.
               </p>
             </SlideUp>
@@ -110,7 +110,7 @@ export default function HomePage() {
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <PrimaryCta href="/book" label="Read the Book" />
-                <SecondaryCta href="/assess" label="Start With One Question →" />
+                <SecondaryCta href="/assess" label="Find out where here is" />
               </div>
               <p className="mt-3 text-sm italic text-muted-foreground">
                 2nd edition coming soon.
@@ -154,7 +154,7 @@ export default function HomePage() {
             <div className="mt-6 space-y-4 text-lg leading-relaxed">
               <SlideUp delay={0.06}>
                 <p>
-                  Most books help you survive loss. This one shows you where to
+                  Most books help you survive a setback. This one shows you where to
                   go next.
                 </p>
               </SlideUp>
@@ -314,7 +314,14 @@ export default function HomePage() {
       </section>
 
       {/* ── Assess block (shared navy pre-footer) ────────────── */}
-      <AssessBlock />
+      <AssessBlock
+        headline="From here, forward. But first — where’s here?"
+        lines={[
+          "A few minutes. Complete privacy. No right answers, no timeline, no one keeping score.",
+          "Just the clearest view you’ve had of your own life since everything changed.",
+        ]}
+        ctaLabel="Find out where here is"
+      />
 
       {/* ── Newsletter ───────────────────────────────────────── */}
       <BeginYourCrossing />

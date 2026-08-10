@@ -30,7 +30,7 @@ const cards = [
   {
     kicker: "Podcast",
     title: "Bouncing Forward — the Podcast",
-    body: "Conversations with people who turned their worst chapter into their most purposeful one. Real stories from Jordan and beyond, honest talk about grief, faith, and rebuilding — no clichés about closure.",
+    body: "Conversations with people who turned their worst chapter into their most purposeful one. Real stories from Jordan and beyond, honest talk about setbacks, faith, and rebuilding — no clichés about closure.",
     cta: "Tune In",
     image: {
       src: "/assets/learn/podcast.jpg",

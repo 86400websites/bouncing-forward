@@ -6,7 +6,6 @@ import {
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
-import { IllustrationPlaceholder } from "@/components/site/story-card";
 import { StoriesGrid, type Story } from "@/components/site/stories-grid";
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ const stories: Story[] = [
   {
     headline: "Buying Shoes Where Gangs Once Ruled",
     image: {
-      src: "/assets/stories/sebastian-shoes.jpg",
+      src: "/assets/stories/story-1.png",
       alt: "Illustration — a pair of school shoes set down on a Cape Town street",
     },
     story:
@@ -37,7 +36,7 @@ const stories: Story[] = [
   {
     headline: "Retrenched Into Her Real Career",
     image: {
-      src: "/assets/stories/monica-salon.jpg",
+      src: "/assets/stories/story-2.jpg",
       alt: "Illustration — a bright salon interior",
     },
     story:
@@ -48,7 +47,7 @@ const stories: Story[] = [
   {
     headline: "Building the Door Herself",
     image: {
-      src: "/assets/stories/rafaela-door.jpg",
+      src: "/assets/stories/story-3.jpg",
       alt: "Illustration — a woman standing at an open doorway",
     },
     story:
@@ -59,7 +58,7 @@ const stories: Story[] = [
   {
     headline: "One Sewing Machine, One New Life",
     image: {
-      src: "/assets/stories/rebika-sewing.jpg",
+      src: "/assets/stories/story-4.jpg",
       alt: "Illustration — a sewing machine on a wooden table",
     },
     story:
@@ -70,7 +69,7 @@ const stories: Story[] = [
   {
     headline: "The Thirty Dollars She Never Forgot",
     image: {
-      src: "/assets/stories/catalina-nurse.jpg",
+      src: "/assets/stories/story-5.jpg",
       alt: "Illustration — a maternity ward at dawn",
     },
     story:
@@ -81,7 +80,7 @@ const stories: Story[] = [
   {
     headline: "Staying Rooted at 14,000 Feet",
     image: {
-      src: "/assets/stories/urgain-farm.jpg",
+      src: "/assets/stories/story-6.jpg",
       alt: "Illustration — terraced fields high in the mountains",
     },
     story:
@@ -92,7 +91,7 @@ const stories: Story[] = [
   {
     headline: "The Eviction That Never Came",
     image: {
-      src: "/assets/stories/lia-village.jpg",
+      src: "/assets/stories/story-7.jpg",
       alt: "Illustration — a hillside neighbourhood among greenery",
     },
     story:
@@ -103,7 +102,7 @@ const stories: Story[] = [
   {
     headline: "Built Stronger Where It Broke Him",
     image: {
-      src: "/assets/stories/rifqi-tsunami.jpg",
+      src: "/assets/stories/story-8.jpg",
       alt: "Illustration — a large wave rising toward a coastline",
     },
     story:
@@ -114,7 +113,7 @@ const stories: Story[] = [
   {
     headline: "A Smile That Never Left the Road",
     image: {
-      src: "/assets/stories/Image 50_Smile that never ends.jpg",
+      src: "/assets/stories/story-9.jpg",
       alt: "A Smile that never ends",
     },
     story:
@@ -157,9 +156,15 @@ export default function StoriesPage() {
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
-            <div className="border-border relative aspect-[4/3] overflow-hidden rounded-xl border">
-              <IllustrationPlaceholder label="Stories hero image coming soon" />
-            </div>
+            <Image
+              src="/assets/stories/stories-hero.jpg"
+              alt="A traveller looking out over a wide landscape — real people who turned loss into direction"
+              width={1448}
+              height={1086}
+              priority
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="w-full rounded-xl"
+            />
           </FadeIn>
         </div>
       </section>
@@ -184,7 +189,7 @@ export default function StoriesPage() {
                   <p>
                     When Maher lost his son Hikmat to a hit-and-run in Amman,
                     his world split in two. There was a version of him that
-                    wanted to disappear quietly into the grief.
+                    wanted to disappear quietly into the pain.
                   </p>
                 </SlideUp>
                 <SlideUp delay={0.1}>

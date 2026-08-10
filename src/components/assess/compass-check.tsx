@@ -131,23 +131,22 @@ function Intro({ onStart }: { onStart: () => void }) {
         Free · Eight Questions · Two Honest Minutes
       </p>
       <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-        Which of your lights have gone faint?
+        From here, forward. But first — where’s here?
       </h2>
       <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed">
-        Two minutes of honest reflection. That’s how the Bouncing Forward
-        journey starts — not with a plan, just with the truth about where you
-        stand. Eight questions will show you which of your four lights are
-        burning bright, which have gone faint, and where you are on the path.
+        A few minutes. Complete privacy. No right answers, no timeline, no one
+        keeping score.
       </p>
       <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">
-        Nothing to sign up for, nothing to pay. Your answers stay on this page.
+        Just the clearest view you’ve had of your own life since everything
+        changed.
       </p>
       <button
         type="button"
         onClick={onStart}
         className="mt-8 inline-flex items-center rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
       >
-        Take the Check →
+        Find out where here is
       </button>
     </div>
   );

@@ -13,11 +13,11 @@ import { POSTS } from "@/lib/blog";
 export const metadata: Metadata = {
   title: { absolute: "The Blog | Honest Words for the Hardest Seasons" },
   description:
-    "The things nobody tells you about loss, named plainly — grief, the body, anniversaries, friendship, and finding your way forward.",
+    "The things nobody tells you about a setback, named plainly — the body, anniversaries, friendship, and finding your way forward.",
   openGraph: {
     title: "The Blog | Honest Words for the Hardest Seasons",
     description:
-      "The things nobody tells you about loss, named plainly — grief, the body, anniversaries, friendship, and finding your way forward.",
+      "The things nobody tells you about a setback, named plainly — the body, anniversaries, friendship, and finding your way forward.",
   },
 };
 

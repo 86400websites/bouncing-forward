@@ -65,27 +65,38 @@ function MiniCompass() {
   );
 }
 
-export function AssessBlock({ showGoAllIn = false }: { showGoAllIn?: boolean }) {
+export function AssessBlock({
+  showGoAllIn = false,
+  headline = "Which of your lights have gone faint?",
+  lines = [
+    "Resilience. Adaptability. Optimism. Support. Two minutes of honest reflection will show you which lights are burning — and which need tending. It’s where the Bouncing Forward journey begins. Nothing to sign up for, nothing to pay.",
+  ],
+  ctaLabel = "Take the Check →",
+}: {
+  showGoAllIn?: boolean;
+  headline?: string;
+  lines?: string[];
+  ctaLabel?: string;
+}) {
   return (
     <section className="bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-              Which of your lights have gone faint?
+              {headline}
             </h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-primary-foreground/85">
-              Resilience. Adaptability. Optimism. Support. Two minutes of honest
-              reflection will show you which lights are burning — and which need
-              tending. It’s where the Bouncing Forward journey begins. Nothing to
-              sign up for, nothing to pay.
-            </p>
+            <div className="mt-5 max-w-xl space-y-3 text-lg leading-relaxed text-primary-foreground/85">
+              {lines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/assess"
                 className="inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
-                Take the Check →
+                {ctaLabel}
               </Link>
               {showGoAllIn ? (
                 <Link
