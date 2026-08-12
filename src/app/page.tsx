@@ -7,87 +7,69 @@ import {
   Stagger,
   StaggerItem,
 } from "@/components/motion/primitives";
-import { AssessBlock } from "@/components/site/assess-block";
 import {
   BeginYourCrossing,
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
-import { IllustrationPlaceholder } from "@/components/site/story-card";
 
 export const metadata: Metadata = {
   title: { absolute: "Bouncing Forward | Setbacks Don’t Get the Last Word" },
   description:
-    "A compass and a path for life after a setback. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
+    "The setback wasn’t your choice. The next step is. Built from a real story, for anyone in their hardest chapter.",
 };
 
-/* Copy source: BF-Website-Copy-For-Sozana-2.docx — Home (/), verbatim. */
+/* Copy source: Home_Page-3.docx — Home page rework, verbatim. */
 
 const whoBullets = [
-  "You’ve been handed a setback you didn’t choose, and you’re tired of pretending you’re fine.",
-  "You’re tired of empty comfort — “everything happens for a reason.”",
-  "Something in you isn’t finished — you just don’t know where to start.",
+  "You’ve been handed a setback you didn’t choose, and you’re done pretending you’re fine.",
+  "You’ve had enough of ‘everything happens for a reason.’",
+  "Something in you is ready for what’s next.",
   "You want a way forward, not a silver lining.",
 ];
 
 const fourWays = [
   {
     title: "Learn",
-    body: "Nine guided modules presenting the framework — the Compass and the Path — with a short video for each of the nine modules, and your own plan as you go.",
+    body: "Maher walks you through the framework himself — a short video for each module, and your own plan taking shape as you go.",
     href: "/course",
-    cta: "Start Learning →",
+    cta: "Start learning →",
   },
   {
     title: "Practice",
-    body: "The 4 Elements and 4 Steps, built for the middle of real life — not a classroom.",
+    body: "Tools built for the middle of real life — not a classroom. Small enough to use on the days when everything feels like a lot.",
     href: "/compass-and-path",
-    cta: "Put It to Work →",
+    cta: "Put it to work →",
   },
   {
     title: "Assess",
     body: "A few minutes. Complete privacy. No right answers, no timeline, no one keeping score.",
     href: "/assess",
-    cta: "Find out where here is",
+    cta: "Find out where here is →",
   },
   {
     title: "Stories",
-    body: "Real people, from Cape Town to Rio to Ladakh, who turned loss into direction.",
+    body: "Real people, from Cape Town to Rio to Ladakh who turned loss into direction.",
     href: "/stories",
-    cta: "Meet Them →",
+    cta: "Meet them →",
   },
 ];
 
-const blogCards = [
-  {
-    slug: "losses-nobody-sends-flowers-for",
-    title: "The Losses Nobody Sends Flowers For",
-    standfirst:
-      "Some setbacks arrive without a funeral, a card, or anyone acknowledging they happened.",
-  },
-  {
-    slug: "when-there-is-no-goodbye",
-    title: "When There Is No Goodbye",
-    standfirst:
-      "Losing someone who is still here — and the loss that never quite finishes.",
-  },
-  {
-    slug: "grief-is-not-a-staircase",
-    title: "A Setback Is Not a Staircase",
-    standfirst:
-      "Nobody moves through a setback in a straight line. The line was never real.",
-  },
-];
+const freePoints =
+  "The two-minute check. The stories. The blog. The First Week, free to download. And a free preview of the course — Module 1, no purchase needed.";
+const allInPoints =
+  "The full course, taught by Maher himself — and still growing, at no extra cost. The book and the 30-Day Journal, yours to download. A letter from Maher every month, plus the full archive. And every new tool we launch, included — starting with the full assessment, coming with the second edition of the book.";
 
 export default function HomePage() {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────── */}
+      {/* ── Screen 1 — Hero ──────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                From here, FORWARD.
+                From here, forward.
               </p>
             </FadeIn>
             <SlideUp>
@@ -97,14 +79,14 @@ export default function HomePage() {
             </SlideUp>
             <SlideUp delay={0.06}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                A setback isn’t the finish line. It’s the forest between who you were
-                and who you’re capable of becoming.
+                A setback isn’t the finish line. It’s the ground between who you
+                were and who you’re capable of becoming.
               </p>
             </SlideUp>
             <SlideUp delay={0.1}>
               <p className="mt-4 max-w-xl text-lg leading-relaxed">
-                The 4-Element Compass. The 4-Step Path. Built from a real story,
-                for anyone standing at the edge of their hardest chapter.
+                Built from a real story, for anyone in their hardest chapter. It
+                starts with one honest question: where’s here?
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
@@ -119,8 +101,8 @@ export default function HomePage() {
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/home/hero-forest.jpg"
-              alt="A traveller at the edge of a forest, light breaking through the trees ahead"
+              src="/assets/home/hero-forest-new.png"
+              alt="A traveller with a compass at the edge of a forest, stepping stones leading toward the light"
               width={1448}
               height={1086}
               priority
@@ -129,71 +111,45 @@ export default function HomePage() {
             />
           </FadeIn>
         </div>
-        <FadeIn>
-          <figure className="mx-auto mt-12 max-w-3xl border-l-2 border-brand-accent pl-5">
-            <blockquote className="text-lg italic leading-relaxed sm:text-xl">
-              “Not going back to who you were. Going forward to who you are
-              capable of becoming.”
-            </blockquote>
-            <figcaption className="mt-2 font-[family-name:var(--font-display)] text-sm font-bold text-muted-foreground">
-              — Maher Kaddoura
-            </figcaption>
-          </figure>
-        </FadeIn>
       </section>
 
-      {/* ── Two tools ────────────────────────────────────────── */}
+      {/* ── Screen 2 — Four questions ────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SlideUp>
               <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-                A Compass and a Path for the Hardest Seasons
+                Four questions. In order.
               </h2>
             </SlideUp>
             <div className="mt-6 space-y-4 text-lg leading-relaxed">
               <SlideUp delay={0.06}>
                 <p>
-                  Most books help you survive a setback. This one shows you where to
-                  go next.
+                  What happened? What is it asking of you? What’s still possible?
+                  What’s the first step?
                 </p>
               </SlideUp>
               <SlideUp delay={0.1}>
                 <p>
-                  The 4-Element Compass — Resilience, Adaptability, Optimism,
-                  Support. Four lights that show you which way is forward.
+                  Everyone in a setback is already circling these questions.
+                  Bouncing Forward puts them in order: a Path with four steps.
+                  Accept, Reflect, Imagine, Act.
                 </p>
               </SlideUp>
               <SlideUp delay={0.14}>
                 <p>
-                  The 4-Step Path — Accept, Reflect, Imagine, Action. The
-                  sequence that turns standing still into movement.
-                </p>
-              </SlideUp>
-              <SlideUp delay={0.18}>
-                <p>
-                  One gives you direction. The other gives you motion. Together,
-                  they take you into the next chapter.
+                  Walking it draws on strengths you already have — the path
+                  reveals them as you go.
                 </p>
               </SlideUp>
             </div>
-            <SlideUp delay={0.22}>
-              <div className="mt-8">
-                <Link
-                  href="/all-in"
-                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  Go All In — $99
-                </Link>
-              </div>
-            </SlideUp>
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/framework/diagram-compass-path.jpg"
-              alt="The Bouncing Forward compass and path diagram — Resilience, Adaptability, Optimism and Support around Accept, Reflect, Imagine and Action"
-              width={2000}
-              height={2000}
+              src="/assets/home/stepping-stones.png"
+              alt="Named stepping stones — Accept, Reflect, Imagine, Act — leading toward the sunrise"
+              width={905}
+              height={679}
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="mx-auto w-full max-w-lg rounded-xl"
             />
@@ -201,14 +157,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Who is this for ──────────────────────────────────── */}
+      {/* ── Screen 3 — Who is this for ───────────────────────── */}
       <section className="bg-muted">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <FadeIn className="order-last lg:order-first">
               <Image
-                src="/assets/home/who-is-this-for.jpg"
-                alt="A quiet, reflective human moment"
+                src="/assets/home/who-is-this-for-bridge.png"
+                alt="A woman crossing a footbridge toward a path winding into the sunrise"
                 width={1448}
                 height={1086}
                 sizes="(min-width: 1024px) 45vw, 100vw"
@@ -245,104 +201,116 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Four ways to begin ───────────────────────────────── */}
+      {/* ── Screen 4 — One honest price ──────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <SlideUp>
-          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-            Choose Your Path
+          <p className="text-center text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            One Honest Price
+          </p>
+          <h2 className="mx-auto mt-4 max-w-3xl text-center text-3xl font-extrabold leading-tight sm:text-4xl">
+            Finding out where you are is free. The work is one price, once.
           </h2>
         </SlideUp>
-        <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {fourWays.map((w) => (
-            <StaggerItem key={w.title} className="h-full">
-              <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6">
-                <h3 className="text-xl font-bold">{w.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {w.body}
-                </p>
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <FadeIn>
+            <div className="flex h-full flex-col rounded-lg border border-border bg-card p-8">
+              <h3 className="text-2xl font-extrabold">Free</h3>
+              <p className="mt-1 font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                No signup, no card.
+              </p>
+              <p className="mt-5 flex-1 leading-relaxed text-muted-foreground">
+                {freePoints}
+              </p>
+              <div className="mt-8">
                 <Link
-                  href={w.href}
-                  className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  href="/assess"
+                  className="inline-flex items-center rounded-full border border-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  {w.cta}
+                  Find out where here is →
                 </Link>
-              </article>
-            </StaggerItem>
-          ))}
-        </Stagger>
+              </div>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.08}>
+            <div className="flex h-full flex-col rounded-lg border-2 border-brand-accent bg-card p-8">
+              <h3 className="text-2xl font-extrabold">
+                All In — <span className="text-brand-accent-text">$49</span>, once.
+              </h3>
+              <p className="mt-1 font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                Everything, together.
+              </p>
+              <p className="mt-5 flex-1 leading-relaxed text-muted-foreground">
+                {allInPoints}
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/all-in"
+                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  Go All In →
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+        <FadeIn>
+          <p className="mt-8 text-center leading-relaxed text-muted-foreground">
+            Nothing here renews behind your back. Free is free, and $49 is once.
+          </p>
+        </FadeIn>
       </section>
 
-      {/* ── From the blog ────────────────────────────────────── */}
+      {/* ── Screen 5 — The next step is yours ────────────────── */}
       <section className="bg-muted">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
           <SlideUp>
             <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-              Honest words for the hardest seasons
+              The next step is yours.
             </h2>
           </SlideUp>
-          <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
-            {blogCards.map((post) => (
-              <StaggerItem key={post.slug} className="h-full">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  <div className="relative w-full pb-[56.25%]">
-                    <div className="absolute inset-0">
-                      <IllustrationPlaceholder />
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="text-lg font-bold leading-snug group-hover:text-brand-accent-text">
-                      {post.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {post.standfirst}
-                    </p>
-                    <span className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text">
-                      Read the post →
-                    </span>
-                  </div>
-                </Link>
+          <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {fourWays.map((w) => (
+              <StaggerItem key={w.title} className="h-full">
+                <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6">
+                  <h3 className="text-xl font-bold">{w.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {w.body}
+                  </p>
+                  <Link
+                    href={w.href}
+                    className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  >
+                    {w.cta}
+                  </Link>
+                </article>
               </StaggerItem>
             ))}
           </Stagger>
-          <FadeIn>
-            <div className="mt-10">
-              <PrimaryCta href="/blog" label="Read all posts →" />
-            </div>
-          </FadeIn>
         </div>
       </section>
 
-      {/* ── Assess block (shared navy pre-footer) ────────────── */}
-      <AssessBlock
-        headline="From here, forward. But first — where’s here?"
-        lines={[
-          "A few minutes. Complete privacy. No right answers, no timeline, no one keeping score.",
-          "Just the clearest view you’ve had of your own life since everything changed.",
-        ]}
-        ctaLabel="Find out where here is"
+      {/* ── Screen 6 — Email sign-up (The First Week) ────────── */}
+      <BeginYourCrossing
+        heading="Take The First Week with you"
+        body="Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave."
+        submitLabel="Send me The First Week"
       />
 
-      {/* ── Newsletter ───────────────────────────────────────── */}
-      <BeginYourCrossing />
-
-      {/* ── Closing reflection ───────────────────────────────── */}
+      {/* ── Screen 7 — Closing questions ─────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-extrabold leading-tight sm:text-3xl">
             Take a moment. Ask yourself, honestly:
           </h2>
           <p className="mt-6 font-[family-name:var(--font-display)] text-3xl font-extrabold italic sm:text-4xl">
-            Why did this happen?
+            Why did this happen to me?
           </p>
           <p className="mt-3 font-[family-name:var(--font-display)] text-3xl font-extrabold italic sm:text-4xl">
-            What does this ask of me?
+            What does this ask of me now?
           </p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            You don’t need the answer to the first one. Only the courage to ask
-            the second.
+            You don’t need the answer to the first. Only the courage to ask the
+            second.
           </p>
         </FadeIn>
       </section>
