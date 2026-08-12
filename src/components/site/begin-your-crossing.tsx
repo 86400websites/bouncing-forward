@@ -12,10 +12,12 @@ import { cn } from "@/lib/utils";
 export function BeginYourCrossing({
   heading = "Begin Your Next Chapter",
   body = "The direction you need hasn’t disappeared — it’s waiting to be found. Get the free Taking Stock Inventory, plus a monthly note on finding your way forward.",
+  submitLabel = "Subscribe",
   showFaqLink = false,
 }: {
   heading?: string;
   body?: string;
+  submitLabel?: string;
   showFaqLink?: boolean;
 }) {
   return (
@@ -64,7 +66,7 @@ export function BeginYourCrossing({
               disabled
               className="rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Subscribe
+              {submitLabel}
             </button>
           </form>
           <p id="byc-status" className="mt-3 text-sm text-muted-foreground">
