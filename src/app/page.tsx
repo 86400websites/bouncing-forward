@@ -287,8 +287,10 @@ export default function HomePage() {
                   href={`/blog/${post.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  <div className="relative aspect-[16/9]">
-                    <IllustrationPlaceholder />
+                  <div className="relative w-full pb-[56.25%]">
+                    <div className="absolute inset-0">
+                      <IllustrationPlaceholder />
+                    </div>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <h3 className="text-lg font-bold leading-snug group-hover:text-brand-accent-text">

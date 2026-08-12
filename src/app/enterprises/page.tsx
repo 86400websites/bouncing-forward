@@ -13,11 +13,11 @@ import {
 } from "@/components/site/begin-your-crossing";
 
 export const metadata: Metadata = {
-  title: { absolute: "Business Workshops | Bouncing Forward" },
+  title: { absolute: "Enterprises | Bouncing Forward" },
   description:
     "One framework, four depths of delivery — from a 60-minute first step to a four-week embedded journey. Practical, honest workshops for teams navigating setbacks at work.",
   openGraph: {
-    title: "Business Workshops | Bouncing Forward",
+    title: "Enterprises | Bouncing Forward",
     description:
       "One framework, four depths of delivery — from a 60-minute first step to a four-week embedded journey. Practical, honest workshops for teams navigating setbacks at work.",
   },
@@ -51,7 +51,8 @@ const formats = [
       "Outcome: awareness and shared language — and one honest look at where each person stands",
       "Take-home: a single-page worksheet — the honest first question, and one chosen step",
     ],
-    trade: "The trade: reach. First exposure, shared language, and proof that a path exists.",
+    trade:
+      "The trade: reach. First exposure, shared language, and proof that a path exists.",
   },
   {
     name: "The 90-Minute Workshop",
@@ -80,7 +81,8 @@ const formats = [
   {
     name: "Four Weeks × 90 Minutes",
     label: "The Journey",
-    tagline: "For embedded programmes, closed groups and sustained culture change.",
+    tagline:
+      "For embedded programmes, closed groups and sustained culture change.",
     rows: [
       "Four weekly 90-minute sessions, with spoken practice between them",
       "Weekly check-ins and bridge practices carry the work between sessions",
@@ -97,7 +99,7 @@ const isNotItems = [
   "Nothing is promised that a workshop cannot deliver.",
 ];
 
-export default function WorkshopsPage() {
+export default function EnterprisesPage() {
   return (
     <>
       {/* ── Screen 1 — Hero ──────────────────────────────────── */}
@@ -105,12 +107,12 @@ export default function WorkshopsPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                Workshops · For Organisations
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
+                Enterprises · For Organisations
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 Your team is carrying more than you can see.
               </h1>
             </SlideUp>
@@ -119,21 +121,24 @@ export default function WorkshopsPage() {
                 Every organisation runs on people — and setbacks reach every one
                 of them. Restructures. Losses. Disappointments. Change nobody
                 chose. Most workplaces have no language for those seasons, so
-                people carry them alone. Bouncing Forward gives your organisation
-                both the language and the practice — an honest, practical
-                framework your people walk, not just hear.
+                people carry them alone. Bouncing Forward gives your
+                organisation both the language and the practice — an honest,
+                practical framework your people walk, not just hear.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap gap-4">
-                <PrimaryCta href="/contact" label="Enquire About a Workshop →" />
+                <PrimaryCta
+                  href="/contact"
+                  label="Enquire About a Workshop →"
+                />
                 <SecondaryCta href="#formats" label="Explore the Formats" />
               </div>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/workshops/workshop-hero.png"
+              src="/assets/enterprises/workshop-hero.png"
               alt="A facilitator leading a small team through the Accept, Reflect, Imagine, Action framework in a bright meeting room"
               width={1448}
               height={1086}
@@ -147,12 +152,12 @@ export default function WorkshopsPage() {
 
       {/* ── Screen 2 — Pull quote ────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-6 lg:px-8 sm:py-20">
+        <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
           <FadeIn>
-            <blockquote className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <blockquote className="text-3xl leading-tight font-extrabold sm:text-4xl">
               “Setbacks don’t get the last word.”
             </blockquote>
-            <p className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground/70">
+            <p className="text-primary-foreground/70 mt-4 font-[family-name:var(--font-display)] text-sm font-bold">
               — Maher Kaddoura
             </p>
           </FadeIn>
@@ -160,21 +165,21 @@ export default function WorkshopsPage() {
       </section>
 
       {/* ── Screen 3 — The cost ──────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             The Cost No One Budgets For
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             It shows up where you can least afford it.
           </h2>
         </SlideUp>
         <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
           {costs.map((c) => (
             <StaggerItem key={c.title} className="h-full">
-              <div className="h-full rounded-lg border border-border bg-card p-6 sm:p-8">
+              <div className="border-border bg-card h-full rounded-lg border p-6 sm:p-8">
                 <h3 className="text-xl font-bold">{c.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-3 leading-relaxed">
                   {c.body}
                 </p>
               </div>
@@ -182,7 +187,7 @@ export default function WorkshopsPage() {
           ))}
         </Stagger>
         <FadeIn>
-          <p className="mt-8 max-w-3xl text-lg italic leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-8 max-w-3xl text-lg leading-relaxed italic">
             None of these show up in a dashboard until it is too late to act.
           </p>
         </FadeIn>
@@ -190,29 +195,32 @@ export default function WorkshopsPage() {
 
       {/* ── Screen 4 — What it is, and is not ────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               Not a motivational talk.
             </h2>
           </SlideUp>
           <SlideUp delay={0.06}>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed">
               Created by Maher Kaddoura and grounded in his own experience of
-              rebuilding after profound loss, Bouncing Forward is a framework your
-              people walk, not just hear.
+              rebuilding after profound loss, Bouncing Forward is a framework
+              your people walk, not just hear.
             </p>
           </SlideUp>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <FadeIn>
-              <div className="h-full rounded-lg border border-border bg-card p-6 sm:p-8">
-                <p className="font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <div className="border-border bg-card h-full rounded-lg border p-6 sm:p-8">
+                <p className="text-brand-accent-text font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.08em] uppercase">
                   It is not
                 </p>
                 <ul className="mt-4 space-y-2.5">
                   {isNotItems.map((item) => (
                     <li key={item} className="flex gap-3 leading-relaxed">
-                      <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-border" />
+                      <span
+                        aria-hidden="true"
+                        className="bg-border mt-2 size-1.5 shrink-0 rounded-full"
+                      />
                       {item}
                     </li>
                   ))}
@@ -220,15 +228,15 @@ export default function WorkshopsPage() {
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
-              <div className="h-full rounded-lg border border-brand-accent/40 bg-card p-6 sm:p-8">
-                <p className="font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <div className="border-brand-accent/40 bg-card h-full rounded-lg border p-6 sm:p-8">
+                <p className="text-brand-accent-text font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.08em] uppercase">
                   It is
                 </p>
                 <p className="mt-4 leading-relaxed">
                   Honest and practical. Accept where things stand, draw on what
                   you have already survived, name a believable way forward, and
-                  take one small step that holds even when plans change. Practised
-                  in the room, not presented from the front.
+                  take one small step that holds even when plans change.
+                  Practised in the room, not presented from the front.
                 </p>
               </div>
             </FadeIn>
@@ -239,39 +247,42 @@ export default function WorkshopsPage() {
       {/* ── Screen 5 — The four formats ──────────────────────── */}
       <section
         id="formats"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
       >
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             One Framework, Four Depths
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             Choose the depth your organisation needs.
           </h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Same framework. Same storyline. Four depths of delivery — designed as
-            a ladder, not a menu of one-offs. Start light, see how your people
-            respond, and scale from there.
+          <p className="text-muted-foreground mt-6 max-w-3xl text-lg leading-relaxed">
+            Same framework. Same storyline. Four depths of delivery — designed
+            as a ladder, not a menu of one-offs. Start light, see how your
+            people respond, and scale from there.
           </p>
         </SlideUp>
         <Stagger className="mt-10 grid gap-6 lg:grid-cols-2">
           {formats.map((f, i) => (
             <StaggerItem key={f.name} className="h-full">
-              <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6 sm:p-8">
-                <p className="font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text">
+              <article className="border-border bg-card flex h-full flex-col rounded-lg border p-6 sm:p-8">
+                <p className="text-brand-accent-text font-[family-name:var(--font-display)] text-sm font-bold">
                   {String(i + 1).padStart(2, "0")} · {f.label}
                 </p>
                 <h3 className="mt-2 text-2xl font-extrabold">{f.name}</h3>
-                <p className="mt-2 italic text-muted-foreground">{f.tagline}</p>
-                <ul className="mt-5 flex-1 space-y-3 border-t border-border pt-5">
+                <p className="text-muted-foreground mt-2 italic">{f.tagline}</p>
+                <ul className="border-border mt-5 flex-1 space-y-3 border-t pt-5">
                   {f.rows.map((r) => (
                     <li key={r} className="flex gap-3 leading-relaxed">
-                      <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                      <span
+                        aria-hidden="true"
+                        className="bg-brand-accent mt-2 size-1.5 shrink-0 rounded-full"
+                      />
                       {r}
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 border-t border-border pt-4 font-semibold">
+                <p className="border-border mt-5 border-t pt-4 font-semibold">
                   {f.trade}
                 </p>
               </article>
@@ -282,12 +293,12 @@ export default function WorkshopsPage() {
 
       {/* ── Screen 6 — The storyline ─────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               Inside Every Format
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
               One storyline: start with the Path. Reveal the Compass.
             </h2>
           </SlideUp>
@@ -295,21 +306,21 @@ export default function WorkshopsPage() {
             <SlideUp delay={0.06}>
               <p>
                 Whether your organisation chooses 60 minutes or four weeks, the
-                same honest storyline runs underneath. It starts from where things
-                truly stand — and moves forward from there.
+                same honest storyline runs underneath. It starts from where
+                things truly stand — and moves forward from there.
               </p>
             </SlideUp>
             <SlideUp delay={0.1}>
               <p>
                 The Path is what you do: Accept, Reflect, Imagine, Act. The
                 Compass is what you draw on: Resilience, Support, Optimism,
-                Adaptability. It is never taught — it is revealed. We won’t spoil
-                how.
+                Adaptability. It is never taught — it is revealed. We won’t
+                spoil how.
               </p>
             </SlideUp>
           </div>
           <FadeIn>
-            <p className="mt-8 border-l-2 border-brand-accent pl-5 text-xl italic leading-relaxed">
+            <p className="border-brand-accent mt-8 border-l-2 pl-5 text-xl leading-relaxed italic">
               Participants leave with one recognition: “you walked in carrying
               this.”
             </p>
@@ -318,12 +329,12 @@ export default function WorkshopsPage() {
       </section>
 
       {/* ── Screen 7 — Logistics ─────────────────────────────── */}
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             Built for Your Room
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             What this asks of you: a room, and your people.
           </h2>
         </SlideUp>
@@ -333,21 +344,21 @@ export default function WorkshopsPage() {
             workbooks, wall cards and session materials supplied. Pair, trio and
             whole-room work throughout — suited to intact teams or mixed groups.
             In-room exercises are short and quick; the deeper self-reflection is
-            taken home to continue the journey. Many organisations begin with the
-            free webinar or a single Stepping Stone session, see how their people
-            respond, and scale from there.
+            taken home to continue the journey. Many organisations begin with
+            the free webinar or a single Stepping Stone session, see how their
+            people respond, and scale from there.
           </p>
         </SlideUp>
       </section>
 
       {/* ── Screen 8 — Enquiry (closing CTA) ─────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <FadeIn>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               We’ll help you choose the right depth — honestly.
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/85">
+            <p className="text-primary-foreground/85 mt-6 text-lg leading-relaxed">
               Tell us about your team and what they are carrying, and we will
               recommend a starting point — including telling you if the lighter
               option is the better fit.
@@ -359,7 +370,7 @@ export default function WorkshopsPage() {
                 invert
               />
             </div>
-            <p className="mt-8 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground/70">
+            <p className="text-primary-foreground/70 mt-8 font-[family-name:var(--font-display)] text-sm font-bold">
               Bouncing Forward · Maher Kaddoura · Delivered in partnership with
               Alliance
             </p>

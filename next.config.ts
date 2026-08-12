@@ -38,6 +38,7 @@ const nextConfig: NextConfig = {
     return [
       // Learn was renamed to The Course in the revised brief.
       { source: "/learn", destination: "/course", permanent: true },
+      { source: "/workshops", destination: "/enterprises", permanent: true },
       ...blog.map(([from, to]) => ({
         source: `/blog/${from}`,
         destination: `/blog/${to}`,
