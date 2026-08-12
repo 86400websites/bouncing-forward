@@ -58,13 +58,13 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  <div className="relative aspect-[16/9]">
+                  <div className="relative w-full pb-[56.25%]">
                     <Image
                       src={post.heroImage}
                       alt={post.title}
                       fill
                       sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
-                      className="object-cover"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">

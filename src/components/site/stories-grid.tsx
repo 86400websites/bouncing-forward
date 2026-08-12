@@ -42,17 +42,19 @@ function StoryTile({ story, index }: { story: Story; index: number }) {
         onClick={() => setOpen((o) => !o)}
         className="group flex flex-1 flex-col text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
       >
-        <div className="relative aspect-[3/2]">
+        <div className="relative w-full pb-[66.6667%]">
           {story.image ? (
             <Image
               src={story.image.src}
               alt={story.image.alt}
               fill
               sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
-              className="object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           ) : (
-            <IllustrationPlaceholder />
+            <div className="absolute inset-0">
+              <IllustrationPlaceholder />
+            </div>
           )}
         </div>
         <div className="flex items-start justify-between gap-3 p-5">
