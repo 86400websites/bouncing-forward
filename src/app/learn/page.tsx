@@ -83,13 +83,13 @@ export default function LearnPage() {
           {cards.map((c) => (
             <StaggerItem key={c.title} className="h-full">
               <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md">
-                <div className="relative aspect-[4/3] bg-muted">
+                <div className="relative w-full bg-muted pb-[75%]">
                   <Image
                     src={c.image.src}
                     alt={c.image.alt}
                     fill
                     sizes="(min-width: 768px) 30vw, 90vw"
-                    className="object-cover"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">

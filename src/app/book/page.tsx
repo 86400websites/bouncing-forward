@@ -249,20 +249,6 @@ export default function BookPage() {
             ))}
           </Stagger>
         </div>
-
-        <FadeIn>
-          <p className="text-muted-foreground mt-12 max-w-3xl text-lg leading-relaxed">
-            And to put it to work from page one — the{" "}
-            <strong className="text-foreground font-semibold">
-              Reflection Companion
-            </strong>{" "}
-            and the{" "}
-            <strong className="text-foreground font-semibold">
-              Compass &amp; Path Check
-            </strong>
-            .
-          </p>
-        </FadeIn>
       </section>
 
       {/* ── What Readers Say ─────────────────────────────────── */}
