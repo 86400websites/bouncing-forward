@@ -33,7 +33,7 @@ const compass = [
     title: "Resilience",
     descriptor: "Weathering the storms of adversity",
     image: {
-      src: "/assets/compass/resilience.png",
+      src: "/assets/compass/Resilience.png",
       alt: "Resilience — bamboo bending in the wind",
     },
   },
@@ -42,7 +42,7 @@ const compass = [
     title: "Adaptability",
     descriptor: "Navigating the rapids of change",
     image: {
-      src: "/assets/compass/adaptability.png",
+      src: "/assets/compass/Adaptability.png",
       alt: "Adaptability — a seedling within a cycle of arrows",
     },
   },
@@ -51,7 +51,7 @@ const compass = [
     title: "Optimism",
     descriptor: "Lighting the path through the darkness",
     image: {
-      src: "/assets/compass/optimism.png",
+      src: "/assets/compass/Optimism.png",
       alt: "Optimism — a rising sun",
     },
   },
@@ -60,7 +60,7 @@ const compass = [
     title: "Support",
     descriptor: "Weaving a net of collective strength",
     image: {
-      src: "/assets/compass/support.png",
+      src: "/assets/compass/Support.png",
       alt: "Support — hands cupping a growing seedling",
     },
   },
@@ -160,14 +160,14 @@ export default function BookPage() {
               <div className="mt-8">
                 <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $17.99" />
               </div>
-              <p className="mt-3 text-sm italic text-muted-foreground">
+              <p className="text-muted-foreground mt-3 text-sm italic">
                 2nd edition coming soon.
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="text-muted-foreground mt-1 text-sm">
                 Want everything?{" "}
                 <Link
                   href="/all-in"
-                  className="font-semibold text-brand-accent-text underline-offset-2 hover:underline"
+                  className="text-brand-accent-text font-semibold underline-offset-2 hover:underline"
                 >
                   Go All In — $49
                 </Link>
@@ -199,8 +199,8 @@ export default function BookPage() {
             The Path — and what it reveals.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-            Built on the four questions everyone in a setback is already circling
-            — put in order, as a Path with four steps.
+            Built on the four questions everyone in a setback is already
+            circling — put in order, as a Path with four steps.
           </p>
         </SlideUp>
 
@@ -226,8 +226,8 @@ export default function BookPage() {
         {/* Linking line: Path → Compass */}
         <FadeIn>
           <p className="mt-12 max-w-3xl text-lg leading-relaxed">
-            Walking the Path draws on strengths you already carry. The book names
-            them — that’s the Compass.
+            Walking the Path draws on strengths you already carry. The book
+            names them — that’s the Compass.
           </p>
         </FadeIn>
 
