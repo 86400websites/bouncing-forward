@@ -172,8 +172,8 @@ export default function AboutPage() {
             </div>
             <FadeIn delay={0.1}>
               <Image
-                src="/assets/about/acceptance-not-surrender.png"
-                alt="Illustration of the Hikmat Road Safety Program — a marked school-zone crossing keeping children safe"
+                src="/assets/about/road-safety-crossing.png"
+                alt="Illustration of the Hikmat Road Safety Program — children crossing safely at a marked school-zone pedestrian crossing"
                 width={1448}
                 height={1086}
                 sizes="(min-width: 1024px) 45vw, 100vw"
@@ -240,14 +240,18 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <SecondaryCta href="/book" label="Read the Book" invert />
-              <PrimaryCta href="/assess" label="Take the Check →" invert />
+              <PrimaryCta href="/assess" label="Find out where here is" invert />
             </div>
           </FadeIn>
         </div>
       </section>
 
       {/* ── Newsletter ───────────────────────────────────────── */}
-      <BeginYourCrossing />
+      <BeginYourCrossing
+        heading="Take The First Week with you"
+        body="Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave."
+        submitLabel="Send me The First Week"
+      />
     </>
   );
 }
