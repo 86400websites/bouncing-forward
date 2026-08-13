@@ -13,11 +13,11 @@ import {
 } from "@/components/site/begin-your-crossing";
 
 export const metadata: Metadata = {
-  title: { absolute: "Enterprises | Bouncing Forward" },
+  title: { absolute: "Enterprise | Bouncing Forward" },
   description:
     "One framework, four depths of delivery — from a 60-minute first step to a four-week embedded journey. Practical, honest workshops for teams navigating setbacks at work.",
   openGraph: {
-    title: "Enterprises | Bouncing Forward",
+    title: "Enterprise | Bouncing Forward",
     description:
       "One framework, four depths of delivery — from a 60-minute first step to a four-week embedded journey. Practical, honest workshops for teams navigating setbacks at work.",
   },
@@ -99,7 +99,7 @@ const isNotItems = [
   "Nothing is promised that a workshop cannot deliver.",
 ];
 
-export default function EnterprisesPage() {
+export default function EnterprisePage() {
   return (
     <>
       {/* ── Screen 1 — Hero ──────────────────────────────────── */}
@@ -108,7 +108,7 @@ export default function EnterprisesPage() {
           <div>
             <FadeIn>
               <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
-                Enterprises · For Organisations
+                Enterprise · For Organisations
               </p>
             </FadeIn>
             <SlideUp>
@@ -138,7 +138,7 @@ export default function EnterprisesPage() {
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/enterprises/workshop-hero.png"
+              src="/assets/enterprise/workshop-hero.png"
               alt="A facilitator leading a small team through the Accept, Reflect, Imagine, Action framework in a bright meeting room"
               width={1448}
               height={1086}

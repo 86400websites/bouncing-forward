@@ -28,7 +28,7 @@ export const COMPASS_PATH_NAV_LABEL = "Resources";
 /**
  * Top-level navigation, modelled on BF-Website-Mockup.html.
  * A NavItem is either a flat link or a dropdown with children.
- * Some destinations (/course, /all-in, /enterprises, /contact) are built in
+ * Some destinations (/course, /all-in, /enterprise, /contact) are built in
  * later steps; links are wired now and resolve as those pages land.
  */
 export type NavChild = { href: string; label: string };
@@ -63,7 +63,7 @@ export const NAV_ITEMS: NavItem[] = [
       { href: "/all-in#a-claim", label: "Claim Your Access" },
     ],
   },
-  { href: "/enterprises", label: "Enterprises" },
+  { href: "/enterprise", label: "Enterprise" },
   { href: "/contact", label: "Contact" },
 ];
 
