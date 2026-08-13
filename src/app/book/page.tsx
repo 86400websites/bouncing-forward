@@ -17,11 +17,11 @@ import { AMAZON_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "The Book | Bouncing Forward by Maher Kaddoura" },
   description:
-    "Not another book about moving on — a practical framework for life after loss: four elements, four steps, one real story. Read the first chapter free.",
+    "Not another book about moving on — four honest questions, in order, and a real story to walk them with.",
   openGraph: {
     title: "The Book | Bouncing Forward by Maher Kaddoura",
     description:
-      "Not another book about moving on — a practical framework for life after loss: four elements, four steps, one real story. Read the first chapter free.",
+      "Not another book about moving on — four honest questions, in order, and a real story to walk them with.",
   },
 };
 
@@ -33,8 +33,8 @@ const compass = [
     title: "Resilience",
     descriptor: "Weathering the storms of adversity",
     image: {
-      src: "/assets/framework/resilience.png",
-      alt: "Isometric illustration for Resilience — bamboo bending in a storm",
+      src: "/assets/compass/resilience.png",
+      alt: "Resilience — bamboo bending in the wind",
     },
   },
   {
@@ -42,8 +42,8 @@ const compass = [
     title: "Adaptability",
     descriptor: "Navigating the rapids of change",
     image: {
-      src: "/assets/framework/adaptability.jpg",
-      alt: "Isometric illustration for Adaptability — a figure steering through moving water",
+      src: "/assets/compass/adaptability.png",
+      alt: "Adaptability — a seedling within a cycle of arrows",
     },
   },
   {
@@ -51,8 +51,8 @@ const compass = [
     title: "Optimism",
     descriptor: "Lighting the path through the darkness",
     image: {
-      src: "/assets/framework/optimism.jpg",
-      alt: "Isometric illustration for Optimism — a lantern lighting a dark path",
+      src: "/assets/compass/optimism.png",
+      alt: "Optimism — a rising sun",
     },
   },
   {
@@ -60,8 +60,8 @@ const compass = [
     title: "Support",
     descriptor: "Weaving a net of collective strength",
     image: {
-      src: "/assets/framework/support.jpg",
-      alt: "Isometric illustration for Support — hands forming a net of strength",
+      src: "/assets/compass/support.png",
+      alt: "Support — hands cupping a growing seedling",
     },
   },
 ];
@@ -96,11 +96,11 @@ const path = [
   },
   {
     index: "04",
-    title: "Action",
+    title: "Act",
     descriptor: "Catalyzing change through initiative",
     image: {
       src: "/assets/framework/action.png",
-      alt: "Isometric illustration for Action — a first step taken on the path",
+      alt: "Act",
     },
   },
 ];
@@ -151,16 +151,14 @@ export default function BookPage() {
             </SlideUp>
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                Most books about loss ask you to accept it and wait for time to
-                help. This one hands you a framework — four elements and four
-                steps — to actively build a life from what’s left. Not advice to
-                “stay strong.” A compass and a path for the forest you’re
-                already standing in.
+                Most books about loss ask you to wait for time to help. This one
+                asks a better question — what does this ask of me now? — and
+                gives you a way to answer it, one step at a time.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8">
-                <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $14.45" />
+                <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $17.99" />
               </div>
               <p className="mt-3 text-sm italic text-muted-foreground">
                 2nd edition coming soon.
@@ -171,7 +169,7 @@ export default function BookPage() {
                   href="/all-in"
                   className="font-semibold text-brand-accent-text underline-offset-2 hover:underline"
                 >
-                  Go All In — $99
+                  Go All In — $49
                 </Link>
                 , downloadable copy of the book included.
               </p>
@@ -191,40 +189,6 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* ── The Promise ──────────────────────────────────────── */}
-      <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <SlideUp>
-            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
-              The Promise
-            </h2>
-          </SlideUp>
-          <div className="mt-6 space-y-4 text-lg leading-relaxed">
-            <SlideUp delay={0.04}>
-              <p>
-                They tell you time heals. They tell you to stay strong. They
-                tell you it gets easier.
-              </p>
-            </SlideUp>
-            <SlideUp delay={0.08}>
-              <p>
-                What they don’t tell you is this: a setback, faced alone and without
-                direction, doesn’t get easier — it just gets quieter, and
-                quieter isn’t the same as better. This book is the invitation to
-                ask a different question. Not “why did this happen to me?” but
-                “what does this ask of me now?”
-              </p>
-            </SlideUp>
-            <SlideUp delay={0.12}>
-              <p>
-                Because the most dangerous thing about loss isn’t the pain
-                itself. It’s letting the pain have the last word.
-              </p>
-            </SlideUp>
-          </div>
-        </div>
-      </section>
-
       {/* ── What's Inside ────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
@@ -232,35 +196,13 @@ export default function BookPage() {
             What’s Inside
           </p>
           <h2 className="mt-4 max-w-2xl text-3xl leading-tight font-extrabold sm:text-4xl">
-            Two tools. One way through.
+            The Path — and what it reveals.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-            Everything in Bouncing Forward flows from a single idea:{" "}
-            <strong className="font-semibold">
-              you need a compass and a path.
-            </strong>{" "}
-            Four lights to show you the direction. Four steps to get you moving.
+            Built on the four questions everyone in a setback is already circling
+            — put in order, as a Path with four steps.
           </p>
         </SlideUp>
-
-        {/* The 4-Element Compass */}
-        <div className="mt-12">
-          <SlideUp>
-            <h3 className="text-lg font-bold sm:text-xl">
-              The 4-Element Compass{" "}
-              <span className="text-muted-foreground font-normal">
-                — How you’re oriented
-              </span>
-            </h3>
-          </SlideUp>
-          <Stagger className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {compass.map((c) => (
-              <StaggerItem key={c.title} className="h-full">
-                <NumberedCard {...c} iconClassName="bg-white" />
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
 
         {/* The 4-Step Path */}
         <div className="mt-12">
@@ -276,6 +218,33 @@ export default function BookPage() {
             {path.map((p) => (
               <StaggerItem key={p.title} className="h-full">
                 <NumberedCard {...p} iconClassName="bg-white" />
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+
+        {/* Linking line: Path → Compass */}
+        <FadeIn>
+          <p className="mt-12 max-w-3xl text-lg leading-relaxed">
+            Walking the Path draws on strengths you already carry. The book names
+            them — that’s the Compass.
+          </p>
+        </FadeIn>
+
+        {/* The 4-Element Compass */}
+        <div className="mt-12">
+          <SlideUp>
+            <h3 className="text-lg font-bold sm:text-xl">
+              The 4-Element Compass{" "}
+              <span className="text-muted-foreground font-normal">
+                — How you’re oriented
+              </span>
+            </h3>
+          </SlideUp>
+          <Stagger className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {compass.map((c) => (
+              <StaggerItem key={c.title} className="h-full">
+                <NumberedCard {...c} iconClassName="bg-white" />
               </StaggerItem>
             ))}
           </Stagger>
@@ -329,6 +298,12 @@ export default function BookPage() {
               Placeholder endorsements, written in the book’s voice — real
               reader quotes replace these before launch.
             </p>
+            <div className="mt-8">
+              <ExternalCta
+                href={`${AMAZON_URL}#customerReviews`}
+                label="Leave a review on Amazon"
+              />
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -340,14 +315,16 @@ export default function BookPage() {
             The direction you’re looking for is already inside you.
           </h2>
           <div className="mt-8 flex justify-center">
-            <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $14.45" />
+            <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $17.99" />
           </div>
         </FadeIn>
       </section>
 
       {/* ── Begin Your Crossing (Book page copy) ─────────────── */}
       <BeginYourCrossing
-        body="Get the free Taking Stock Inventory and a monthly note on turning hardship into forward motion."
+        heading="Take The First Week with you"
+        body="Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month."
+        submitLabel="Send me The First Week"
         showFaqLink
       />
     </>
