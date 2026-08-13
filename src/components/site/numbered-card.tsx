@@ -43,7 +43,7 @@ export function NumberedCard({
     >
       <div
         className={cn(
-          "relative aspect-[4/3] overflow-hidden rounded-md",
+          "relative w-full overflow-hidden rounded-md pb-[75%]",
           iconClassName ?? "bg-muted",
         )}
       >
@@ -52,7 +52,7 @@ export function NumberedCard({
           alt={image.alt}
           fill
           sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
-          className="object-contain p-3"
+          className="absolute inset-0 h-full w-full object-contain p-3"
         />
       </div>
       <p className="mt-5 font-[family-name:var(--font-display)] text-sm font-extrabold tracking-[0.08em] text-brand-accent-text">

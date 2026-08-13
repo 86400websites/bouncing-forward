@@ -64,13 +64,13 @@ export default async function BlogPostPage({ params }: Params) {
 
         {/* ── Hero image ─────────────────────────────────────── */}
         <div className="mx-auto max-w-3xl px-5 pt-10 sm:px-6 lg:px-8">
-          <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
+          <div className="relative w-full overflow-hidden rounded-lg border border-border pb-[66.6667%]">
             <Image
               src={post.heroImage}
               alt={post.title}
               fill
               sizes="(min-width: 768px) 48rem, 100vw"
-              className="object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
               priority
             />
           </div>
@@ -101,13 +101,13 @@ export default async function BlogPostPage({ params }: Params) {
               case "image":
                 return block.src ? (
                   <figure key={i} className="my-10">
-                    <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
+                    <div className="relative w-full overflow-hidden rounded-lg border border-border pb-[66.6667%]">
                       <Image
                         src={block.src}
                         alt={block.text}
                         fill
                         sizes="(min-width: 768px) 48rem, 100vw"
-                        className="object-cover"
+                        className="absolute inset-0 h-full w-full object-cover"
                       />
                     </div>
                     <figcaption className="mt-3 text-center text-sm italic text-muted-foreground">

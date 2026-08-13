@@ -72,17 +72,19 @@ export function StoryCard({
         className,
       )}
     >
-      <div className="relative aspect-[4/3]">
+      <div className="relative w-full pb-[75%]">
         {image ? (
           <Image
             src={image.src}
             alt={image.alt}
             fill
             sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-            className="object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
-          <IllustrationPlaceholder />
+          <div className="absolute inset-0">
+            <IllustrationPlaceholder />
+          </div>
         )}
       </div>
       <div className="flex flex-1 flex-col p-6">
