@@ -20,11 +20,11 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: { absolute: "Free Resources | The Compass & the Path" },
   description:
-    "Put the framework to work: the 4-Element Compass, the 4-Step Path, and the Compass & Path Check.",
+    "Put the framework to work: the 4-Step Path, the 4-Element Compass, and the free Where’s Here? check.",
   openGraph: {
     title: "Free Resources | The Compass & the Path",
     description:
-      "Put the framework to work: the 4-Element Compass, the 4-Step Path, and the Compass & Path Check.",
+      "Put the framework to work: the 4-Step Path, the 4-Element Compass, and the free Where’s Here? check.",
   },
 };
 
@@ -37,8 +37,8 @@ const compass = [
     descriptor:
       "Not toughness. The bamboo that bends almost flat in a storm — and stands back up when it passes.",
     image: {
-      src: "/assets/framework/resilience.png",
-      alt: "Isometric illustration for Resilience — bamboo bending in a storm",
+      src: "/assets/compass/resilience.png",
+      alt: "Resilience — bamboo bending in the wind",
     },
   },
   {
@@ -47,8 +47,8 @@ const compass = [
     descriptor:
       "Loss takes more than a person or a plan — it takes a version of you. Adaptability is finding the shape of who’s left.",
     image: {
-      src: "/assets/framework/adaptability.jpg",
-      alt: "Isometric illustration for Adaptability — steering through moving water",
+      src: "/assets/compass/adaptability.png",
+      alt: "Adaptability — a seedling within a cycle of arrows",
     },
   },
   {
@@ -57,18 +57,18 @@ const compass = [
     descriptor:
       "Not forced positivity. A small, stubborn, renewable conviction that something good can still emerge.",
     image: {
-      src: "/assets/framework/optimism.jpg",
-      alt: "Isometric illustration for Optimism — a lantern lighting a dark path",
+      src: "/assets/compass/optimism.png",
+      alt: "Optimism — a rising sun",
     },
   },
   {
     index: "04",
     title: "Support",
     descriptor:
-      "No one faces any significant forest alone. Support flows both ways, or it doesn’t flow at all. Let people in — and let yourself be one of theirs.",
+      "No one faces any significant setback alone. Support flows both ways, or it doesn’t flow at all. Let people in — and let yourself be one of theirs.",
     image: {
-      src: "/assets/framework/support.jpg",
-      alt: "Isometric illustration for Support — hands forming a net of strength",
+      src: "/assets/compass/support.png",
+      alt: "Support — hands cupping a growing seedling",
     },
   },
 ];
@@ -80,7 +80,7 @@ const path = [
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
-      src: "/assets/framework/accept.png",
+      src: "/assets/framework/accept.jpg",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -106,12 +106,12 @@ const path = [
   },
   {
     index: "04",
-    title: "Action",
+    title: "Act",
     descriptor:
       "You will never feel fully ready. Begin anyway — the doing creates the readiness that waiting never will.",
     image: {
-      src: "/assets/framework/action.png",
-      alt: "Isometric illustration for Action — a first step taken on the path",
+      src: "/assets/framework/act.png",
+      alt: "Act — a first step taken on the path",
     },
   },
 ];
@@ -123,9 +123,13 @@ const tools = [
     cta: { kind: "soon" as const, label: "Explore" },
   },
   {
-    title: "The Compass & Path Check",
-    body: "Two minutes of honest reflection across all eight dimensions of the framework. See where you stand — and where your Bouncing Forward journey begins.",
-    cta: { kind: "link" as const, href: "/assess", label: "Take the Check →" },
+    title: "Where’s Here?",
+    body: "Ten honest statements, two minutes. See where you stand on the Path — the full picture, including the Compass, is inside All In.",
+    cta: {
+      kind: "link" as const,
+      href: "/assess",
+      label: "Find out where here is →",
+    },
   },
 ];
 
@@ -165,9 +169,9 @@ export default function ResourcesPage() {
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
                 A framework you only understand is just an idea. A framework you
                 use becomes a way forward. This is where Bouncing Forward stops
-                being a book and starts being your own next chapter — four
-                elements to steady how you’re oriented, four steps to move you
-                forward, and the tools to begin today.
+                being a book and starts being your own next chapter — four steps
+                to move you forward, four elements to steady how you’re
+                oriented, and the tools to begin today.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
@@ -176,15 +180,15 @@ export default function ResourcesPage() {
                   href="/all-in"
                   className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  Go All In — $99
+                  Go All In — $49
                 </Link>
               </div>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/framework/compass-lantern-stepping-stones.jpg"
-              alt="Hands holding a lantern and compass above stepping stones across a dark forest floor toward light"
+              src="/assets/assess/wheres-here-walker.png"
+              alt="Hands holding a lantern and compass above stepping stones leading through the dark toward the light"
               width={1535}
               height={1024}
               priority
@@ -211,27 +215,27 @@ export default function ResourcesPage() {
               <SlideUp delay={0.06}>
                 <p className="mt-6 text-lg leading-relaxed">
                   Bouncing Forward ={" "}
-                  <strong className="font-semibold">A Compass</strong> (which
-                  way is forward){" "}
-                  <strong className="font-semibold">+ A Path</strong> (how you
-                  get there)
+                  <strong className="font-semibold">A Path</strong> (how you
+                  move) <strong className="font-semibold">+ A Compass</strong>{" "}
+                  (what you’re drawing on while you do)
                 </p>
               </SlideUp>
               <SlideUp delay={0.1}>
                 <p className="text-muted-foreground mt-4 leading-relaxed">
-                  Not addition of convenience — dependence. A compass with no
-                  path leaves you oriented and standing still, waiting for a
-                  readiness that may never come. A path with no compass gets you
-                  moving, but you can circle for years without knowing it.
-                  Together, one gives you direction, the other gives you motion
-                  — and that’s how you make it through the forest.
+                  Not addition of convenience — dependence. A path with no
+                  compass gets you moving, but you can circle for years without
+                  knowing it. A compass with no path leaves you oriented and
+                  standing still, waiting for a readiness that may never come.
+                  Together, the path gives you motion, the compass gives you
+                  direction — and that’s how you keep moving when the way isn’t
+                  clear.
                 </p>
               </SlideUp>
               <SlideUp delay={0.14}>
                 <blockquote className="border-brand-accent mt-8 border-l-2 pl-5 text-xl leading-relaxed italic sm:text-2xl">
                   The compass doesn’t tell you where you’re going. It tells you
-                  which direction is forward — even when the trees are too dense
-                  to see.
+                  which direction is forward — even when the ground ahead is
+                  hard to read.
                 </blockquote>
               </SlideUp>
             </div>
@@ -249,48 +253,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* ── The 4-Element Compass (#compass) ─────────────────── */}
-      <section
-        id="compass"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
-      >
-        <SlideUp>
-          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
-            How You’re Oriented
-          </p>
-          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
-            The 4-Element Compass
-          </h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-            Life is marked by storms. Our identity isn’t shaped by the storm
-            itself — it’s shaped by the choices we make while weathering it.
-            These four elements aren’t a sequence. Think of them as four lights
-            always burning inside you. The brighter you keep each one, the
-            clearer your way forward.
-          </p>
-        </SlideUp>
-        <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {compass.map((c) => (
-            <StaggerItem key={c.title} className="h-full">
-              <NumberedCard {...c} headingLevel="h3" iconClassName="bg-white" />
-            </StaggerItem>
-          ))}
-        </Stagger>
-        <FadeIn>
-          <div className="border-border bg-muted mt-10 flex flex-col gap-5 rounded-lg border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <p className="max-w-2xl leading-relaxed">
-              Try it now — Two minutes of honest reflection with the free
-              Compass &amp; Path Check. See which of your four lights are
-              burning bright.
-            </p>
-            <div className="shrink-0">
-              <PrimaryCta href="/assess" label="Take the Check →" />
-            </div>
-          </div>
-        </FadeIn>
-      </section>
-
-      {/* ── The 4-Step Path (#path) ──────────────────────────── */}
+      {/* ── The 4-Step Path (#path) — MOVED UP, before Compass ── */}
       <section className="bg-muted">
         <div
           id="path"
@@ -304,11 +267,10 @@ export default function ResourcesPage() {
               The 4-Step Path
             </h2>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-              The compass opens your eyes. The path moves your feet. These four
-              steps aren’t a formula and they don’t move in a straight line —
-              least of all after a setback. But they’re stepping stones: one
-              foot in front of the other, with intention, rather than simply
-              enduring.
+              The path moves your feet. These four steps aren’t a formula, and
+              they don’t move in a straight line — least of all after a setback.
+              They’re stepping stones: one foot after the other, with intention,
+              rather than simply enduring.
             </p>
           </SlideUp>
           <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -326,7 +288,60 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* ── Put it to work (#inventory) ──────────────────────── */}
+      {/* ── Try it now banner — between Path and Compass ──────── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <FadeIn>
+          <div className="border-border bg-card grid items-center gap-6 overflow-hidden rounded-lg border sm:grid-cols-[1fr_1.4fr]">
+            <div className="relative w-full pb-[100%] sm:pb-[75%]">
+              <Image
+                src="/assets/assess/wheres-here-walker.png"
+                alt="A walker following a marked path toward a flag on the horizon, a map at the start of the trail"
+                fill
+                sizes="(min-width: 640px) 40vw, 100vw"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+            <div className="p-6 sm:p-8">
+              <p className="max-w-2xl text-lg leading-relaxed">
+                Try it now — ten honest statements, two minutes, no one keeping
+                score. See where you stand on the Path.
+              </p>
+              <div className="mt-6">
+                <PrimaryCta href="/assess" label="Find out where here is →" />
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* ── The 4-Element Compass (#compass) — MOVED DOWN ─────── */}
+      <section
+        id="compass"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+      >
+        <SlideUp>
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
+            How You’re Oriented
+          </p>
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
+            The 4-Element Compass
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed">
+            Life is marked by setbacks. Who you become isn’t shaped by the
+            setback itself — it’s shaped by the choices you make while moving
+            through it. These four elements aren’t a sequence, and they don’t
+            run out. The more you draw on each one, the clearer your next step
+            becomes.
+          </p>
+        </SlideUp>
+        <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {compass.map((c) => (
+            <StaggerItem key={c.title} className="h-full">
+              <NumberedCard {...c} headingLevel="h3" iconClassName="bg-white" />
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </section>
       <section
         id="inventory"
         className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
@@ -422,7 +437,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── Assess block (shared navy pre-footer) ────────────── */}
-      <AssessBlock showGoAllIn />
+      <AssessBlock
+        showGoAllIn
+        headline="From here, forward. But first — where’s here?"
+        lines={[
+          "A few minutes. Complete privacy. No right answers, no timeline, no one keeping score.",
+          "Just the clearest view you’ve had of your own life since everything changed.",
+        ]}
+        ctaLabel="Find out where here is"
+      />
 
       {/* ── Newsletter ───────────────────────────────────────── */}
       <BeginYourCrossing />

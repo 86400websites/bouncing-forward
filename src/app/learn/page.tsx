@@ -20,7 +20,7 @@ const cards = [
   {
     kicker: "Online Course",
     title: "The Bouncing Forward Course",
-    body: "The book’s companion course. Eight guided modules across the 4 Elements and 4 Steps — each with a short video, a downloadable companion guide, and space to build your own Taking Stock plan as you go. Not a lecture. A crossing, one module at a time.",
+    body: "The book’s companion course. Eight guided modules across the 4 Elements and 4 Steps — each with a short video, a downloadable companion guide, and space to build your own plan as you go. Not a lecture. A crossing, one module at a time.",
     cta: "Start the Course",
     image: {
       src: "/assets/learn/course-screen.jpg",
@@ -164,7 +164,7 @@ export default function LearnPage() {
               <ComingSoonCta label="Start the Course" invert />
               <PrimaryCta
                 href="#begin-your-crossing"
-                label="Get the Free Taking Stock Inventory"
+                label="Get The First Week"
                 invert
               />
             </div>

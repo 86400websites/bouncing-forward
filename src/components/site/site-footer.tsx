@@ -43,7 +43,7 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-5 font-[family-name:var(--font-display)] text-xl font-extrabold">
-              Grief doesn’t get the last word.
+              Setbacks don’t get the last word.
             </p>
             <p className="mt-3 max-w-xs italic leading-relaxed text-primary-foreground/75">
               &ldquo;Not going back to who you were. Going forward to who you

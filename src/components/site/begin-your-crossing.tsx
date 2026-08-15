@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
  * successful subscription.
  */
 export function BeginYourCrossing({
-  heading = "Begin Your Next Chapter",
-  body = "The direction you need hasn’t disappeared — it’s waiting to be found. Get the free Taking Stock Inventory, plus a monthly note on finding your way forward.",
-  submitLabel = "Subscribe",
+  heading = "Take The First Week with you",
+  body = "Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave.",
+  submitLabel = "Send me The First Week",
   showFaqLink = false,
 }: {
   heading?: string;
