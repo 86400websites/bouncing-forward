@@ -46,7 +46,7 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { href: "/compass-and-path#compass", label: "The 4-Element Compass" },
       { href: "/compass-and-path#path", label: "The 4-Step Path" },
-      { href: "/assess", label: "The Compass & Path Check" },
+      { href: "/assess", label: "Where’s Here?" },
       { href: "/stories", label: "Stories" },
       { href: "/blog", label: "Blog" },
       { href: "/podcast", label: "Podcast" },

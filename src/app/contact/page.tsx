@@ -16,9 +16,6 @@ export const metadata: Metadata = {
 
 /* Copy source: BF-Website-Copy-For-Sozana-2.docx — Contact (/contact), verbatim. */
 
-const NEWSLETTER_HEADING = "Begin Your Next Chapter";
-const NEWSLETTER_BODY =
-  "The direction you need hasn’t disappeared — it’s waiting to be found. Get the free Taking Stock Inventory, plus a monthly note on finding your way forward.";
 
 export default function ContactPage() {
   return (
@@ -52,7 +49,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Newsletter ───────────────────────────────────────── */}
-      <BeginYourCrossing heading={NEWSLETTER_HEADING} body={NEWSLETTER_BODY} />
+      <BeginYourCrossing />
     </>
   );
 }
