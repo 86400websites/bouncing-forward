@@ -55,10 +55,24 @@ const fourWays = [
   },
 ];
 
-const freePoints =
-  "The two-minute check. The stories. The blog. The First Week, free to download. And a free preview of the course — Module 1, no purchase needed.";
-const allInPoints =
-  "The full course, taught by Maher himself — and still growing, at no extra cost. The book and the 30-Day Journal, yours to download. A letter from Maher every month, plus the full archive. And every new tool we launch, included — starting with the full assessment, coming with the second edition of the book.";
+const freeIncludes = [
+  "The Two-Minute Check — an honest place to start from.",
+  "The book’s first chapter.",
+  "The stories.",
+  "The blog.",
+  "Seven downloadable reflection exercises.",
+  "A weekly note.",
+  "The book’s first chapter.",
+];
+const allInIncludes = [
+  "Everything that’s free.",
+  "The electronic book.",
+  "The full course.",
+  "The 30-Day Journal, yours to download.",
+  "A letter from Maher every month.",
+  "Every new tool we launch.",
+  "Lifetime membership.",
+];
 
 export default function HomePage() {
   return (
@@ -201,32 +215,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Screen 4 — One honest price ──────────────────────── */}
+      {/* ── Screen 4 — Start here and Move Forward ───────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
         <SlideUp>
-          <p className="text-center text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-            One Honest Price
-          </p>
-          <h2 className="mx-auto mt-4 max-w-3xl text-center text-3xl font-extrabold leading-tight sm:text-4xl">
-            Finding out where you are is free. The work is one price, once.
+          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold leading-tight sm:text-4xl">
+            Start here and Move Forward
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">
+            Sign up for free to take the first step or go All-In for a lifetime
+            of benefits.
+          </p>
         </SlideUp>
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <FadeIn>
             <div className="flex h-full flex-col rounded-lg border border-border bg-card p-8">
               <h3 className="text-2xl font-extrabold">Free</h3>
-              <p className="mt-1 font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                No signup, no card.
-              </p>
-              <p className="mt-5 flex-1 leading-relaxed text-muted-foreground">
-                {freePoints}
-              </p>
+              <ul className="mt-6 flex-1 space-y-3">
+                {freeIncludes.map((item, i) => (
+                  <li key={i} className="flex gap-3 leading-relaxed">
+                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
               <div className="mt-8">
                 <Link
                   href="/assess"
                   className="inline-flex items-center rounded-full border border-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  Find out where here is →
+                  Start with the Check →
                 </Link>
               </div>
             </div>
@@ -234,14 +251,16 @@ export default function HomePage() {
           <FadeIn delay={0.08}>
             <div className="flex h-full flex-col rounded-lg border-2 border-brand-accent bg-card p-8">
               <h3 className="text-2xl font-extrabold">
-                All In — <span className="text-brand-accent-text">$49</span>, once.
+                All In — <span className="text-brand-accent-text">$49.00</span>
               </h3>
-              <p className="mt-1 font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                Everything, together.
-              </p>
-              <p className="mt-5 flex-1 leading-relaxed text-muted-foreground">
-                {allInPoints}
-              </p>
+              <ul className="mt-6 flex-1 space-y-3">
+                {allInIncludes.map((item, i) => (
+                  <li key={i} className="flex gap-3 leading-relaxed">
+                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
               <div className="mt-8">
                 <Link
                   href="/all-in"
@@ -253,11 +272,6 @@ export default function HomePage() {
             </div>
           </FadeIn>
         </div>
-        <FadeIn>
-          <p className="mt-8 text-center leading-relaxed text-muted-foreground">
-            Nothing here renews behind your back. Free is free, and $49 is once.
-          </p>
-        </FadeIn>
       </section>
 
       {/* ── Screen 5 — The next step is yours ────────────────── */}
