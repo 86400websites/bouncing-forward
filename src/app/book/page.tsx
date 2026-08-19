@@ -99,7 +99,7 @@ const path = [
     title: "Act",
     descriptor: "Catalyzing change through initiative",
     image: {
-      src: "/assets/framework/action.png",
+      src: "/assets/framework/act.png",
       alt: "Act",
     },
   },
