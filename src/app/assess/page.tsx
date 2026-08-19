@@ -1,27 +1,17 @@
 import type { Metadata } from "next";
-import { CompassCheck } from "@/components/assess/compass-check";
+import { QuickLook } from "@/components/assess/quick-look";
 
 export const metadata: Metadata = {
-  title: { absolute: "The Compass & Path Check | Free Self-Check" },
+  title: { absolute: "Where’s Here? — The Quick Look | Bouncing Forward" },
   description:
-    "Eight questions. Two minutes of honest reflection. See which of your four lights are burning bright, which have gone faint — and where you stand on the path.",
+    "Ten honest statements. About two minutes. No right answers, no timeline, no one keeping score — just a quick, honest look at where you’re standing.",
   openGraph: {
-    title: "The Compass & Path Check | Free Self-Check",
+    title: "Where’s Here? — The Quick Look | Bouncing Forward",
     description:
-      "Eight questions. Two minutes of honest reflection. See which of your four lights are burning bright, which have gone faint — and where you stand on the path.",
+      "Ten honest statements. About two minutes. No right answers, no timeline, no one keeping score — just a quick, honest look at where you’re standing.",
   },
 };
 
-/*
- * The Compass & Path Check — three states on one page (Intro → Questions →
- * Results), all owned by the client component per BF-Check-Build-Instructions.
- * No page-level hero: the intro screen is the entry state.
- */
-
 export default function AssessPage() {
-  return (
-    <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-      <CompassCheck />
-    </section>
-  );
+  return <QuickLook />;
 }

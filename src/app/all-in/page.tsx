@@ -12,11 +12,11 @@ import { AMAZON_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "All In | The Complete Bouncing Forward Experience" },
   description:
-    "$99 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
+    "$49 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
   openGraph: {
     title: "All In | The Complete Bouncing Forward Experience",
     description:
-      "$99 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
+      "$49 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
   },
 };
 
@@ -48,13 +48,13 @@ export default function AllInPage() {
                 All In is the complete Bouncing Forward experience — a
                 downloadable copy of the book, the full nine-module course, the
                 journal, and a premium monthly newsletter written for the hardest
-                seasons. One decision, $99, everything open — including
+                seasons. One decision, $49, everything open — including
                 everything new we add to Bouncing Forward, as it lands.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap gap-4">
-                <PrimaryCta href="#a-claim" label="Go All In — $99 →" />
+                <PrimaryCta href="#a-claim" label="Go All In — $49 →" />
                 <ExternalCta href={AMAZON_URL} label="Buy Just the Book — $14.45 →" />
               </div>
               <p className="mt-3 text-sm italic text-muted-foreground">
@@ -196,7 +196,7 @@ export default function AllInPage() {
               Claim Your Access
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
-              Go All In for $99 and everything opens — a downloadable copy of the
+              Go All In for $49 and everything opens — a downloadable copy of the
               book included. Already a member? Enter your access code below.
             </p>
             <div className="mt-8">
@@ -204,7 +204,7 @@ export default function AllInPage() {
                 href="#a-claim"
                 className="inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
-                Go All In — $99
+                Go All In — $49
               </a>
             </div>
             <ClaimAccessForm />

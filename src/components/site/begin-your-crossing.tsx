@@ -69,9 +69,7 @@ export function BeginYourCrossing({
               {submitLabel}
             </button>
           </form>
-          <p id="byc-status" className="mt-3 text-sm text-muted-foreground">
-            Sign-ups open at launch — the newsletter connects in sprint 8.
-          </p>
+          <p id="byc-status" className="sr-only" aria-live="polite" />
 
           {showFaqLink ? (
             <p className="mt-6 text-sm text-muted-foreground">
