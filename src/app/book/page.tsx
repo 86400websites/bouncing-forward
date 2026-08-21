@@ -33,7 +33,7 @@ const compass = [
     title: "Resilience",
     descriptor: "Weathering the storms of adversity",
     image: {
-      src: "/assets/compass/Resilience.png",
+      src: "/assets/compass/resilience.png",
       alt: "Resilience — bamboo bending in the wind",
     },
   },
@@ -42,7 +42,7 @@ const compass = [
     title: "Adaptability",
     descriptor: "Navigating the rapids of change",
     image: {
-      src: "/assets/compass/Adaptability.png",
+      src: "/assets/compass/adaptability.png",
       alt: "Adaptability — a seedling within a cycle of arrows",
     },
   },
@@ -51,7 +51,7 @@ const compass = [
     title: "Optimism",
     descriptor: "Lighting the path through the darkness",
     image: {
-      src: "/assets/compass/Optimism.png",
+      src: "/assets/compass/optimism.png",
       alt: "Optimism — a rising sun",
     },
   },
@@ -60,7 +60,7 @@ const compass = [
     title: "Support",
     descriptor: "Weaving a net of collective strength",
     image: {
-      src: "/assets/compass/Support.png",
+      src: "/assets/compass/support.png",
       alt: "Support — hands cupping a growing seedling",
     },
   },
@@ -72,7 +72,7 @@ const path = [
     title: "Accept",
     descriptor: "Embracing the inevitable",
     image: {
-      src: "/assets/framework/accept.png",
+      src: "/assets/framework/accept.jpg",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -81,7 +81,7 @@ const path = [
     title: "Reflect",
     descriptor: "Uncovering insight from a setback",
     image: {
-      src: "/assets/framework/reflect.png",
+      src: "/assets/framework/reflect.jpg",
       alt: "Isometric illustration for Reflect — still water mirroring the sky",
     },
   },
@@ -99,7 +99,7 @@ const path = [
     title: "Act",
     descriptor: "Catalyzing change through initiative",
     image: {
-      src: "/assets/framework/act.png",
+      src: "/assets/framework/act.jpg",
       alt: "Act",
     },
   },

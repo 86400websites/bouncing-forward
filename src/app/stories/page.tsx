@@ -4,7 +4,6 @@ import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
   PrimaryCta,
-  SecondaryCta,
 } from "@/components/site/begin-your-crossing";
 import { StoriesGrid, type Story } from "@/components/site/stories-grid";
 
@@ -154,13 +153,18 @@ export default function StoriesPage() {
                 These stories are your permission to make the same one.
               </p>
             </SlideUp>
+            <SlideUp delay={0.16}>
+              <div className="mt-8">
+                <PrimaryCta href="/all-in" label="Go All In — $49" />
+              </div>
+            </SlideUp>
           </div>
           <FadeIn delay={0.1}>
             <Image
-              src="/assets/stories/stories-hero.jpg"
-              alt="A traveller looking out over a wide landscape — real people who turned loss into direction"
-              width={1448}
-              height={1086}
+              src="/assets/stories/stories-hero.png"
+              alt="A person stepping out of an open book onto a path winding toward the sunrise — stepping into a new chapter"
+              width={1536}
+              height={1024}
               priority
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="w-full rounded-xl"
@@ -216,10 +220,10 @@ export default function StoriesPage() {
             </div>
             <FadeIn delay={0.1}>
               <Image
-                src="/assets/stories/hikmat-road-safety.jpg"
-                alt="Illustration of the Hikmat Road Safety Program — children playing safely beside a marked road"
-                width={1535}
-                height={1024}
+                src="/assets/stories/playground.png"
+                alt="Children playing safely in a school playground — the Hikmat Road Safety Program"
+                width={1448}
+                height={1086}
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="w-full rounded-xl"
               />
@@ -269,24 +273,6 @@ export default function StoriesPage() {
               <PrimaryCta href="/contact" label="Share Your Story →" />
             </div>
           </SlideUp>
-        </div>
-      </section>
-
-      {/* ── Closing (navy band) ──────────────────────────────── */}
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
-              Every one of these people stood at the edge of the same forest.
-            </h2>
-            <p className="text-primary-foreground/85 mt-4 text-lg leading-relaxed">
-              Then they found their own way through.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <PrimaryCta href="/assess" label="Take the Check →" invert />
-              <SecondaryCta href="/book" label="Read the Book" invert />
-            </div>
-          </FadeIn>
         </div>
       </section>
 
