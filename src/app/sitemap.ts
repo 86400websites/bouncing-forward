@@ -11,6 +11,7 @@ const routes = [
   "/assess",
   "/enterprise",
   "/contact",
+  "/faq",
   "/all-in",
   "/blog",
   "/podcast",

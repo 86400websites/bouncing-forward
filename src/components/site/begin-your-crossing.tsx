@@ -74,9 +74,12 @@ export function BeginYourCrossing({
           {showFaqLink ? (
             <p className="mt-6 text-sm text-muted-foreground">
               Have a question?{" "}
-              <span className="cursor-default font-semibold">
-                FAQ coming soon
-              </span>
+              <Link
+                href="/faq"
+                className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
+              >
+                Read the FAQ
+              </Link>
             </p>
           ) : null}
         </div>
