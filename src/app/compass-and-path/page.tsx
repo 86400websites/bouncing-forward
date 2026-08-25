@@ -47,7 +47,7 @@ const compass = [
     descriptor:
       "Loss takes more than a person or a plan — it takes a version of you. Adaptability is finding the shape of who’s left.",
     image: {
-      src: "/assets/compass/Adaptability.png",
+      src: "/assets/compass/Adaptabilit.png",
       alt: "Adaptability — a seedling within a cycle of arrows",
     },
   },
@@ -57,7 +57,7 @@ const compass = [
     descriptor:
       "Not forced positivity. A small, stubborn, renewable conviction that something good can still emerge.",
     image: {
-      src: "/assets/compass/Optimism.png",
+      src: "/assets/compass/Optimis.png",
       alt: "Optimism — a rising sun",
     },
   },
@@ -67,7 +67,7 @@ const compass = [
     descriptor:
       "No one faces any significant setback alone. Support flows both ways, or it doesn’t flow at all. Let people in — and let yourself be one of theirs.",
     image: {
-      src: "/assets/compass/Support.png",
+      src: "/assets/compass/Suppor.png",
       alt: "Support — hands cupping a growing seedling",
     },
   },
