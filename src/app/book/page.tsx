@@ -42,7 +42,7 @@ const compass = [
     title: "Adaptability",
     descriptor: "Navigating the rapids of change",
     image: {
-      src: "/assets/compass/adaptability.png",
+      src: "/assets/compass/Adaptabilit.png",
       alt: "Adaptability — a seedling within a cycle of arrows",
     },
   },
@@ -51,7 +51,7 @@ const compass = [
     title: "Optimism",
     descriptor: "Lighting the path through the darkness",
     image: {
-      src: "/assets/compass/optimism.png",
+      src: "/assets/compass/Optimis.png",
       alt: "Optimism — a rising sun",
     },
   },
@@ -60,7 +60,7 @@ const compass = [
     title: "Support",
     descriptor: "Weaving a net of collective strength",
     image: {
-      src: "/assets/compass/support.png",
+      src: "/assets/compass/Suppor.png",
       alt: "Support — hands cupping a growing seedling",
     },
   },
@@ -81,7 +81,7 @@ const path = [
     title: "Reflect",
     descriptor: "Uncovering insight from a setback",
     image: {
-      src: "/assets/framework/reflect.jpg",
+      src: "/assets/framework/reflect.png",
       alt: "Isometric illustration for Reflect — still water mirroring the sky",
     },
   },
@@ -99,7 +99,7 @@ const path = [
     title: "Act",
     descriptor: "Catalyzing change through initiative",
     image: {
-      src: "/assets/framework/act.jpg",
+      src: "/assets/framework/act.png",
       alt: "Act",
     },
   },
