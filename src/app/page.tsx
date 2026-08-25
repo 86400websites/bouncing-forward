@@ -65,13 +65,14 @@ const freeIncludes = [
   "The book’s first chapter.",
 ];
 const allInIncludes = [
-  "Everything that’s free.",
-  "The electronic book.",
-  "The full course.",
-  "The 30-Day Journal, yours to download.",
-  "A letter from Maher every month.",
-  "Every new tool we launch.",
   "Lifetime membership.",
+  "Everything that’s free.",
+  "The book.",
+  "The workbook.",
+  "The 30-Day Journal.",
+  "The course.",
+  "The Monthly Letter.",
+  "The Webinar Library.",
 ];
 
 export default function HomePage() {
