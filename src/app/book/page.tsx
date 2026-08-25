@@ -33,7 +33,7 @@ const compass = [
     title: "Resilience",
     descriptor: "Weathering the storms of adversity",
     image: {
-      src: "/assets/compass/resilience.png",
+      src: "/assets/compass/Resilience.png",
       alt: "Resilience — bamboo bending in the wind",
     },
   },
@@ -72,7 +72,7 @@ const path = [
     title: "Accept",
     descriptor: "Embracing the inevitable",
     image: {
-      src: "/assets/framework/accept.jpg",
+      src: "/assets/framework/accept.png",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },

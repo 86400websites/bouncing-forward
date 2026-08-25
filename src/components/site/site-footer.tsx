@@ -96,6 +96,9 @@ export function SiteFooter() {
             <span className="text-primary-foreground/85">Part of Half a Life</span>
           </p>
           <p className="flex gap-4">
+            <Link href="/faq" className="transition-colors hover:text-brand-accent">
+              FAQ
+            </Link>
             <Link href="/privacy" className="transition-colors hover:text-brand-accent">
               Privacy
             </Link>
