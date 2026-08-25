@@ -57,9 +57,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/all-in",
     children: [
       { href: "/all-in#a-inside", label: "What’s Inside" },
-      { href: "/all-in#a-journal", label: "The 30-Day Journal" },
-      { href: "/all-in#a-course", label: "The Course" },
-      { href: "/all-in#a-letter", label: "The Monthly Letter" },
+      { href: "/all-in#a-included", label: "What’s Included" },
       { href: "/all-in#a-claim", label: "Claim Your Access" },
     ],
   },

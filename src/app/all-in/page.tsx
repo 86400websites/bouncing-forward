@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FadeIn, SlideUp } from "@/components/motion/primitives";
+import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
   ExternalCta,
@@ -12,15 +12,53 @@ import { AMAZON_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "All In | The Complete Bouncing Forward Experience" },
   description:
-    "$49 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
+    "$49, once, for everything — a downloadable copy of the book and workbook, the course, the 30-Day Journal, the Monthly Letter, the Webinar Library, and everything new as it lands.",
   openGraph: {
     title: "All In | The Complete Bouncing Forward Experience",
     description:
-      "$49 for everything — a downloadable copy of the book, the full nine-module course, the 30-Day Journal, a premium monthly newsletter, and everything new we add.",
+      "$49, once, for everything — a downloadable copy of the book and workbook, the course, the 30-Day Journal, the Monthly Letter, the Webinar Library, and everything new as it lands.",
   },
 };
 
 /* Copy source: BF-Website-Copy-For-Sozana-2.docx — All In (/all-in), verbatim. */
+
+const allInFeatures = [
+  {
+    title: "Lifetime membership",
+    body: "All In gives you lifetime access — no subscription, no annual membership renewal. Pay once and everything is yours, including new material as it’s added.",
+    img: "/assets/all-in/lifetime.png",
+  },
+  {
+    title: "The book (electronic edition)",
+    body: "Bouncing Forward, cover to cover — the full framework behind everything else in the package.",
+    img: "/assets/all-in/book.png",
+  },
+  {
+    title: "The workbook (electronic edition)",
+    body: "Structured exercises that walk alongside the book, chapter by chapter.",
+    img: "/assets/all-in/workbook.png",
+  },
+  {
+    title: "The 30-Day Journal",
+    body: "One page a day for a month. Small, steady prompts that help you find your footing.",
+    img: "/assets/all-in/journal.png",
+  },
+  {
+    title: "The Course",
+    body: "The course with downloadable worksheets for every module — and new course material added to your account as it lands.",
+    img: "/assets/all-in/course.png",
+  },
+  {
+    title: "The Monthly Letter from Maher",
+    body: "Written by Maher and delivered every month, exclusively to members. Practical tools you can put to work straight away. And every letter is stored for you, so when you need one again — this month’s or one from a year ago — it’s right where you left it.",
+    img: "/assets/all-in/monthly-letter.png",
+  },
+  {
+    title: "The Webinar Library",
+    body: "Free access to every Bouncing Forward webinar. Each one is stored in your member library, so you can return to any session whenever you need it.",
+    img: "/assets/all-in/webinar-library.png",
+  },
+];
 
 
 export default function AllInPage() {
@@ -46,16 +84,16 @@ export default function AllInPage() {
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
                 All In is the complete Bouncing Forward experience — a
-                downloadable copy of the book, the full nine-module course, the
-                journal, and a premium monthly newsletter written for the hardest
-                seasons. One decision, $49, everything open — including
-                everything new we add to Bouncing Forward, as it lands.
+                downloadable copy of the book and workbook, the course, the
+                journal, and a monthly letter written for the hardest seasons.
+                One decision, $49, everything open — including everything new we
+                add to Bouncing Forward, as it lands.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap gap-4">
                 <PrimaryCta href="#a-claim" label="Go All In — $49 →" />
-                <ExternalCta href={AMAZON_URL} label="Buy Just the Book — $14.45 →" />
+                <ExternalCta href={AMAZON_URL} label="Buy Just the Book — $17.95 →" />
               </div>
               <p className="mt-3 text-sm italic text-muted-foreground">
                 2nd edition coming soon.
@@ -88,100 +126,53 @@ export default function AllInPage() {
         </FadeIn>
       </section>
 
-      {/* ── The 30-Day Journal (#a-journal) ──────────────────── */}
+      {/* ── All In $49. Once. Yours for life. (#a-included) ──── */}
       <section className="bg-muted">
         <div
-          id="a-journal"
-          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+          id="a-included"
+          className="mx-auto max-w-5xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
         >
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <SlideUp>
-                <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                  All In · Included
-                </p>
-                <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
-                  The 30-Day Journal
-                </h2>
-              </SlideUp>
-              <SlideUp delay={0.06}>
-                <p className="mt-6 text-lg leading-relaxed">
-                  Thirty days of guided reflection — one honest page at a time,
-                  each day with its own prompt and its own quote. Not homework.
-                  Company.
-                </p>
-              </SlideUp>
-            </div>
-            <FadeIn delay={0.1}>
-              <Image
-                src="/assets/all-in/journal-cover.png"
-                alt="The Bouncing Forward Personal Journal — 30 Days to Bounce Forward"
-                width={1055}
-                height={1491}
-                sizes="(min-width: 1024px) 40vw, 80vw"
-                className="mx-auto w-full max-w-xs rounded-xl shadow-lg"
-              />
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ── The Course + Monthly Letter (#a-course, #a-letter) ── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-        <div className="grid gap-6 md:grid-cols-2">
           <SlideUp>
-            <div id="a-course" className="h-full scroll-mt-24 rounded-lg border border-border bg-card p-6 sm:p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                All In · Included
-              </p>
-              <h2 className="mt-3 text-2xl font-bold leading-snug">
-                The Course
-              </h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                The complete Bouncing Forward course — all nine guided modules
-                presenting the framework, the Compass and the Path, each with a
-                short video, a companion guide, and space to build your own plan.
-                Yours in full, included with All In.
-              </p>
-            </div>
-          </SlideUp>
-          <SlideUp delay={0.06}>
-            <div id="a-letter" className="h-full scroll-mt-24 rounded-lg border border-border bg-card p-6 sm:p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                All In · Included
-              </p>
-              <h2 className="mt-3 text-2xl font-bold leading-snug">
-                The Monthly Letter
-              </h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                A special monthly newsletter, for members only — on bouncing
-                forward from your hardest season. Longer and closer than the
-                public note: one honest theme each month, written for wherever
-                this season finds you.
-              </p>
-            </div>
-          </SlideUp>
-        </div>
-      </section>
-
-      {/* ── Everything New, as It Lands ──────────────────────── */}
-      <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
-          <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-              All In · Included
-            </p>
-            <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
-              Everything New, as It Lands
+            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+              All In — $49. Once. Yours for life.
             </h2>
-          </SlideUp>
-          <SlideUp delay={0.06}>
-            <p className="mt-6 text-lg leading-relaxed">
-              Bouncing Forward keeps growing — new tools, new resources, new ways
-              through. Whatever we add next is already yours. Going all in means
-              never buying it twice.
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              All In gives you lifetime access — no annual membership renewal.
+            </p>
+            <p className="mt-8 font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              Everything in Free, plus:
             </p>
           </SlideUp>
+
+          <Stagger className="mt-8 space-y-6">
+            {allInFeatures.map((f) => (
+              <StaggerItem key={f.title}>
+                <div className="grid gap-5 rounded-lg border border-border bg-card p-6 sm:grid-cols-[160px_1fr] sm:items-center sm:gap-8 sm:p-8">
+                  <div className="relative w-full overflow-hidden rounded-md bg-muted pb-[75%] sm:pb-[100%]">
+                    <Image
+                      src={f.img}
+                      alt={f.title}
+                      fill
+                      sizes="(min-width: 640px) 160px, 90vw"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">{f.title}</h3>
+                    <p className="mt-2 leading-relaxed text-muted-foreground">
+                      {f.body}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+
+          <FadeIn>
+            <div className="mt-10">
+              <PrimaryCta href="#a-claim" label="Go All In — $49" />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -211,7 +202,7 @@ export default function AllInPage() {
             <div className="mt-8">
               <ExternalCta
                 href={AMAZON_URL}
-                label="Prefer to start with just the book? Buy on Amazon — $14.45 →"
+                label="Prefer to start with just the book? Buy on Amazon — $17.95 →"
                 invert
               />
             </div>
