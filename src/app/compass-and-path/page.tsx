@@ -37,7 +37,7 @@ const compass = [
     descriptor:
       "Not toughness. The bamboo that bends almost flat in a storm — and stands back up when it passes.",
     image: {
-      src: "/assets/compass/resilience.png",
+      src: "/assets/compass/Resilience.png",
       alt: "Resilience — bamboo bending in the wind",
     },
   },
@@ -80,7 +80,7 @@ const path = [
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
-      src: "/assets/framework/accept.jpg",
+   src: "/assets/framework/accept.png",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
