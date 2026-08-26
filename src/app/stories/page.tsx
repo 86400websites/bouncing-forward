@@ -35,7 +35,7 @@ const stories: Story[] = [
   {
     headline: "Retrenched Into Her Real Career",
     image: {
-      src: "/assets/stories/story-2.jpg",
+      src: "/assets/stories/story-2.png",
       alt: "Illustration — a bright salon interior",
     },
     story:
@@ -46,7 +46,7 @@ const stories: Story[] = [
   {
     headline: "Building the Door Herself",
     image: {
-      src: "/assets/stories/story-3.jpg",
+      src: "/assets/stories/story-3.png",
       alt: "Illustration — a woman standing at an open doorway",
     },
     story:
@@ -57,7 +57,7 @@ const stories: Story[] = [
   {
     headline: "One Sewing Machine, One New Life",
     image: {
-      src: "/assets/stories/story-4.jpg",
+      src: "/assets/stories/story-4.png",
       alt: "Illustration — a sewing machine on a wooden table",
     },
     story:
@@ -68,7 +68,7 @@ const stories: Story[] = [
   {
     headline: "The Thirty Dollars She Never Forgot",
     image: {
-      src: "/assets/stories/story-5.jpg",
+      src: "/assets/stories/story-5.png",
       alt: "Illustration — a maternity ward at dawn",
     },
     story:
@@ -79,7 +79,7 @@ const stories: Story[] = [
   {
     headline: "Staying Rooted at 14,000 Feet",
     image: {
-      src: "/assets/stories/story-6.jpg",
+      src: "/assets/stories/story-6.png",
       alt: "Illustration — terraced fields high in the mountains",
     },
     story:
@@ -90,7 +90,7 @@ const stories: Story[] = [
   {
     headline: "The Eviction That Never Came",
     image: {
-      src: "/assets/stories/story-7.jpg",
+      src: "/assets/stories/story-7.png",
       alt: "Illustration — a hillside neighbourhood among greenery",
     },
     story:
@@ -101,7 +101,7 @@ const stories: Story[] = [
   {
     headline: "Built Stronger Where It Broke Him",
     image: {
-      src: "/assets/stories/story-8.jpg",
+      src: "/assets/stories/story-8.png",
       alt: "Illustration — a large wave rising toward a coastline",
     },
     story:
@@ -112,7 +112,7 @@ const stories: Story[] = [
   {
     headline: "A Smile That Never Left the Road",
     image: {
-      src: "/assets/stories/story-9.jpg",
+      src: "/assets/stories/story-9.png",
       alt: "A Smile that never ends",
     },
     story:
