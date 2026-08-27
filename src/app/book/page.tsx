@@ -26,7 +26,6 @@ export const metadata: Metadata = {
 };
 
 /* Copy source: Bouncing_Forward_Website_Copy.docx — Page 2 (The Book), verbatim. */
-
 const compass = [
   {
     index: "01",
@@ -160,9 +159,16 @@ export default function BookPage() {
               <div className="mt-8">
                 <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $17.99" />
               </div>
-              <p className="text-muted-foreground mt-3 text-sm italic">
-                2nd edition coming soon.
-              </p>
+              <div className="mt-5">
+                <a
+                  href={AMAZON_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-brand-accent text-primary focus-visible:outline-ring inline-flex items-center gap-2 rounded-full px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  Read the first chapter free →
+                </a>
+              </div>
               <p className="text-muted-foreground mt-1 text-sm">
                 Want everything?{" "}
                 <Link
