@@ -80,7 +80,7 @@ const path = [
     descriptor:
       "Not agreement that it was fair. Just an honest end to the fight against what already happened.",
     image: {
-   src: "/assets/framework/accept.png",
+      src: "/assets/framework/accept.png",
       alt: "Isometric illustration for Accept — a bridge across a divide",
     },
   },
@@ -115,7 +115,6 @@ const path = [
     },
   },
 ];
-
 const tools = [
   {
     title: "The Reflection Companion",

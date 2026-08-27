@@ -95,9 +95,16 @@ export default function AllInPage() {
                 <PrimaryCta href="#a-claim" label="Go All In — $49 →" />
                 <ExternalCta href={AMAZON_URL} label="Buy Just the Book — $17.95 →" />
               </div>
-              <p className="mt-3 text-sm italic text-muted-foreground">
-                2nd edition coming soon.
-              </p>
+              <div className="mt-5">
+                <a
+                  href={AMAZON_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold text-primary shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  Read the first chapter free →
+                </a>
+              </div>
             </SlideUp>
           </div>
           <FadeIn delay={0.1}>
