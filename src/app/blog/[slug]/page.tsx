@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
@@ -62,19 +61,6 @@ export default async function BlogPostPage({ params }: Params) {
           <div className="mt-8 h-px w-full bg-border" />
         </header>
 
-        {/* ── Hero image ─────────────────────────────────────── */}
-        <div className="mx-auto max-w-3xl px-5 pt-10 sm:px-6 lg:px-8">
-          <div className="relative w-full overflow-hidden rounded-lg border border-border pb-[66.6667%]">
-            <Image
-              src={post.heroImage}
-              alt={post.title}
-              fill
-              sizes="(min-width: 768px) 48rem, 100vw"
-              className="absolute inset-0 h-full w-full object-cover"
-              priority
-            />
-          </div>
-        </div>
 
         {/* ── Post body ──────────────────────────────────────── */}
         <div className="mx-auto max-w-3xl px-5 pb-16 sm:px-6 lg:px-8 sm:pb-20 lg:pb-24">
@@ -99,22 +85,8 @@ export default async function BlogPostPage({ params }: Params) {
                   </blockquote>
                 );
               case "image":
-                return block.src ? (
-                  <figure key={i} className="my-10">
-                    <div className="relative w-full overflow-hidden rounded-lg border border-border pb-[66.6667%]">
-                      <Image
-                        src={block.src}
-                        alt={block.text}
-                        fill
-                        sizes="(min-width: 768px) 48rem, 100vw"
-                        className="absolute inset-0 h-full w-full object-cover"
-                      />
-                    </div>
-                    <figcaption className="mt-3 text-center text-sm italic text-muted-foreground">
-                      {block.text}
-                    </figcaption>
-                  </figure>
-                ) : null;
+                /* Post images removed per brief — new simple images to come. */
+                return null;
               case "closing":
                 return (
                   <p

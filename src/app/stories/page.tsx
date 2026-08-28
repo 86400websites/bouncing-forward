@@ -35,7 +35,7 @@ const stories: Story[] = [
   {
     headline: "Retrenched Into Her Real Career",
     image: {
-      src: "/assets/stories/story-2.png",
+      src: "/assets/stories/story-2.jpg",
       alt: "Illustration — a bright salon interior",
     },
     story:
@@ -46,7 +46,7 @@ const stories: Story[] = [
   {
     headline: "Building the Door Herself",
     image: {
-      src: "/assets/stories/story-3.png",
+      src: "/assets/stories/story-3.jpg",
       alt: "Illustration — a woman standing at an open doorway",
     },
     story:
@@ -57,7 +57,7 @@ const stories: Story[] = [
   {
     headline: "One Sewing Machine, One New Life",
     image: {
-      src: "/assets/stories/story-4.png",
+      src: "/assets/stories/story-4.jpg",
       alt: "Illustration — a sewing machine on a wooden table",
     },
     story:
@@ -68,7 +68,7 @@ const stories: Story[] = [
   {
     headline: "The Thirty Dollars She Never Forgot",
     image: {
-      src: "/assets/stories/story-5.png",
+      src: "/assets/stories/story-5.jpg",
       alt: "Illustration — a maternity ward at dawn",
     },
     story:
@@ -79,7 +79,7 @@ const stories: Story[] = [
   {
     headline: "Staying Rooted at 14,000 Feet",
     image: {
-      src: "/assets/stories/story-6.png",
+      src: "/assets/stories/story-6.jpg",
       alt: "Illustration — terraced fields high in the mountains",
     },
     story:
@@ -90,7 +90,7 @@ const stories: Story[] = [
   {
     headline: "The Eviction That Never Came",
     image: {
-      src: "/assets/stories/story-7.png",
+      src: "/assets/stories/story-7.jpg",
       alt: "Illustration — a hillside neighbourhood among greenery",
     },
     story:
@@ -101,7 +101,7 @@ const stories: Story[] = [
   {
     headline: "Built Stronger Where It Broke Him",
     image: {
-      src: "/assets/stories/story-8.png",
+      src: "/assets/stories/story-8.jpg",
       alt: "Illustration — a large wave rising toward a coastline",
     },
     story:
@@ -112,7 +112,7 @@ const stories: Story[] = [
   {
     headline: "A Smile That Never Left the Road",
     image: {
-      src: "/assets/stories/story-9.png",
+      src: "/assets/stories/story-9.jpg",
       alt: "A Smile that never ends",
     },
     story:
@@ -155,7 +155,7 @@ export default function StoriesPage() {
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8">
-                <PrimaryCta href="/all-in" label="Go All In — $49" />
+                <PrimaryCta href="/all-in" label="Go All In" />
               </div>
             </SlideUp>
           </div>

@@ -3,20 +3,19 @@ import Image from "next/image";
 import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
-  ExternalCta,
   PrimaryCta,
 } from "@/components/site/begin-your-crossing";
-import { ClaimAccessForm } from "@/components/site/claim-access-form";
-import { AMAZON_URL } from "@/lib/site";
+import { FullAssessment } from "@/components/assess/full-assessment";
+import { AllInLibrary } from "@/components/all-in/library";
 
 export const metadata: Metadata = {
   title: { absolute: "All In | The Complete Bouncing Forward Experience" },
   description:
-    "$49, once, for everything — a downloadable copy of the book and workbook, the course, the 30-Day Journal, the Monthly Letter, the Webinar Library, and everything new as it lands.",
+    "All In is free — take the Full Assessment, twenty-four honest statements in about five minutes, and everything opens: a summarised book and workbook, the course, the 30-Day Journal, the Monthly Letter, and the webinar library.",
   openGraph: {
     title: "All In | The Complete Bouncing Forward Experience",
     description:
-      "$49, once, for everything — a downloadable copy of the book and workbook, the course, the 30-Day Journal, the Monthly Letter, the Webinar Library, and everything new as it lands.",
+      "All In is free — take the Full Assessment, twenty-four honest statements in about five minutes, and everything opens: a summarised book and workbook, the course, the 30-Day Journal, the Monthly Letter, and the webinar library.",
   },
 };
 
@@ -24,19 +23,14 @@ export const metadata: Metadata = {
 
 const allInFeatures = [
   {
-    title: "Lifetime membership",
-    body: "All In gives you lifetime access — no subscription, no annual membership renewal. Pay once and everything is yours, including new material as it’s added.",
-    img: "/assets/all-in/lifetime.png",
+    title: "The full assessment",
+    body: "24 Self-assessment questions with honest feedback and steps to keep you moving forward.",
+    img: "/assets/all-in/assessment.png",
   },
   {
-    title: "The book (electronic edition)",
-    body: "Bouncing Forward, cover to cover — the full framework behind everything else in the package.",
+    title: "A summarised version of book (electronic version)",
+    body: "The framework behind everything else in the package.",
     img: "/assets/all-in/book.png",
-  },
-  {
-    title: "The workbook (electronic edition)",
-    body: "Structured exercises that walk alongside the book, chapter by chapter.",
-    img: "/assets/all-in/workbook.png",
   },
   {
     title: "The 30-Day Journal",
@@ -78,32 +72,26 @@ export default function AllInPage() {
             </FadeIn>
             <SlideUp>
               <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
-                One decision. Everything open.
+                Commit to Bouncing Forward.
               </h1>
             </SlideUp>
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                All In is the complete Bouncing Forward experience — a
-                downloadable copy of the book and workbook, the course, the
-                journal, and a monthly letter written for the hardest seasons.
-                One decision, $49, everything open — including everything new we
-                add to Bouncing Forward, as it lands.
+                All In is everything Bouncing Forward offers, in one place — and
+                it’s free. A short version of the book and workbook, the
+                nine-module course, the 30-Day Journal, a Monthly Letter, the
+                webinars, and everything new as it lands.
+              </p>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed">
+                How it works is simple: take the Full Assessment below —
+                twenty-four honest statements, about five minutes — and
+                everything opens. Your email once, your honest answers, and
+                you’re all in.
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <PrimaryCta href="#a-claim" label="Go All In — $49 →" />
-                <ExternalCta href={AMAZON_URL} label="Buy Just the Book — $17.95 →" />
-              </div>
-              <div className="mt-5">
-                <a
-                  href={AMAZON_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold text-primary shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  Read the first chapter free →
-                </a>
+              <div className="mt-8">
+                <PrimaryCta href="#full-assessment" label="Take the Full Assessment" />
               </div>
             </SlideUp>
           </div>
@@ -133,7 +121,7 @@ export default function AllInPage() {
         </FadeIn>
       </section>
 
-      {/* ── All In $49. Once. Yours for life. (#a-included) ──── */}
+      {/* ── All In — free. Yours for life. (#a-included) ─────── */}
       <section className="bg-muted">
         <div
           id="a-included"
@@ -141,7 +129,7 @@ export default function AllInPage() {
         >
           <SlideUp>
             <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-              All In — $49. Once. Yours for life.
+              All In — free. Yours for life.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
               All In gives you lifetime access — no annual membership renewal.
@@ -177,43 +165,29 @@ export default function AllInPage() {
 
           <FadeIn>
             <div className="mt-10">
-              <PrimaryCta href="#a-claim" label="Go All In — $49" />
+              <PrimaryCta href="#full-assessment" label="Take the Full Assessment" />
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* ── Claim Your Access (#a-claim, navy) ───────────────── */}
-      <section className="bg-primary text-primary-foreground">
+      {/* ── The Full Assessment (#full-assessment) ───────────── */}
+      <section>
         <div
-          id="a-claim"
+          id="full-assessment"
           className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
         >
-          <FadeIn className="max-w-2xl">
-            <h2 className="text-3xl font-extrabold sm:text-4xl">
-              Claim Your Access
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
-              Go All In for $49 and everything opens — a downloadable copy of the
-              book included. Already a member? Enter your access code below.
-            </p>
-            <div className="mt-8">
-              <a
-                href="#a-claim"
-                className="inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              >
-                Go All In — $49
-              </a>
-            </div>
-            <ClaimAccessForm />
-            <div className="mt-8">
-              <ExternalCta
-                href={AMAZON_URL}
-                label="Prefer to start with just the book? Buy on Amazon — $17.95 →"
-                invert
-              />
-            </div>
-          </FadeIn>
+          <FullAssessment />
+        </div>
+      </section>
+
+      {/* ── Your All In library (#library) ───────────────────── */}
+      <section className="bg-muted">
+        <div
+          id="library"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        >
+          <AllInLibrary />
         </div>
       </section>
 

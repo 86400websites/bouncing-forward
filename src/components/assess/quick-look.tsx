@@ -393,14 +393,12 @@ export function QuickLook() {
           This is the surface. The full reading goes deeper.
         </h3>
         <p className="mt-3 leading-relaxed text-muted-foreground">
-          The complete Where’s Here? assessment lives inside All In — twenty-four
-          statements, your full map, a reading of every strength and every step,
-          what to do next, and the chance to watch it all change, season by
-          season.
+          The free Full Assessment inside All In maps every strength and every
+          step - take it, and everything opens.
         </p>
         <div className="mt-6">
           <Link
-            href="/all-in"
+            href="/all-in#full-assessment"
             className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             Go all in →

@@ -10,11 +10,11 @@ import {
 export const metadata: Metadata = {
   title: { absolute: "The Course | Nine Guided Modules | Bouncing Forward" },
   description:
-    "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In: $49 for everything.",
+    "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In — free, everything open.",
   openGraph: {
     title: "The Course | Nine Guided Modules | Bouncing Forward",
     description:
-      "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In: $49 for everything.",
+      "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In — free, everything open.",
   },
 };
 
@@ -87,7 +87,7 @@ export default function CoursePage() {
           </div>
           <SlideUp delay={0.14}>
             <p className="mt-6 font-semibold">
-              The course is part of All In — $49 for everything. A downloadable
+              The course is part of All In — free, everything open. A downloadable
               copy of the book, all nine modules, the journal, a premium monthly
               newsletter, and everything new we add to Bouncing Forward.
             </p>
@@ -174,7 +174,7 @@ export default function CoursePage() {
                 href="/all-in"
                 className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
-                Go All In — $49 · Everything Included
+                Go All In · Everything Included
               </Link>
             </div>
           </FadeIn>

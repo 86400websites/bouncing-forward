@@ -179,7 +179,7 @@ export default function ResourcesPage() {
                   href="/all-in"
                   className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  Go All In — $49
+                  Go All In
                 </Link>
               </div>
             </SlideUp>
@@ -308,7 +308,7 @@ export default function ResourcesPage() {
               <div className="mt-6 mr-auto flex flex-col gap-3 sm:flex-row">
                 <PrimaryCta href="/assess" label="Find out where here is →" />
 
-                <PrimaryCta href="/all-in" label=" Go All In — $49" />
+                <PrimaryCta href="/all-in" label=" Go All In" />
               </div>
             </div>
           </div>

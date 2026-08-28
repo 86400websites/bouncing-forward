@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 /* Copy source: Bouncing_Forward_Website_Copy.docx — Page 2 (The Book), verbatim. */
+
 const compass = [
   {
     index: "01",
@@ -156,8 +157,14 @@ export default function BookPage() {
               </p>
             </SlideUp>
             <SlideUp delay={0.16}>
-              <div className="mt-8">
-                <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $17.99" />
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/#book-package"
+                  className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  Buy the Book Package — $9.99
+                </Link>
+                <ExternalCta href={AMAZON_URL} label="Buy on Amazon" />
               </div>
               <div className="mt-5">
                 <a
@@ -175,7 +182,7 @@ export default function BookPage() {
                   href="/all-in"
                   className="text-brand-accent-text font-semibold underline-offset-2 hover:underline"
                 >
-                  Go All In — $49
+                  Go All In
                 </Link>
                 , downloadable copy of the book included.
               </p>
@@ -307,7 +314,7 @@ export default function BookPage() {
             The direction you’re looking for is already inside you.
           </h2>
           <div className="mt-8 flex justify-center">
-            <ExternalCta href={AMAZON_URL} label="Buy on Amazon — $17.99" />
+            <ExternalCta href={AMAZON_URL} label="Buy on Amazon" />
           </div>
         </FadeIn>
       </section>
