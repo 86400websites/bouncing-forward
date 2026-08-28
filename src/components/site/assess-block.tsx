@@ -103,7 +103,7 @@ export function AssessBlock({
                   href="/all-in"
                   className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  Go All In — $49
+                  Go All In
                 </Link>
               ) : null}
             </div>

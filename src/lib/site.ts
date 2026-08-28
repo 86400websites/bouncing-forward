@@ -58,7 +58,8 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { href: "/all-in#a-inside", label: "What’s Inside" },
       { href: "/all-in#a-included", label: "What’s Included" },
-      { href: "/all-in#a-claim", label: "Claim Your Access" },
+      { href: "/all-in#full-assessment", label: "Take the Full Assessment" },
+      { href: "/all-in#library", label: "Your Library" },
     ],
   },
   { href: "/enterprise", label: "Enterprise" },
@@ -68,6 +69,6 @@ export const NAV_ITEMS: NavItem[] = [
 /**
  * Menu CTA. Re-brief 31 Jul 2026 replaced "Take the Check" with "Log In".
  * No auth system exists yet, so it points at the All In members entry
- * (Claim Your Access) — update to the real login route when it exists.
+ * (the Full Assessment unlock) — update to the real login route when it exists.
  */
-export const PRIMARY_CTA = { href: "/all-in#a-claim", label: "Log In" } as const;
+export const PRIMARY_CTA = { href: "/all-in#full-assessment", label: "Log In" } as const;

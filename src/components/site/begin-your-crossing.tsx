@@ -1,13 +1,14 @@
 import Link from "next/link";
+import { NewsletterForm } from "@/components/site/newsletter-form";
 import { cn } from "@/lib/utils";
 
 /**
  * The site-wide email capture (BF-Website-Copy — "Begin Your Next Chapter").
  *
- * Sprint 8 wires this to /api/newsletter → Mailchimp with zod validation,
- * rate limiting, and the Taking Stock Inventory delivery. Until that endpoint
- * exists, the form renders disabled with an honest note — we never fake a
- * successful subscription.
+ * Live: posts to /api/newsletter → Mailchimp (see .env.local.example for the
+ * three keys). On success the form offers The First Week (the 7 Step Journal)
+ * as an immediate download; if Mailchimp isn't configured the API answers
+ * honestly and the form shows the message — we never fake a subscription.
  */
 export function BeginYourCrossing({
   heading = "Take The First Week with you",
@@ -33,43 +34,7 @@ export function BeginYourCrossing({
           </h2>
           <p className="mt-4 text-muted-foreground">{body}</p>
 
-          <form
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center"
-            aria-describedby="byc-status"
-          >
-            <label htmlFor="byc-first-name" className="sr-only">
-              First name
-            </label>
-            <input
-              id="byc-first-name"
-              name="firstName"
-              type="text"
-              autoComplete="given-name"
-              placeholder="First name"
-              disabled
-              className="rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-60 sm:w-44"
-            />
-            <label htmlFor="byc-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="byc-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="Email address"
-              disabled
-              className="rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-60 sm:w-64"
-            />
-            <button
-              type="submit"
-              disabled
-              className="rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {submitLabel}
-            </button>
-          </form>
-          <p id="byc-status" className="sr-only" aria-live="polite" />
+          <NewsletterForm submitLabel={submitLabel} />
 
           {showFaqLink ? (
             <p className="mt-6 text-sm text-muted-foreground">
