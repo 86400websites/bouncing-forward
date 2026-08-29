@@ -34,6 +34,14 @@ const letterGroup: Item[] = [
   },
 ];
 
+const journalGroup: Item[] = [
+  {
+    title: "The 30-Day Journal",
+    href: "/downloads/all-in/bf-30-day-journal.pdf",
+    note: "One honest page a day, for a month.",
+  },
+];
+
 const courseGroup: Item[] = [
   { title: "W1 · Foundation — Introduction to Bouncing Forward", href: "/downloads/all-in/course/w1-foundation-introduction.pdf" },
   { title: "W2 · The Compass — Element 1: Resilience", href: "/downloads/all-in/course/w2-compass-resilience.pdf" },
@@ -141,6 +149,15 @@ export function AllInLibrary() {
         <h4 className="text-lg font-bold">The Monthly Letter</h4>
         <ul className="mt-2 divide-y divide-border">
           {letterGroup.map((i) => (
+            <DownloadRow key={i.href} item={i} />
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-4 rounded-lg border border-border bg-card p-6 sm:p-8">
+        <h4 className="text-lg font-bold">The 30-Day Journal</h4>
+        <ul className="mt-2 divide-y divide-border">
+          {journalGroup.map((i) => (
             <DownloadRow key={i.href} item={i} />
           ))}
         </ul>
