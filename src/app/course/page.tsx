@@ -4,17 +4,17 @@ import Image from "next/image";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
-  ComingSoonCta,
+  PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 
 export const metadata: Metadata = {
   title: { absolute: "The Course | Nine Guided Modules | Bouncing Forward" },
   description:
-    "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In — free, everything open.",
+    "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included free with All In.",
   openGraph: {
     title: "The Course | Nine Guided Modules | Bouncing Forward",
     description:
-      "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included in All In — free, everything open.",
+      "Nine guided modules presenting the Compass and the Path — short videos, companion guides, and your own plan as you go. Included free with All In.",
   },
 };
 
@@ -94,7 +94,7 @@ export default function CoursePage() {
           </SlideUp>
           <SlideUp delay={0.18}>
             <div className="mt-8">
-              <ComingSoonCta label="Start the Course" />
+              <PrimaryCta href="/all-in" label="Go All In" />
             </div>
           </SlideUp>
         </div>
@@ -169,7 +169,7 @@ export default function CoursePage() {
               The next chapter hasn’t been written yet.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <ComingSoonCta label="Start the Course" invert />
+              <PrimaryCta href="/all-in" label="Go All In" invert />
               <Link
                 href="/all-in"
                 className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"

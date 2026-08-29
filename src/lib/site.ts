@@ -12,7 +12,7 @@ export const SITE_TAGLINE =
  * see SUPABASE-VERCEL-SETUP.md.
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bouncing-forward.vercel.app";
 
 /** Live Amazon listing (BF-Website-Copy + mockup). Opens in a new tab. */
 export const AMAZON_URL =
@@ -49,7 +49,6 @@ export const NAV_ITEMS: NavItem[] = [
       { href: "/assess", label: "Where’s Here?" },
       { href: "/stories", label: "Stories" },
       { href: "/blog", label: "Blog" },
-      { href: "/podcast", label: "Podcast" },
     ],
   },
   {
@@ -62,13 +61,8 @@ export const NAV_ITEMS: NavItem[] = [
       { href: "/all-in#library", label: "Your Library" },
     ],
   },
+  { href: "/premium", label: "Premium" },
   { href: "/enterprise", label: "Enterprise" },
   { href: "/contact", label: "Contact" },
 ];
 
-/**
- * Menu CTA. Re-brief 31 Jul 2026 replaced "Take the Check" with "Log In".
- * No auth system exists yet, so it points at the All In members entry
- * (the Full Assessment unlock) — update to the real login route when it exists.
- */
-export const PRIMARY_CTA = { href: "/all-in#full-assessment", label: "Log In" } as const;

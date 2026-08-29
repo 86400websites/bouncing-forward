@@ -10,7 +10,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bouncing Forward | Grief Doesn’t Get the Last Word",
+    default: "Bouncing Forward | Setbacks Don’t Get the Last Word",
     template: `%s · ${SITE_NAME}`,
   },
   description:
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "Bouncing Forward | Grief Doesn’t Get the Last Word",
+    title: "Bouncing Forward | Setbacks Don’t Get the Last Word",
     description:
       "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
     images: [{ url: "/assets/book/cover-3d.jpeg" }],

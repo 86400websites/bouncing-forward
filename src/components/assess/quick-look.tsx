@@ -196,7 +196,7 @@ export function QuickLook() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-              Free · Ten honest statements · About two minutes
+              Free · Ten Statements · Two Honest Minutes
             </p>
             <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
               From here, forward. But first — where’s here?

@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
  */
 export function BeginYourCrossing({
   heading = "Take The First Week with you",
-  body = "Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave.",
+  body = "Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes a weekly note to keep you moving forward. No noise, and easy to leave.",
   submitLabel = "Send me The First Week",
   showFaqLink = false,
 }: {

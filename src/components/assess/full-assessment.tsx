@@ -18,6 +18,7 @@ type Key = PathKey | CompassKey;
 type Band = "bright" | "flickering" | "faint";
 
 const UNLOCK_KEY = "bf-allin-open";
+const RESULT_KEY = "bf-fa-result"; // the saved reading: 24 answers, replaced on retake
 
 const PATH_Q: Record<PathKey, string> = {
   Accept: "Where am I now?",
@@ -341,11 +342,33 @@ export function FullAssessment() {
 
   useEffect(() => {
     try {
-      if (window.localStorage.getItem(UNLOCK_KEY) === "1") setUnlocked(true);
+      const open = window.localStorage.getItem(UNLOCK_KEY) === "1";
+      if (open) setUnlocked(true);
+      if (open) {
+        const raw = window.localStorage.getItem(RESULT_KEY);
+        const saved: unknown = raw ? JSON.parse(raw) : null;
+        if (
+          Array.isArray(saved) &&
+          saved.length === QUESTIONS.length &&
+          saved.every((v) => typeof v === "number" && v >= 1 && v <= 5)
+        ) {
+          // The marker holds their last reading — show it, not the intro.
+          setAnswers(saved as number[]);
+          setPhase("results");
+        }
+      }
     } catch {
       /* private mode — treat as first visit */
     }
   }, []);
+
+  function persistResult(a: number[]) {
+    try {
+      window.localStorage.setItem(RESULT_KEY, JSON.stringify(a));
+    } catch {
+      /* fine — the reading still shows this session */
+    }
+  }
 
   function begin() {
     setAnswers([]);
@@ -360,7 +383,10 @@ export function FullAssessment() {
   function answer(n: number) {
     const next = [...answers, n];
     setAnswers(next);
-    if (next.length >= QUESTIONS.length) setPhase(unlocked ? "results" : "gate");
+    if (next.length >= QUESTIONS.length) {
+      if (unlocked) persistResult(next); // a retake replaces the saved reading
+      setPhase(unlocked ? "results" : "gate");
+    }
   }
   function goBack() {
     if (idx > 0) setAnswers(answers.slice(0, -1));
@@ -380,6 +406,7 @@ export function FullAssessment() {
     } catch {
       /* fine — the reading still opens this session */
     }
+    persistResult(answers);
     setUnlocked(true);
     setJustUnlocked(true);
     window.dispatchEvent(new Event("bf-allin-unlocked"));

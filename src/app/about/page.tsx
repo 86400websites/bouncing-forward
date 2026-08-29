@@ -206,7 +206,7 @@ export default function AboutPage() {
           <SlideUp delay={0.1}>
             <p>
               I wrote Bouncing Forward to hand you both — and a practical way to
-              use them. Not platitudes. Not a five-step cure for grief. A
+              use them. Not platitudes. Not a five-step cure. A
               framework, grounded in a real hospital corridor and a real road in
               Jordan, built to be used in the middle of real life. Because the
               most dangerous thing about loss isn’t the pain. It’s letting the

@@ -104,34 +104,6 @@ const path = [
     },
   },
 ];
-
-const testimonials = [
-  {
-    quote:
-      "I thought I had to choose between sitting with a setback and moving forward. This book showed me they’re the same motion.",
-    name: "Reader name",
-    role: "bereaved parent",
-  },
-  {
-    quote:
-      "I expected another book telling me time heals. Instead it gave me a direction to walk in while it does.",
-    name: "Reader name",
-    role: null,
-  },
-  {
-    quote:
-      "Honest, unsentimental, and useful. It got me writing again within a week.",
-    name: "Reader name",
-    role: null,
-  },
-  {
-    quote:
-      "It named the exact question I’d been avoiding — and then it handed me a way to answer it.",
-    name: "Reader name",
-    role: null,
-  },
-];
-
 export default function BookPage() {
   return (
     <>
@@ -159,7 +131,7 @@ export default function BookPage() {
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
-                  href="/#book-package"
+                  href="/premium"
                   className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   Buy the Book Package — $9.99
@@ -168,7 +140,7 @@ export default function BookPage() {
               </div>
               <div className="mt-5">
                 <a
-                  href={AMAZON_URL}
+                  href="/downloads/Bouncing-Forward-Chapter-1-Free-A4.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-brand-accent text-primary focus-visible:outline-ring inline-flex items-center gap-2 rounded-full px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -177,14 +149,13 @@ export default function BookPage() {
                 </a>
               </div>
               <p className="text-muted-foreground mt-1 text-sm">
-                Want everything?{" "}
+                Want the downloadable book and workbook?{" "}
                 <Link
-                  href="/all-in"
+                  href="/premium"
                   className="text-brand-accent-text font-semibold underline-offset-2 hover:underline"
                 >
-                  Go All In
+                  Buy the Book Package — $9.99
                 </Link>
-                , downloadable copy of the book included.
               </p>
             </SlideUp>
           </div>
@@ -261,49 +232,6 @@ export default function BookPage() {
               </StaggerItem>
             ))}
           </Stagger>
-        </div>
-      </section>
-
-      {/* ── What Readers Say ─────────────────────────────────── */}
-      <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <SlideUp>
-            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
-              What Readers Say
-            </p>
-            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
-              Don’t just take our word for it.
-            </h2>
-          </SlideUp>
-          <Stagger className="mt-10 grid gap-6 sm:grid-cols-2">
-            {testimonials.map((t, i) => (
-              <StaggerItem key={i} className="h-full">
-                <figure className="border-border bg-card flex h-full flex-col rounded-lg border p-6 sm:p-8">
-                  <blockquote className="flex-1 text-lg leading-relaxed italic">
-                    “{t.quote}”
-                  </blockquote>
-                  <figcaption className="text-muted-foreground mt-5 font-[family-name:var(--font-display)] text-sm font-bold">
-                    — {t.name}
-                    {t.role ? (
-                      <span className="font-normal">, {t.role}</span>
-                    ) : null}
-                  </figcaption>
-                </figure>
-              </StaggerItem>
-            ))}
-          </Stagger>
-          <FadeIn>
-            <p className="text-muted-foreground mt-6 text-sm italic">
-              Placeholder endorsements, written in the book’s voice — real
-              reader quotes replace these before launch.
-            </p>
-            <div className="mt-8">
-              <ExternalCta
-                href={`${AMAZON_URL}#customerReviews`}
-                label="Leave a review on Amazon"
-              />
-            </div>
-          </FadeIn>
         </div>
       </section>
 
