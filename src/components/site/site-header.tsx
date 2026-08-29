@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NAV_ITEMS, PRIMARY_CTA, SITE_NAME, type NavItem } from "@/lib/site";
+import { NAV_ITEMS, SITE_NAME, type NavItem } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 function isActive(pathname: string, href: string) {
@@ -80,12 +80,6 @@ export function SiteHeader() {
               </Link>
             ),
           )}
-          <Link
-            href={PRIMARY_CTA.href}
-            className="rounded-full bg-primary px-5 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            {PRIMARY_CTA.label}
-          </Link>
         </nav>
 
         {/* Mobile */}
@@ -124,14 +118,6 @@ export function SiteHeader() {
                   </SheetClose>
                 ),
               )}
-              <SheetClose asChild>
-                <Link
-                  href={PRIMARY_CTA.href}
-                  className="mt-4 rounded-full bg-primary px-5 py-3 text-center font-[family-name:var(--font-display)] text-base font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover"
-                >
-                  {PRIMARY_CTA.label}
-                </Link>
-              </SheetClose>
             </nav>
           </SheetContent>
         </Sheet>

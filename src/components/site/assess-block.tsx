@@ -71,7 +71,7 @@ export function AssessBlock({
   lines = [
     "Resilience. Adaptability. Optimism. Support. Two minutes of honest reflection will show you which lights are burning — and which need tending. It’s where the Bouncing Forward journey begins. Nothing to sign up for, nothing to pay.",
   ],
-  ctaLabel = "Take the Check →",
+  ctaLabel = "Find out where here is →",
 }: {
   showGoAllIn?: boolean;
   headline?: string;

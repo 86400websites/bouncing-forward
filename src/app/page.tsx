@@ -12,7 +12,6 @@ import {
   PrimaryCta,
   SecondaryCta,
 } from "@/components/site/begin-your-crossing";
-import { AMAZON_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Bouncing Forward | Setbacks Don’t Get the Last Word" },
@@ -60,7 +59,7 @@ const freeIncludes = [
   "Read the blog and the stories",
   "Watch the course introduction",
   "Read the book’s first chapter",
-  "Download The 7 Step Journal",  // rendered as a download link below
+  "Download The First Week",  // rendered as a download link below
   "Take the two-minute check",
   "Your email address gets you a weekly note to keep you moving forward",
 ];
@@ -77,7 +76,7 @@ const allInIncludes = [
 const premiumIncludes = [
   "The complete downloadable book",
   "The downloadable companion workbook",
-  "Plus everything in All In — unlocked the same way, with the Full Assessment",
+  "Plus everything in All In, including the Full Assessment — all open with one access code",
 ];
 
 export default function HomePage() {
@@ -116,7 +115,7 @@ export default function HomePage() {
               </div>
               <div className="mt-5">
                 <a
-                  href={AMAZON_URL}
+                  href="/downloads/Bouncing-Forward-Chapter-1-Free-A4.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold text-primary shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -257,7 +256,7 @@ export default function HomePage() {
                 {freeIncludes.map((item, i) => (
                   <li key={i} className="flex gap-3 leading-relaxed">
                     <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
-                    {item.startsWith("Download The 7 Step Journal") ? (
+                    {item.startsWith("Download The First Week") ? (
                       <a
                         href="/downloads/BF-7-Step-Reflection-Journal.pdf"
                         target="_blank"
@@ -342,7 +341,7 @@ export default function HomePage() {
               </p>
               <div className="mt-6">
                 <Link
-                  href="/book"
+                  href="/premium"
                   className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   Buy the Book Package

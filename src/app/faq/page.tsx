@@ -18,141 +18,58 @@ export const metadata: Metadata = {
 
 type QA = { q: string; a: React.ReactNode };
 
-const groups: { heading: string; items: QA[] }[] = [
+const faqs: QA[] = [
   {
-    heading: "The basics",
-    items: [
-      {
-        q: "What is Bouncing Forward?",
-        a: "A framework and community for anyone facing a setback. It gives you a way to move forward, not just cope.",
-      },
-      {
-        q: "Is this therapy?",
-        a: "No. Bouncing Forward isn’t a substitute for professional mental health care. It’s a practical framework for moving forward.",
-      },
-      {
-        q: "Do I need to have experienced something major to belong here?",
-        a: "No. You don’t need a great loss to be here — you just need to be human. Setbacks come in every size.",
-      },
-      {
-        q: "Is Bouncing Forward based on a book?",
-        a: (
-          <>
-            Yes — it’s built around Maher Kaddoura’s book of the same name, and
-            the framework (the Path and the Compass) comes directly from it. You
-            can read more{" "}
-            <Link
-              href="/book"
-              className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
-            >
-              about the book
-            </Link>
-            .
-          </>
-        ),
-      },
-      {
-        q: "Do I need to read the book first?",
-        a: "No, but it is beneficial to read the book first to get maximum benefit from all the Bouncing Forward material.",
-      },
-    ],
+    q: "What is Bouncing Forward?",
+    a: "A practical framework for anyone facing a setback, built by Maher Kaddoura from his own story. It gives you a way to move forward, not just cope: a Path to walk and a Compass to steer by.",
   },
   {
-    heading: "The framework",
-    items: [
-      {
-        q: "What are the Path and the Compass?",
-        a: "The Path is what you do: Accept, Reflect, Imagine, Act. The Compass is what you draw on while you do it: Resilience, Adaptability, Optimism, and Support.",
-      },
-      {
-        q: "Can I do this on my own, or do I need a group?",
-        a: "Both work. The workbooks are built for solo, self-paced use; the live workshops are for groups, facilitated.",
-      },
-      {
-        q: "What does the course cover?",
-        a: "The course covers Maher’s journey from loss to Bouncing Forward.",
-      },
-      {
-        q: "What’s in the journal?",
-        a: "The journal is a 30-day guided journal that walks you through a series of honest questions to help you reflect and move forward.",
-      },
-    ],
+    q: "Is this therapy?",
+    a: "No. Bouncing Forward is not a substitute for professional mental health care. It is a practical framework for moving forward, and it works alongside whatever support you already have.",
   },
   {
-    heading: "Free, All In & payment",
-    items: [
-      {
-        q: "What’s the difference between the free membership and All In?",
-        a: "Free gets you The Two-Minute Check, the core content, and a way to start. All In unlocks the full framework, which includes the book, course, journal and everything else as it lands — for a single lifetime payment, not a subscription.",
-      },
-      {
-        q: "What do I get with All In?",
-        a: "An electronic copy of the book, the journal, the full course, a monthly letter, and access to everything we add going forward — for a lifetime.",
-      },
-      {
-        q: "Is All In really a one-time payment?",
-        a: "Yes — one payment, lifetime access. No recurring fees, no renewal.",
-      },
-      {
-        q: "Is my payment a subscription or one-time?",
-        a: "All In is a one-time payment.",
-      },
-    ],
+    q: "Where do I start?",
+    a: "Start where you are. Free gets you the blog, the stories, the course introduction, the first chapter of the book, The First Week download and the two-minute Where\u2019s Here? check. When you are ready to commit, go All In \u2014 it is free, and the Full Assessment unlocks everything. Premium is the Book Package: the complete downloadable book and workbook, plus everything in All In.",
   },
   {
-    heading: "Getting started",
-    items: [
-      {
-        q: "How do I get started?",
-        a: (
-          <>
-            Sign up free by email, or go All In right away. Either way, start
-            with{" "}
-            <Link
-              href="/assess"
-              className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
-            >
-              The Two-Minute Check
-            </Link>{" "}
-            — it honestly only takes two minutes and gives you a clear assessment
-            of what your personal starting point is.
-          </>
-        ),
-      },
-    ],
+    q: "Where can I buy the book, and in which formats?",
+    a: "The book is on Amazon as a Kindle ebook, an A5 hardcover and an A5 softcover, with the A4 workbook sold separately. You can read the first chapter free on Amazon. For the downloadable book and workbook together, choose the Book Package on the Premium page.",
   },
   {
-    heading: "For teams & organisations",
-    items: [
-      {
-        q: "Do you offer this for teams or organizations?",
-        a: (
-          <>
-            We offer a 60-minute webinar, a 90-minute workshop, a 4-hour
-            workshop, and a 4-weeks × 90-minutes workshop. Please get in touch
-            through our{" "}
-            <Link
-              href="/contact"
-              className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
-            >
-              contact form
-            </Link>
-            , or see{" "}
-            <Link
-              href="/enterprise"
-              className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
-            >
-              Enterprise
-            </Link>
-            .
-          </>
-        ),
-      },
-      {
-        q: "What workshop formats are available?",
-        a: "A 60-minute webinar, a 90-minute session, a half-day workshop, and a 4-week course.",
-      },
-    ],
+    q: "Who is Maher Kaddoura?",
+    a: "A civil engineer by training and a consultant by profession. He lost his son Hikmat in 2008 and turned that loss into the Hikmat Road Safety Program in Jordan and, later, into Bouncing Forward. The framework comes directly from what he learned walking it himself.",
+  },
+  {
+    q: "What does the course cover?",
+    a: "Nine modules, each with a short video from Maher and a worksheet. It walks you through the framework \u2014 the four questions, the Path and the Compass \u2014 and helps you build your own plan as you go. The course is included free in All In.",
+  },
+  {
+    q: "What are the Path and the Compass?",
+    a: "The Path is what you do: Accept, Reflect, Imagine, Act. The Compass is what you draw on while you do it: Resilience, Adaptability, Optimism and Support. The Path gets you moving. The Compass keeps you pointed forward.",
+  },
+  {
+    q: "What is the two-minute check?",
+    a: "Ten honest statements that show you where you stand on the Path right now. It is free, private and open to everyone. No one is keeping score. The Full Assessment inside All In adds the Compass and maps every strength and every step.",
+  },
+  {
+    q: "Can I share my own story?",
+    a: "Yes. If you have turned a hardship into a stepping stone, we would like to hear it. Use the contact form and tell us what happened and what you built from it. We feature new stories regularly.",
+  },
+  {
+    q: "What will I find on the blog?",
+    a: "Honest words for the hardest seasons: the things nobody tells you about loss, named plainly. New posts are added regularly, and they are free to read with no sign-up needed.",
+  },
+  {
+    q: "What does All In cost, and how does it work?",
+    a: "All In is free. Take the Full Assessment \u2014 twenty-four honest statements, about five minutes \u2014 and everything opens: the short version of the book, the nine-module course with worksheets, the 30-Day Journal, the Monthly Letter, the webinars and everything new as it lands. No payment, no subscription.",
+  },
+  {
+    q: "What is the Book Package?",
+    a: "The complete downloadable book and the downloadable companion workbook, for $9.99, with everything in All In included. You receive an access code by email, enter it on the Premium page, and everything opens: the book, the workbook, the Full Assessment, the course, the journal, the webinar library and the Monthly Letter. The code works on any device, any time.",
+  },
+  {
+    q: "Do you offer Bouncing Forward for teams and organisations?",
+    a: "Yes. Four formats, delivered by a trained facilitator: a 60-minute webinar, a 90-minute workshop, a half-day workshop and a four-week programme. Get in touch through the contact form, or see the Enterprise page.",
   },
 ];
 
@@ -173,8 +90,8 @@ export default function FaqPage() {
         </SlideUp>
         <SlideUp delay={0.06}>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Everything you might want to know about the framework, membership,
-            and how to begin. Still stuck?{" "}
+            Everything you might want to know about the framework, the three
+            ways in, and how to begin. Still stuck?{" "}
             <Link
               href="/contact"
               className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
@@ -188,42 +105,31 @@ export default function FaqPage() {
 
       {/* ── Groups ───────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20">
-        <div className="space-y-12">
-          {groups.map((group) => (
-            <div key={group.heading}>
-              <SlideUp>
-                <h2 className="text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-                  {group.heading}
-                </h2>
-              </SlideUp>
-              <Stagger className="mt-4 divide-y divide-border border-t border-border">
-                {group.items.map((item) => (
-                  <StaggerItem key={item.q}>
-                    <details className="group py-2">
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 font-[family-name:var(--font-display)] text-lg font-bold text-primary transition-colors hover:text-brand-accent-text [&::-webkit-details-marker]:hidden">
-                        {item.q}
-                        <svg
-                          aria-hidden="true"
-                          viewBox="0 0 24 24"
-                          className="size-5 shrink-0 text-brand-accent-text transition-transform duration-200 group-open:rotate-45"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                        >
-                          <path d="M12 5v14M5 12h14" />
-                        </svg>
-                      </summary>
-                      <div className="pb-4 pr-9 leading-relaxed text-muted-foreground">
-                        {item.a}
-                      </div>
-                    </details>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-            </div>
+        <Stagger className="divide-y divide-border border-t border-border">
+          {faqs.map((item) => (
+            <StaggerItem key={item.q}>
+              <details className="group py-2">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 font-[family-name:var(--font-display)] text-lg font-bold text-primary transition-colors hover:text-brand-accent-text [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="size-5 shrink-0 text-brand-accent-text transition-transform duration-200 group-open:rotate-45"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                  >
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </summary>
+                <div className="pb-4 pr-9 leading-relaxed text-muted-foreground">
+                  {item.a}
+                </div>
+              </details>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       {/* ── Newsletter ───────────────────────────────────────── */}

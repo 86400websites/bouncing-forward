@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { NAV_ITEMS, PRIMARY_CTA, SITE_NAME, type NavItem } from "@/lib/site";
+import { NAV_ITEMS, SITE_NAME, type NavItem } from "@/lib/site";
 
 /*
  * Footer. Re-brief 31 Jul 2026: the footer menu mirrors the header menu.
@@ -20,7 +20,6 @@ function isGroup(
 
 const flatLinks = [
   ...NAV_ITEMS.filter(isFlat),
-  { href: PRIMARY_CTA.href, label: PRIMARY_CTA.label },
 ];
 const groups = NAV_ITEMS.filter(isGroup);
 

@@ -21,6 +21,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // The paid Book Package PDFs live OUTSIDE public/ (no web URL) and are
+  // streamed only by the code-checked download route. This makes sure
+  // Vercel bundles them with that route.
+  outputFileTracingIncludes: {
+    "/api/premium/download": ["./private-content/book-package/*.pdf"],
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

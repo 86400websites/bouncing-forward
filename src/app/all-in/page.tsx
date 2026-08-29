@@ -4,6 +4,7 @@ import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primi
 import {
   BeginYourCrossing,
   PrimaryCta,
+  SecondaryCta,
 } from "@/components/site/begin-your-crossing";
 import { FullAssessment } from "@/components/assess/full-assessment";
 import { AllInLibrary } from "@/components/all-in/library";
@@ -92,6 +93,7 @@ export default function AllInPage() {
             <SlideUp delay={0.16}>
               <div className="mt-8">
                 <PrimaryCta href="#full-assessment" label="Take the Full Assessment" />
+                <SecondaryCta href="/premium" label="Buy the Book Package — $9.99" />
               </div>
             </SlideUp>
           </div>
