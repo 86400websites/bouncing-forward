@@ -1,5 +1,5 @@
-import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
+import { mailchimpSubscribe } from "@/lib/mailchimp";
 
 /**
  * POST /api/newsletter — subscribe an email to the Mailchimp audience.
@@ -10,13 +10,8 @@ import { NextResponse } from "next/server";
  *  - `source` becomes a Mailchimp tag ("newsletter", "full-assessment", …)
  *    so the team can segment where each subscriber came from.
  *
- * Environment (see .env.local.example):
- *  - MAILCHIMP_API_KEY      e.g. "abc123…-us21" (the suffix is the server)
- *  - MAILCHIMP_AUDIENCE_ID  the List ID from Mailchimp → Audience → Settings
- *  - MAILCHIMP_SERVER_PREFIX optional; derived from the API key if omitted
- *
- * Uses the idempotent upsert (PUT /members/{md5}) so subscribing twice never
- * errors — an existing member simply stays subscribed.
+ * Environment: see .env.local.example. The heavy lifting lives in
+ * src/lib/mailchimp.ts, shared with the Stripe webhook.
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,69 +54,14 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = process.env.MAILCHIMP_API_KEY;
-  const audienceId = process.env.MAILCHIMP_AUDIENCE_ID;
-  const server =
-    process.env.MAILCHIMP_SERVER_PREFIX || apiKey?.split("-").pop() || "";
-
-  if (!apiKey || !audienceId || !server) {
-    // Not configured yet — be honest, never fake a subscription.
-    return NextResponse.json(
-      {
-        ok: false,
-        code: "not_configured",
-        message:
-          "Sign-ups aren’t connected yet — please try again soon, or reach us via the contact page.",
-      },
-      { status: 503 },
-    );
-  }
-
-  const hash = createHash("md5").update(email.toLowerCase()).digest("hex");
-  const auth = "Basic " + Buffer.from(`anystring:${apiKey}`).toString("base64");
-  const base = `https://${server}.api.mailchimp.com/3.0/lists/${audienceId}`;
-
-  try {
-    const res = await fetch(`${base}/members/${hash}`, {
-      method: "PUT",
-      headers: { Authorization: auth, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email_address: email,
-        status_if_new: "subscribed",
-        merge_fields: firstName ? { FNAME: firstName } : {},
-      }),
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      const err = (await res.json().catch(() => ({}))) as {
-        title?: string;
-        detail?: string;
-      };
-      const friendly =
-        err.title === "Invalid Resource" &&
-        /looks fake|invalid/i.test(err.detail ?? "")
-          ? "That email address doesn’t look right — please check it."
-          : "Something went wrong on our side — please try again in a moment.";
-      return NextResponse.json({ ok: false, message: friendly }, { status: 422 });
-    }
-
-    // Tag the member with its source — best effort, never blocks success.
-    await fetch(`${base}/members/${hash}/tags`, {
-      method: "POST",
-      headers: { Authorization: auth, "Content-Type": "application/json" },
-      body: JSON.stringify({ tags: [{ name: source, status: "active" }] }),
-      cache: "no-store",
-    }).catch(() => undefined);
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      {
-        ok: false,
-        message: "We couldn’t reach the sign-up service — please try again.",
-      },
-      { status: 502 },
-    );
-  }
+  const result = await mailchimpSubscribe({ email, firstName, tags: [source] });
+  if (result.ok) return NextResponse.json({ ok: true });
+  return NextResponse.json(
+    {
+      ok: false,
+      ...(result.status === 503 ? { code: "not_configured" } : {}),
+      message: result.message,
+    },
+    { status: result.status },
+  );
 }

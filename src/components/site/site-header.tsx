@@ -14,6 +14,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { NAV_ITEMS, SITE_NAME, type NavItem } from "@/lib/site";
+import { NavAuth } from "@/components/site/nav-auth";
 import { cn } from "@/lib/utils";
 
 function isActive(pathname: string, href: string) {
@@ -80,6 +81,7 @@ export function SiteHeader() {
               </Link>
             ),
           )}
+          <NavAuth />
         </nav>
 
         {/* Mobile */}
@@ -118,6 +120,9 @@ export function SiteHeader() {
                   </SheetClose>
                 ),
               )}
+              <SheetClose asChild>
+                <NavAuth mobile />
+              </SheetClose>
             </nav>
           </SheetContent>
         </Sheet>
