@@ -12,7 +12,10 @@ export const SITE_TAGLINE =
  * see SUPABASE-VERCEL-SETUP.md.
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bouncing-forward.vercel.app";
+  // `||` (not `??`): an env var saved as an empty string must also fall
+  // back — `new URL("")` would crash every page at startup.
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+  "https://bouncing-forward.vercel.app";
 
 /** Live Amazon listing (BF-Website-Copy + mockup). Opens in a new tab. */
 export const AMAZON_URL =

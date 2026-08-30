@@ -2,14 +2,16 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { codesConfigured, validCode } from "@/lib/premium";
+import { hasPremium } from "@/lib/auth/entitlements";
 
 /**
- * GET /api/premium/download?file=book|workbook&code=…
+ * GET /api/premium/download?file=book|workbook[&code=…]
  *
- * Streams the paid Book Package PDFs from private-content/ (which has
- * no public URL) — only when a valid access code comes with the
- * request. This is what keeps the $9.99 files genuinely un-fetchable
- * without a code, while every valid code works on any device, forever.
+ * Streams the paid Book Package PDFs from private-content/ (no public
+ * URL). Two ways in, checked in order:
+ *   1) a signed-in account that owns the Book Package (the new flow);
+ *   2) a valid legacy access code — so every code already sent by
+ *      email keeps working forever.
  */
 
 const FILES: Record<string, { path: string; name: string }> = {
@@ -31,17 +33,28 @@ export async function GET(request: Request) {
   if (!file) {
     return NextResponse.json({ ok: false, message: "Unknown file." }, { status: 404 });
   }
-  if (!codesConfigured()) {
-    return NextResponse.json(
-      { ok: false, message: "Access codes aren’t switched on yet — please try again soon." },
-      { status: 503 },
-    );
+
+  // Way 1: a signed-in owner. Never throws site-wide — any auth hiccup
+  // just falls through to the code check.
+  let owner = false;
+  try {
+    owner = await hasPremium();
+  } catch {
+    owner = false;
   }
-  if (!validCode(code)) {
-    return NextResponse.json(
-      { ok: false, message: "That code doesn’t match." },
-      { status: 401 },
-    );
+
+  if (!owner) {
+    // Way 2: a legacy access code.
+    if (!codesConfigured() || !validCode(code)) {
+      return NextResponse.json(
+        {
+          ok: false,
+          message:
+            "Please log in to your account to download — or use the access code from your confirmation email.",
+        },
+        { status: 401 },
+      );
+    }
   }
 
   try {

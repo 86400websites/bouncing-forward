@@ -5,13 +5,15 @@ import { useState } from "react";
 /*
  * Contact form (BF-Website-Copy — Contact).
  *
- * The email backend (Resend) is a later step. Rather than fake a submission,
- * Send opens the visitor's mail client pre-addressed to the interim address
- * with their subject and message — a real, working action today. Swap the
- * handler for the API route when the backend lands.
+ * Live delivery via Formspree: set NEXT_PUBLIC_FORMSPREE_ENDPOINT (the
+ * form's URL, e.g. https://formspree.io/f/abcdwxyz) and Send submits
+ * there with honest sending/sent/error states. Without it, Send falls
+ * back to opening the visitor's mail client pre-addressed — a real,
+ * working action either way; we never fake a submission.
  */
 
 const CONTACT_EMAIL = "heatherswart@live.co.za";
+const FORMSPREE = (process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "").trim();
 
 const SUBJECTS = [
   "Tell me more about Bouncing Forward",
@@ -26,15 +28,76 @@ export function ContactForm() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState(SUBJECTS[0]);
   const [message, setMessage] = useState("");
+  const [gotcha, setGotcha] = useState(""); // honeypot
+  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [error, setError] = useState("");
 
-  const canSend = name.trim() && email.trim() && message.trim();
+  const canSend = Boolean(name.trim() && email.trim() && message.trim());
 
-  function send() {
+  function sendMailto() {
     const body = `${message}\n\n— ${name} (${email})`;
     const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
     window.location.href = href;
+  }
+
+  async function send() {
+    if (!canSend || state === "sending") return;
+    if (!FORMSPREE) {
+      sendMailto();
+      return;
+    }
+    setState("sending");
+    setError("");
+    try {
+      const res = await fetch(FORMSPREE, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          _replyto: email,
+          _subject: `[Bouncing Forward] ${subject}`,
+          _gotcha: gotcha,
+        }),
+      });
+      if (res.ok) {
+        setState("done");
+      } else {
+        const data = (await res.json().catch(() => ({}))) as {
+          errors?: { message?: string }[];
+        };
+        setState("error");
+        setError(
+          data.errors?.[0]?.message ??
+            "Something went wrong sending your message — please try again.",
+        );
+      }
+    } catch {
+      setState("error");
+      setError("We couldn’t send your message just now — please try again.");
+    }
+  }
+
+  if (state === "done") {
+    return (
+      <div className="rounded-xl border-2 border-brand-accent bg-card p-6 sm:p-8">
+        <p className="font-[family-name:var(--font-display)] text-lg font-bold text-primary">
+          Message sent — thank you.
+        </p>
+        <p className="mt-2 leading-relaxed text-muted-foreground">
+          We read everything, and we’ll reply to{" "}
+          <span className="font-semibold text-foreground">{email}</span> as soon
+          as we can.
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -82,14 +145,28 @@ export function ContactForm() {
             className="w-full rounded-md border border-input bg-background px-4 py-2.5 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
           />
         </Field>
+        {/* Honeypot — hidden from real people, tempting to bots. */}
+        <input
+          type="text"
+          name="_gotcha"
+          value={gotcha}
+          onChange={(e) => setGotcha(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="hidden"
+        />
         <button
           type="button"
           onClick={send}
-          disabled={!canSend}
+          disabled={!canSend || state === "sending"}
           className="inline-flex items-center rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          Send
+          {state === "sending" ? "Sending…" : "Send"}
         </button>
+        <p aria-live="polite" className={error ? "text-sm text-red-600" : "sr-only"}>
+          {error}
+        </p>
         <p className="text-sm text-muted-foreground">
           Prefer email? Write to us directly at{" "}
           <a

@@ -10,6 +10,7 @@ The site sends these tags automatically:
 | ----------------- | ------------------------------------------------------ |
 | `newsletter`      | someone submits the "Send me The First Week" form      |
 | `full-assessment` | someone completes the Full Assessment and gives email  |
+| `premium`         | someone buys the $9.99 Book Package (via Stripe)       |
 
 ---
 
@@ -44,6 +45,19 @@ the link stays current.
 and say the monthly note will follow. (The site already offers this
 download on the success screen; the email doubles it and starts the
 relationship.)
+
+---
+
+## Automation C — "Book Package access code" (Premium buyers)
+
+**Trigger:** Tag added → `premium`
+(the Stripe webhook adds this tag automatically after payment.)
+
+**Email 1 (immediately):** Heather's access-code email
+(BF_Premium_Access_Email), with `[ACCESS CODE]` replaced by the
+first code in `PREMIUM_ACCESS_CODES`. The buyer is now also on
+the list for the weekly note and the Monthly Letter — exactly as
+the brief specifies.
 
 ---
 

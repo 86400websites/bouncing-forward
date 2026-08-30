@@ -14,6 +14,17 @@ export function codesConfigured(): boolean {
   return (process.env.PREMIUM_ACCESS_CODES ?? "").trim().length > 0;
 }
 
+/** The canonical (first) configured code — handed to a buyer right after
+ *  a verified Stripe payment so everything opens without waiting for the
+ *  email. */
+export function firstCode(): string | null {
+  const first = (process.env.PREMIUM_ACCESS_CODES ?? "")
+    .split(",")
+    .map((c) => c.trim())
+    .filter(Boolean)[0];
+  return first ?? null;
+}
+
 export function validCode(raw: unknown): boolean {
   const configured = (process.env.PREMIUM_ACCESS_CODES ?? "")
     .split(",")
