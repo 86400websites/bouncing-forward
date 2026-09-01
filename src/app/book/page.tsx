@@ -10,6 +10,7 @@ import {
 import {
   BeginYourCrossing,
   ExternalCta,
+  PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 import { NumberedCard } from "@/components/site/numbered-card";
 import { AMAZON_URL } from "@/lib/site";
@@ -241,7 +242,8 @@ export default function BookPage() {
           <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
             The direction you’re looking for is already inside you.
           </h2>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <PrimaryCta href="/all-in" label="Go All In" />
             <ExternalCta href={AMAZON_URL} label="Buy on Amazon" />
           </div>
         </FadeIn>
@@ -249,9 +251,9 @@ export default function BookPage() {
 
       {/* ── Begin Your Crossing (Book page copy) ─────────────── */}
       <BeginYourCrossing
-        heading="Take The First Week with you"
-        body="Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month."
-        submitLabel="Send me The First Week"
+        heading="Download your 7 Step Journal"
+        body="Seven steps. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month."
+        submitLabel="Send me the 7 Step Journal"
         showFaqLink
       />
     </>

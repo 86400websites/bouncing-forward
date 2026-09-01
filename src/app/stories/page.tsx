@@ -4,6 +4,7 @@ import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
   PrimaryCta,
+  SecondaryCta,
 } from "@/components/site/begin-your-crossing";
 import { StoriesGrid, type Story } from "@/components/site/stories-grid";
 
@@ -269,8 +270,9 @@ export default function StoriesPage() {
             </p>
           </SlideUp>
           <SlideUp delay={0.14}>
-            <div className="mt-8 flex justify-center">
-              <PrimaryCta href="/contact" label="Share Your Story →" />
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <PrimaryCta href="/all-in" label="Go All In" />
+              <SecondaryCta href="/contact" label="Share Your Story →" />
             </div>
           </SlideUp>
         </div>

@@ -164,7 +164,7 @@ export default function LearnPage() {
               <ComingSoonCta label="Start the Course" invert />
               <PrimaryCta
                 href="#begin-your-crossing"
-                label="Get The First Week"
+                label="Get the 7 Step Journal"
                 invert
               />
             </div>

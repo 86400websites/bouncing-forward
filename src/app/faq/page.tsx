@@ -29,7 +29,7 @@ const faqs: QA[] = [
   },
   {
     q: "Where do I start?",
-    a: "Start where you are. Free gets you the blog, the stories, the course introduction, the first chapter of the book, The First Week download and the two-minute Where\u2019s Here? check. When you are ready to commit, go All In \u2014 it is free, and the Full Assessment unlocks everything. Premium is the Book Package: the complete downloadable book and workbook, plus everything in All In.",
+    a: "Start where you are. Free gets you the blog, the stories, the course introduction, the first chapter of the book, the 7 Step Journal download and the two-minute Where\u2019s Here? check. When you are ready to commit, go All In \u2014 it is free, and the Full Assessment unlocks everything. Premium is the Book Package: the complete downloadable book and workbook, plus everything in All In.",
   },
   {
     q: "Where can I buy the book, and in which formats?",

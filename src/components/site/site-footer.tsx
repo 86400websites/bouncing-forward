@@ -27,6 +27,17 @@ export function SiteFooter() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+        <div className="mb-12 flex flex-col items-center gap-3 text-center">
+          <p className="text-sm text-primary-foreground/80">
+            Everything opens with the Full Assessment — free, for life.
+          </p>
+          <Link
+            href="/all-in"
+            className="inline-flex items-center rounded-full bg-brand-accent px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            Go All In
+          </Link>
+        </div>
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">

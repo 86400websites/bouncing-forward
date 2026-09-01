@@ -66,8 +66,12 @@ async function grantEntitlement(session: CheckoutSession): Promise<void> {
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     !process.env.SUPABASE_SECRET_KEY
   ) {
-    console.error("Entitlement skipped: Supabase env not configured.");
-    return;
+    // The buyer paid through the account flow — never swallow that.
+    // Throwing makes the webhook return 500 so Stripe retries (~3 days),
+    // giving time to set the Supabase keys without losing the purchase.
+    throw new Error(
+      "Entitlement pending: Supabase env not configured on this deployment.",
+    );
   }
   const admin = createAdminClient();
   const { error } = await admin.from("entitlements").upsert(

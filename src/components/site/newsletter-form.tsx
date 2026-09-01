@@ -4,7 +4,7 @@ import { useState } from "react";
 
 /**
  * The live email-capture form — posts to /api/newsletter (Mailchimp).
- * On success it also offers The First Week (the 7 Step Journal) as an
+ * On success it also offers the 7 Step Journal as an
  * immediate download, so the promise is kept even before the Mailchimp
  * welcome automation exists.
  */
@@ -65,7 +65,7 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
           You’re in — welcome.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          The First Week is yours right now:
+          Your 7 Step Journal is ready right now:
         </p>
         <a
           href="/downloads/BF-7-Step-Reflection-Journal.pdf"
@@ -73,7 +73,7 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
           rel="noopener noreferrer"
           className="mt-3 inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          Download The First Week →
+          Download the 7 Step Journal →
         </a>
       </div>
     );

@@ -13,7 +13,6 @@ import {
   PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 import { NumberedCard } from "@/components/site/numbered-card";
-import { AMAZON_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -397,7 +396,7 @@ export default function ResourcesPage() {
             </p>
             <div className="mt-8 flex justify-center">
               <ExternalCta
-                href={AMAZON_URL}
+                href="/downloads/Bouncing-Forward-Chapter-1-Free-A4.pdf"
                 label="Read the First Chapter Free →"
               />
             </div>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
@@ -170,12 +169,6 @@ export default function CoursePage() {
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <PrimaryCta href="/all-in" label="Go All In" invert />
-              <Link
-                href="/all-in"
-                className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              >
-                Go All In · Everything Included
-              </Link>
             </div>
           </FadeIn>
         </div>
