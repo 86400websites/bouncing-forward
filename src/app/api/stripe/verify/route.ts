@@ -50,7 +50,10 @@ export async function GET(request: Request) {
       );
     }
     const session = (await res.json()) as { payment_status?: string };
-    if (session.payment_status !== "paid") {
+    const settled =
+      session.payment_status === "paid" ||
+      session.payment_status === "no_payment_required";
+    if (!settled) {
       return NextResponse.json({
         ok: false,
         pending: true,

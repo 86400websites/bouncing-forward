@@ -115,9 +115,14 @@ export async function POST(request: Request) {
   }
 
   const session = event.data?.object;
+  // "no_payment_required" = a 100% promotion code brought the total to
+  // $0 — Stripe completes the session without a card. That is a real,
+  // finished purchase (used for team/test access) and must be honoured.
+  const settled =
+    session?.payment_status === "paid" ||
+    session?.payment_status === "no_payment_required";
   const paidNow =
-    (event.type === "checkout.session.completed" &&
-      session?.payment_status === "paid") ||
+    (event.type === "checkout.session.completed" && settled) ||
     event.type === "checkout.session.async_payment_succeeded";
 
   if (!paidNow || !session) {
