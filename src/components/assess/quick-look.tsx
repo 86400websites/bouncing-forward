@@ -216,6 +216,12 @@ export function QuickLook() {
               >
                 Take the quick look →
               </button>
+              <Link
+                href="/all-in"
+                className="ml-4 inline-flex items-center font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text hover:underline"
+              >
+                Go All In →
+              </Link>
             </div>
           </div>
           <div>
@@ -401,7 +407,7 @@ export function QuickLook() {
             href="/all-in#full-assessment"
             className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
-            Go all in →
+            Go All In →
           </Link>
         </div>
       </div>

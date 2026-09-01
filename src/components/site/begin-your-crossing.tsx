@@ -6,14 +6,14 @@ import { cn } from "@/lib/utils";
  * The site-wide email capture (BF-Website-Copy — "Begin Your Next Chapter").
  *
  * Live: posts to /api/newsletter → Mailchimp (see .env.local.example for the
- * three keys). On success the form offers The First Week (the 7 Step Journal)
+ * three keys). On success the form offers the 7 Step Journal
  * as an immediate download; if Mailchimp isn't configured the API answers
  * honestly and the form shows the message — we never fake a subscription.
  */
 export function BeginYourCrossing({
-  heading = "Take The First Week with you",
-  body = "Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes a weekly note to keep you moving forward. No noise, and easy to leave.",
-  submitLabel = "Send me The First Week",
+  heading = "Download your 7 Step Journal",
+  body = "Seven steps. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes a weekly note to keep you moving forward. No noise, and easy to leave.",
+  submitLabel = "Send me the 7 Step Journal",
   showFaqLink = false,
 }: {
   heading?: string;
@@ -35,6 +35,15 @@ export function BeginYourCrossing({
           <p className="mt-4 text-muted-foreground">{body}</p>
 
           <NewsletterForm submitLabel={submitLabel} />
+          <p className="mt-5 text-sm text-muted-foreground">
+            Ready for everything?{" "}
+            <Link
+              href="/all-in"
+              className="font-[family-name:var(--font-display)] font-bold text-brand-accent-text hover:underline"
+            >
+              Go All In →
+            </Link>
+          </p>
 
           {showFaqLink ? (
             <p className="mt-6 text-sm text-muted-foreground">

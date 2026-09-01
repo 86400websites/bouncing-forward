@@ -8,7 +8,7 @@ The site sends these tags automatically:
 
 | Tag               | Set when…                                              |
 | ----------------- | ------------------------------------------------------ |
-| `newsletter`      | someone submits the "Send me The First Week" form      |
+| `newsletter`      | someone submits the "Send me the 7 Step Journal" form |
 | `full-assessment` | someone completes the Full Assessment and gives email  |
 | `premium`         | someone buys the $9.99 Book Package (via Stripe)       |
 
@@ -36,11 +36,11 @@ which are already hosted on the site:
 Linking beats attaching: no size limits, and when a file is updated
 the link stays current.
 
-## Automation B — "The First Week" (newsletter welcome)
+## Automation B — "The 7 Step Journal" (newsletter welcome)
 
 **Trigger:** Tag added → `newsletter`
 
-**Email 1 (immediately):** deliver The First Week —
+**Email 1 (immediately):** deliver the 7 Step Journal —
 `https://<your-domain>/downloads/BF-7-Step-Reflection-Journal.pdf` —
 and say the monthly note will follow. (The site already offers this
 download on the success screen; the email doubles it and starts the

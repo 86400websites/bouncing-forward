@@ -163,7 +163,14 @@ function DesktopDropdown({
         )}
       >
         {item.href ? (
-          <Link href={item.href} className={labelClasses}>
+          <Link
+            href={item.href}
+            className={
+              item.label === "All In"
+                ? "rounded-full bg-brand-accent px-4 py-1.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                : labelClasses
+            }
+          >
             {item.label}
           </Link>
         ) : (

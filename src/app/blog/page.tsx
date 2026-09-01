@@ -6,7 +6,9 @@ import {
   Stagger,
   StaggerItem,
 } from "@/components/motion/primitives";
-import { BeginYourCrossing } from "@/components/site/begin-your-crossing";
+import { BeginYourCrossing,
+  PrimaryCta,
+} from "@/components/site/begin-your-crossing";
 import { POSTS } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -73,6 +75,22 @@ export default function BlogPage() {
             </StaggerItem>
           ))}
         </Stagger>
+      </section>
+
+      {/* ── Go All In band ───────────────────────────────────── */}
+      <section className="bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-5 py-14 text-center sm:px-6 lg:px-8 sm:py-16">
+          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            Ready for everything?
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-primary-foreground/80">
+            The Full Assessment, the course, the journal, the letters — all
+            free, all open.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <PrimaryCta href="/all-in" label="Go All In" invert />
+          </div>
+        </div>
       </section>
 
       {/* ── Newsletter ───────────────────────────────────────── */}

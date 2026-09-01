@@ -239,8 +239,9 @@ export default function AboutPage() {
               You don’t need the answer yet. Just the courage to ask.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <PrimaryCta href="/all-in" label="Go All In" invert />
               <SecondaryCta href="/book" label="Read the Book" invert />
-              <PrimaryCta href="/assess" label="Find out where here is" invert />
+              <SecondaryCta href="/assess" label="Find out where here is" invert />
             </div>
           </FadeIn>
         </div>
@@ -248,9 +249,9 @@ export default function AboutPage() {
 
       {/* ── Newsletter ───────────────────────────────────────── */}
       <BeginYourCrossing
-        heading="Take The First Week with you"
-        body="Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave."
-        submitLabel="Send me The First Week"
+        heading="Download your 7 Step Journal"
+        body="Seven steps. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave."
+        submitLabel="Send me the 7 Step Journal"
       />
     </>
   );

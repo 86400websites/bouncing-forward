@@ -59,7 +59,7 @@ const freeIncludes = [
   "Read the blog and the stories",
   "Watch the course introduction",
   "Read the book’s first chapter",
-  "Download The First Week",  // rendered as a download link below
+  "Download your 7 Step Journal",  // rendered as a download link below
   "Take the two-minute check",
   "Your email address gets you a weekly note to keep you moving forward",
 ];
@@ -111,6 +111,7 @@ export default function HomePage() {
             <SlideUp delay={0.16}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <PrimaryCta href="/book" label="Read the Book" />
+                <SecondaryCta href="/all-in" label="Go All In" />
                 <SecondaryCta href="/assess" label="Find out where here is" />
               </div>
               <div className="mt-5">
@@ -256,7 +257,7 @@ export default function HomePage() {
                 {freeIncludes.map((item, i) => (
                   <li key={i} className="flex gap-3 leading-relaxed">
                     <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
-                    {item.startsWith("Download The First Week") ? (
+                    {item.startsWith("Download your 7 Step Journal") ? (
                       <a
                         href="/downloads/BF-7-Step-Reflection-Journal.pdf"
                         target="_blank"
@@ -381,11 +382,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Screen 6 — Email sign-up (The First Week) ────────── */}
+      {/* ── Screen 6 — Email sign-up (the 7 Step Journal) ────────── */}
       <BeginYourCrossing
-        heading="Take The First Week with you"
-        body="Seven days. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave."
-        submitLabel="Send me The First Week"
+        heading="Download your 7 Step Journal"
+        body="Seven steps. Seven honest prompts. One small step at the end — free, downloadable, yours to keep. With it comes one note from us a month. No noise, and easy to leave."
+        submitLabel="Send me the 7 Step Journal"
       />
 
       {/* ── Screen 7 — Closing questions ─────────────────────── */}
