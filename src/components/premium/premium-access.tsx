@@ -37,6 +37,18 @@ export function PremiumAccess({
   const [showCodeForm, setShowCodeForm] = useState(false);
   const [message, setMessage] = useState("");
 
+  // An owner has everything in All In too — "no assessment needed
+  // first" — so open the All In library and course on this device.
+  useEffect(() => {
+    if (!owned) return;
+    try {
+      window.localStorage.setItem("bf-allin-open", "1");
+      window.dispatchEvent(new Event("bf-allin-unlocked"));
+    } catch {
+      /* fine */
+    }
+  }, [owned]);
+
   // Legacy paths only matter when the account doesn't already own it:
   // a remembered code, or a Payment-Link return with ?session_id=.
   useEffect(() => {

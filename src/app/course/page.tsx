@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getAccess } from "@/lib/auth/entitlements";
+import { VideoEmbed } from "@/components/course/video-embed";
+import { CourseModules } from "@/components/course/course-modules";
 import Image from "next/image";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import {
@@ -20,7 +23,9 @@ export const metadata: Metadata = {
 /* Copy source: BF-Website-Copy-For-Sozana-2.docx — The Course (/course), verbatim. */
 
 
-export default function CoursePage() {
+export default async function CoursePage() {
+  const { products } = await getAccess();
+  const owned = products.includes("premium");
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -115,20 +120,33 @@ export default function CoursePage() {
           </p>
         </SlideUp>
         <FadeIn>
-          <div className="mt-8 flex aspect-video flex-col items-center justify-center gap-3 rounded-xl border border-border bg-muted text-center">
-            <svg
-              viewBox="0 0 48 48"
-              aria-hidden="true"
-              className="size-12 text-brand-accent"
-            >
-              <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-              <path d="M20 17 L32 24 L20 31 Z" fill="currentColor" />
-            </svg>
-            <p className="text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-              Sample video coming soon
-            </p>
+          <div className="mt-8">
+            <VideoEmbed id="adFqf6BJDT8" title="Module 1: Introduction to Bouncing Forward" />
           </div>
         </FadeIn>
+      </section>
+
+      {/* ── The nine modules ─────────────────────────────────── */}
+      <section className="bg-muted">
+        <div
+          id="modules"
+          className="mx-auto max-w-4xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+        >
+          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            The Course
+          </p>
+          <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+            Nine modules. A short video and a worksheet for each.
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            The Compass first — four elements to keep you oriented — then the
+            Path, four steps to help you move. Go in order, or start where
+            you’re standing.
+          </p>
+          <div className="mt-10">
+            <CourseModules owned={owned} />
+          </div>
+        </div>
       </section>
 
       {/* ── How to use this ──────────────────────────────────── */}

@@ -166,7 +166,11 @@ export function AllInLibrary() {
       <div className="mt-4 rounded-lg border border-border bg-card p-6 sm:p-8">
         <h4 className="text-lg font-bold">The Course — worksheets</h4>
         <p className="mt-1 text-sm text-muted-foreground">
-          One for every module. New material lands here as it&rsquo;s added.
+          One for every module — and the nine videos from Maher are{" "}
+          <a href="/course#modules" className="font-semibold text-brand-accent-text hover:underline">
+            on the Course page
+          </a>
+          , open for you now.
         </p>
         <ul className="mt-2 divide-y divide-border">
           {courseGroup.map((i) => (
