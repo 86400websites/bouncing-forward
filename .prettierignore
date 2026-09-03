@@ -1,0 +1,6 @@
+pnpm-lock.yaml
+.next
+private-content
+public
+tsconfig.tsbuildinfo
+source-materials

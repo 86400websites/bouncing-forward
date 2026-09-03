@@ -31,7 +31,10 @@ export async function GET(request: Request) {
   const code = url.searchParams.get("code") ?? "";
 
   if (!file) {
-    return NextResponse.json({ ok: false, message: "Unknown file." }, { status: 404 });
+    return NextResponse.json(
+      { ok: false, message: "Unknown file." },
+      { status: 404 },
+    );
   }
 
   // Way 1: a signed-in owner. Never throws site-wide — any auth hiccup
@@ -68,7 +71,11 @@ export async function GET(request: Request) {
     });
   } catch {
     return NextResponse.json(
-      { ok: false, message: "The file isn’t available right now — please try again shortly." },
+      {
+        ok: false,
+        message:
+          "The file isn’t available right now — please try again shortly.",
+      },
       { status: 500 },
     );
   }

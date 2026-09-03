@@ -43,34 +43,33 @@ export default async function BlogPostPage({ params }: Params) {
           <FadeIn>
             <Link
               href="/blog"
-              className="font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground"
+              className="text-brand-accent-text hover:text-foreground font-[family-name:var(--font-display)] text-sm font-bold transition-colors"
             >
               ← The Journal
             </Link>
           </FadeIn>
           <SlideUp>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+            <h1 className="mt-6 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
               {post.title}
             </h1>
           </SlideUp>
           <SlideUp delay={0.06}>
-            <p className="mt-4 text-lg italic leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground mt-4 text-lg leading-relaxed italic">
               {post.subtitle}
             </p>
           </SlideUp>
-          <div className="mt-8 h-px w-full bg-border" />
+          <div className="bg-border mt-8 h-px w-full" />
         </header>
 
-
         {/* ── Post body ──────────────────────────────────────── */}
-        <div className="mx-auto max-w-3xl px-5 pb-16 sm:px-6 lg:px-8 sm:pb-20 lg:pb-24">
+        <div className="mx-auto max-w-3xl px-5 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
           {post.blocks.map((block, i) => {
             switch (block.type) {
               case "h2":
                 return (
                   <h2
                     key={i}
-                    className="mt-10 text-2xl font-extrabold leading-tight sm:text-3xl"
+                    className="mt-10 text-2xl leading-tight font-extrabold sm:text-3xl"
                   >
                     {block.text}
                   </h2>
@@ -79,7 +78,7 @@ export default async function BlogPostPage({ params }: Params) {
                 return (
                   <blockquote
                     key={i}
-                    className="my-10 border-l-2 border-brand-accent pl-5 text-xl italic leading-relaxed sm:text-2xl"
+                    className="border-brand-accent my-10 border-l-2 pl-5 text-xl leading-relaxed italic sm:text-2xl"
                   >
                     {block.text}
                   </blockquote>
@@ -91,7 +90,7 @@ export default async function BlogPostPage({ params }: Params) {
                 return (
                   <p
                     key={i}
-                    className="mt-10 border-t border-border pt-8 text-lg font-semibold leading-relaxed"
+                    className="border-border mt-10 border-t pt-8 text-lg leading-relaxed font-semibold"
                   >
                     {block.text}
                   </p>
@@ -108,20 +107,17 @@ export default async function BlogPostPage({ params }: Params) {
       </article>
 
       {/* ── Previous / next ──────────────────────────────────── */}
-      <nav
-        aria-label="More posts"
-        className="border-t border-border bg-muted"
-      >
+      <nav aria-label="More posts" className="border-border bg-muted border-t">
         <div className="mx-auto grid max-w-3xl gap-6 px-5 py-12 sm:grid-cols-2 sm:px-6 lg:px-8">
           {previous ? (
             <Link
               href={`/blog/${previous.slug}`}
-              className="group rounded-lg border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="group border-border bg-card focus-visible:outline-ring rounded-lg border p-5 transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-muted-foreground">
+              <p className="text-muted-foreground text-xs font-bold tracking-[0.08em] uppercase">
                 ← Previous
               </p>
-              <p className="mt-2 font-bold leading-snug group-hover:text-brand-accent-text">
+              <p className="group-hover:text-brand-accent-text mt-2 leading-snug font-bold">
                 {previous.title}
               </p>
             </Link>
@@ -131,12 +127,12 @@ export default async function BlogPostPage({ params }: Params) {
           {next ? (
             <Link
               href={`/blog/${next.slug}`}
-              className="group rounded-lg border border-border bg-card p-5 text-right transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="group border-border bg-card focus-visible:outline-ring rounded-lg border p-5 text-right transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-muted-foreground">
+              <p className="text-muted-foreground text-xs font-bold tracking-[0.08em] uppercase">
                 Next →
               </p>
-              <p className="mt-2 font-bold leading-snug group-hover:text-brand-accent-text">
+              <p className="group-hover:text-brand-accent-text mt-2 leading-snug font-bold">
                 {next.title}
               </p>
             </Link>

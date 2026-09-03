@@ -13,11 +13,11 @@ export function IllustrationPlaceholder({
   label?: string;
 }) {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-muted">
+    <div className="bg-muted absolute inset-0 flex flex-col items-center justify-center gap-3">
       <svg
         viewBox="0 0 48 48"
         aria-hidden="true"
-        className="size-10 text-brand-accent"
+        className="text-brand-accent size-10"
       >
         <circle
           cx="24"
@@ -33,9 +33,13 @@ export function IllustrationPlaceholder({
           fill="currentColor"
           opacity="0.85"
         />
-        <path d="M8 24 L24 20 L40 24 L24 28 Z" fill="currentColor" opacity="0.35" />
+        <path
+          d="M8 24 L24 20 L40 24 L24 28 Z"
+          fill="currentColor"
+          opacity="0.35"
+        />
       </svg>
-      <span className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+      <span className="text-muted-foreground text-xs font-semibold tracking-[0.08em] uppercase">
         {label}
       </span>
     </div>
@@ -68,7 +72,7 @@ export function StoryCard({
   return (
     <article
       className={cn(
-        "flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md",
+        "border-border bg-card flex h-full flex-col overflow-hidden rounded-lg border transition-all hover:-translate-y-1 hover:shadow-md",
         className,
       )}
     >
@@ -88,15 +92,15 @@ export function StoryCard({
         )}
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+        <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
           {category}
         </p>
-        <h3 className="mt-2 text-xl font-bold leading-snug">{title}</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h3 className="mt-2 text-xl leading-snug font-bold">{title}</h3>
+        <p className="text-muted-foreground mt-1 text-sm">
           {name} · {country}
         </p>
         <p className="mt-3 flex-1 text-sm leading-relaxed">{excerpt}</p>
-        <p className="mt-4 border-t border-border pt-4 text-sm italic leading-relaxed text-muted-foreground">
+        <p className="border-border text-muted-foreground mt-4 border-t pt-4 text-sm leading-relaxed italic">
           {closing}
         </p>
       </div>

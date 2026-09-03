@@ -37,7 +37,7 @@ export function NumberedCard({
   return (
     <article
       className={cn(
-        "flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-md",
+        "border-border bg-card flex h-full flex-col rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-md",
         className,
       )}
     >
@@ -55,7 +55,7 @@ export function NumberedCard({
           className="absolute inset-0 h-full w-full object-contain p-3"
         />
       </div>
-      <p className="mt-5 font-[family-name:var(--font-display)] text-sm font-extrabold tracking-[0.08em] text-brand-accent-text">
+      <p className="text-brand-accent-text mt-5 font-[family-name:var(--font-display)] text-sm font-extrabold tracking-[0.08em]">
         {index}
       </p>
       {headingLevel === "h3" ? (
@@ -64,17 +64,17 @@ export function NumberedCard({
         <h4 className={headingClass}>{title}</h4>
       )}
       {subtitle ? (
-        <p className="mt-1 text-sm font-semibold text-muted-foreground">
+        <p className="text-muted-foreground mt-1 text-sm font-semibold">
           {subtitle}
         </p>
       ) : null}
       {quote ? (
-        <blockquote className="mt-3 border-l-2 border-brand-accent pl-4 text-sm italic leading-relaxed text-muted-foreground">
+        <blockquote className="border-brand-accent text-muted-foreground mt-3 border-l-2 pl-4 text-sm leading-relaxed italic">
           {quote}
         </blockquote>
       ) : null}
       {descriptor ? (
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
           {descriptor}
         </p>
       ) : null}

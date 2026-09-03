@@ -23,7 +23,11 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 const TOLERANCE_SECONDS = 300;
 
-function verifySignature(payload: string, header: string, secret: string): boolean {
+function verifySignature(
+  payload: string,
+  header: string,
+  secret: string,
+): boolean {
   let timestamp = "";
   const candidates: string[] = [];
   for (const part of header.split(",")) {
@@ -42,7 +46,9 @@ function verifySignature(payload: string, header: string, secret: string): boole
   const expectedBuf = Buffer.from(expected, "utf8");
   return candidates.some((c) => {
     const buf = Buffer.from(c, "utf8");
-    return buf.length === expectedBuf.length && timingSafeEqual(buf, expectedBuf);
+    return (
+      buf.length === expectedBuf.length && timingSafeEqual(buf, expectedBuf)
+    );
   });
 }
 
@@ -111,7 +117,10 @@ export async function POST(request: Request) {
   try {
     event = JSON.parse(payload) as typeof event;
   } catch {
-    return NextResponse.json({ ok: false, message: "Invalid payload." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, message: "Invalid payload." },
+      { status: 400 },
+    );
   }
 
   const session = event.data?.object;
@@ -143,17 +152,25 @@ export async function POST(request: Request) {
   }
 
   // 2) Then the email side (Mailchimp tag → access email + weekly notes).
-  const email = (session.customer_details?.email ?? session.customer_email ?? "").trim();
+  const email = (
+    session.customer_details?.email ??
+    session.customer_email ??
+    ""
+  ).trim();
   if (!email) {
     return NextResponse.json({ ok: true, note: "No email on session." });
   }
-  const firstName = (session.customer_details?.name ?? "").trim().split(/\s+/)[0] ?? "";
+  const firstName =
+    (session.customer_details?.name ?? "").trim().split(/\s+/)[0] ?? "";
 
   if (!mailchimpConfigured()) {
     // Retryable on purpose: Stripe will keep retrying (~3 days), so
     // buyers made while Mailchimp keys are still being set up are not lost.
     return NextResponse.json(
-      { ok: false, message: "Mailchimp not configured yet — Stripe will retry." },
+      {
+        ok: false,
+        message: "Mailchimp not configured yet — Stripe will retry.",
+      },
       { status: 500 },
     );
   }
@@ -166,7 +183,10 @@ export async function POST(request: Request) {
 
   if (result.ok) return NextResponse.json({ ok: true });
   if (result.retryable) {
-    return NextResponse.json({ ok: false, message: result.message }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, message: result.message },
+      { status: 500 },
+    );
   }
   // Permanent (e.g. Mailchimp rejects the address) — retrying won't help.
   return NextResponse.json({ ok: true, note: result.message });

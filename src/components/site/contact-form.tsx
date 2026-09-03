@@ -12,7 +12,7 @@ import { useState } from "react";
  * working action either way; we never fake a submission.
  */
 
-const CONTACT_EMAIL = "heatherswart@live.co.za";
+const CONTACT_EMAIL = "info@bouncing-forward.com";
 const FORMSPREE = (process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "").trim();
 
 const SUBJECTS = [
@@ -29,7 +29,9 @@ export function ContactForm() {
   const [subject, setSubject] = useState(SUBJECTS[0]);
   const [message, setMessage] = useState("");
   const [gotcha, setGotcha] = useState(""); // honeypot
-  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [state, setState] = useState<"idle" | "sending" | "done" | "error">(
+    "idle",
+  );
   const [error, setError] = useState("");
 
   const canSend = Boolean(name.trim() && email.trim() && message.trim());
@@ -87,13 +89,13 @@ export function ContactForm() {
 
   if (state === "done") {
     return (
-      <div className="rounded-xl border-2 border-brand-accent bg-card p-6 sm:p-8">
-        <p className="font-[family-name:var(--font-display)] text-lg font-bold text-primary">
+      <div className="border-brand-accent bg-card rounded-xl border-2 p-6 sm:p-8">
+        <p className="text-primary font-[family-name:var(--font-display)] text-lg font-bold">
           Message sent — thank you.
         </p>
-        <p className="mt-2 leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mt-2 leading-relaxed">
           We read everything, and we’ll reply to{" "}
-          <span className="font-semibold text-foreground">{email}</span> as soon
+          <span className="text-foreground font-semibold">{email}</span> as soon
           as we can.
         </p>
       </div>
@@ -101,7 +103,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 sm:p-8">
+    <div className="border-border bg-card rounded-xl border p-6 sm:p-8">
       <div className="space-y-5">
         <Field id="c-name" label="Name">
           <input
@@ -109,7 +111,7 @@ export function ContactForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
-            className="w-full rounded-md border border-input bg-background px-4 py-2.5 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+            className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 w-full rounded-md border px-4 py-2.5 text-base transition-colors outline-none focus-visible:ring-2"
           />
         </Field>
         <Field id="c-email" label="Email address">
@@ -119,7 +121,7 @@ export function ContactForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
-            className="w-full rounded-md border border-input bg-background px-4 py-2.5 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+            className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 w-full rounded-md border px-4 py-2.5 text-base transition-colors outline-none focus-visible:ring-2"
           />
         </Field>
         <Field id="c-subject" label="Subject">
@@ -127,7 +129,7 @@ export function ContactForm() {
             id="c-subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full rounded-md border border-input bg-background px-4 py-2.5 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+            className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 w-full rounded-md border px-4 py-2.5 text-base transition-colors outline-none focus-visible:ring-2"
           >
             {SUBJECTS.map((s) => (
               <option key={s} value={s}>
@@ -142,7 +144,7 @@ export function ContactForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={5}
-            className="w-full rounded-md border border-input bg-background px-4 py-2.5 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+            className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 w-full rounded-md border px-4 py-2.5 text-base transition-colors outline-none focus-visible:ring-2"
           />
         </Field>
         {/* Honeypot — hidden from real people, tempting to bots. */}
@@ -160,18 +162,21 @@ export function ContactForm() {
           type="button"
           onClick={send}
           disabled={!canSend || state === "sending"}
-          className="inline-flex items-center rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {state === "sending" ? "Sending…" : "Send"}
         </button>
-        <p aria-live="polite" className={error ? "text-sm text-red-600" : "sr-only"}>
+        <p
+          aria-live="polite"
+          className={error ? "text-sm text-red-600" : "sr-only"}
+        >
           {error}
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Prefer email? Write to us directly at{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="font-semibold text-brand-accent-text hover:underline"
+            className="text-brand-accent-text font-semibold hover:underline"
           >
             {CONTACT_EMAIL}
           </a>

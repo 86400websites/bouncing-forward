@@ -15,12 +15,16 @@ export function PageStub({
 }) {
   return (
     <section className="mx-auto flex min-h-[60vh] w-full max-w-3xl flex-col justify-center px-5 py-24 sm:px-6 lg:px-8">
-      <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+      <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
         {eyebrow}
       </p>
-      <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">{title}</h1>
-      <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{line}</p>
-      <p className="mt-10 border-t border-border pt-6 text-sm text-muted-foreground">
+      <h1 className="mt-4 text-4xl leading-tight font-extrabold sm:text-5xl">
+        {title}
+      </h1>
+      <p className="text-muted-foreground mt-6 text-lg leading-relaxed">
+        {line}
+      </p>
+      <p className="border-border text-muted-foreground mt-10 border-t pt-6 text-sm">
         Scaffold stub — full page arrives in {sprint}.
       </p>
     </section>

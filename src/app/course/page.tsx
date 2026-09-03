@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 
 /* Copy source: BF-Website-Copy-For-Sozana-2.docx — The Course (/course), verbatim. */
 
-
 export default async function CoursePage() {
   const { products } = await getAccess();
   const owned = products.includes("premium");
@@ -33,12 +32,12 @@ export default async function CoursePage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 The Course
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 Walk the framework, one module at a time.
               </h1>
             </SlideUp>
@@ -67,12 +66,12 @@ export default async function CoursePage() {
 
       {/* ── Online course ────────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               Online Course
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
               The Bouncing Forward Course
             </h2>
           </SlideUp>
@@ -80,9 +79,9 @@ export default async function CoursePage() {
             <SlideUp delay={0.06}>
               <p>
                 The book’s companion course. Nine guided modules presenting the
-                framework — the 4-Element Compass and the 4-Step Path — each with
-                a short video, a downloadable companion guide, and space to build
-                your own plan as you go.
+                framework — the 4-Element Compass and the 4-Step Path — each
+                with a short video, a downloadable companion guide, and space to
+                build your own plan as you go.
               </p>
             </SlideUp>
             <SlideUp delay={0.1}>
@@ -91,9 +90,10 @@ export default async function CoursePage() {
           </div>
           <SlideUp delay={0.14}>
             <p className="mt-6 font-semibold">
-              The course is part of All In — free, everything open. A downloadable
-              copy of the book, all nine modules, the journal, a premium monthly
-              newsletter, and everything new we add to Bouncing Forward.
+              The course is part of All In — free, everything open. A
+              downloadable copy of the book, all nine modules, the journal, a
+              premium monthly newsletter, and everything new we add to Bouncing
+              Forward.
             </p>
           </SlideUp>
           <SlideUp delay={0.18}>
@@ -105,15 +105,15 @@ export default async function CoursePage() {
       </section>
 
       {/* ── Watch a sample ───────────────────────────────────── */}
-      <section className="mx-auto max-w-4xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-4xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             Watch a Sample
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             Module 1: An Introduction to Bouncing Forward
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed">
             See how the course feels before you begin. In this opening module,
             Maher introduces the Compass, the Path, and the honest question the
             whole framework is built to answer.
@@ -121,7 +121,10 @@ export default async function CoursePage() {
         </SlideUp>
         <FadeIn>
           <div className="mt-8">
-            <VideoEmbed id="adFqf6BJDT8" title="Module 1: Introduction to Bouncing Forward" />
+            <VideoEmbed
+              id="adFqf6BJDT8"
+              title="Module 1: Introduction to Bouncing Forward"
+            />
           </div>
         </FadeIn>
       </section>
@@ -130,15 +133,15 @@ export default async function CoursePage() {
       <section className="bg-muted">
         <div
           id="modules"
-          className="mx-auto max-w-4xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+          className="mx-auto max-w-4xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
         >
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             The Course
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">
             Nine modules. A short video and a worksheet for each.
           </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed">
             The Compass first — four elements to keep you oriented — then the
             Path, four steps to help you move. Go in order, or start where
             you’re standing.
@@ -151,12 +154,12 @@ export default async function CoursePage() {
 
       {/* ── How to use this ──────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               How to Use This
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
               Start where you are.
             </h2>
           </SlideUp>
@@ -164,8 +167,8 @@ export default async function CoursePage() {
             <SlideUp delay={0.06}>
               <p>
                 Some people want structure when the ground feels unsteady. Some
-                want a voice keeping them company. There’s no right pace, no right
-                order, and no falling behind.
+                want a voice keeping them company. There’s no right pace, no
+                right order, and no falling behind.
               </p>
             </SlideUp>
             <SlideUp delay={0.1}>
@@ -180,7 +183,7 @@ export default async function CoursePage() {
 
       {/* ── Closing band (navy) ──────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <FadeIn className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-extrabold sm:text-4xl">
               The next chapter hasn’t been written yet.

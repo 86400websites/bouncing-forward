@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import {
+  FadeIn,
+  SlideUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
 import { BeginYourCrossing } from "@/components/site/begin-your-crossing";
 
 export const metadata: Metadata = {
@@ -79,22 +84,22 @@ export default function FaqPage() {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-5 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
         <FadeIn>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             Questions & Answers
           </p>
         </FadeIn>
         <SlideUp>
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+          <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
             Frequently asked questions
           </h1>
         </SlideUp>
         <SlideUp delay={0.06}>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-6 text-lg leading-relaxed">
             Everything you might want to know about the framework, the three
             ways in, and how to begin. Still stuck?{" "}
             <Link
               href="/contact"
-              className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
+              className="text-brand-accent-text hover:text-foreground font-semibold underline underline-offset-4"
             >
               Get in touch
             </Link>
@@ -104,17 +109,17 @@ export default function FaqPage() {
       </section>
 
       {/* ── Groups ───────────────────────────────────────────── */}
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20">
-        <Stagger className="divide-y divide-border border-t border-border">
+      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <Stagger className="divide-border border-border divide-y border-t">
           {faqs.map((item) => (
             <StaggerItem key={item.q}>
               <details className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 font-[family-name:var(--font-display)] text-lg font-bold text-primary transition-colors hover:text-brand-accent-text [&::-webkit-details-marker]:hidden">
+                <summary className="text-primary hover:text-brand-accent-text flex cursor-pointer list-none items-center justify-between gap-4 py-3 font-[family-name:var(--font-display)] text-lg font-bold transition-colors [&::-webkit-details-marker]:hidden">
                   {item.q}
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 24 24"
-                    className="size-5 shrink-0 text-brand-accent-text transition-transform duration-200 group-open:rotate-45"
+                    className="text-brand-accent-text size-5 shrink-0 transition-transform duration-200 group-open:rotate-45"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.2"
@@ -123,7 +128,7 @@ export default function FaqPage() {
                     <path d="M12 5v14M5 12h14" />
                   </svg>
                 </summary>
-                <div className="pb-4 pr-9 leading-relaxed text-muted-foreground">
+                <div className="text-muted-foreground pr-9 pb-4 leading-relaxed">
                   {item.a}
                 </div>
               </details>

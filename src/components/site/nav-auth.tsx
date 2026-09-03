@@ -48,7 +48,7 @@ export function NavAuth({ mobile = false }: { mobile?: boolean }) {
     return (
       <Link
         href={href}
-        className="mt-4 rounded-full bg-primary px-5 py-3 text-center font-[family-name:var(--font-display)] text-base font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover"
+        className="bg-primary text-primary-foreground hover:bg-brand-primary-hover mt-4 rounded-full px-5 py-3 text-center font-[family-name:var(--font-display)] text-base font-bold transition-colors"
       >
         {label}
       </Link>
@@ -57,7 +57,7 @@ export function NavAuth({ mobile = false }: { mobile?: boolean }) {
   return (
     <Link
       href={href}
-      className="rounded-full bg-primary px-5 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring rounded-full px-5 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
     >
       {label}
     </Link>

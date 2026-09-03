@@ -64,7 +64,11 @@ export async function GET(request: Request) {
     return NextResponse.json({ ok: true, code: firstCode() });
   } catch {
     return NextResponse.json(
-      { ok: false, message: "We couldn’t reach the payment service — your access code will arrive by email." },
+      {
+        ok: false,
+        message:
+          "We couldn’t reach the payment service — your access code will arrive by email.",
+      },
       { status: 502 },
     );
   }

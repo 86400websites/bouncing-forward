@@ -33,12 +33,14 @@ export default async function PremiumPage() {
     <main>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
-              {owned ? "Premium — yours for life" : "Premium — The Book Package"}
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
+              {owned
+                ? "Premium — yours for life"
+                : "Premium — The Book Package"}
             </p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
+            <h1 className="mt-4 text-4xl leading-tight font-extrabold sm:text-5xl">
               {owned ? "It’s all yours." : "Go all the way."}
             </h1>
             <p className="mt-6 text-lg leading-relaxed">
@@ -49,13 +51,17 @@ export default async function PremiumPage() {
             <div className="mt-8">
               <CheckoutButton loggedIn={loggedIn} owned={owned} />
             </div>
-            <p className={owned ? "sr-only" : "mt-4 text-sm text-muted-foreground"}>
+            <p
+              className={
+                owned ? "sr-only" : "text-muted-foreground mt-4 text-sm"
+              }
+            >
               Prefer a printed copy?{" "}
               <a
                 href={AMAZON_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-brand-accent-text underline-offset-2 hover:underline"
+                className="text-brand-accent-text font-semibold underline-offset-2 hover:underline"
               >
                 The hardcover and softcover are on Amazon.
               </a>
@@ -78,17 +84,19 @@ export default async function PremiumPage() {
 
       {/* ── Included + account (swaps to the open library) ───── */}
       <section>
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <PremiumAccess loggedIn={loggedIn} owned={owned} />
         </div>
       </section>
 
       {/* ── Bottom band ──────────────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 text-center sm:px-6 lg:px-8 sm:py-20">
+        <div className="mx-auto max-w-7xl px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
           <SlideUp>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-              {owned ? "Yours for life. Keep walking." : "One price. The whole journey."}
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
+              {owned
+                ? "Yours for life. Keep walking."
+                : "One price. The whole journey."}
             </h2>
             <div className="mt-8 flex justify-center">
               <CheckoutButton loggedIn={loggedIn} owned={owned} invert />

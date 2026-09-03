@@ -30,7 +30,7 @@ function PasswordField({ id, label }: { id: string; label: string }) {
         <button
           type="button"
           onClick={() => setShow((s) => !s)}
-          className="text-xs font-semibold text-brand-accent-text hover:underline"
+          className="text-brand-accent-text text-xs font-semibold hover:underline"
         >
           {show ? "Hide" : "Show"}
         </button>
@@ -41,7 +41,9 @@ function PasswordField({ id, label }: { id: string; label: string }) {
         type={show ? "text" : "password"}
         required
         minLength={8}
-        autoComplete={id === "new-password" ? "new-password" : "current-password"}
+        autoComplete={
+          id === "new-password" ? "new-password" : "current-password"
+        }
         className={`mt-2 ${inputCls}`}
       />
     </div>
@@ -98,7 +100,9 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       </div>
       <PasswordField
         id={mode === "signup" ? "new-password" : "current-password"}
-        label={mode === "signup" ? "Choose a password (8+ characters)" : "Password"}
+        label={
+          mode === "signup" ? "Choose a password (8+ characters)" : "Password"
+        }
       />
       <button type="submit" disabled={pending} className={btnCls}>
         {pending
@@ -111,15 +115,24 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
               ? "Log in & continue to payment"
               : "Log in"}
       </button>
-      <p aria-live="polite" className={error ? "text-sm text-red-600" : "sr-only"}>
+      <p
+        aria-live="polite"
+        className={error ? "text-sm text-red-600" : "sr-only"}
+      >
         {error}
       </p>
-      <p aria-live="polite" className={message ? "text-sm text-brand-accent-text" : "sr-only"}>
+      <p
+        aria-live="polite"
+        className={message ? "text-brand-accent-text text-sm" : "sr-only"}
+      >
         {message}
       </p>
       {mode === "login" ? (
-        <p className="text-sm text-muted-foreground">
-          <Link href="/forgot-password" className="font-semibold text-brand-accent-text hover:underline">
+        <p className="text-muted-foreground text-sm">
+          <Link
+            href="/forgot-password"
+            className="text-brand-accent-text font-semibold hover:underline"
+          >
             Forgot your password?
           </Link>
         </p>
@@ -144,19 +157,32 @@ export function ForgotPasswordForm() {
     });
   }
 
-  if (message) return <p className="leading-relaxed text-muted-foreground">{message}</p>;
+  if (message)
+    return <p className="text-muted-foreground leading-relaxed">{message}</p>;
   return (
     <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <div>
         <label htmlFor="fp-email" className="text-sm font-semibold">
           Email address
         </label>
-        <input id="fp-email" name="email" type="email" required autoComplete="email" className={`mt-2 ${inputCls}`} />
+        <input
+          id="fp-email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          className={`mt-2 ${inputCls}`}
+        />
       </div>
       <button type="submit" disabled={pending} className={btnCls}>
         {pending ? "One moment…" : "Send reset link"}
       </button>
-      <p aria-live="polite" className={error ? "text-sm text-red-600" : "sr-only"}>{error}</p>
+      <p
+        aria-live="polite"
+        className={error ? "text-sm text-red-600" : "sr-only"}
+      >
+        {error}
+      </p>
     </form>
   );
 }
@@ -186,7 +212,12 @@ export function ResetPasswordForm() {
       <button type="submit" disabled={pending} className={btnCls}>
         {pending ? "One moment…" : "Set new password"}
       </button>
-      <p aria-live="polite" className={error ? "text-sm text-red-600" : "sr-only"}>{error}</p>
+      <p
+        aria-live="polite"
+        className={error ? "text-sm text-red-600" : "sr-only"}
+      >
+        {error}
+      </p>
     </form>
   );
 }

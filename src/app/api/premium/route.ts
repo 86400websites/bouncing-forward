@@ -18,15 +18,17 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as { code?: unknown };
   } catch {
-    return NextResponse.json({ ok: false, message: "Invalid request." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, message: "Invalid request." },
+      { status: 400 },
+    );
   }
 
   if (!codesConfigured()) {
     return NextResponse.json(
       {
         ok: false,
-        message:
-          "Access codes aren’t switched on yet — please try again soon.",
+        message: "Access codes aren’t switched on yet — please try again soon.",
       },
       { status: 503 },
     );

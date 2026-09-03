@@ -10,8 +10,10 @@ export default function ResetPasswordPage() {
   return (
     <main className="bg-muted">
       <div className="mx-auto max-w-md px-5 py-16 sm:py-24">
-        <h1 className="text-3xl font-extrabold leading-tight">Choose a new password.</h1>
-        <div className="mt-8 rounded-xl border border-border bg-card p-6 sm:p-8">
+        <h1 className="text-3xl leading-tight font-extrabold">
+          Choose a new password.
+        </h1>
+        <div className="border-border bg-card mt-8 rounded-xl border p-6 sm:p-8">
           <ResetPasswordForm />
         </div>
       </div>
