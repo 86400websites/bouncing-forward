@@ -59,7 +59,7 @@ const freeIncludes = [
   "Read the blog and the stories",
   "Watch the course introduction",
   "Read the book’s first chapter",
-  "Download your 7 Step Journal",  // rendered as a download link below
+  "Download your 7 Step Journal", // rendered as a download link below
   "Take the two-minute check",
   "Your email address gets you a weekly note to keep you moving forward",
 ];
@@ -87,12 +87,12 @@ export default function HomePage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 From here, forward.
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 text-4xl leading-[1.08] font-extrabold sm:text-5xl lg:text-6xl">
                 The setback wasn’t your choice. The next step is.
               </h1>
             </SlideUp>
@@ -119,7 +119,7 @@ export default function HomePage() {
                   href="/downloads/Bouncing-Forward-Chapter-1-Free-A4.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold text-primary shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="bg-brand-accent text-primary focus-visible:outline-ring inline-flex items-center gap-2 rounded-full px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold shadow-sm transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   Read the first chapter free →
                 </a>
@@ -141,19 +141,19 @@ export default function HomePage() {
       </section>
 
       {/* ── Screen 2 — Four questions ────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SlideUp>
-              <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+              <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
                 Four questions. In order.
               </h2>
             </SlideUp>
             <div className="mt-6 space-y-4 text-lg leading-relaxed">
               <SlideUp delay={0.06}>
                 <p>
-                  What happened? What is it asking of you? What’s still possible?
-                  What’s the first step?
+                  What happened? What is it asking of you? What’s still
+                  possible? What’s the first step?
                 </p>
               </SlideUp>
               <SlideUp delay={0.1}>
@@ -186,7 +186,7 @@ export default function HomePage() {
 
       {/* ── Screen 3 — Who is this for ───────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <FadeIn className="order-last lg:order-first">
               <Image
@@ -200,7 +200,7 @@ export default function HomePage() {
             </FadeIn>
             <div>
               <SlideUp>
-                <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+                <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
                   Who is this for?
                 </h2>
               </SlideUp>
@@ -216,7 +216,7 @@ export default function HomePage() {
                     <div className="flex gap-3">
                       <span
                         aria-hidden="true"
-                        className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent"
+                        className="bg-brand-accent mt-2 size-1.5 shrink-0 rounded-full"
                       />
                       <p className="leading-relaxed">{b}</p>
                     </div>
@@ -229,26 +229,26 @@ export default function HomePage() {
       </section>
 
       {/* ── Screen 4 — Start here and Move Forward ───────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mx-auto max-w-3xl text-center text-3xl leading-tight font-extrabold sm:text-4xl">
             Start here and Move Forward
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-center text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-3xl text-center text-lg leading-relaxed">
             Our vision is to see everyone facing hardship, setbacks and loss
             bounce forward — so we built the Bouncing Forward journey, and the
             tools for every step of it: start where you are, commit when you’re
             ready, then go all the way.
           </p>
-          <p className="mt-6 text-center font-[family-name:var(--font-display)] text-lg font-bold text-primary">
+          <p className="text-primary mt-6 text-center font-[family-name:var(--font-display)] text-lg font-bold">
             Choose your next step.
           </p>
         </SlideUp>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {/* Free */}
           <FadeIn>
-            <div className="flex h-full flex-col rounded-lg border border-border bg-card p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <div className="border-border bg-card flex h-full flex-col rounded-lg border p-8">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 Your First Step
               </p>
               <h3 className="mt-1 text-2xl font-extrabold">Free</h3>
@@ -256,13 +256,16 @@ export default function HomePage() {
               <ul className="mt-4 flex-1 space-y-3">
                 {freeIncludes.map((item, i) => (
                   <li key={i} className="flex gap-3 leading-relaxed">
-                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                    <span
+                      aria-hidden="true"
+                      className="bg-brand-accent mt-2 size-1.5 shrink-0 rounded-full"
+                    />
                     {item.startsWith("Download your 7 Step Journal") ? (
                       <a
                         href="/downloads/BF-7-Step-Reflection-Journal.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline decoration-brand-accent underline-offset-4 transition-colors hover:text-brand-accent-text"
+                        className="decoration-brand-accent hover:text-brand-accent-text underline underline-offset-4 transition-colors"
                       >
                         {item}
                       </a>
@@ -275,7 +278,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <Link
                   href="#begin-your-crossing"
-                  className="inline-flex items-center rounded-full border border-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="border-primary text-primary hover:bg-muted focus-visible:outline-ring inline-flex items-center rounded-full border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   Send me the weekly note
                 </Link>
@@ -284,8 +287,8 @@ export default function HomePage() {
           </FadeIn>
           {/* All In */}
           <FadeIn delay={0.08}>
-            <div className="flex h-full flex-col rounded-lg border-2 border-brand-accent bg-card p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <div className="border-brand-accent bg-card flex h-full flex-col rounded-lg border-2 p-8">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 Commit to Bouncing Forward
               </p>
               <h3 className="mt-1 text-2xl font-extrabold">All In</h3>
@@ -293,13 +296,16 @@ export default function HomePage() {
                 To go all in, take the Full Assessment. It unlocks everything
                 below.
               </p>
-              <p className="mt-3 text-sm font-bold uppercase tracking-[0.08em] text-muted-foreground">
+              <p className="text-muted-foreground mt-3 text-sm font-bold tracking-[0.08em] uppercase">
                 Everything in Free, plus:
               </p>
               <ul className="mt-3 flex-1 space-y-3">
                 {allInIncludes.map((item, i) => (
                   <li key={i} className="flex gap-3 leading-relaxed">
-                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                    <span
+                      aria-hidden="true"
+                      className="bg-brand-accent mt-2 size-1.5 shrink-0 rounded-full"
+                    />
                     {item}
                   </li>
                 ))}
@@ -307,7 +313,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <Link
                   href="/all-in"
-                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   Go All In
                 </Link>
@@ -318,32 +324,35 @@ export default function HomePage() {
           <FadeIn delay={0.16}>
             <div
               id="book-package"
-              className="flex h-full scroll-mt-24 flex-col rounded-lg border border-border bg-card p-8"
+              className="border-border bg-card flex h-full scroll-mt-24 flex-col rounded-lg border p-8"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 The Book Package
               </p>
               <h3 className="mt-1 text-2xl font-extrabold">Premium</h3>
               <p className="mt-5 font-bold">Go all the way.</p>
               <p className="mt-3 leading-relaxed">
                 The Book Package —{" "}
-                <span className="font-bold text-brand-accent-text">$9.99</span>:
+                <span className="text-brand-accent-text font-bold">$9.99</span>:
               </p>
               <ul className="mt-3 flex-1 space-y-3">
                 {premiumIncludes.map((item, i) => (
                   <li key={i} className="flex gap-3 leading-relaxed">
-                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                    <span
+                      aria-hidden="true"
+                      className="bg-brand-accent mt-2 size-1.5 shrink-0 rounded-full"
+                    />
                     {item}
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 font-[family-name:var(--font-display)] font-bold text-primary">
+              <p className="text-primary mt-4 font-[family-name:var(--font-display)] font-bold">
                 One price. The whole journey.
               </p>
               <div className="mt-6">
                 <Link
                   href="/premium"
-                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   Buy the Book Package
                 </Link>
@@ -355,23 +364,23 @@ export default function HomePage() {
 
       {/* ── Screen 5 — The next step is yours ────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               The next step is yours.
             </h2>
           </SlideUp>
           <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {fourWays.map((w) => (
               <StaggerItem key={w.title} className="h-full">
-                <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6">
+                <article className="border-border bg-card flex h-full flex-col rounded-lg border p-6">
                   <h3 className="text-xl font-bold">{w.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground mt-3 flex-1 text-sm leading-relaxed">
                     {w.body}
                   </p>
                   <Link
                     href={w.href}
-                    className="mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    className="text-brand-accent-text hover:text-foreground focus-visible:outline-ring mt-5 inline-block font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                   >
                     {w.cta}
                   </Link>
@@ -390,9 +399,9 @@ export default function HomePage() {
       />
 
       {/* ── Screen 7 — Closing questions ─────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-extrabold leading-tight sm:text-3xl">
+          <h2 className="text-2xl leading-tight font-extrabold sm:text-3xl">
             Take a moment. Ask yourself, honestly:
           </h2>
           <p className="mt-6 font-[family-name:var(--font-display)] text-3xl font-extrabold italic sm:text-4xl">
@@ -401,7 +410,7 @@ export default function HomePage() {
           <p className="mt-3 font-[family-name:var(--font-display)] text-3xl font-extrabold italic sm:text-4xl">
             What does this ask of me now?
           </p>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-6 text-lg leading-relaxed">
             You don’t need the answer to the first. Only the courage to ask the
             second.
           </p>

@@ -69,9 +69,13 @@ async function continueByIntent(
 
 export async function register(formData: FormData): Promise<AuthResult> {
   if (!accountsConfigured()) {
-    return { error: "Accounts aren’t switched on yet — please try again soon." };
+    return {
+      error: "Accounts aren’t switched on yet — please try again soon.",
+    };
   }
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  const email = String(formData.get("email") ?? "")
+    .trim()
+    .toLowerCase();
   const password = String(formData.get("password") ?? "");
   const intent = readIntent(formData);
 
@@ -94,7 +98,10 @@ export async function register(formData: FormData): Promise<AuthResult> {
 
   if (error) {
     const msg = error.message.toLowerCase();
-    if (msg.includes("already registered") || msg.includes("already been registered")) {
+    if (
+      msg.includes("already registered") ||
+      msg.includes("already been registered")
+    ) {
       return { exists: true };
     }
     return { error: error.message };
@@ -112,12 +119,19 @@ export async function register(formData: FormData): Promise<AuthResult> {
   }
 
   revalidatePath("/", "layout");
-  return continueByIntent(supabase, intent, data.user.id, data.user.email ?? email);
+  return continueByIntent(
+    supabase,
+    intent,
+    data.user.id,
+    data.user.email ?? email,
+  );
 }
 
 export async function login(formData: FormData): Promise<AuthResult> {
   if (!accountsConfigured()) {
-    return { error: "Accounts aren’t switched on yet — please try again soon." };
+    return {
+      error: "Accounts aren’t switched on yet — please try again soon.",
+    };
   }
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
@@ -126,11 +140,19 @@ export async function login(formData: FormData): Promise<AuthResult> {
   if (!email || !password) return { error: "Email and password are required." };
 
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
   if (error) return { error: error.message };
 
   revalidatePath("/", "layout");
-  return continueByIntent(supabase, intent, data.user.id, data.user.email ?? email);
+  return continueByIntent(
+    supabase,
+    intent,
+    data.user.id,
+    data.user.email ?? email,
+  );
 }
 
 export async function logout(): Promise<void> {
@@ -140,11 +162,17 @@ export async function logout(): Promise<void> {
   redirect("/login");
 }
 
-export async function requestPasswordReset(formData: FormData): Promise<AuthResult> {
+export async function requestPasswordReset(
+  formData: FormData,
+): Promise<AuthResult> {
   if (!accountsConfigured()) {
-    return { error: "Accounts aren’t switched on yet — please try again soon." };
+    return {
+      error: "Accounts aren’t switched on yet — please try again soon.",
+    };
   }
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  const email = String(formData.get("email") ?? "")
+    .trim()
+    .toLowerCase();
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { error: "Please enter a valid email address." };
   }
@@ -172,7 +200,8 @@ export async function updatePassword(formData: FormData): Promise<AuthResult> {
   } = await supabase.auth.getUser();
   if (!user) {
     return {
-      error: "Your reset link has expired or is invalid. Please request a new one.",
+      error:
+        "Your reset link has expired or is invalid. Please request a new one.",
     };
   }
   const { error } = await supabase.auth.updateUser({ password });

@@ -6,11 +6,11 @@ forever.
 
 The site sends these tags automatically:
 
-| Tag               | Set when…                                              |
-| ----------------- | ------------------------------------------------------ |
+| Tag               | Set when…                                             |
+| ----------------- | ----------------------------------------------------- |
 | `newsletter`      | someone submits the "Send me the 7 Step Journal" form |
-| `full-assessment` | someone completes the Full Assessment and gives email  |
-| `premium`         | someone buys the $9.99 Book Package (via Stripe)       |
+| `full-assessment` | someone completes the Full Assessment and gives email |
+| `premium`         | someone buys the $9.99 Book Package (via Stripe)      |
 
 ---
 
@@ -21,7 +21,7 @@ The site sends these tags automatically:
 "Tag added" → choose `full-assessment`.)
 
 **Email 1 (immediately):** subject along the lines of
-*"You're all in — here's everything."* Body links the deliverables,
+_"You're all in — here's everything."_ Body links the deliverables,
 which are already hosted on the site:
 
 - Book summary:

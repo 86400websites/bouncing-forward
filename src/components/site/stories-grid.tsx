@@ -34,13 +34,13 @@ function StoryTile({ story, index }: { story: Story; index: number }) {
   const bodyId = `story-${index}`;
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card">
+    <article className="border-border bg-card flex h-full flex-col overflow-hidden rounded-lg border">
       <button
         type="button"
         aria-expanded={open}
         aria-controls={bodyId}
         onClick={() => setOpen((o) => !o)}
-        className="group flex flex-1 flex-col text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        className="group focus-visible:outline-ring flex flex-1 flex-col text-left focus-visible:outline-2 focus-visible:outline-offset-2"
       >
         <div className="relative w-full pb-[66.6667%]">
           {story.image ? (
@@ -58,13 +58,13 @@ function StoryTile({ story, index }: { story: Story; index: number }) {
           )}
         </div>
         <div className="flex items-start justify-between gap-3 p-5">
-          <h3 className="text-lg font-bold leading-snug group-hover:text-brand-accent-text">
+          <h3 className="group-hover:text-brand-accent-text text-lg leading-snug font-bold">
             {story.headline}
           </h3>
           <ChevronDownIcon
             aria-hidden="true"
             className={cn(
-              "mt-1 size-5 shrink-0 text-brand-accent-text transition-transform",
+              "text-brand-accent-text mt-1 size-5 shrink-0 transition-transform",
               open && "rotate-180",
             )}
           />
@@ -73,10 +73,10 @@ function StoryTile({ story, index }: { story: Story; index: number }) {
       <div
         id={bodyId}
         hidden={!open}
-        className="border-t border-border px-5 pb-6 pt-4"
+        className="border-border border-t px-5 pt-4 pb-6"
       >
-        <p className="leading-relaxed text-muted-foreground">{story.story}</p>
-        <blockquote className="mt-4 border-l-2 border-brand-accent pl-4 italic leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed">{story.story}</p>
+        <blockquote className="border-brand-accent mt-4 border-l-2 pl-4 leading-relaxed italic">
           {story.quote}
         </blockquote>
       </div>

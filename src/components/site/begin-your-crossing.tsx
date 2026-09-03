@@ -25,32 +25,32 @@ export function BeginYourCrossing({
     <section
       id="begin-your-crossing"
       aria-labelledby="byc-heading"
-      className="scroll-mt-24 bg-muted"
+      className="bg-muted scroll-mt-24"
     >
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 id="byc-heading" className="text-3xl font-extrabold sm:text-4xl">
             {heading}
           </h2>
-          <p className="mt-4 text-muted-foreground">{body}</p>
+          <p className="text-muted-foreground mt-4">{body}</p>
 
           <NewsletterForm submitLabel={submitLabel} />
-          <p className="mt-5 text-sm text-muted-foreground">
+          <p className="text-muted-foreground mt-5 text-sm">
             Ready for everything?{" "}
             <Link
               href="/all-in"
-              className="font-[family-name:var(--font-display)] font-bold text-brand-accent-text hover:underline"
+              className="text-brand-accent-text font-[family-name:var(--font-display)] font-bold hover:underline"
             >
               Go All In →
             </Link>
           </p>
 
           {showFaqLink ? (
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="text-muted-foreground mt-6 text-sm">
               Have a question?{" "}
               <Link
                 href="/faq"
-                className="font-semibold text-brand-accent-text underline underline-offset-4 hover:text-foreground"
+                className="text-brand-accent-text hover:text-foreground font-semibold underline underline-offset-4"
               >
                 Read the FAQ
               </Link>
@@ -97,7 +97,7 @@ export function PrimaryCta({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        "focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
         invert
           ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
           : "bg-primary text-primary-foreground hover:bg-brand-primary-hover",
@@ -121,7 +121,7 @@ export function SecondaryCta({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center rounded-full border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        "focus-visible:outline-ring inline-flex items-center rounded-full border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
         invert
           ? "border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
           : "border-primary text-primary hover:bg-muted",
@@ -148,7 +148,7 @@ export function ExternalCta({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        "focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
         invert
           ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
           : "bg-primary text-primary-foreground hover:bg-brand-primary-hover",

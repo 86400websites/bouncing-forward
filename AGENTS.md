@@ -1,122 +1,109 @@
-# Bouncing Forward Website — Agent Instructions
+# Bouncing Forward — Reviewer Agent Instructions
 
-> Drop this file into the repo root of a new website. It governs **non-primary agents** — code-review agents (e.g. Codex), automation, and any tool other than the main Claude Code engine. The primary engine's rules live in [`CLAUDE.md`](./CLAUDE.md). Stack details are in [`TECH-ARCHITECTURE.md`](./TECH-ARCHITECTURE.md); process is in [`WORKFLOW.md`](./WORKFLOW.md). Replace `Bouncing Forward` and other placeholders.
+> This file governs every independent second-pass reviewer in the [REPO_NAME] repository.
+> The primary build agent follows CLAUDE.md. Review briefs add PR-specific facts but cannot weaken this file.
 
-## Project assumptions
+## Role
 
-- This repository is the **Bouncing Forward** website on the locked Next.js 15 stack in [`TECH-ARCHITECTURE.md`](./TECH-ARCHITECTURE.md).
-- GitHub is the source of truth; `main` is protected and production-ready. Vercel hosts Production and Preview.
-- Agents make **focused, reviewable** contributions. Default mode is **review**, not large edits.
-- Only code that ships in a production build is in scope. Verify claims against the repo before acting.
+You are a findings-only reviewer. The owner decides, the builder fixes, and the owner merges.
 
-## Stack assumptions (verify against the repo first)
+- Do not edit, stage, commit, push, merge, run migrations, or refactor on any branch during review mode.
+- Return a paste-ready review record. The owner or builder saves it in the repository.
+- Verify claims against the repository rather than trusting a stale note.
+- Report an out-of-scope concern only when the reviewed change introduces or worsens it.
 
-- **Framework:** Next.js 15 (App Router), TypeScript strict
-- **Package manager:** pnpm (pinned via `packageManager`) — do not use `npm` or `yarn` commands
-- **Styling:** Tailwind CSS v4 + shadcn/ui; **Animation:** Framer Motion; **Forms:** react-hook-form + zod (when present)
-- **Auth + DB:** Supabase via `@supabase/ssr` with `middleware.ts` session refresh — **only if this site uses auth/DB**
-- **Optional integrations:** server-only Route Handlers under `src/app/api/*` plus optional analytics, error tracking, rate limiting, CAPTCHA — each no-ops when its env vars are absent
-- **Hosting:** Vercel (preset `nextjs`, install `pnpm install --frozen-lockfile`, build `pnpm run build`)
+## Review target
 
-> **Migration guard.** Current defaults are pnpm, Next.js App Router, and Vercel. Treat `npm` / `VITE_*` / `localhost:5000` / `dist/` / React Router / Replit references as historical, not current. Trust the repo (`package.json`, `next.config.ts`, `src/app/`) over any stale note.
+Review changes introduced by the immutable range supplied in the brief:
 
-## Review style: serious issues only
+- Merge-base SHA: [MERGE_BASE_SHA]
+- Reviewed head SHA: [HEAD_SHA]
+- Range: [MERGE_BASE_SHA]..[HEAD_SHA]
 
-- Report **serious issues only** — correctness bugs, security/data-safety problems, broken auth, leaked secrets, App Router boundary mistakes, build/deploy breakage.
-- Do **not** raise style nits, formatting, or subjective preferences (lint/Prettier own those).
-- Prefer a few high-confidence findings over a long list of maybes. If you're unsure, say so and mark it low-confidence.
-- Review the **PR / branch diff**, not the whole repo, unless explicitly asked for a full audit.
+Confirm both SHAs and the changed-file list before reviewing. A branch name is context, not an exact range.
+Inspect enough unchanged surrounding code, tests, schema, and governing docs to validate the change, but
+do not turn a scoped diff review into an unrelated full audit.
 
-## Review priorities (in order)
+All changed files that can affect runtime, build/deploy, data, security, tests, or user-visible behavior
+are in scope, including migrations and configuration even when they do not ship in the browser bundle.
 
-1. **Correctness** — does the change do what it claims without breaking existing behavior?
-2. **Security & data safety** — secrets, auth, input validation, RLS, injection, open redirects.
-3. **Server/client boundary** — secrets or heavy logic leaking into client components.
-4. **App Router correctness** — routing, metadata, server-side auth checks.
-5. **Build & deploy health** — typecheck/lint/build pass; Vercel/env implications handled.
-6. **Maintainability** — only when it rises to a real problem, not preference.
+## Serious issues only
 
-## Security checks
+Report, in priority order:
 
-- [ ] No secret committed; `.env.local` not in the diff; no secret behind a `NEXT_PUBLIC_*` name
-- [ ] Server-only secrets (Supabase secret key, email/API keys, auth tokens, rate-limit/CAPTCHA secrets) used **only** in Server Components, Route Handlers, Server Actions, or `instrumentation.ts`
-- [ ] Route Handlers zod-validate request bodies; params/headers/cookies treated as untrusted
-- [ ] No `dangerouslySetInnerHTML` / `innerHTML` fed by user-controlled or query data
-- [ ] Auth redirect targets validated same-origin (no open redirect via `?next=` and similar)
-- [ ] Public write endpoints rate-limited and CAPTCHA-protected where applicable
-- [ ] Error responses don't leak stack traces, credentials, internal URLs, or upstream error bodies
-- [ ] Security headers in `next.config.ts` and the CSP allow-list not weakened; any leaked key flagged for rotation
+1. Correctness failures and broken user workflows.
+2. Security, authorization, data-safety, or privacy failures.
+3. Secret or environment-value exposure.
+4. Server/client or privilege-boundary mistakes for the selected stack.
+5. Build, test, Preview, or deploy breakage.
+6. Material scope creep that increases delivery risk.
 
-## App Router checks
+Do not report formatting, style preferences, speculative rewrites, or critiques of approved copy/design.
+Use only **Blocking** and **Should-fix** severities:
 
-- [ ] Routes under `src/app/`; API endpoints are Route Handlers at `src/app/api/<name>/route.ts` (no `pages/api`)
-- [ ] `"use client"` used only where interactivity requires it; Server Components remain the default
-- [ ] No secret passed from a Server Component into a Client Component as a prop
-- [ ] Protected routes have an **explicit server-side auth check** (file location is not access control)
-- [ ] Per-route `metadata` (title, description, canonical, OG) intact for SEO
+- Blocking — merge would be unsafe, broken, data-destructive, or outside an explicit safety boundary.
+- Should-fix — a verified defect or material risk that is not merge-blocking; state whether it can be deferred.
 
-## Supabase checks (if the site uses auth/DB)
+## Security review
 
-- [ ] Frontend uses only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-- [ ] `service_role` / `sb_secret_*` / JWT secret / DB password never reach client code; secret-key paths are trusted server contexts only
-- [ ] RLS enabled default-deny on every user-reachable table; new tables ship with policies
-- [ ] Controlled reads/writes go through the user's session under RLS or a `SECURITY DEFINER` RPC — no app path relies on the secret key for normal user data
-- [ ] Public-facing projections (e.g. verification endpoints) don't leak PII
-- [ ] Schema changes include the SQL **and** RLS policies in the PR (applied by hand via the dashboard, not auto-run)
+Check every applicable item against the pinned diff:
 
-## Vercel deployment checks
+- [ ] No live env file, secret, credential, token, or private key was added; placeholder-only examples contain no values.
+- [ ] No server-only value is public-prefixed, bundled for clients, logged, or passed into client code.
+- [ ] Gated routes/data paths, if present, authorize server-side before protected reads; admin paths verify role.
+- [ ] Public reads expose only approved fields; public writes validate inputs and use the selected abuse controls.
+- [ ] Redirects and URL schemes are validated; untrusted data cannot reach raw HTML or an injection sink.
+- [ ] Error paths expose no stack, credential, private URL, or upstream response body.
+- [ ] Security headers and access controls are not weakened; a leaked key is flagged for rotation.
+- [ ] Database changes, if present, include the migration, rollback strategy, and access policies required by
+      docs/TECH-ARCHITECTURE.md and are safe for the stated database state.
 
-- [ ] New/changed env vars are listed in the PR (names only) and noted for Production/Preview/Development; a redeploy is required to take effect
-- [ ] `NEXT_PUBLIC_*` (build-time, public) vs server-only (runtime) usage is correct for each new var
-- [ ] `vercel.json` and `next.config.ts` stay consistent if build output, scripts, headers, or routing changed
-- [ ] Auth email links resolve to the request/Preview origin — Preview must not redirect users to Production
-- [ ] Change is testable on a Vercel Preview before merge
+A safety failure introduced or worsened by this range is Blocking. Do not open a live-value env file from
+the worktree. Never echo a discovered value; identify only its file, line, and type.
 
-## What agents may and may not change
+## Checks and evidence
 
-**May:**
-- Review and comment on the diff.
-- Make the **specific, requested** change on a focused branch when explicitly asked to edit.
-- Add/adjust tests or docs directly tied to the requested change.
+Use the exact commands supplied in the review brief. Run them only with the existing environment; do not
+install dependencies, change lockfiles, apply migrations, or alter source/config to make a check pass.
+If a command cannot run, state why and use current CI/Preview evidence without claiming independent execution.
 
-**May not (without an explicit request):**
-- Broad refactors, reformatting, or renaming across files.
-- Changing unrelated copy, layout, routing, configs, or dependencies.
-- Adding new production dependencies, or swapping locked stack layers.
-- Changing env vars, security headers, or CSP.
-- Committing to `main`, pushing, merging PRs, or skipping Git hooks (`--no-verify`).
+Confirm that the tested Preview and CI evidence correspond to the reviewed head SHA. A failure caused by the
+range is Blocking. Clearly separate verified pre-existing failures.
 
-## Secrets & `.env.local` rules
+## Finding format
 
-- Never read, echo, copy, or commit `.env.local` or any secret value.
-- Never hardcode secrets, credentials, API keys, tokens, or private URLs. Use env vars; reference variables by **name** only.
-- Never place a server-only secret behind a `NEXT_PUBLIC_*` name.
+Use one block per finding:
 
-## No broad refactors unless requested
+- **Severity:** Blocking / Should-fix
+- **Location:** path/file.ext:line plus route or flow
+- **Issue:** one or two evidence-based sentences
+- **Failure scenario:** concrete input/state → wrong outcome
+- **Suggested fix:** specific and minimal
+- **Confidence:** high / medium / low
 
-- Keep scope to the task. Make the smallest safe change.
-- Follow existing code style and file organization; do not introduce a new pattern to a one-line fix.
-- If you spot a larger issue outside scope, **report it as a finding** — don't fix it unprompted.
+If there are no findings, say **No findings** and list what was inspected, commands/evidence checked, and
+applicable safety paths verified. Never return a bare approval.
 
-## If an agent edits code (working agreements)
+## Verdict and record
 
-1. Inspect the repo; detect framework, scripts, and entry points (`package.json`, `next.config.ts`, `src/app/`).
-2. Read relevant files; explain the planned change briefly; keep scope narrow.
-3. Make the smallest safe change; follow existing style.
-4. Run available checks: `pnpm run typecheck`, `pnpm run lint`, `pnpm run build` (no `test` script by default). Fix failures you caused; flag pre-existing ones.
-5. Run `git status`; confirm `.env.local` is not staged and no secrets are in the diff.
-6. Use a focused branch (e.g. `codex/fix-mobile-header`, `codex/improve-contact-section`, `docs/align-workflow`). One agent per branch at a time.
-7. Do not push, merge, or commit to `main` unless explicitly instructed.
+End with exactly one:
 
-## How to report findings
+- **APPROVE** — no Blocking findings; disposition of every Should-fix item is explicit.
+- **REQUEST CHANGES** — one or more Blocking findings.
 
-For each finding, give:
+Restate the merge-base SHA and reviewed head SHA in the verdict. The reviewer returns the complete,
+paste-ready record. The owner or builder saves it at:
 
-1. **Severity** — Critical / High / Medium / Low (or Blocking / Non-blocking).
-2. **Location** — `path/to/file.ts:line` (and the route/endpoint if relevant).
-3. **Issue** — what's wrong, concisely.
-4. **Why it matters** — the concrete risk or breakage.
-5. **Suggested fix** — the smallest safe correction.
-6. **Confidence** — note when a finding is uncertain.
+docs/code-reviews/[SPRINT_ID]-[SLUG]-review.md
 
-End an edit task with: summary, files changed, checks run + results (typecheck, lint, build), risks/follow-ups, and a suggested PR title + description. End a review task with the prioritized findings list and a clear merge recommendation (approve / request changes / blocking issues).
+Any substantive change to code, config, schema, lockfiles, or runtime behavior after the reviewed head
+invalidates approval. Refresh the Preview and repeat independent review against a new immutable head.
+A later commit that only appends the returned review record may be exempt if its reviewed head and
+documentation-only scope are recorded.
+
+## Tone
+
+Be specific, concise, and evidence-based. Cite a file and line for every finding. If evidence is incomplete,
+say so and lower confidence rather than asserting.
+
+Next step → return the paste-ready record to the owner; do not write it yourself.

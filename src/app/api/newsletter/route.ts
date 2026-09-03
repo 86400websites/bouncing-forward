@@ -41,7 +41,9 @@ export async function POST(request: Request) {
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
   const firstName =
-    typeof body.firstName === "string" ? body.firstName.trim().slice(0, 80) : "";
+    typeof body.firstName === "string"
+      ? body.firstName.trim().slice(0, 80)
+      : "";
   const source =
     typeof body.source === "string" && /^[a-z0-9-]{1,40}$/.test(body.source)
       ? body.source

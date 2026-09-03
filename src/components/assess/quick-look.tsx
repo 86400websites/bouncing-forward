@@ -28,46 +28,101 @@ type Question = {
 };
 
 const QUESTIONS: Question[] = [
-  { part: "ground", key: "Honesty", text: "I can name what happened plainly — without dressing it up, and without playing it down." },
-  { part: "ground", key: "Honesty", text: "I’m willing to see where I actually am, not where I think I should be by now." },
-  { part: "walk", key: "Accept", text: "I can look honestly at what happened without turning away." },
-  { part: "walk", key: "Reflect", text: "I can see what has carried me through hard things before." },
-  { part: "walk", key: "Imagine", text: "I can picture one believable next chapter, even faintly." },
-  { part: "walk", key: "Act", text: "I’m taking small steps, even when they’re hard." },
-  { part: "carry", key: "Resilience", text: "When things knock me down, I find my way back to my feet." },
-  { part: "carry", key: "Adaptability", text: "When life stops following the plan, I can adjust." },
-  { part: "carry", key: "Optimism", text: "I can imagine good things still ahead for me." },
-  { part: "carry", key: "Support", text: "There are people I can lean on — and I let myself lean." },
+  {
+    part: "ground",
+    key: "Honesty",
+    text: "I can name what happened plainly — without dressing it up, and without playing it down.",
+  },
+  {
+    part: "ground",
+    key: "Honesty",
+    text: "I’m willing to see where I actually am, not where I think I should be by now.",
+  },
+  {
+    part: "walk",
+    key: "Accept",
+    text: "I can look honestly at what happened without turning away.",
+  },
+  {
+    part: "walk",
+    key: "Reflect",
+    text: "I can see what has carried me through hard things before.",
+  },
+  {
+    part: "walk",
+    key: "Imagine",
+    text: "I can picture one believable next chapter, even faintly.",
+  },
+  {
+    part: "walk",
+    key: "Act",
+    text: "I’m taking small steps, even when they’re hard.",
+  },
+  {
+    part: "carry",
+    key: "Resilience",
+    text: "When things knock me down, I find my way back to my feet.",
+  },
+  {
+    part: "carry",
+    key: "Adaptability",
+    text: "When life stops following the plan, I can adjust.",
+  },
+  {
+    part: "carry",
+    key: "Optimism",
+    text: "I can imagine good things still ahead for me.",
+  },
+  {
+    part: "carry",
+    key: "Support",
+    text: "There are people I can lean on — and I let myself lean.",
+  },
 ];
 
-const COMPASS_KEYS: CompassKey[] = ["Resilience", "Adaptability", "Optimism", "Support"];
+const COMPASS_KEYS: CompassKey[] = [
+  "Resilience",
+  "Adaptability",
+  "Optimism",
+  "Support",
+];
 const PATH_KEYS: PathKey[] = ["Accept", "Reflect", "Imagine", "Act"];
 
 const GROUND_READ: Record<Band, string> = {
-  bright: "You came here willing to look straight at it. That honesty is the ground everything else stands on.",
-  flickering: "You’re getting closer to looking at this straight on. That willingness is the ground everything else stands on.",
-  faint: "Looking straight at what happened is still hard — that isn’t failure, it’s where nearly everyone starts. Honesty is ground that can be practised.",
+  bright:
+    "You came here willing to look straight at it. That honesty is the ground everything else stands on.",
+  flickering:
+    "You’re getting closer to looking at this straight on. That willingness is the ground everything else stands on.",
+  faint:
+    "Looking straight at what happened is still hard — that isn’t failure, it’s where nearly everyone starts. Honesty is ground that can be practised.",
 };
 
 const PATH_STAND: Record<PathKey | "motion", string> = {
-  Accept: "The honest look comes first — because nothing can be built on a truth you haven’t let land. The fact that you’re here says you’re ready to take it.",
-  Reflect: "You’ve let the truth land. Now look at what has carried you this far — what came through with you, and who was there when it did.",
-  Imagine: "You’ve done the honest looking. Now turn around — one believable next chapter, even faintly. It isn’t betrayal. It is what the change makes room for.",
+  Accept:
+    "The honest look comes first — because nothing can be built on a truth you haven’t let land. The fact that you’re here says you’re ready to take it.",
+  Reflect:
+    "You’ve let the truth land. Now look at what has carried you this far — what came through with you, and who was there when it did.",
+  Imagine:
+    "You’ve done the honest looking. Now turn around — one believable next chapter, even faintly. It isn’t betrayal. It is what the change makes room for.",
   Act: "You can see a next chapter. Now it becomes real — one small move, then another. Not a leap. A step.",
-  motion: "All four questions are answered and alive in you — you’re looking honestly, drawing on what carried you, picturing what’s next, and taking the step. Keep going.",
+  motion:
+    "All four questions are answered and alive in you — you’re looking honestly, drawing on what carried you, picturing what’s next, and taking the step. Keep going.",
 };
 
 const RECOG: Record<CompassKey, string> = {
-  Resilience: "You have come through before. That is not luck — that is something in you.",
-  Adaptability: "When the plan changed, you changed with it. You can do that again.",
-  Optimism: "Somewhere in you is the ability to picture one good day ahead. It’s still there.",
+  Resilience:
+    "You have come through before. That is not luck — that is something in you.",
+  Adaptability:
+    "When the plan changed, you changed with it. You can do that again.",
+  Optimism:
+    "Somewhere in you is the ability to picture one good day ahead. It’s still there.",
   Support: "You were never meant to do this alone — and you don’t have to.",
 };
 
 function scoreFor(key: string, answers: number[]): number {
-  const vals = QUESTIONS.map((q, i) => (q.key === key ? answers[i] : null)).filter(
-    (v): v is number => v !== null && v !== undefined,
-  );
+  const vals = QUESTIONS.map((q, i) =>
+    q.key === key ? answers[i] : null,
+  ).filter((v): v is number => v !== null && v !== undefined);
   if (vals.length === 0) return 0;
   return vals.reduce((a, b) => a + b, 0) / vals.length;
 }
@@ -77,35 +132,62 @@ function band(avg: number): Band {
 
 /* ---------- SVGs (ported; colours via scoped CSS vars) ---------- */
 function compassSVG(avgs: Record<string, number>): string {
-  const cx = 230, cy = 190;
+  const cx = 230,
+    cy = 190;
   const dirs: Record<CompassKey, [number, number]> = {
-    Resilience: [0, -1], Adaptability: [1, 0], Optimism: [0, 1], Support: [-1, 0],
+    Resilience: [0, -1],
+    Adaptability: [1, 0],
+    Optimism: [0, 1],
+    Support: [-1, 0],
   };
   const labelPos: Record<CompassKey, [number, number]> = {
-    Resilience: [230, 22], Adaptability: [346, 236], Optimism: [230, 342], Support: [114, 236],
+    Resilience: [230, 22],
+    Adaptability: [346, 236],
+    Optimism: [230, 342],
+    Support: [114, 236],
   };
   const statePos: Record<CompassKey, [number, number]> = {
-    Resilience: [230, 38], Adaptability: [346, 252], Optimism: [230, 358], Support: [114, 252],
+    Resilience: [230, 38],
+    Adaptability: [346, 252],
+    Optimism: [230, 358],
+    Support: [114, 252],
   };
-  const len = (b: Band) => (b === "bright" ? 104 : b === "flickering" ? 76 : 48);
-  const op = (b: Band) => (b === "bright" ? 1 : b === "flickering" ? 0.65 : 0.3);
+  const len = (b: Band) =>
+    b === "bright" ? 104 : b === "flickering" ? 76 : 48;
+  const op = (b: Band) =>
+    b === "bright" ? 1 : b === "flickering" ? 0.65 : 0.3;
   let points = "";
   for (const k of COMPASS_KEYS) {
     const [dx, dy] = dirs[k];
     const b = band(avgs[k]);
     const L = len(b);
-    const tipx = cx + dx * L, tipy = cy + dy * L;
-    const bx = 13 * dy, by = 13 * dx;
+    const tipx = cx + dx * L,
+      tipy = cy + dy * L;
+    const bx = 13 * dy,
+      by = 13 * dx;
     const cls = b === "flickering" ? 'class="ql-flicker"' : "";
-    const stateWord = b === "bright" ? "a real strength" : b === "flickering" ? "gathering strength" : "needs strengthening";
-    const lp = labelPos[k], sp = statePos[k];
+    const stateWord =
+      b === "bright"
+        ? "a real strength"
+        : b === "flickering"
+          ? "gathering strength"
+          : "needs strengthening";
+    const lp = labelPos[k],
+      sp = statePos[k];
     points += `
       <path d="M${tipx},${tipy} L${cx + bx},${cy + by} L${cx - bx},${cy - by} Z" ${cls}
         fill="var(--ql-blue)" fill-opacity="${op(b)}" stroke="var(--ql-navy)" stroke-width="1.6" stroke-linejoin="round"/>
       <text x="${lp[0]}" y="${lp[1]}" text-anchor="middle" class="ql-lab">${k.toUpperCase()}</text>
       <text x="${sp[0]}" y="${sp[1]}" text-anchor="middle" class="ql-state">${stateWord}</text>`;
   }
-  const ticks = ([[1, -1], [1, 1], [-1, 1], [-1, -1]] as [number, number][])
+  const ticks = (
+    [
+      [1, -1],
+      [1, 1],
+      [-1, 1],
+      [-1, -1],
+    ] as [number, number][]
+  )
     .map(([tx, ty]) => {
       const u = 0.7071;
       return `<line x1="${cx + tx * u * 104}" y1="${cy + ty * u * 104}" x2="${cx + tx * u * 116}" y2="${cy + ty * u * 116}"
@@ -125,9 +207,17 @@ function compassSVG(avgs: Record<string, number>): string {
 function mapSVG(step: PathKey | "motion"): string {
   const stepIndex = step === "motion" ? 4 : PATH_KEYS.indexOf(step);
   const pts: Record<PathKey, [number, number]> = {
-    Accept: [120, 308], Reflect: [290, 236], Imagine: [455, 300], Act: [605, 206],
+    Accept: [120, 308],
+    Reflect: [290, 236],
+    Imagine: [455, 300],
+    Act: [605, 206],
   };
-  const labelDy: Record<PathKey, number> = { Accept: 30, Reflect: -50, Imagine: 30, Act: 30 };
+  const labelDy: Record<PathKey, number> = {
+    Accept: 30,
+    Reflect: -50,
+    Imagine: 30,
+    Act: 30,
+  };
   const route = `
     <path d="M56,346 C86,332 100,318 120,308 C175,288 240,262 290,236 C350,208 400,276 455,300 C512,322 560,240 605,206 C625,190 640,184 660,176"
       fill="none" stroke="var(--ql-navy)" stroke-opacity=".55" stroke-width="2.4" stroke-dasharray="3 9" stroke-linecap="round"/>`;
@@ -155,7 +245,11 @@ function mapSVG(step: PathKey | "motion"): string {
     marks += `
       <text x="${x}" y="${ly}" text-anchor="middle" class="ql-lab" style="fill:${nameFill}">${k}</text>
       <text x="${x}" y="${sy}" text-anchor="middle" class="ql-state">${
-        state === "here" ? "you are here" : state === "behind" ? "taken" : "ahead"
+        state === "here"
+          ? "you are here"
+          : state === "behind"
+            ? "taken"
+            : "ahead"
       }</text>`;
   });
   return `
@@ -172,7 +266,9 @@ const scopeStyle: React.CSSProperties = {
 };
 
 export function QuickLook() {
-  const [phase, setPhase] = useState<"intro" | "questions" | "results">("intro");
+  const [phase, setPhase] = useState<"intro" | "questions" | "results">(
+    "intro",
+  );
   const [answers, setAnswers] = useState<number[]>([]);
   const idx = answers.length;
 
@@ -195,10 +291,10 @@ export function QuickLook() {
       <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               Free · Ten Statements · Two Honest Minutes
             </p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+            <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
               From here, forward. But first — where’s here?
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed">
@@ -212,13 +308,13 @@ export function QuickLook() {
               <button
                 type="button"
                 onClick={start}
-                className="inline-flex items-center rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 Take the quick look →
               </button>
               <Link
                 href="/all-in"
-                className="ml-4 inline-flex items-center font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text hover:underline"
+                className="text-brand-accent-text ml-4 inline-flex items-center font-[family-name:var(--font-display)] text-sm font-bold hover:underline"
               >
                 Go All In →
               </Link>
@@ -245,16 +341,20 @@ export function QuickLook() {
     const q = QUESTIONS[idx];
     const pct = Math.round((idx / QUESTIONS.length) * 100);
     const label =
-      q.part === "ground" ? "An honest look" : q.part === "walk" ? PATH_Q[q.key as PathKey] : "";
+      q.part === "ground"
+        ? "An honest look"
+        : q.part === "walk"
+          ? PATH_Q[q.key as PathKey]
+          : "";
     return (
-      <section className="mx-auto max-w-2xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20">
-        <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
+      <section className="mx-auto max-w-2xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="bg-muted h-1 w-full overflow-hidden rounded-full">
           <div
-            className="h-full rounded-full bg-brand-accent transition-[width] duration-300"
+            className="bg-brand-accent h-full rounded-full transition-[width] duration-300"
             style={{ width: `${pct}%` }}
           />
         </div>
-        <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
+        <p className="text-muted-foreground mt-4 text-xs font-bold tracking-[0.12em] uppercase">
           {label ? (
             <>
               <span className="text-brand-accent-text">{label}</span> ·{" "}
@@ -262,11 +362,11 @@ export function QuickLook() {
           ) : null}
           {idx + 1} of {QUESTIONS.length}
         </p>
-        <p className="mt-3 text-2xl font-bold leading-snug text-primary sm:text-3xl">
+        <p className="text-primary mt-3 text-2xl leading-snug font-bold sm:text-3xl">
           “{q.text}”
         </p>
         {idx === 0 ? (
-          <p className="mt-3 text-base italic text-muted-foreground">
+          <p className="text-muted-foreground mt-3 text-base italic">
             How true is this for you — right now, in this season?
           </p>
         ) : null}
@@ -277,22 +377,22 @@ export function QuickLook() {
               type="button"
               onClick={() => answer(n)}
               aria-label={`${n} out of 5`}
-              className="flex-1 rounded-lg border border-border bg-card py-4 text-xl font-bold text-primary transition-all hover:-translate-y-0.5 hover:border-brand-accent hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="border-border bg-card text-primary hover:border-brand-accent focus-visible:outline-ring flex-1 rounded-lg border py-4 text-xl font-bold transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               {n}
             </button>
           ))}
         </div>
-        <div className="mt-3 flex justify-between text-sm italic text-muted-foreground">
+        <div className="text-muted-foreground mt-3 flex justify-between text-sm italic">
           <span>Not at all like me right now</span>
           <span>Very much like me right now</span>
         </div>
-        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm italic text-muted-foreground">
+        <div className="text-muted-foreground mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm italic">
           {idx > 0 ? (
             <button
               type="button"
               onClick={goBack}
-              className="underline underline-offset-4 hover:text-foreground"
+              className="hover:text-foreground underline underline-offset-4"
             >
               ← Change my previous answer
             </button>
@@ -300,7 +400,7 @@ export function QuickLook() {
           <button
             type="button"
             onClick={start}
-            className="underline underline-offset-4 hover:text-foreground"
+            className="hover:text-foreground underline underline-offset-4"
           >
             Start again from the beginning
           </button>
@@ -311,7 +411,9 @@ export function QuickLook() {
 
   /* ---------- RESULTS ---------- */
   const avgs: Record<string, number> = {};
-  [...COMPASS_KEYS, ...PATH_KEYS].forEach((k) => (avgs[k] = scoreFor(k, answers)));
+  [...COMPASS_KEYS, ...PATH_KEYS].forEach(
+    (k) => (avgs[k] = scoreFor(k, answers)),
+  );
   const ground = band(scoreFor("Honesty", answers));
 
   let step: PathKey | "motion" = "motion";
@@ -327,10 +429,15 @@ export function QuickLook() {
   const allEqual = COMPASS_KEYS.every((k) => avgs[k] === avgs[COMPASS_KEYS[0]]);
 
   const pathHeading =
-    step === "motion" ? "You’re in motion." : `You’re standing at “${PATH_Q[step]}”.`;
+    step === "motion"
+      ? "You’re in motion."
+      : `You’re standing at “${PATH_Q[step]}”.`;
 
   return (
-    <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20" style={scopeStyle}>
+    <section
+      className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8"
+      style={scopeStyle}
+    >
       <style>{`
         .ql-lab{font-family:var(--font-display),sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;fill:var(--ql-navy)}
         .ql-state{font-style:italic;font-size:12.5px;fill:var(--ql-faint)}
@@ -339,38 +446,41 @@ export function QuickLook() {
         @media (prefers-reduced-motion:reduce){.ql-flicker{animation:none;opacity:.65}}
       `}</style>
 
-      <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+      <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
         Your quick reading · this season
       </p>
-      <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+      <h2 className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">
         Here’s where you are — honestly, and without a score.
       </h2>
-      <p className="mt-5 leading-relaxed text-muted-foreground">{GROUND_READ[ground]}</p>
-      <p className="mt-3 leading-relaxed text-muted-foreground">
+      <p className="text-muted-foreground mt-5 leading-relaxed">
+        {GROUND_READ[ground]}
+      </p>
+      <p className="text-muted-foreground mt-3 leading-relaxed">
         You’ve just walked two things without being told their names. The Path —
         the four questions, the ground you’re covering. The Compass — the four
         strengths you draw on as you go.
       </p>
 
-      <div className="mt-8 rounded-lg border border-border bg-card p-6 sm:p-8">
+      <div className="border-border bg-card mt-8 rounded-lg border p-6 sm:p-8">
         <h3 className="text-lg font-bold">At a glance</h3>
         <div
           className="mt-4"
           dangerouslySetInnerHTML={{ __html: mapSVG(step) }}
         />
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
           The trail runs through the four questions — the pin marks where you’re
           standing.
         </p>
         <p className="mt-3 leading-relaxed">
-          <span className="font-semibold">{pathHeading}</span> {PATH_STAND[step]}
+          <span className="font-semibold">{pathHeading}</span>{" "}
+          {PATH_STAND[step]}
         </p>
       </div>
 
-      <p className="mt-10 text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+      <p className="text-brand-accent-text mt-10 text-xs font-bold tracking-[0.08em] uppercase">
         The Compass
       </p>
-      <p className="mt-2 leading-relaxed text-muted-foreground">
+      <p className="text-muted-foreground mt-2 leading-relaxed">
         Four strengths, one name — your Compass. The longer the point, the
         stronger it stands.
       </p>
@@ -384,35 +494,35 @@ export function QuickLook() {
         ) : (
           <>
             Your longest point right now is{" "}
-            <span className="font-semibold text-primary">{brightest}</span>.{" "}
+            <span className="text-primary font-semibold">{brightest}</span>.{" "}
             {RECOG[brightest]}
           </>
         )}
       </p>
 
-      <p className="mt-6 italic text-muted-foreground">
+      <p className="text-muted-foreground mt-6 italic">
         The setback wasn’t your choice. The next step is.
       </p>
 
-      <div className="mt-10 rounded-lg border-2 border-brand-accent bg-card p-6 sm:p-8">
+      <div className="border-brand-accent bg-card mt-10 rounded-lg border-2 p-6 sm:p-8">
         <h3 className="text-xl font-bold">
           This is the surface. The full reading goes deeper.
         </h3>
-        <p className="mt-3 leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mt-3 leading-relaxed">
           The free Full Assessment inside All In maps every strength and every
           step - take it, and everything opens.
         </p>
         <div className="mt-6">
           <Link
             href="/all-in#full-assessment"
-            className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Go All In →
           </Link>
         </div>
       </div>
 
-      <p className="mt-10 text-center text-xs font-bold uppercase tracking-[0.16em] text-brand-accent-text">
+      <p className="text-brand-accent-text mt-10 text-center text-xs font-bold tracking-[0.16em] uppercase">
         From here, forward.
       </p>
 
@@ -420,13 +530,13 @@ export function QuickLook() {
         <button
           type="button"
           onClick={start}
-          className="text-sm italic text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground text-sm italic underline underline-offset-4"
         >
           Take the quick look again
         </button>
       </div>
 
-      <p className="mt-8 text-center font-[family-name:var(--font-display)] font-bold text-primary">
+      <p className="text-primary mt-8 text-center font-[family-name:var(--font-display)] font-bold">
         Setbacks don’t get the last word.
       </p>
     </section>

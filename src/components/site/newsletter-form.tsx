@@ -12,7 +12,9 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState(""); // honeypot
-  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [state, setState] = useState<"idle" | "sending" | "done" | "error">(
+    "idle",
+  );
   const [message, setMessage] = useState("");
 
   async function onSubmit(e: React.FormEvent) {
@@ -45,7 +47,8 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
       } else {
         setState("error");
         setMessage(
-          data.message ?? "Something went wrong — please try again in a moment.",
+          data.message ??
+            "Something went wrong — please try again in a moment.",
         );
       }
     } catch {
@@ -59,19 +62,19 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
       <div
         id="byc-status"
         aria-live="polite"
-        className="mx-auto mt-8 max-w-md rounded-lg border-2 border-brand-accent bg-card p-6"
+        className="border-brand-accent bg-card mx-auto mt-8 max-w-md rounded-lg border-2 p-6"
       >
-        <p className="font-[family-name:var(--font-display)] font-bold text-primary">
+        <p className="text-primary font-[family-name:var(--font-display)] font-bold">
           You’re in — welcome.
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
           Your 7 Step Journal is ready right now:
         </p>
         <a
           href="/downloads/BF-7-Step-Reflection-Journal.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center rounded-full bg-primary px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring mt-3 inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Download the 7 Step Journal →
         </a>
@@ -98,7 +101,7 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
           placeholder="First name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className="rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 sm:w-44"
+          className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 rounded-full border px-5 py-3 text-base transition-colors outline-none focus-visible:ring-2 sm:w-44"
         />
         <label htmlFor="byc-email" className="sr-only">
           Email address
@@ -112,7 +115,7 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 sm:w-64"
+          className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 rounded-full border px-5 py-3 text-base transition-colors outline-none focus-visible:ring-2 sm:w-64"
         />
         {/* Honeypot — hidden from real people, tempting to bots. */}
         <input
@@ -128,7 +131,7 @@ export function NewsletterForm({ submitLabel }: { submitLabel: string }) {
         <button
           type="submit"
           disabled={state === "sending"}
-          className="rounded-full bg-primary px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+          className="bg-primary text-primary-foreground hover:bg-brand-primary-hover rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60"
         >
           {state === "sending" ? "Sending…" : submitLabel}
         </button>

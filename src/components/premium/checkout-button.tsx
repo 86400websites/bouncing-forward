@@ -31,7 +31,11 @@ export function CheckoutButton({
 
   if (owned) {
     return (
-      <button type="button" onClick={() => router.push("/account")} className={cls}>
+      <button
+        type="button"
+        onClick={() => router.push("/account")}
+        className={cls}
+      >
         It’s yours — open your account →
       </button>
     );
@@ -71,7 +75,14 @@ export function CheckoutButton({
       <button type="button" onClick={go} disabled={loading} className={cls}>
         {loading ? "One moment…" : "Buy the Book Package — $9.99"}
       </button>
-      <span aria-live="polite" className={error ? `text-sm ${invert ? "text-primary-foreground/90" : "text-red-600"}` : "sr-only"}>
+      <span
+        aria-live="polite"
+        className={
+          error
+            ? `text-sm ${invert ? "text-primary-foreground/90" : "text-red-600"}`
+            : "sr-only"
+        }
+      >
         {error}
       </span>
     </span>

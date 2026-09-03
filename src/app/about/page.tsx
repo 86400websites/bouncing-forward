@@ -28,12 +28,12 @@ export default function AboutPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 The Author
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 I turned the worst night of my life into the direction for the
                 rest of it.
               </h1>
@@ -65,14 +65,14 @@ export default function AboutPage() {
 
       {/* ── Where it starts ──────────────────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <SlideUp>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               Where it starts
             </p>
           </SlideUp>
           <SlideUp delay={0.06}>
-            <blockquote className="mt-6 border-l-2 border-brand-accent pl-5 text-xl italic leading-relaxed sm:text-2xl">
+            <blockquote className="border-brand-accent mt-6 border-l-2 pl-5 text-xl leading-relaxed italic sm:text-2xl">
               “Not going back to who you were. Going forward to who you are
               capable of becoming.”
             </blockquote>
@@ -94,12 +94,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── The turning point ────────────────────────────────── */}
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             The turning point
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             The call came at 2am.
           </h2>
         </SlideUp>
@@ -130,14 +130,14 @@ export default function AboutPage() {
 
       {/* ── What I learned the hard way ──────────────────────── */}
       <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SlideUp>
-                <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+                <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                   What I learned the hard way
                 </p>
-                <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+                <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
                   Acceptance isn’t surrender.
                 </h2>
               </SlideUp>
@@ -155,17 +155,17 @@ export default function AboutPage() {
                 <SlideUp delay={0.1}>
                   <p>
                     That question gave birth to the Hikmat Road Safety Program —
-                    a project that has since built over 1,200 playgrounds, marked
-                    260 schools in high-risk zones, and identified 1,800
+                    a project that has since built over 1,200 playgrounds,
+                    marked 260 schools in high-risk zones, and identified 1,800
                     dangerous locations across Jordan’s roads. It taught me that
-                    real acceptance isn’t giving up. It’s saying: this is where I
-                    am — now what can I build from here?
+                    real acceptance isn’t giving up. It’s saying: this is where
+                    I am — now what can I build from here?
                   </p>
                 </SlideUp>
                 <SlideUp delay={0.14}>
                   <p>
-                    I am not unique in this. The same capacity lives in you. If I
-                    could turn my worst chapter forward, so can you.
+                    I am not unique in this. The same capacity lives in you. If
+                    I could turn my worst chapter forward, so can you.
                   </p>
                 </SlideUp>
               </div>
@@ -185,12 +185,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── Why Bouncing Forward ─────────────────────────────── */}
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <SlideUp>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+          <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
             Why Bouncing Forward
           </p>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
             Because no one hands you a map for this part.
           </h2>
         </SlideUp>
@@ -199,18 +199,18 @@ export default function AboutPage() {
             <p>
               Everywhere I look, I see people carrying a loss they were never
               given the tools to face. Not because they lack strength — because
-              no one ever handed them a compass, or told them there was a path at
-              all.
+              no one ever handed them a compass, or told them there was a path
+              at all.
             </p>
           </SlideUp>
           <SlideUp delay={0.1}>
             <p>
               I wrote Bouncing Forward to hand you both — and a practical way to
-              use them. Not platitudes. Not a five-step cure. A
-              framework, grounded in a real hospital corridor and a real road in
-              Jordan, built to be used in the middle of real life. Because the
-              most dangerous thing about loss isn’t the pain. It’s letting the
-              pain be the only thing that ever gets built from it.
+              use them. Not platitudes. Not a five-step cure. A framework,
+              grounded in a real hospital corridor and a real road in Jordan,
+              built to be used in the middle of real life. Because the most
+              dangerous thing about loss isn’t the pain. It’s letting the pain
+              be the only thing that ever gets built from it.
             </p>
           </SlideUp>
           <SlideUp delay={0.14}>
@@ -224,9 +224,9 @@ export default function AboutPage() {
 
       {/* ── Closing (navy band) ──────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-extrabold leading-tight sm:text-3xl">
+            <h2 className="text-2xl leading-tight font-extrabold sm:text-3xl">
               Take a moment. Ask yourself, honestly:
             </h2>
             <p className="mt-6 font-[family-name:var(--font-display)] text-2xl font-extrabold italic sm:text-3xl">
@@ -235,13 +235,17 @@ export default function AboutPage() {
             <p className="mt-3 font-[family-name:var(--font-display)] text-2xl font-extrabold italic sm:text-3xl">
               What does this ask of me?
             </p>
-            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/85">
+            <p className="text-primary-foreground/85 mt-6 text-lg leading-relaxed">
               You don’t need the answer yet. Just the courage to ask.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <PrimaryCta href="/all-in" label="Go All In" invert />
               <SecondaryCta href="/book" label="Read the Book" invert />
-              <SecondaryCta href="/assess" label="Find out where here is" invert />
+              <SecondaryCta
+                href="/assess"
+                label="Find out where here is"
+                invert
+              />
             </div>
           </FadeIn>
         </div>

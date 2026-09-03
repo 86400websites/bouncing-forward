@@ -23,9 +23,11 @@ function isActive(pathname: string, href: string) {
   return pathname === path || pathname.startsWith(`${path}/`);
 }
 
-function hasChildren(
-  item: NavItem,
-): item is { label: string; href?: string; children: { href: string; label: string }[] } {
+function hasChildren(item: NavItem): item is {
+  label: string;
+  href?: string;
+  children: { href: string; label: string }[];
+} {
   return "children" in item;
 }
 
@@ -35,7 +37,7 @@ export function SiteHeader() {
   return (
     <header
       id="top"
-      className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85"
+      className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/85 sticky top-0 z-40 border-b backdrop-blur"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
         <Link
@@ -69,12 +71,14 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={isActive(pathname, item.href) ? "page" : undefined}
+                aria-current={
+                  isActive(pathname, item.href) ? "page" : undefined
+                }
                 className={cn(
                   "border-b-2 border-transparent pb-0.5 font-[family-name:var(--font-display)] text-sm transition-colors",
                   isActive(pathname, item.href)
-                    ? "border-brand-accent font-bold text-foreground"
-                    : "font-semibold text-muted-foreground hover:text-foreground",
+                    ? "border-brand-accent text-foreground font-bold"
+                    : "text-muted-foreground hover:text-foreground font-semibold",
                 )}
               >
                 {item.label}
@@ -87,7 +91,7 @@ export function SiteHeader() {
         {/* Mobile */}
         <Sheet>
           <SheetTrigger
-            className="rounded-md p-2 text-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:hidden"
+            className="text-foreground hover:bg-muted focus-visible:outline-ring rounded-md p-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 lg:hidden"
             aria-label="Open menu"
           >
             <MenuIcon className="size-6" />
@@ -111,8 +115,8 @@ export function SiteHeader() {
                       className={cn(
                         "rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base transition-colors",
                         isActive(pathname, item.href)
-                          ? "bg-muted font-bold text-foreground"
-                          : "font-semibold text-muted-foreground hover:bg-muted hover:text-foreground",
+                          ? "bg-muted text-foreground font-bold"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground font-semibold",
                       )}
                     >
                       {item.label}
@@ -135,7 +139,11 @@ function DesktopDropdown({
   item,
   pathname,
 }: {
-  item: { label: string; href?: string; children: { href: string; label: string }[] };
+  item: {
+    label: string;
+    href?: string;
+    children: { href: string; label: string }[];
+  };
   pathname: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -167,7 +175,7 @@ function DesktopDropdown({
             href={item.href}
             className={
               item.label === "All In"
-                ? "rounded-full bg-brand-accent px-4 py-1.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                ? "bg-brand-accent text-primary focus-visible:outline-ring rounded-full px-4 py-1.5 font-[family-name:var(--font-display)] text-sm font-bold transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2"
                 : labelClasses
             }
           >
@@ -182,7 +190,7 @@ function DesktopDropdown({
           aria-expanded={open}
           aria-label={`${item.label} menu`}
           onClick={() => setOpen((o) => !o)}
-          className="text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="text-muted-foreground hover:text-foreground focus-visible:outline-ring transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           <ChevronDownIcon className="size-3.5" aria-hidden="true" />
         </button>
@@ -190,7 +198,7 @@ function DesktopDropdown({
       <div
         role="menu"
         className={cn(
-          "absolute left-0 top-full z-50 w-60 rounded-lg border border-border bg-card p-2 shadow-lg",
+          "border-border bg-card absolute top-full left-0 z-50 w-60 rounded-lg border p-2 shadow-lg",
           open ? "block" : "hidden",
         )}
       >
@@ -200,7 +208,7 @@ function DesktopDropdown({
             href={c.href}
             role="menuitem"
             tabIndex={open ? undefined : -1}
-            className="block rounded-md px-3 py-2 font-[family-name:var(--font-display)] text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-ring block rounded-md px-3 py-2 font-[family-name:var(--font-display)] text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             {c.label}
           </Link>
@@ -213,7 +221,11 @@ function DesktopDropdown({
 function MobileGroup({
   item,
 }: {
-  item: { label: string; href?: string; children: { href: string; label: string }[] };
+  item: {
+    label: string;
+    href?: string;
+    children: { href: string; label: string }[];
+  };
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -223,13 +235,13 @@ function MobileGroup({
           <SheetClose asChild>
             <Link
               href={item.href}
-              className="flex-1 rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="text-muted-foreground hover:bg-muted hover:text-foreground flex-1 rounded-md px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold transition-colors"
             >
               {item.label}
             </Link>
           </SheetClose>
         ) : (
-          <span className="flex-1 px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold text-muted-foreground">
+          <span className="text-muted-foreground flex-1 px-3 py-3 font-[family-name:var(--font-display)] text-base font-semibold">
             {item.label}
           </span>
         )}
@@ -238,7 +250,7 @@ function MobileGroup({
           aria-expanded={open}
           aria-label={`${item.label} submenu`}
           onClick={() => setOpen((o) => !o)}
-          className="rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-ring rounded-md p-3 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           <ChevronDownIcon
             className={cn("size-4 transition-transform", open && "rotate-180")}
@@ -248,7 +260,7 @@ function MobileGroup({
       </div>
       <div
         className={cn(
-          "ml-3 flex-col border-l border-border pl-2",
+          "border-border ml-3 flex-col border-l pl-2",
           open ? "flex" : "hidden",
         )}
       >
@@ -257,7 +269,7 @@ function MobileGroup({
             <Link
               href={c.href}
               tabIndex={open ? undefined : -1}
-              className="rounded-md px-3 py-2.5 font-[family-name:var(--font-display)] text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-md px-3 py-2.5 font-[family-name:var(--font-display)] text-sm font-semibold transition-colors"
             >
               {c.label}
             </Link>

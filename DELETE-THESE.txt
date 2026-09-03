@@ -1,0 +1,19 @@
+Delete these from the repo (the zip overlay cannot remove files).
+They are superseded: governing docs now live in docs/ per the system's
+copy map, and ci.yml is replaced by code-check.yml.
+
+  00-START-HERE.md
+  DESIGN.md
+  SECURITY-CHECKLIST.md
+  SITEMAP-AND-FEATURES.md        (a copy now lives at docs/SITEMAP-AND-FEATURES.md)
+  SPRINT-PLAN.md                 (a copy now lives at docs/SPRINT-PLAN.md)
+  SUPABASE-VERCEL-SETUP.md
+  TECH-ARCHITECTURE.md
+  WORKFLOW.md
+  .github/workflows/ci.yml
+  .env.local.example             (.env.example is the single canonical template now)
+
+PowerShell, from the project root:
+  Remove-Item -Force 00-START-HERE.md, DESIGN.md, SECURITY-CHECKLIST.md, SITEMAP-AND-FEATURES.md, SPRINT-PLAN.md, SUPABASE-VERCEL-SETUP.md, TECH-ARCHITECTURE.md, WORKFLOW.md, ".github/workflows/ci.yml", ".env.local.example"
+
+Then: pnpm run format:check && pnpm run build   (both green), commit, push.

@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 
 /* Copy source: BF-Website-Copy-For-Sozana-2.docx — Contact (/contact), verbatim. */
 
-
 export default function ContactPage() {
   return (
     <>
@@ -25,12 +24,12 @@ export default function ContactPage() {
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 Contact
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 We’d like to hear from you.
               </h1>
             </SlideUp>

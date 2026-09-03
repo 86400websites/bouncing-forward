@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import {
+  FadeIn,
+  SlideUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
   PrimaryCta,
@@ -55,7 +60,6 @@ const allInFeatures = [
   },
 ];
 
-
 export default function AllInPage() {
   return (
     <>
@@ -67,12 +71,12 @@ export default function AllInPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
                 All In — Everything, Together
               </p>
             </FadeIn>
             <SlideUp>
-              <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+              <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold sm:text-5xl">
                 Commit to Bouncing Forward.
               </h1>
             </SlideUp>
@@ -92,8 +96,14 @@ export default function AllInPage() {
             </SlideUp>
             <SlideUp delay={0.16}>
               <div className="mt-8">
-                <PrimaryCta href="#full-assessment" label="Take the Full Assessment" />
-                <SecondaryCta href="/premium" label="Buy the Book Package — $9.99" />
+                <PrimaryCta
+                  href="#full-assessment"
+                  label="Take the Full Assessment"
+                />
+                <SecondaryCta
+                  href="/premium"
+                  label="Buy the Book Package — $9.99"
+                />
               </div>
             </SlideUp>
           </div>
@@ -111,11 +121,11 @@ export default function AllInPage() {
         </div>
 
         <FadeIn>
-          <div className="mt-16 border-t border-border pt-12 text-center">
-            <h2 className="mx-auto max-w-2xl text-2xl font-extrabold leading-tight sm:text-3xl">
+          <div className="border-border mt-16 border-t pt-12 text-center">
+            <h2 className="mx-auto max-w-2xl text-2xl leading-tight font-extrabold sm:text-3xl">
               Everything the framework offers, in one place.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg leading-relaxed">
               The complete course, every guide, every tool — open from day one,
               in whatever order your season asks for.
             </p>
@@ -127,16 +137,16 @@ export default function AllInPage() {
       <section className="bg-muted">
         <div
           id="a-included"
-          className="mx-auto max-w-5xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+          className="mx-auto max-w-5xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
         >
           <SlideUp>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               All In — free. Yours for life.
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
               All In gives you lifetime access — no annual membership renewal.
             </p>
-            <p className="mt-8 font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text mt-8 font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.08em] uppercase">
               Everything in Free, plus:
             </p>
           </SlideUp>
@@ -144,8 +154,8 @@ export default function AllInPage() {
           <Stagger className="mt-8 space-y-6">
             {allInFeatures.map((f) => (
               <StaggerItem key={f.title}>
-                <div className="grid gap-5 rounded-lg border border-border bg-card p-6 sm:grid-cols-[160px_1fr] sm:items-center sm:gap-8 sm:p-8">
-                  <div className="relative w-full overflow-hidden rounded-md bg-muted pb-[75%] sm:pb-[100%]">
+                <div className="border-border bg-card grid gap-5 rounded-lg border p-6 sm:grid-cols-[160px_1fr] sm:items-center sm:gap-8 sm:p-8">
+                  <div className="bg-muted relative w-full overflow-hidden rounded-md pb-[75%] sm:pb-[100%]">
                     <Image
                       src={f.img}
                       alt={f.title}
@@ -156,7 +166,7 @@ export default function AllInPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">{f.title}</h3>
-                    <p className="mt-2 leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground mt-2 leading-relaxed">
                       {f.body}
                     </p>
                   </div>
@@ -167,7 +177,10 @@ export default function AllInPage() {
 
           <FadeIn>
             <div className="mt-10">
-              <PrimaryCta href="#full-assessment" label="Take the Full Assessment" />
+              <PrimaryCta
+                href="#full-assessment"
+                label="Take the Full Assessment"
+              />
             </div>
           </FadeIn>
         </div>
@@ -177,7 +190,7 @@ export default function AllInPage() {
       <section>
         <div
           id="full-assessment"
-          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
         >
           <FullAssessment />
         </div>
@@ -187,7 +200,7 @@ export default function AllInPage() {
       <section className="bg-muted">
         <div
           id="library"
-          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
         >
           <AllInLibrary />
         </div>

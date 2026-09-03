@@ -13,10 +13,42 @@ function MiniCompass() {
   // N & E lit (bright gold), S & W dim (faint) — "two lit, two dimmed".
   // Each light carries its Element title (re-brief: "add the titles to each of the lights").
   const lights = [
-    { x: cx, y: cy - r, lit: true, label: "RESILIENCE", lx: cx, ly: cy - r - 16, anchor: "middle" as const },
-    { x: cx + r, y: cy, lit: true, label: "ADAPTABILITY", lx: cx + r + 12, ly: cy + 4, anchor: "start" as const },
-    { x: cx, y: cy + r, lit: false, label: "OPTIMISM", lx: cx, ly: cy + r + 22, anchor: "middle" as const },
-    { x: cx - r, y: cy, lit: false, label: "SUPPORT", lx: cx - r - 12, ly: cy + 4, anchor: "end" as const },
+    {
+      x: cx,
+      y: cy - r,
+      lit: true,
+      label: "RESILIENCE",
+      lx: cx,
+      ly: cy - r - 16,
+      anchor: "middle" as const,
+    },
+    {
+      x: cx + r,
+      y: cy,
+      lit: true,
+      label: "ADAPTABILITY",
+      lx: cx + r + 12,
+      ly: cy + 4,
+      anchor: "start" as const,
+    },
+    {
+      x: cx,
+      y: cy + r,
+      lit: false,
+      label: "OPTIMISM",
+      lx: cx,
+      ly: cy + r + 22,
+      anchor: "middle" as const,
+    },
+    {
+      x: cx - r,
+      y: cy,
+      lit: false,
+      label: "SUPPORT",
+      lx: cx - r - 12,
+      ly: cy + 4,
+      anchor: "end" as const,
+    },
   ];
   return (
     <svg
@@ -25,10 +57,38 @@ function MiniCompass() {
       aria-label="A compass whose four lights — Resilience, Adaptability, Optimism and Support — show two burning bright and two gone faint."
       className="mx-auto w-full max-w-[300px]"
     >
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-      <circle cx={cx} cy={cy} r={r * 0.6} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-      <line x1={cx} y1={cy - r} x2={cx} y2={cy + r} stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-      <line x1={cx - r} y1={cy} x2={cx + r} y2={cy} stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+      <circle
+        cx={cx}
+        cy={cy}
+        r={r}
+        fill="none"
+        stroke="rgba(255,255,255,0.18)"
+        strokeWidth="1"
+      />
+      <circle
+        cx={cx}
+        cy={cy}
+        r={r * 0.6}
+        fill="none"
+        stroke="rgba(255,255,255,0.18)"
+        strokeWidth="1"
+      />
+      <line
+        x1={cx}
+        y1={cy - r}
+        x2={cx}
+        y2={cy + r}
+        stroke="rgba(255,255,255,0.18)"
+        strokeWidth="1"
+      />
+      <line
+        x1={cx - r}
+        y1={cy}
+        x2={cx + r}
+        y2={cy}
+        stroke="rgba(255,255,255,0.18)"
+        strokeWidth="1"
+      />
       <circle cx={cx} cy={cy} r="2.5" fill="rgba(255,255,255,0.5)" />
       {lights.map((l, i) => (
         <g key={i}>
@@ -80,13 +140,13 @@ export function AssessBlock({
 }) {
   return (
     <section className="bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
               {headline}
             </h2>
-            <div className="mt-5 max-w-xl space-y-3 text-lg leading-relaxed text-primary-foreground/85">
+            <div className="text-primary-foreground/85 mt-5 max-w-xl space-y-3 text-lg leading-relaxed">
               {lines.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -94,14 +154,14 @@ export function AssessBlock({
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/assess"
-                className="inline-flex items-center rounded-full bg-primary-foreground px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 focus-visible:outline-ring inline-flex items-center rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 {ctaLabel}
               </Link>
               {showGoAllIn ? (
                 <Link
                   href="/all-in"
-                  className="inline-flex items-center rounded-full border border-primary-foreground/40 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 focus-visible:outline-ring inline-flex items-center rounded-full border px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   Go All In
                 </Link>

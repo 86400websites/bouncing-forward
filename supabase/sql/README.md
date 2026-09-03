@@ -4,8 +4,8 @@ Per `TECH-ARCHITECTURE.md` §7 and `WORKFLOW.md` §14: SQL is applied **by hand*
 
 ## Apply order
 
-| # | Up file | Down file | What it does |
-|---|---|---|---|
+| #   | Up file                             | Down file                             | What it does                                                                                                     |
+| --- | ----------------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | 001 | `001_assessment_submissions.up.sql` | `001_assessment_submissions.down.sql` | Compass & Path Check results table (default-deny RLS) + hardened `submit_assessment()` RPC — the only write path |
 
 ## Protocol for every change

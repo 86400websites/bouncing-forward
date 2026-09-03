@@ -17,6 +17,7 @@ Live mode.
 
    That tail is how the site opens everything the moment payment
    completes, without waiting for the email.
+
 4. Copy the link's URL (starts `https://buy.stripe.com/…`).
 
 ## 2 · Webhook (tags the buyer in Mailchimp)
@@ -33,11 +34,11 @@ Live mode.
 Project → Settings → Environment Variables (Production), then
 **redeploy**:
 
-| Variable | Value |
-| --- | --- |
+| Variable                          | Value                              |
+| --------------------------------- | ---------------------------------- |
 | `NEXT_PUBLIC_STRIPE_PAYMENT_LINK` | the `https://buy.stripe.com/…` URL |
-| `STRIPE_SECRET_KEY` | Developers → API keys → Secret key |
-| `STRIPE_WEBHOOK_SECRET` | the `whsec_…` signing secret |
+| `STRIPE_SECRET_KEY`               | Developers → API keys → Secret key |
+| `STRIPE_WEBHOOK_SECRET`           | the `whsec_…` signing secret       |
 
 (`PREMIUM_ACCESS_CODES` and the three Mailchimp variables should
 already be set — the webhook needs Mailchimp to deliver the

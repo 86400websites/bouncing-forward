@@ -6,7 +6,8 @@ import {
   Stagger,
   StaggerItem,
 } from "@/components/motion/primitives";
-import { BeginYourCrossing,
+import {
+  BeginYourCrossing,
   PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 import { POSTS } from "@/lib/blog";
@@ -31,12 +32,12 @@ export default function BlogPage() {
       <section className="mx-auto max-w-7xl px-5 pt-16 pb-8 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
         <div className="max-w-3xl">
           <FadeIn>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-brand-accent-text">
+            <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
               The Blog
             </p>
           </FadeIn>
           <SlideUp>
-            <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 text-4xl leading-[1.08] font-extrabold sm:text-5xl lg:text-6xl">
               Honest words for the hardest seasons.
             </h1>
           </SlideUp>
@@ -50,23 +51,23 @@ export default function BlogPage() {
       </section>
 
       {/* ── Posts (image + title + standfirst, clickable) ────── */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-8 sm:px-6 lg:px-8 sm:pb-20 lg:pb-24">
+      <section className="mx-auto max-w-7xl px-5 pt-8 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
         <Stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {POSTS.map((post) => (
             <StaggerItem key={post.slug} className="h-full">
               <article className="h-full">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="group border-border bg-card focus-visible:outline-ring flex h-full flex-col overflow-hidden rounded-lg border transition-all hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   <div className="flex flex-1 flex-col p-6">
-                    <h2 className="text-lg font-bold leading-snug group-hover:text-brand-accent-text">
+                    <h2 className="group-hover:text-brand-accent-text text-lg leading-snug font-bold">
                       {post.title}
                     </h2>
-                    <p className="mt-2 flex-1 text-sm italic leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed italic">
                       {post.subtitle}
                     </p>
-                    <span className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-brand-accent-text">
+                    <span className="text-brand-accent-text mt-4 font-[family-name:var(--font-display)] text-sm font-bold">
                       Read the post →
                     </span>
                   </div>
@@ -79,11 +80,11 @@ export default function BlogPage() {
 
       {/* ── Go All In band ───────────────────────────────────── */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-14 text-center sm:px-6 lg:px-8 sm:py-16">
-          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
+        <div className="mx-auto max-w-7xl px-5 py-14 text-center sm:px-6 sm:py-16 lg:px-8">
+          <h2 className="text-3xl leading-tight font-extrabold sm:text-4xl">
             Ready for everything?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-primary-foreground/80">
+          <p className="text-primary-foreground/80 mx-auto mt-3 max-w-xl">
             The Full Assessment, the course, the journal, the letters — all
             free, all open.
           </p>

@@ -12,23 +12,25 @@ import Link from "next/link";
  */
 export function PageFoot() {
   function toTop() {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   }
 
   return (
-    <div className="border-t border-border bg-background">
+    <div className="border-border bg-background border-t">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-4 px-5 py-8 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="inline-flex items-center rounded-full border border-primary px-6 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="border-primary text-primary hover:bg-muted focus-visible:outline-ring inline-flex items-center rounded-full border px-6 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Home
         </Link>
         <button
           type="button"
           onClick={toTop}
-          className="inline-flex items-center rounded-full border border-primary px-6 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold text-primary transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="border-primary text-primary hover:bg-muted focus-visible:outline-ring inline-flex items-center rounded-full border px-6 py-2.5 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Back to the top ↑
         </button>

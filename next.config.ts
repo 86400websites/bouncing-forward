@@ -33,9 +33,15 @@ const nextConfig: NextConfig = {
   async redirects() {
     // Blog slugs realigned to the canonical SEO doc; keep old URLs alive.
     const blog: [string, string][] = [
-      ["the-losses-nobody-sends-flowers-for", "losses-nobody-sends-flowers-for"],
+      [
+        "the-losses-nobody-sends-flowers-for",
+        "losses-nobody-sends-flowers-for",
+      ],
       ["why-month-eight-is-harder-than-week-two", "why-month-eight-is-harder"],
-      ["when-people-say-this-will-make-you-stronger", "this-will-make-you-stronger"],
+      [
+        "when-people-say-this-will-make-you-stronger",
+        "this-will-make-you-stronger",
+      ],
       [
         "becoming-someone-who-has-been-through-something",
         "someone-who-has-been-through-something",

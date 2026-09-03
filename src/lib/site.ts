@@ -68,4 +68,3 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/enterprise", label: "Enterprise" },
   { href: "/contact", label: "Contact" },
 ];
-

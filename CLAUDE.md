@@ -1,138 +1,125 @@
-# Bouncing Forward Website — Claude Code Instructions
+# Bouncing Forward — Claude Code Instructions
 
-> Drop this file into the repo root of a new website. It configures how Claude Code works in this project. Replace `Bouncing Forward` and any other placeholders with the real values. Companion docs in the same repo: [`TECH-ARCHITECTURE.md`](./TECH-ARCHITECTURE.md) (the locked stack), [`WORKFLOW.md`](./WORKFLOW.md) (the branch → PR → Preview → merge process), [`DESIGN.md`](./DESIGN.md) (the visual system), [`AGENTS.md`](./AGENTS.md) (rules for other agents).
+> This file governs the primary build agent in the [REPO_NAME] repository.
+> Companion docs: docs/WORKFLOW.md, docs/ROADMAP.md, docs/PROJECT-STATUS.md,
+> docs/TECH-ARCHITECTURE.md, docs/DESIGN.md, and AGENTS.md.
 
 ## Project context
 
-This repository contains the **Bouncing Forward** website, built on the locked Next.js 15 stack described in [`TECH-ARCHITECTURE.md`](./TECH-ARCHITECTURE.md).
+**Bouncing Forward** is a website for [CLIENT_NAME]: [what it is, who it serves, and its scope fence].
+Its approved conversion priorities are [PRIMARY_AND_SECONDARY_CONVERSIONS]. Optional authentication,
+database, private-area, integration, and hosting behavior is defined in docs/TECH-ARCHITECTURE.md;
+do not invent it.
 
-GitHub is the source of truth. Vercel hosts production and preview deployments. Claude Code is the primary engine for focused code changes, debugging, cleanup, and improvements.
+Approved factual claims and content sources are listed in [APPROVED_CONTENT_AND_FACTS_SOURCE].
+Implement them exactly. GitHub is the source of truth. Vercel provides
+[PREVIEW_ENVIRONMENT] and Production when hosting is in scope. Work one sprint at a time from
+docs/ROADMAP.md.
 
-> **Migration guard.** The current defaults are **pnpm**, **Next.js App Router**, and **Vercel**. If you find `npm`, `VITE_*`, `localhost:5000`, `dist/`, React Router, or Replit in older notes, treat it as historical context, not current practice. Trust the repo over any stale note.
+## Start every session
 
-## Current stack (verify before assuming)
+1. Read docs/PROJECT-STATUS.md, including current stage, active sprint, and open decisions.
+2. Read the active sprint scope and exit checklist in docs/ROADMAP.md.
+3. Inspect the package manifest, framework config, source tree, current branch, and git status.
+4. Read every task input and relevant approved copy/design file before editing.
+5. Confirm the task names the files allowed to change. If another file is needed, stop and explain why.
+6. Work only inside the active sprint and branch named by the task.
 
-- **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript strict
-- **Package manager:** pnpm (pinned via `packageManager` in `package.json`) — use `pnpm`, never `npm` or `yarn`
-- **Styling:** Tailwind CSS v4 + shadcn/ui
-- **Animation:** Framer Motion
-- **Forms:** react-hook-form + zod (when the site has forms)
-- **Auth + DB:** Supabase via `@supabase/ssr` (browser + server clients + `middleware.ts` session refresh) — **only if this site uses auth/DB**
-- **Optional integrations (only if present in this repo):** server-only Route Handlers under `src/app/api/*` for things like marketing email, transactional email; plus optional analytics, error tracking, rate limiting, and CAPTCHA. Each no-ops cleanly when its env vars are absent.
-- **Hosting:** Vercel
-- **Source control:** GitHub
+When a sprint completes, update docs/PROJECT-STATUS.md and docs/ROADMAP.md in the same branch, provided
+those files are listed as allowed changes. Otherwise report the required bookkeeping to the owner.
 
-If the on-disk reality disagrees with this list, **trust the code** (especially `package.json`, `next.config.ts`, and `TECH-ARCHITECTURE.md`).
+## Stack and sources of truth
 
-## How to behave in this project
+The selected stack is **[TECH_STACK]**, recorded in docs/TECH-ARCHITECTURE.md with its package manager,
+framework, styling, validation, data, integration, and hosting choices.
 
-- Make the **smallest safe change** that solves the task.
-- **Preserve current behavior** unless the task explicitly changes it.
-- Keep scope narrow — one focused change at a time.
-- Follow the existing coding style and file organization.
-- When in doubt, choose the smallest safe option and say what you chose.
+Verify the on-disk implementation before relying on a note. If code and documentation disagree, report
+the mismatch. Update documentation only when the current task explicitly allows that file and change.
+Treat traces of an earlier prototype or stack as historical.
 
-## Before making changes (inspect)
+## Approved content and design
 
-1. Inspect the repository structure.
-2. Confirm the framework, package manager, scripts, and app entry points from the repo itself (`package.json`, `next.config.ts`, `src/app/`).
-3. Read the relevant files before editing them.
+- Copy comes from the approved copy files named by the task — canonically the in-repo frozen set at `docs/content/page-copy/*.md`, with exact claims in `docs/content/locked-facts.md`. Implement both verbatim; do not rewrite approved copy or invent facts. If a needed string has no approved source, add it via the copy file (following the voice rules) rather than inventing it inline.
+- Design comes from approved mockups and docs/DESIGN.md. Use the selected tokens and components.
+- Use only the approved shell variants in docs/DESIGN.md or docs/TECH-ARCHITECTURE.md. Keep shared chrome
+  consistent within each shell; do not invent page-specific header or footer variants.
+- If copy, mockup, sitemap, or architecture conflicts, stop and record an open decision. Do not choose silently.
 
-## Plan before changing
+## Working rules
 
-4. Summarize the intended change briefly **before editing**.
-5. For anything non-trivial (auth, data, payments, env handling, security headers, routing), propose a short plan first and keep it focused.
+- Make the smallest safe change that completes the exact task.
+- Preserve current behavior unless the task explicitly changes it.
+- Do not perform unrelated refactors, renames, formatting, dependency changes, or cleanup.
+- Do not change a locked stack layer without an explicit owner request.
+- Preserve existing user changes. Never reset, discard, or overwrite work to obtain a clean tree.
+- For auth, access gates, schema, env handling, security headers, routing, or destructive data behavior,
+  explain a short plan before editing.
+- If the task is ambiguous, choose the smallest safe interpretation only when it cannot change the result
+  materially; otherwise stop and ask.
 
-## When making changes
+## Security and environment safety
 
-1. Work only on the current branch.
-2. Do not make unrelated refactors.
-3. Do not change unrelated UI, copy, routing, environment variables, or project structure unless required by the task.
-4. Preserve existing routes, components, copy, layout, styling, and assets unless the task says otherwise.
-5. Avoid adding new dependencies unless clearly necessary (see Dependency rules below).
-6. Never hardcode secrets, API keys, tokens, credentials, or private URLs — use environment variables.
+- Follow the framework boundaries recorded in docs/TECH-ARCHITECTURE.md. Privileged logic and secrets stay
+  in framework-defined server-only contexts; client code receives only approved public values.
+- Never place a server-only value behind a public env prefix or pass it into client code.
+- Never open, read, copy, print, or modify .env.local or another file containing live environment values.
+  Use env variable names and documented placeholders only. A placeholder-only .env.example is permitted.
+- Never hardcode or echo secrets, credentials, tokens, private keys, database passwords, or private URLs.
+  If a leak is suspected, report only the file, line, and secret type; tell the owner to rotate it.
+- Every gated route or data path, when the project has one, must enforce session and authorization checks
+  server-side before protected data is read. Admin paths also verify the admin role server-side.
+- Validate untrusted input. Validate redirect destinations and URL schemes; never feed untrusted data into
+  raw HTML. Error responses must not expose internals or upstream bodies.
+- Public write endpoints use the abuse controls selected in docs/TECH-ARCHITECTURE.md. Controls configured
+  as required in Production fail closed.
+- Database changes apply only when the project has a database and follow its selected migration and access
+  policy. Ship the required forward/rollback artifacts and policies together. Do not apply a migration
+  unless the owner explicitly asks; use a non-production environment first.
 
-### Respect Next.js App Router conventions
+## Verification
 
-- Routes live under `src/app/`. A folder with `page.tsx` is a route; `layout.tsx` wraps its subtree.
-- API endpoints are **Route Handlers** at `src/app/api/<name>/route.ts` — never legacy `pages/api`.
-- Use `loading.tsx` / `error.tsx` / `not-found.tsx` where they fit; co-locate metadata via the `metadata` export or `generateMetadata`.
-- File location does **not** provide access control — every protected route needs an explicit server-side auth check.
+Run the exact commands defined by the repo and filled task prompt:
 
-### Handle server / client boundaries correctly
+1. Typecheck: [TYPECHECK_COMMAND]
+2. Lint: [LINT_COMMAND]
+3. Tests: [TEST_COMMAND_OR_N/A]
+4. Production build: [BUILD_COMMAND]
+5. Task-specific and manual checks: [TASK_SPECIFIC_CHECKS]
 
-- **Server Components are the default.** Add `"use client"` only when a component needs state, effects, browser APIs, or event handlers.
-- Read **server-only** env vars and call provider SDKs / the server Supabase client only in Server Components, Route Handlers, Server Actions, or `instrumentation.ts`.
-- Client Components may read **only** `NEXT_PUBLIC_*` env vars. Never pass a secret into a Client Component as a prop — it ships to the browser.
-- Keep secret use and heavy data fetching on the server; pass minimal, already-safe data down.
+Do not guess a command or install/change dependencies to make a check run. Report checks that cannot run.
+Fix failures caused by the task; label verified pre-existing failures. Review the complete diff and git
+status without printing live values. Stage explicit files only when committing is authorized.
 
-### Protect env vars and Supabase secrets
+## Git and delivery rules
 
-- In frontend (browser-reachable) code, use **only** public env vars prefixed `NEXT_PUBLIC_*` (e.g. `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`).
-- Never put a server-only secret behind a `NEXT_PUBLIC_*` name.
-- Never use Supabase `service_role` / `sb_secret_*` / JWT secret / database password in frontend code. The secret key bypasses Row Level Security and belongs only in trusted server contexts.
-- Server-only secrets (e.g. Supabase secret key, `MAILCHIMP_API_KEY`, `RESEND_API_KEY`, `SENTRY_AUTH_TOKEN`, `TURNSTILE_SECRET_KEY`, `UPSTASH_REDIS_REST_TOKEN`) must only be read server-side.
-- Never commit `.env.local`. If a new env var is needed, note it (name only) for the user to add in Vercel; don't invent values.
-- If the change touches a Route Handler: validate inputs with zod, keep secrets server-side, and don't leak stack traces or upstream error bodies to the client.
+main is protected and production-ready. Use one focused branch per feature or fix, created from current
+main. The normal chain is:
 
-### Dependency rules
+branch → implementation → local checks → PR → tested [PREVIEW_ENVIRONMENT] → independent review →
+merge by owner → Production smoke test
 
-- Prefer the existing stack and standard library before adding anything.
-- Add a dependency only when it clearly earns its place; explain why in your summary.
-- Never switch the locked layers (framework, package manager, styling, hosting) without an explicit request.
+- Commit only when the filled task prompt explicitly says **Commit: YES**. Omitted or unfilled means NO.
+- Push only when the filled task prompt explicitly says **Push: YES**. Omitted or unfilled means NO.
+- Never push to main, push another branch, merge a PR, force-push, or skip hooks.
+- One implementation agent owns a branch at a time.
 
-## After making changes (commands to run)
+Branch examples: claude/[SPRINT_ID]-short-slug and claude/fix-short-slug.
 
-1. Run the relevant checks: `pnpm run typecheck`, `pnpm run lint`, `pnpm run build`. (There is no `test` script by default; run it only if the repo defines one.)
-2. If a check fails because of your change, fix it before reporting done.
-3. Do not ignore failing checks. If a check fails for a pre-existing reason, say so clearly.
-4. Run `git status` and confirm `.env.local` is not staged and no secrets are in the diff.
+## Task report
 
-## Git rules
+Return:
 
-GitHub `main` is the stable, protected, production-ready branch.
-
-Preferred process:
-
-1. Start from the latest `main`.
-2. Create or use a focused task branch.
-3. Make the requested change.
-4. Run local checks.
-5. Commit with a clear message.
-6. Prepare the branch for review (push only if asked).
-7. Merge into `main` only after CI + Vercel Preview pass and any requested review is done.
-
-**Do not push directly to `main`. Do not push at all unless the owner explicitly asks. Do not merge PRs unless explicitly asked. Do not skip Git hooks (`--no-verify`).**
-
-Branch names: `claude/fix-mobile-header`, `claude/update-homepage-copy`, `claude/improve-contact-section`, `claude/fix-build-error`, `docs/align-workflow`.
-
-Commit messages (short, imperative): `Fix mobile header layout`, `Update homepage section copy`, `Improve contact form validation`.
-
-## Hosting note
-
-If a change affects build output, scripts, security headers, routing, or env handling, keep `vercel.json` and `next.config.ts` consistent — and call this out in your change summary. `next.config.ts` ships security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) and wraps optional integrations when their env vars are present.
-
-## Local development
-
-- Install: `pnpm install --frozen-lockfile`
-- Dev: `pnpm run dev` → `http://localhost:3000`
-- Typecheck / Lint / Build: `pnpm run typecheck`, `pnpm run lint`, `pnpm run build`
-- Production smoke: `pnpm run start`
-
-Copy `.env.example` to `.env.local` for local secrets. `.env.local` is gitignored.
-
-## Output format after each task
-
-End every task with:
-
-1. Summary of what changed.
+1. Outcome and scope completed.
 2. Files changed.
-3. Commands/checks run.
-4. Results of those checks (typecheck, lint, build).
-5. Any risks or follow-up items.
-6. Suggested commit message.
+3. Commands/checks run and exact results.
+4. Manual or Preview verification completed.
+5. Risks, open decisions, or follow-ups.
+6. Branch plus actual commit/push status; include commit SHA/message if committed, otherwise suggest a message.
+7. Roadmap/status bookkeeping completed or still required.
 
 ## Clarification behavior
 
-If the task is clear, proceed. Ask a clarification question only if the missing information would significantly change the implementation. When in doubt, choose the smallest safe change.
+Proceed when the task, allowed files, and safety boundaries are clear. Ask only when missing information
+would materially change the implementation or an open decision blocks the work.
+
+Next step → AGENTS.md defines the independent review; docs/WORKFLOW.md defines the delivery chain.
