@@ -172,13 +172,13 @@ Fall back to the manual workflow and notify the owner.
 
 ## 10. Project values to fill
 
-| Item                                   | Project value                                                |
-| -------------------------------------- | ------------------------------------------------------------ |
-| Non-production project ref             | `[SUPABASE_DEV_PROJECT_REF]`                                 |
-| Production project ref                 | `[SUPABASE_PROD_PROJECT_REF]`                                |
-| Operating profile                      | `[A — no production MCP / B — approved read-only exception]` |
-| Allowed feature groups                 | `[database,debugging,docs or narrower]`                      |
-| SQL/migration folder                   | `supabase/` or `[PROJECT_PATH]`                              |
-| Data classification                    | `[public/internal/confidential/restricted]`                  |
-| Production exception owner/date/reason | `[N/A or record]`                                            |
-| Removal/review date                    | `[DATE]`                                                     |
+| Item                                   | Project value                                                         |
+| -------------------------------------- | --------------------------------------------------------------------- |
+| Non-production project ref             | `hmcojplrqoqhyigvtgyp`                                                |
+| Production project ref                 | `ilnoazendkckzhbuzias`                                                |
+| Operating profile                      | `B — approved read-only exception`                                    |
+| Allowed feature groups                 | `database,debugging,docs`                                             |
+| SQL/migration folder                   | `supabase/sql/`                                                       |
+| Data classification                    | `restricted (auth users + purchase entitlements)`                     |
+| Production exception owner/date/reason | `Mohammad Siddiqui · 2026-09-03 · read-only post-change verification` |
+| Removal/review date                    | `review at public launch`                                             |
