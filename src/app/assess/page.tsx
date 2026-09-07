@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { QuickLook } from "@/components/assess/quick-look";
+import { BeginYourCrossing } from "@/components/site/begin-your-crossing";
 
 export const metadata: Metadata = {
   title: { absolute: "Where’s Here? | Free Two-Minute Check" },
@@ -13,5 +14,10 @@ export const metadata: Metadata = {
 };
 
 export default function AssessPage() {
-  return <QuickLook />;
+  return (
+    <main>
+      <QuickLook />
+      <BeginYourCrossing />
+    </main>
+  );
 }

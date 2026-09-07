@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
+    "The setback wasn’t your choice. The next step is. Built from a real story, for anyone in their hardest chapter.",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     title: "Bouncing Forward | Setbacks Don’t Get the Last Word",
     description:
-      "A compass and a path for life after loss. The 4-Element Compass and 4-Step Path — built from a real story, for anyone facing their hardest chapter.",
+      "The setback wasn’t your choice. The next step is. Built from a real story, for anyone in their hardest chapter.",
     images: [{ url: "/assets/book/cover-3d.jpeg" }],
   },
 };

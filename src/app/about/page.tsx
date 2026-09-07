@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "About Maher Kaddoura | Bouncing Forward",
     description:
       "After losing his son Hikmat, Maher Kaddoura turned grief into direction — road safety work that saves lives, and the framework behind Bouncing Forward.",
+    images: ["/assets/about/maher-portrait.jpg"],
   },
 };
 
@@ -85,7 +86,7 @@ export default function AboutPage() {
               Jordan, helping establish Accenture’s Middle East practice, and
               building consulting firms of my own. I have visited ninety
               countries and two hundred and fifty cities, and sat with people of
-              every faith and tradition along the way. In all that travelling, I
+              every faith and tradition along the way. In all that traveling, I
               found one truth that crosses every border: the person who knows
               they are not facing the dark alone can endure almost anything.
             </p>

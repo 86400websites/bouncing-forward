@@ -4,3 +4,4 @@ private-content
 public
 tsconfig.tsbuildinfo
 source-materials
+.claude/settings.local.json

@@ -1,19 +1,12 @@
-Delete these from the repo (the zip overlay cannot remove files).
-They are superseded: governing docs now live in docs/ per the system's
-copy map, and ci.yml is replaced by code-check.yml.
+Delete these two folders (the zip overlay cannot remove them); their
+routes now live as redirects in next.config.ts:
 
-  00-START-HERE.md
-  DESIGN.md
-  SECURITY-CHECKLIST.md
-  SITEMAP-AND-FEATURES.md        (a copy now lives at docs/SITEMAP-AND-FEATURES.md)
-  SPRINT-PLAN.md                 (a copy now lives at docs/SPRINT-PLAN.md)
-  SUPABASE-VERCEL-SETUP.md
-  TECH-ARCHITECTURE.md
-  WORKFLOW.md
-  .github/workflows/ci.yml
-  .env.local.example             (.env.example is the single canonical template now)
+  src/app/learn
+  src/app/workshops
 
 PowerShell, from the project root:
-  Remove-Item -Force 00-START-HERE.md, DESIGN.md, SECURITY-CHECKLIST.md, SITEMAP-AND-FEATURES.md, SPRINT-PLAN.md, SUPABASE-VERCEL-SETUP.md, TECH-ARCHITECTURE.md, WORKFLOW.md, ".github/workflows/ci.yml", ".env.local.example"
+  Remove-Item -Recurse -Force "src/app/learn", "src/app/workshops"
 
-Then: pnpm run format:check && pnpm run build   (both green), commit, push.
+Then rename the three compass icons per RENAME-THESE.txt, run
+pnpm run format:check && pnpm run build (both green), and ship via
+branch → PR → Code Check → merge.

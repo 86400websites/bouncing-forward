@@ -1,106 +1,57 @@
-# PROJECT-STATUS.md — Where the Build Stands
+# Bouncing Forward — Project Status
 
-The living tracker for Bouncing Forward. Any fresh session — AI or human — reads this file **first** to know
-exactly where the build stands and what to do next. It holds state, not plans: scope and exit gates live in
-`docs/ROADMAP.md`; process lives in `docs/WORKFLOW.md`.
+_Last updated: 4 September 2026 (Heather's final fix-list + legal pages sprint)._
 
-## 1. Right now
+## Where the project stands
 
-| Item                 | Value                                                                                                                                            |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Current stage        | [Setup Gate / Stage 0 / Stage 1 / Launch Gate / Post-launch]                                                                                     |
-| Active sprint        | [SPRINT_ID] — [one-line scope] — Status: [Not Started / In Progress / Blocked / Ready for Review / Approved / Done / Not Applicable with reason] |
-| Current branch       | [BRANCH_NAME]                                                                                                                                    |
-| Next action          | 1. [imperative step] 2. [imperative step] — _Prior:_ [keep the previous next-action inline, struck through when closed]                          |
-| Preview / Production | [PREVIEW_ENVIRONMENT] / https://bouncing-forward.com on Vercel                                                                                   |
-| Last updated         | [DATE] — [one-line summary of the latest state change] — _Prior:_ [previous entry]                                                               |
+The site is **live and selling** at https://bouncing-forward.vercel.app —
+Stripe live mode verified with a real discounted purchase, Supabase
+accounts + entitlements in production, three Mailchimp journeys active
+from the authenticated info@bouncing-forward.com domain, nine course
+videos embedded, and Mohammad's development system installed and
+enforced (Code Check on every PR; Supabase MCP dev/prod per
+docs/SUPABASE-MCP-SAFETY.md).
 
-### How to resume in a fresh AI session
+## This sprint (4 Sep)
 
-1. Read this file, then the active sprint's scope + exit gate in `docs/ROADMAP.md`.
-2. Read the agent-instructions file (`CLAUDE.md` / `AGENTS.md`) and the docs it points to for the task.
-3. Verify the repo state yourself (package manifest, source tree, `git log`). If it disagrees with this file, report the mismatch; update this file only when the task authorizes it.
-4. Work only inside the active sprint. Anything else → propose it under Open decisions or the backlog.
-5. Before ending: update §1–§3 here, tick the roadmap checkboxes, and include this file in the PR.
+Heather's site-wide fix list applied: full American-spelling sweep,
+login-era copy on Home/FAQ/Premium (access-code UI removed from the
+Premium page; log in / create account instead — legacy codes still
+honoured automatically), blog slug `a-setback-is-not-a-staircase`
+(+redirect), Resources gains the 7 Step Journal tool card, Where's
+Here? gains the signup block, metadata fixes (Home og description,
+Book/Author og:image, own og for Log In/Create Account), `/learn` and
+`/workshops` deleted (redirects kept), compass icon refs corrected
+(**files must be renamed — see RENAME-THESE.txt**), and the new
+**/privacy** and **/terms** pages carrying Heather's copy with every
+open detail visibly marked "confirm".
 
-Why this matters: this ritual makes the project session-stateless — anyone can cold-start and resume mid-sprint with zero verbal briefing.
+## Open confirmations (marked in accent on /privacy and /terms)
 
-## 2. Sprint board
+1. Legal entity name + country (Privacy §1, Terms §1)
+2. Refund policy — choose one of the two drafted options (Terms §5)
+3. Governing-law country (Terms §12)
+4. Reply-within-30-days promise (Privacy §7)
+5. Enterprise page: is the webinar free? keep "partnership with Alliance"?
+6. Remove `noindex` from /privacy + /terms once 1–4 are settled
+7. Darlene: the two free PDFs print the wrong domain
+   ("bouncingforward.com" — no hyphen) — fix inside the PDFs
+8. Mailchimp journey emails: rename "The First Week" wording (Heather)
 
-Status legend: Not Started · In Progress · Blocked (say why) · Ready for Review · Approved · Done · Not Applicable (optional only; reason required).
+## Launch gates still open (Mohammad's system)
 
-| Sprint                                 | Status | Branch | PR  | Merged date | Notes                                                                                                  |
-| -------------------------------------- | ------ | ------ | --- | ----------- | ------------------------------------------------------------------------------------------------------ |
-| Setup Gate                             |        |        |     |             |                                                                                                        |
-| Stage 0 — fully working barebones site |        |        |     |             |                                                                                                        |
-| [SPRINT_ID]                            |        |        |     |             | Records: `docs/sprint-prompts/[SPRINT_ID]-[SLUG].md`, `docs/code-reviews/[SPRINT_ID]-[SLUG]-review.md` |
+- Automated test suite — prerequisites DONE (test Supabase
+  `hmcojplrqoqhyigvtgyp`, keys in Vercel Preview); run
+  `/activate-testing` next sprint.
+- Sentry error tracking — needs the free account + DSN.
+- Upstash + Turnstile form abuse controls — needs the two free
+  accounts (4 values into Vercel).
+- Branch protection saved but unenforced (GitHub free plan, private
+  repo) — Mohammad's call on GitHub Team.
 
-Retired sprints stay in the table, struck through, with the date, reason, and where the scope moved (backlog).
+## How to resume
 
-## 3. Last completed work
-
-- [DATE] — [SPRINT_ID]: [what shipped, PR#, review verdict, anything the next session must know].
-
-## 4. Next sprint
-
-- [SPRINT_ID] — [one-line scope]. Depends on: [sprint/decision]. Brief: `docs/sprint-prompts/[SPRINT_ID]-[SLUG].md`.
-
-## 5. Blockers
-
-| #   | Blocker                                                            | Blocking what | Who unblocks | Since |
-| --- | ------------------------------------------------------------------ | ------------- | ------------ | ----- |
-|     | _(e.g. paused free-tier test DB needs an owner dashboard restore)_ |               | Owner / AI   |       |
-
-## 6. Checks status
-
-| Check            | Last run | Result        | Notes                                                                                |
-| ---------------- | -------- | ------------- | ------------------------------------------------------------------------------------ |
-| typecheck        | [DATE]   | pass/fail     |                                                                                      |
-| lint             | [DATE]   | pass/fail     |                                                                                      |
-| tests            | [DATE]   | pass/fail/N/A | State the reason for N/A                                                             |
-| build            | [DATE]   | pass/fail     | Record the built route count — an unexpected ±1 flags an accidental route add/delete |
-| deployed Preview | [DATE]   | pass/fail     | [provider, record path, tested head SHA]                                             |
-
-## 7. Locked decisions (do not reopen)
-
-Changes require a new, explicit superseding decision by the client — never a silent edit.
-
-| ID             | Date   | Decision                                            | Decided by     | Supersedes / notes |
-| -------------- | ------ | --------------------------------------------------- | -------------- | ------------------ |
-| D-[SPRINT]-[a] | [DATE] | [the decision + what it explicitly does NOT change] | Client / owner |                    |
-
-## 8. Open decisions (resolve here, then propagate)
-
-Resolved rows are stamped **RESOLVED [DATE]** (or **ACCEPTED** for consciously-taken risks) — never deleted.
-An accepted risk must name its compensating control and where it's tracked.
-
-| ID    | Decision needed | Options / current lean      | Needed by   | Status |
-| ----- | --------------- | --------------------------- | ----------- | ------ |
-| D-[n] | [the question]  | [lean, so work can proceed] | [SPRINT_ID] | Open   |
-
-## 9. Env vars record (NAMES only — never values)
-
-| Name                   | Public / server-only | Feature it switches on | Set in                                       |
-| ---------------------- | -------------------- | ---------------------- | -------------------------------------------- |
-| [PUBLIC_SITE_URL_NAME] | Public               | Canonical URLs         | Vercel environments                          |
-| [VAR_NAME]             | Server-only          | [feature]              | [Production / Preview / local as applicable] |
-
-**Never do this:** never record a value, key, token, or connection string in this file — names and service states only.
-
-## 10. Known issues
-
-The launch sprint cannot pass while this section has unresolved bugs — except deferrals the client has
-explicitly accepted (cite the accepting decision ID). Deferred hardening is marked **"required before scale"**.
-
-| #   | Severity | Where | Issue | Status |
-| --- | -------- | ----- | ----- | ------ |
-|     |          |       |       |        |
-
-## 11. Update rules
-
-- [ ] Update this file **in the same branch/PR** as the work it describes — state and code merge atomically.
-- [ ] If the sprint branch is already merged, tracker flips ride a tiny dedicated `docs/` branch.
-- [ ] When code and this doc disagree, report the mismatch; correct it only within the authorized scope.
-- [ ] Strike through, never delete: resolved decisions, closed blockers, and retired scope stay visible with dates.
-
-Next step → open the active sprint in `docs/ROADMAP.md` and run it via `docs/WORKFLOW.md`.
+Latest canonical code = this tree. Deliverables flow: apply zip →
+`pnpm run format:check && pnpm run build` → branch → PR → green Code
+Check → merge. Full working history lives in the Claude project
+transcripts (see journal).

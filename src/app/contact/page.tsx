@@ -36,7 +36,7 @@ export default function ContactPage() {
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
                 A question about the book, the course, or All In. A workshop
-                enquiry for your organisation. A story you’re ready to share.
+                inquiry for your organization. A story you’re ready to share.
                 Whatever brings you here — write to us.
               </p>
             </SlideUp>

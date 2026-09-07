@@ -94,7 +94,7 @@ const GROUND_READ: Record<Band, string> = {
   flickering:
     "You’re getting closer to looking at this straight on. That willingness is the ground everything else stands on.",
   faint:
-    "Looking straight at what happened is still hard — that isn’t failure, it’s where nearly everyone starts. Honesty is ground that can be practised.",
+    "Looking straight at what happened is still hard — that isn’t failure, it’s where nearly everyone starts. Honesty is ground that can be practiced.",
 };
 
 const PATH_STAND: Record<PathKey | "motion", string> = {
