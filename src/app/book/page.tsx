@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     title: "The Book | Bouncing Forward by Maher Kaddoura",
     description:
       "Not another book about moving on — four honest questions, in order, and a real story to walk them with.",
+    images: ["/assets/book/cover-3d.jpeg"],
   },
 };
 
@@ -52,7 +53,7 @@ const compass = [
     title: "Optimism",
     descriptor: "Lighting the path through the darkness",
     image: {
-      src: "/assets/compass/Optimis.png",
+      src: "/assets/compass/Optimism.png",
       alt: "Optimism — a rising sun",
     },
   },
@@ -101,7 +102,7 @@ const path = [
     descriptor: "Catalyzing change through initiative",
     image: {
       src: "/assets/framework/act.png",
-      alt: "Act",
+      alt: "Isometric illustration for Act — a first step taken on the path",
     },
   },
 ];

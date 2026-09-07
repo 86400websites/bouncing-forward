@@ -18,7 +18,7 @@ const bookGroup: Item[] = [
   {
     title: "Bouncing Forward — the Book Summary",
     href: "/downloads/all-in/bouncing-forward-book-summary.pdf",
-    note: "The whole framework, summarised — approved by Maher.",
+    note: "The whole framework, summarized — approved by Maher.",
   },
 ];
 
@@ -164,7 +164,7 @@ export function AllInLibrary() {
       </p>
 
       <div className="border-border bg-card mt-8 rounded-lg border p-6 sm:p-8">
-        <h4 className="text-lg font-bold">The book, summarised</h4>
+        <h4 className="text-lg font-bold">The book, summarized</h4>
         <ul className="divide-border mt-2 divide-y">
           {bookGroup.map((i) => (
             <DownloadRow key={i.href} item={i} />

@@ -34,13 +34,13 @@ const stories: Story[] = [
       "Resilience isn’t walking away from where you came from. It’s walking back in, on your own terms, to change what it once cost you.",
   },
   {
-    headline: "Retrenched Into Her Real Career",
+    headline: "Laid Off Into Her Real Career",
     image: {
       src: "/assets/stories/story-2.png",
       alt: "Illustration — a bright salon interior",
     },
     story:
-      "Retrenched from a financial services job she found safe but dull, a woman with an entrepreneurial spirit opened a Sorbet salon and never looked back — then funded beauty-school tuition for her staff, half-grant and half-loan, so newcomers gain a stake in their own future, not just a job.",
+      "Laid off from a financial services job she found safe but dull, a woman with an entrepreneurial spirit opened a Sorbet salon and never looked back — then funded beauty-school tuition for her staff, half-grant and half-loan, so newcomers gain a stake in their own future, not just a job.",
     quote:
       "Adaptability is not becoming someone new. It’s finally becoming who you already were, and then turning around to help someone else do the same.",
   },
@@ -92,10 +92,10 @@ const stories: Story[] = [
     headline: "The Eviction That Never Came",
     image: {
       src: "/assets/stories/story-7.png",
-      alt: "Illustration — a hillside neighbourhood among greenery",
+      alt: "Illustration — a hillside neighborhood among greenery",
     },
     story:
-      "In 2006, authorities told 600 families in a São Paulo favela they’d need to leave to make way for a park. A young woman with determination to find a solution decided the conversation wasn’t over — leading her neighbours in greening and organising the favela itself, proving removal wasn’t the only route to renewal. The eviction never happened.",
+      "In 2006, authorities told 600 families in a São Paulo favela they’d need to leave to make way for a park. A young woman with determination to find a solution decided the conversation wasn’t over — leading her neighbors in greening and organising the favela itself, proving removal wasn’t the only route to renewal. The eviction never happened.",
     quote:
       "Imagining a future isn’t dreaming past your circumstances. It’s standing inside them and redesigning what’s possible from where you already are.",
   },

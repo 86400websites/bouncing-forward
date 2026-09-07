@@ -63,11 +63,11 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "There is another category people rarely count at all: the losses that came with something good attached. The promotion that took you away from everyone you knew. The recovery that left you unrecognisable to yourself.",
+        text: "There is another category people rarely count at all: the losses that came with something good attached. The promotion that took you away from everyone you knew. The recovery that left you unrecognizable to yourself.",
       },
       {
         type: "p",
-        text: "You find yourself apologising for it. Explaining that you know it's not as bad as what other people go through. Auditioning your pain to see if it qualifies.",
+        text: "You find yourself apologizing for it. Explaining that you know it's not as bad as what other people go through. Auditioning your pain to see if it qualifies.",
       },
       {
         type: "p",
@@ -88,7 +88,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "There is a habit that grows in people carrying an unrecognised loss. You develop a shorter version of it — a sentence or two that closes the subject quickly, because the full version requires too much from whoever asked.",
+        text: "There is a habit that grows in people carrying an unrecognized loss. You develop a shorter version of it — a sentence or two that closes the subject quickly, because the full version requires too much from whoever asked.",
       },
       {
         type: "p",
@@ -139,12 +139,12 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "It also explains why you may find yourself unreasonably moved by something small — a song, a stranger being kind at a till. A setback that has nowhere sanctioned to go will find its own exits.",
+        text: "It also explains why you may find yourself unreasonably moved by something small — a song, a stranger being kind at a checkout. A setback that has nowhere sanctioned to go will find its own exits.",
       },
       { type: "h2", text: "What Changes When You Name It" },
       {
         type: "p",
-        text: "So let this be the acknowledgement, if no one else has offered you one. Something was taken. It mattered. You are allowed to feel it.",
+        text: "So let this be the acknowledgment, if no one else has offered you one. Something was taken. It mattered. You are allowed to feel it.",
       },
       {
         type: "p",
@@ -189,7 +189,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "You can say the date out loud. Other people recognise it as a thing that happened.",
+        text: "You can say the date out loud. Other people recognize it as a thing that happened.",
       },
       { type: "h2", text: "HERE, AND GONE" },
       { type: "p", text: "Some setbacks have no such line." },
@@ -386,12 +386,12 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "They are also unevenly spaced. Nothing for two months, then three in a fortnight.",
+        text: "They are also unevenly spaced. Nothing for two months, then three in two weeks.",
       },
       { type: "h2", text: "Knowing It Is Coming" },
       {
         type: "p",
-        text: "It helps enormously simply to know this is coming. Not to brace for it, but to recognise it when it arrives — to be able to say, that is another one, rather than, I am failing at this.",
+        text: "It helps enormously simply to know this is coming. Not to brace for it, but to recognize it when it arrives — to be able to say, that is another one, rather than, I am failing at this.",
       },
       {
         type: "p",
@@ -407,7 +407,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "If you are the friend of somebody in this — the useful thing is not the first fortnight. It is the message in month nine, on no particular occasion, saying you were thinking of them.",
+        text: "If you are the friend of somebody in this — the useful thing is not the first two weeks. It is the message in month nine, on no particular occasion, saying you were thinking of them.",
       },
       {
         type: "p",
@@ -425,7 +425,7 @@ export const POSTS: Post[] = [
   },
   {
     number: 4,
-    slug: "grief-is-not-a-staircase",
+    slug: "a-setback-is-not-a-staircase",
     title: "A Setback Is Not a Staircase",
     subtitle:
       "Nobody moves through loss in a straight line. The line was never real.",
@@ -496,7 +496,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "The Guilt of the Good Days" },
       {
         type: "p",
-        text: "There is a particular guilt in the good days, and it deserves naming. Laughing properly for the first time. Realising at nine at night that you have not thought about it since lunch.",
+        text: "There is a particular guilt in the good days, and it deserves naming. Laughing properly for the first time. Realizing at nine at night that you have not thought about it since lunch.",
       },
       {
         type: "p",
@@ -562,7 +562,7 @@ export const POSTS: Post[] = [
     blocks: [
       {
         type: "p",
-        text: "Nobody prepares you for this part. Loss does not only take the thing you lost. It reorganises every relationship you have.",
+        text: "Nobody prepares you for this part. Loss does not only take the thing you lost. It reorganizes every relationship you have.",
       },
       {
         type: "p",
@@ -579,7 +579,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "The Ones Who Surprised You" },
       {
         type: "p",
-        text: "Meanwhile a colleague you barely knew keeps checking in. A neighbour leaves soup on the step every Sunday for a month without ever asking to come in.",
+        text: "Meanwhile a colleague you barely knew keeps checking in. A neighbor leaves soup on the step every Sunday for a month without ever asking to come in.",
       },
       {
         type: "p",
@@ -650,7 +650,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "So ask for something specific. Not help in general — a Tuesday evening. A lift on Thursday. Somebody to sit in the room while you make the phone call you have been avoiding for a fortnight.",
+        text: "So ask for something specific. Not help in general — a Tuesday evening. A ride on Thursday. Somebody to sit in the room while you make the phone call you have been avoiding for two weeks.",
       },
       {
         type: "p",
@@ -742,11 +742,11 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "They cook their food. They use their phrases without meaning to and hear their voice come out of their own mouth. They keep the jumper in the drawer, and they are not sentimental about it — it is simply where it lives now.",
+        text: "They cook their food. They use their phrases without meaning to and hear their voice come out of their own mouth. They keep the sweater in the drawer, and they are not sentimental about it — it is simply where it lives now.",
       },
       {
         type: "image",
-        text: "A jumper still in the drawer. Not a shrine — simply where it lives now.",
+        text: "A sweater still in the drawer. Not a shrine — simply where it lives now.",
       },
       {
         type: "p",
@@ -771,7 +771,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "The reverse is equally fine. Some people clear everything within a fortnight, and that is not coldness — it is simply a different way of carrying the same thing.",
+        text: "The reverse is equally fine. Some people clear everything within two weeks, and that is not coldness — it is simply a different way of carrying the same thing.",
       },
       { type: "h2", text: "LOSSES THAT WERE NOT PEOPLE" },
       {
@@ -981,7 +981,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "You still have days that take you apart. They are further apart now, and you recognise them when they arrive.",
+        text: "You still have days that take you apart. They are further apart now, and you recognize them when they arrive.",
       },
       {
         type: "p",
@@ -1006,7 +1006,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "What you become instead is a person who has been through something. And that turns out to be a specific and recognisable kind of person.",
+        text: "What you become instead is a person who has been through something. And that turns out to be a specific and recognizable kind of person.",
       },
       {
         type: "p",

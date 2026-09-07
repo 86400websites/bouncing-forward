@@ -70,11 +70,11 @@ const faqs: QA[] = [
   },
   {
     q: "What is the Book Package?",
-    a: "The complete downloadable book and the downloadable companion workbook, for $9.99, with everything in All In included. You receive an access code by email, enter it on the Premium page, and everything opens: the book, the workbook, the Full Assessment, the course, the journal, the webinar library and the Monthly Letter. The code works on any device, any time.",
+    a: "The complete downloadable book and the downloadable companion workbook, for $9.99 paid once, with everything in All In included. Buy it and everything opens in your account: the book, the workbook, the Full Assessment, the course, the journal, the webinar library and the Monthly Letter — all open when you log in, on any device, any time.",
   },
   {
-    q: "Do you offer Bouncing Forward for teams and organisations?",
-    a: "Yes. Four formats, delivered by a trained facilitator: a 60-minute webinar, a 90-minute workshop, a half-day workshop and a four-week programme. Get in touch through the contact form, or see the Enterprise page.",
+    q: "Do you offer Bouncing Forward for teams and organizations?",
+    a: "Yes. Four formats, delivered by a trained facilitator: a 60-minute webinar, a 90-minute workshop, a half-day workshop and a four-week program. Get in touch through the contact form, or see the Enterprise page.",
   },
 ];
 

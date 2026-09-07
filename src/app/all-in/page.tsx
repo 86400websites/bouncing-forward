@@ -17,11 +17,11 @@ import { AllInLibrary } from "@/components/all-in/library";
 export const metadata: Metadata = {
   title: { absolute: "All In | The Complete Bouncing Forward Experience" },
   description:
-    "All In is free — take the Full Assessment, twenty-four honest statements in about five minutes, and everything opens: a summarised book and workbook, the course, the 30-Day Journal, the Monthly Letter, and the webinar library.",
+    "All In is free — take the Full Assessment, twenty-four honest statements in about five minutes, and everything opens: a summarized book and workbook, the course, the 30-Day Journal, the Monthly Letter, and the webinar library.",
   openGraph: {
     title: "All In | The Complete Bouncing Forward Experience",
     description:
-      "All In is free — take the Full Assessment, twenty-four honest statements in about five minutes, and everything opens: a summarised book and workbook, the course, the 30-Day Journal, the Monthly Letter, and the webinar library.",
+      "All In is free — take the Full Assessment, twenty-four honest statements in about five minutes, and everything opens: a summarized book and workbook, the course, the 30-Day Journal, the Monthly Letter, and the webinar library.",
   },
 };
 
@@ -34,7 +34,7 @@ const allInFeatures = [
     img: "/assets/all-in/assessment.png",
   },
   {
-    title: "A summarised version of book (electronic version)",
+    title: "A summarized version of the book (electronic version)",
     body: "The framework behind everything else in the package.",
     img: "/assets/all-in/book.png",
   },

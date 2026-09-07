@@ -65,7 +65,7 @@ const freeIncludes = [
 ];
 
 const allInIncludes = [
-  "A summarised version of the book",
+  "A summarized version of the book",
   "The nine-module course, with worksheets",
   "The 30-Day Journal",
   "A Monthly Letter, with practical tools for your journey",
@@ -76,7 +76,7 @@ const allInIncludes = [
 const premiumIncludes = [
   "The complete downloadable book",
   "The downloadable companion workbook",
-  "Plus everything in All In, including the Full Assessment — all open with one access code",
+  "Plus everything in All In, including the Full Assessment — all open when you log in",
 ];
 
 export default function HomePage() {

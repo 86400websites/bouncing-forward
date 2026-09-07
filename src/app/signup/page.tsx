@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   description:
     "One account for your Book Package — the same login on every device.",
   robots: { index: false },
+  openGraph: {
+    title: "Create your account | Bouncing Forward",
+    description:
+      "One account for your Book Package — the same login on every device.",
+  },
 };
 
 export default function SignupPage() {

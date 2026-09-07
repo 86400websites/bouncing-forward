@@ -1,0 +1,14 @@
+Three compass icon files must be RENAMED on disk (the truncated names).
+The code now expects the corrected names. Run this in PowerShell from the
+project root, then commit the renames together with the code changes:
+
+  Rename-Item "public/assets/compass/Adaptabilit.png" "Adaptability.png"
+  Rename-Item "public/assets/compass/Optimis.png" "Optimism.png"
+  Rename-Item "public/assets/compass/Suppor.png" "Support.png"
+
+(If PowerShell complains a name is only a case-change or already exists,
+check the folder — the goal is exactly: Adaptability.png, Optimism.png,
+Support.png. The fix list also renames the Stories photo
+"Image 50_Smile that never ends.jpg" → smile-that-never-ends.jpg; the code
+never references the old name, so rename it only if the file exists with
+the old name in public/assets/stories/.)

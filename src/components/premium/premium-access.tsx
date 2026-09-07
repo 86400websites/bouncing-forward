@@ -32,9 +32,7 @@ export function PremiumAccess({
   const [phase, setPhase] = useState<"locked" | "checking" | "open">(
     owned ? "open" : "locked",
   );
-  const [code, setCode] = useState("");
   const [savedCode, setSavedCode] = useState("");
-  const [showCodeForm, setShowCodeForm] = useState(false);
   const [message, setMessage] = useState("");
 
   // An owner has everything in All In too — "no assessment needed
@@ -117,45 +115,6 @@ export function PremiumAccess({
     }
     checkStored();
   }, [owned]);
-
-  async function submitCode(e: React.FormEvent) {
-    e.preventDefault();
-    const trimmed = code.trim();
-    if (!trimmed) {
-      setMessage("Please enter your access code.");
-      return;
-    }
-    setPhase("checking");
-    setMessage("");
-    try {
-      const res = await fetch("/api/premium", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: trimmed }),
-      });
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        message?: string;
-      };
-      if (res.ok && data.ok) {
-        try {
-          window.localStorage.setItem(CODE_KEY, trimmed);
-        } catch {
-          /* opens this visit anyway */
-        }
-        setSavedCode(trimmed);
-        setPhase("open");
-      } else {
-        setPhase("locked");
-        setMessage(
-          data.message ?? "That code doesn’t match — please check your email.",
-        );
-      }
-    } catch {
-      setPhase("locked");
-      setMessage("We couldn’t check the code just now — please try again.");
-    }
-  }
 
   /* ── OPEN: the download list ── */
   if (phase === "open") {
@@ -319,60 +278,32 @@ export function PremiumAccess({
             Everything in Premium
           </h3>
           <p className="text-muted-foreground mt-4 leading-relaxed">
-            Buy the Book Package and everything opens in your account — on any
-            device, any time, just by logging in: the complete book, the
+            Buy the Book Package and everything is yours: the complete book, the
             companion workbook, the Full Assessment, the short version of the
             book, the nine-module course with worksheets, the 30-Day Journal,
             the webinar library live and recorded, and the Monthly Letter from
-            Maher.
+            Maher. All of it opens when you log in, no assessment needed first.
           </p>
           <div className="mt-6">
             <CheckoutButton loggedIn={loggedIn} owned={owned} />
           </div>
-          <p className="text-muted-foreground mt-4 text-sm">
-            Already bought it?{" "}
+          <div className="mt-5">
             <Link
               href="/login"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-ring inline-flex items-center justify-center rounded-full border-2 px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              Log in to open your Book Package
+            </Link>
+          </div>
+          <p className="text-muted-foreground mt-4 text-sm">
+            New here?{" "}
+            <Link
+              href="/signup"
               className="text-brand-accent-text font-semibold hover:underline"
             >
-              Log in
-            </Link>{" "}
-            ·{" "}
-            <button
-              type="button"
-              onClick={() => setShowCodeForm((v) => !v)}
-              className="text-brand-accent-text font-semibold hover:underline"
-            >
-              Use an access code instead
-            </button>
+              Create your account
+            </Link>
           </p>
-          {showCodeForm ? (
-            <form
-              onSubmit={submitCode}
-              className="mt-4 flex flex-col gap-3 sm:flex-row"
-              noValidate
-            >
-              <label htmlFor="premium-code" className="sr-only">
-                Access code
-              </label>
-              <input
-                id="premium-code"
-                type="text"
-                autoComplete="off"
-                placeholder="Access code from your email"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/40 flex-1 rounded-full border px-5 py-3 text-base transition-colors outline-none focus-visible:ring-2"
-              />
-              <button
-                type="submit"
-                disabled={phase === "checking"}
-                className="bg-primary text-primary-foreground hover:bg-brand-primary-hover rounded-full px-6 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {phase === "checking" ? "Checking…" : "Open"}
-              </button>
-            </form>
-          ) : null}
           <p
             aria-live="polite"
             className={message ? "mt-3 text-sm text-red-600" : "sr-only"}

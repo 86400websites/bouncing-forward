@@ -43,7 +43,7 @@ export default function BlogPage() {
           </SlideUp>
           <SlideUp delay={0.08}>
             <p className="mt-6 text-lg leading-relaxed">
-              No platforms, no performances — just the things nobody tells you
+              No platitudes, no performances — just the things nobody tells you
               about loss, named plainly. New posts regularly.
             </p>
           </SlideUp>

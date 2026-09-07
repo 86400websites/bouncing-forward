@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: Params) {
               href="/blog"
               className="text-brand-accent-text hover:text-foreground font-[family-name:var(--font-display)] text-sm font-bold transition-colors"
             >
-              ← The Journal
+              ← The Blog
             </Link>
           </FadeIn>
           <SlideUp>

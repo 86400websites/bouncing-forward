@@ -18,8 +18,8 @@ const FORMSPREE = (process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "").trim();
 const SUBJECTS = [
   "Tell me more about Bouncing Forward",
   "Tell me more about All In",
-  "Enquire about booking a workshop",
-  "Enquire about upcoming events",
+  "Inquire about booking a workshop",
+  "Inquire about upcoming events",
   "I’d like to share my story",
 ];
 

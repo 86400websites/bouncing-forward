@@ -72,7 +72,7 @@ const formats = [
     tagline: "For team offsites, wellness days and retreat mornings.",
     rows: [
       "Four hours, including breaks",
-      "Paired interviews, practical drills and commitments — practised in the room, not presented from the front",
+      "Paired interviews, practical drills and commitments — practiced in the room, not presented from the front",
       "Outcome: skills practice — teams rehearse every move together",
       "Take-home: participant workbook — Chapter 1 completed in the room, Chapter 2 continued at home",
     ],
@@ -82,11 +82,11 @@ const formats = [
     name: "Four Weeks × 90 Minutes",
     label: "The Journey",
     tagline:
-      "For embedded programmes, closed groups and sustained culture change.",
+      "For embedded programs, closed groups and sustained culture change.",
     rows: [
       "Four weekly 90-minute sessions, with spoken practice between them",
       "Weekly check-ins and bridge practices carry the work between sessions",
-      "Outcome: embedded behaviour change — habits, peer support and measurable progress",
+      "Outcome: embedded behavior change — habits, peer support and measurable progress",
       "Take-home: four weekly workbooks, each with a Personal Journey section",
     ],
     trade: "The trade: depth. Habits settle in the weeks between sessions.",
@@ -95,8 +95,8 @@ const formats = [
 
 const isNotItems = [
   "A motivational talk.",
-  "Nobody is told to stay positive.",
-  "Nothing is promised that a workshop cannot deliver.",
+  "A place where people are told to stay positive.",
+  "A promise of more than a workshop can deliver.",
 ];
 
 export default function EnterprisePage() {
@@ -108,7 +108,7 @@ export default function EnterprisePage() {
           <div>
             <FadeIn>
               <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
-                Enterprise · For Organisations
+                Enterprise · For Organizations
               </p>
             </FadeIn>
             <SlideUp>
@@ -118,11 +118,11 @@ export default function EnterprisePage() {
             </SlideUp>
             <SlideUp delay={0.08}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed">
-                Every organisation runs on people — and setbacks reach every one
+                Every organization runs on people — and setbacks reach every one
                 of them. Restructures. Losses. Disappointments. Change nobody
                 chose. Most workplaces have no language for those seasons, so
                 people carry them alone. Bouncing Forward gives your
-                organisation both the language and the practice — an honest,
+                organization both the language and the practice — an honest,
                 practical framework your people walk, not just hear.
               </p>
             </SlideUp>
@@ -130,7 +130,7 @@ export default function EnterprisePage() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <PrimaryCta
                   href="/contact"
-                  label="Enquire About a Workshop →"
+                  label="Inquire About a Workshop →"
                 />
                 <SecondaryCta href="#formats" label="Explore the Formats" />
               </div>
@@ -236,7 +236,7 @@ export default function EnterprisePage() {
                   Honest and practical. Accept where things stand, draw on what
                   you have already survived, name a believable way forward, and
                   take one small step that holds even when plans change.
-                  Practised in the room, not presented from the front.
+                  Practiced in the room, not presented from the front.
                 </p>
               </div>
             </FadeIn>
@@ -254,7 +254,7 @@ export default function EnterprisePage() {
             One Framework, Four Depths
           </p>
           <h2 className="mt-4 text-3xl leading-tight font-extrabold sm:text-4xl">
-            Choose the depth your organisation needs.
+            Choose the depth your organization needs.
           </h2>
           <p className="text-muted-foreground mt-6 max-w-3xl text-lg leading-relaxed">
             Same framework. Same storyline. Four depths of delivery — designed
@@ -305,7 +305,7 @@ export default function EnterprisePage() {
           <div className="mt-6 space-y-4 text-lg leading-relaxed">
             <SlideUp delay={0.06}>
               <p>
-                Whether your organisation chooses 60 minutes or four weeks, the
+                Whether your organization chooses 60 minutes or four weeks, the
                 same honest storyline runs underneath. It starts from where
                 things truly stand — and moves forward from there.
               </p>
@@ -344,7 +344,7 @@ export default function EnterprisePage() {
             workbooks, wall cards and session materials supplied. Pair, trio and
             whole-room work throughout — suited to intact teams or mixed groups.
             In-room exercises are short and quick; the deeper self-reflection is
-            taken home to continue the journey. Many organisations begin with
+            taken home to continue the journey. Many organizations begin with
             the free webinar or a single Stepping Stone session, see how their
             people respond, and scale from there.
           </p>

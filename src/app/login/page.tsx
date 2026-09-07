@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "Log in",
   description: "Log in to your Bouncing Forward account.",
   robots: { index: false },
+  openGraph: {
+    title: "Log in | Bouncing Forward",
+    description: "Log in to your Bouncing Forward account.",
+  },
 };
 
 export default function LoginPage() {
