@@ -93,7 +93,17 @@ open detail visibly marked "confirm".
   verify environment, commit, project and TEST/test-mode wiring directly;
   test identities move to plus-addresses on the owner's mailbox
   (`E2E_OWNER_MAILBOX`); a read-only Mailchimp audit script is provided
-  for the owner to run (`tests/e2e/tools/`).
+  for the owner to run (`tests/e2e/tools/`). Published as `e27a5bf` → PR #36.
+  First CI run failed the audit gate on pre-existing Next.js 15.5.20
+  critical advisories (GHSA-p293-qw3h-jr36, GHSA-2xp9-vwfh-vxw4) — patched
+  by pinning `next` and `eslint-config-next` 15.5.24; Vercel's first
+  deployment failed because the git author lacked team access (owner
+  fixed). Production Supabase URL configuration set by the owner on 9 Sep
+  (Site URL `www`; `/**` redirects for `www` and `vercel.app`). Mailchimp
+  audit run by the owner: 9 members, 3 tagged `premium` (30 Aug–2 Sep) —
+  owner to match them against Bouncing Forward's Stripe payments.
+  `tests/e2e/tools/bootstrap-local-runner.mjs` added so the owner creates
+  the TEST fixture accounts and `.env.e2e.local` without values in chat.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).

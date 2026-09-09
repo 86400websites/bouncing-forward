@@ -78,6 +78,22 @@ reads `.env.local`):
 node --env-file=.env.local tests/e2e/tools/mailchimp-premium-audit.mjs
 ```
 
+## Bootstrapping the local runner (owner-run)
+
+`tests/e2e/tools/bootstrap-local-runner.mjs` creates or resets the two TEST
+fixture accounts through Supabase's admin API and writes every harness
+variable it can derive into `.env.e2e.local` (the names in the table above).
+It refuses to run against anything but the TEST project, copies only
+test-mode Stripe values, and prints names — never values:
+
+```bash
+node --env-file=.env.local tests/e2e/tools/bootstrap-local-runner.mjs --owner-mailbox you@example.com --preview-url https://bouncing-forward-git-….vercel.app
+```
+
+Afterwards add `E2E_STRIPE_WEBHOOK_SECRET` by hand once the sandbox webhook
+exists, and ask Claude Code to add the premium entitlement for the premium
+account through the approved TEST connection.
+
 ## Evidence
 
 - `qa-evidence/` and `test-results/` are gitignored. Traces, screenshots,
