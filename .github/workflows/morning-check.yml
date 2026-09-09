@@ -1,0 +1,44 @@
+# Morning Check — DISABLED until the Launch Gate passes and the owner approves
+# the @morning selection (docs/testing-setup/templates/MORNING-CHECK-TEMPLATE.md,
+# skill Phase 5). No cron is configured. To enable later, in one reviewed PR:
+#   1. add the schedule trigger, e.g.
+#        schedule:
+#          - cron: "30 1 * * *"   # daily 01:30 UTC
+#   2. set the repository variable MORNING_CHECK_ENABLED=true
+#   3. set PRODUCTION_URL (variable) to exactly https://www.bouncing-forward.com
+#      and MORNING_TEST_EMAIL / MORNING_TEST_PASSWORD (secrets)
+# The harness refuses to run against Production with any bypass, TEST or
+# privileged variable present, and runs only specs tagged @morning.
+name: Morning Check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  morning-check:
+    if: ${{ vars.MORNING_CHECK_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Refuse to run when no @morning spec is selected
+        run: |
+          pnpm exec playwright test --project=morning --list | tee selected.txt
+          grep -q "@morning" selected.txt || { echo "::error::No @morning specs selected — nothing would be checked."; exit 1; }
+        env:
+          PLAYWRIGHT_TARGET: production-morning
+          PLAYWRIGHT_BASE_URL: ${{ vars.PRODUCTION_URL }}
+      - name: Run @morning specs against Production (read-only + test-account login)
+        run: pnpm exec playwright test --project=morning
+        env:
+          PLAYWRIGHT_TARGET: production-morning
+          PLAYWRIGHT_BASE_URL: ${{ vars.PRODUCTION_URL }}
+          MORNING_TEST_EMAIL: ${{ secrets.MORNING_TEST_EMAIL }}
+          MORNING_TEST_PASSWORD: ${{ secrets.MORNING_TEST_PASSWORD }}

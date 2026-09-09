@@ -2,6 +2,12 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { mailchimpConfigured, mailchimpSubscribe } from "@/lib/mailchimp";
 import { createAdminClient } from "@/lib/supabase/admin";
+import {
+  classifyCheckoutSession,
+  livemodeMatchesConfiguration,
+  lookUpPriceIds,
+  type CheckoutSessionLike,
+} from "@/lib/stripe/identify";
 
 /**
  * POST /api/stripe/webhook — Stripe calls this after events on the
@@ -52,12 +58,10 @@ function verifySignature(
   });
 }
 
-type CheckoutSession = {
-  payment_status?: string;
+type CheckoutSession = CheckoutSessionLike & {
   customer_email?: string | null;
   customer_details?: { email?: string | null; name?: string | null } | null;
   customer?: string | { id?: string } | null;
-  metadata?: { supabase_user_id?: string; product?: string } | null;
 };
 
 /**
@@ -113,13 +117,31 @@ export async function POST(request: Request) {
     );
   }
 
-  let event: { type?: string; data?: { object?: CheckoutSession } };
+  let event: {
+    id?: string;
+    type?: string;
+    livemode?: boolean;
+    data?: { object?: CheckoutSession };
+  };
   try {
     event = JSON.parse(payload) as typeof event;
   } catch {
     return NextResponse.json(
       { ok: false, message: "Invalid payload." },
       { status: 400 },
+    );
+  }
+
+  // The signature already ties an event to this endpoint's mode, so a
+  // live/test disagreement with STRIPE_SECRET_KEY means this deployment is
+  // misconfigured — surface it and let Stripe retry rather than swallow it.
+  if (!livemodeMatchesConfiguration(event.livemode)) {
+    console.error(
+      `Stripe webhook: event ${event.id ?? ""} livemode=${String(event.livemode)} does not match the configured key mode — check STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET.`,
+    );
+    return NextResponse.json(
+      { ok: false, message: "Payment mode mismatch — Stripe will retry." },
+      { status: 500 },
     );
   }
 
@@ -137,6 +159,18 @@ export async function POST(request: Request) {
   if (!paidNow || !session) {
     // Not a paid checkout (or an event type we don't act on) — acknowledge.
     return NextResponse.json({ ok: true, ignored: event.type ?? "unknown" });
+  }
+
+  // The Stripe account is shared with another site: act only on a
+  // checkout that is provably Bouncing Forward's. Anything else is
+  // acknowledged (200) so Stripe stops retrying it — never written,
+  // never emailed.
+  const who = classifyCheckoutSession(session, await lookUpPriceIds(session));
+  if (!who.ours) {
+    console.info(
+      `Stripe webhook: ignored ${event.type} ${session.id ?? ""} (${who.reason})`,
+    );
+    return NextResponse.json({ ok: true, ignored: who.reason });
   }
 
   // 1) Grant account access first — this is what the buyer paid for.
