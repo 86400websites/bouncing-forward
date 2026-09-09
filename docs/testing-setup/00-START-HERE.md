@@ -31,18 +31,19 @@ Then: approve the 5–7 morning-check tests and launch through `docs/LAUNCH-CHEC
 
 ## Copy map (when applying to a project repo)
 
-| This folder's item                            | Project repository location                                       |
-| --------------------------------------------- | ----------------------------------------------------------------- |
-| Entire folder (except the skill)              | `docs/testing-setup/`                                             |
-| `activate-testing.md` — the Claude Code skill | `.claude/skills/activate-testing/SKILL.md` (rename to `SKILL.md`) |
-| Generated feature list                        | `docs/FEATURE-LIST.md`                                            |
-| Generated test reports                        | `docs/test-reports/[YYYY-MM-DD]-test-report.md`                   |
-| Generated tests                               | `tests/e2e/`                                                      |
-| Morning check workflow                        | `.github/workflows/morning-check.yml`                             |
+| This folder's item                                             | Project repository location                                                                                 |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Entire folder (except the skill)                               | `docs/testing-setup/`                                                                                       |
+| `activate-testing.md` — the Claude Code skill                  | `.claude/skills/activate-testing/SKILL.md` (rename to `SKILL.md`)                                           |
+| Generated feature list                                         | `docs/FEATURE-LIST.md`                                                                                      |
+| Generated test reports                                         | `docs/test-reports/[YYYY-MM-DD]-test-report.md`                                                             |
+| Generated tests                                                | `tests/e2e/`                                                                                                |
+| Morning check workflow                                         | `.github/workflows/morning-check.yml`                                                                       |
+| Companion from the development folder: `ENVIRONMENT-PARITY.md` | `docs/ENVIRONMENT-PARITY.md` — fill applicable services; use existing equivalent evidence when retrofitting |
 
 ## Retrofit rule (existing websites)
 
-An existing site does not need the rest of the development system re-applied. Copy this folder per the map above, run `SETUP-CHECKLIST.md`, then say `/activate-testing`. Because the skill scans the **code**, stale or missing docs do not reduce coverage — the code is the source of truth for what exists.
+An existing site does not need the rest of the development system re-applied. Copy this folder and the environment-parity companion per the map above, preserving existing project records; run `SETUP-CHECKLIST.md`, then say `/activate-testing`. Use the site's existing safe environments and equivalent evidence; fix only demonstrated gaps. The code scan identifies what exists, and the approved requirements identify anything missing.
 
 ## First action
 

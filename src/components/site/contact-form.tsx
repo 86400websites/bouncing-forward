@@ -14,6 +14,7 @@ import { useState } from "react";
 
 const CONTACT_EMAIL = "info@bouncing-forward.com";
 const FORMSPREE = (process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "").trim();
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const SUBJECTS = [
   "Tell me more about Bouncing Forward",
@@ -46,6 +47,11 @@ export function ContactForm() {
 
   async function send() {
     if (!canSend || state === "sending") return;
+    if (!EMAIL_RE.test(email.trim())) {
+      setState("error");
+      setError("Please enter a valid email address.");
+      return;
+    }
     if (!FORMSPREE) {
       sendMailto();
       return;
@@ -61,23 +67,28 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           name,
-          email,
+          email: email.trim(),
           subject,
           message,
-          _replyto: email,
+          _replyto: email.trim(),
           _subject: `[Bouncing Forward] ${subject}`,
-          _gotcha: gotcha,
+          // Honeypot: only ever sent when a bot filled it in.
+          ...(gotcha ? { _gotcha: gotcha } : {}),
         }),
       });
-      if (res.ok) {
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        errors?: { message?: string }[];
+        error?: string;
+      };
+      // Success only when the provider says so — never on status alone.
+      if (res.ok && data.ok !== false && !data.errors && !data.error) {
         setState("done");
       } else {
-        const data = (await res.json().catch(() => ({}))) as {
-          errors?: { message?: string }[];
-        };
         setState("error");
         setError(
           data.errors?.[0]?.message ??
+            data.error ??
             "Something went wrong sending your message — please try again.",
         );
       }

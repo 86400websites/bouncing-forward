@@ -59,6 +59,7 @@ Treat traces of an earlier prototype or stack as historical.
 
 ## Security and environment safety
 
+- For environment, schema, auth, payments, forms, or test configuration changes, read `docs/ENVIRONMENT-PARITY.md`; refresh affected proofs before testing or claiming parity.
 - Follow the framework boundaries recorded in docs/TECH-ARCHITECTURE.md. Privileged logic and secrets stay
   in framework-defined server-only contexts; client code receives only approved public values.
 - Never place a server-only value behind a public env prefix or pass it into client code.

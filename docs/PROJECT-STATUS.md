@@ -1,10 +1,10 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 4 September 2026 (Heather's final fix-list + legal pages sprint)._
+_Last updated: 9 September 2026 (Launch Gate preparation on `codex/testing-readiness`)._
 
 ## Where the project stands
 
-The site is **live and selling** at https://bouncing-forward.vercel.app —
+The site is **live and selling** at https://www.bouncing-forward.com —
 Stripe live mode verified with a real discounted purchase, Supabase
 accounts + entitlements in production, three Mailchimp journeys active
 from the authenticated info@bouncing-forward.com domain, nine course
@@ -40,9 +40,79 @@ open detail visibly marked "confirm".
 
 ## Launch gates still open (Mohammad's system)
 
-- Automated test suite — prerequisites DONE (test Supabase
-  `hmcojplrqoqhyigvtgyp`, keys in Vercel Preview); run
-  `/activate-testing` next sprint.
+- Automated test suite — Phase 0 local preparation done on 8 September 2026
+  on `codex/testing-readiness` (uncommitted; Commit/Push: NO): Playwright
+  1.63.0 pinned, `playwright.config.ts` with desktop + 390px mobile
+  profiles, target preflight that refuses Production/unknown hosts and
+  verifies the Preview's project, environment and commit via Vercel's API,
+  origin-scoped bypass, two auth-setup roles (free / premium) that fail
+  closed without TEST credentials, SM-001 homepage smoke, read-only P1a
+  proof, `test:e2e*` scripts, `preview-tests.yml` (manual) and
+  `morning-check.yml` (disabled, no cron). Local checks green (typecheck,
+  lint, build; Prettier clean on LF-normalised content); SM-001 passed
+  locally against `next start` as harness validation only. **Phase 0 is
+  not complete:** it still needs commit → push → PR → Preview, the owner's
+  Vercel API/bypass values, TEST fixture accounts (in `hmcojplrqoqhyigvtgyp`;
+  identities and the token-free verification superseded on 9 Sep — see the
+  next bullet), the §12 proofs,
+  the smoke pass on that verified Preview, and the setup-PR merge. The
+  earlier note about test Supabase keys in Vercel Preview is still not
+  verification of database, payment, webhook or email isolation — see
+  `docs/ENVIRONMENT-PARITY.md` §3–§5 and §12. `docs/FEATURE-LIST.md` is
+  drafted and **awaits owner approval**; no product specs are written and
+  the morning check stays disabled. Note: the untracked `development/`
+  reference pack fails `prettier --check` (52 files) — keep it out of the
+  setup commit or add it to `.prettierignore` by decision.
+- 9 September 2026 (same branch, still uncommitted): live host is now
+  `https://www.bouncing-forward.com` (apex answers 308 → www; the
+  `vercel.app` host still answers directly). Focused fixes prepared for
+  review: auth/checkout return addresses only trust our own host names;
+  the email-callback return path refuses `//evil.example`; a failed or
+  reused reset link now lands on "Reset your password." with a clear
+  notice; contact form validates the email and treats only a provider
+  confirmation as success; Stripe purchase identification for the
+  **shared** Stripe account (`lib/stripe/identify.ts`: one-time mode +
+  `metadata.app = bouncing-forward`, with legacy shapes accepted by our
+  return address; foreign events answered 200 "ignored", never written or
+  emailed; live/test mode checked; the legacy verify route uses the same
+  rule). Sitemap corrected (`/podcast` removed; Premium + 8 posts added)
+  and the Google verification file added under `public/`. TEST project
+  checked through `supabase-dev` (read-only): `entitlements` present with
+  RLS, **0 users** — both E2E accounts still to be created; the
+  assessment table from migration 001 was never applied there. **Owner
+  decision:** Mailchimp, Formspree and legacy access codes stay shared
+  between Preview and Production — recorded as non-isolated (§9 manual
+  procedure): controlled test identities only, one labelled message per
+  run, cleanup recorded, no high-volume abuse tests against them.
+  **Incident check owed:** because the old webhook tagged any paid
+  checkout on the shared account, verify in Mailchimp whether any
+  non-Bouncing-Forward buyer carries the `premium` tag. Live webhook now
+  points at `www` (owner change); delivery evidence pending. Owner
+  authorised Commit/Push on 9 Sep 2026 and asked to avoid a Vercel API
+  token: a read-only `/api/health` identity route now lets the preflight
+  verify environment, commit, project and TEST/test-mode wiring directly;
+  test identities move to plus-addresses on the owner's mailbox
+  (`E2E_OWNER_MAILBOX`); a read-only Mailchimp audit script is provided
+  for the owner to run (`tests/e2e/tools/`). Published as `e27a5bf` → PR #36.
+  First CI run failed the audit gate on pre-existing Next.js 15.5.20
+  critical advisories (GHSA-p293-qw3h-jr36, GHSA-2xp9-vwfh-vxw4) — patched
+  by pinning `next` and `eslint-config-next` 15.5.24; Vercel's first
+  deployment failed because the git author lacked team access (owner
+  fixed). Production Supabase URL configuration set by the owner on 9 Sep
+  (Site URL `www`; `/**` redirects for `www` and `vercel.app`). Mailchimp
+  audit run by the owner: 9 members, 3 tagged `premium` (30 Aug–2 Sep) —
+  owner to match them against Bouncing Forward's Stripe payments.
+  `tests/e2e/tools/bootstrap-local-runner.mjs` added so the owner creates
+  the TEST fixture accounts and `.env.e2e.local` without values in chat.
+  **Preview evidence (9 Sep 2026):** PR #36 green (Code Check + Vercel);
+  Preview `bouncing-forward-2d25v8xkf-86400-s-projects.vercel.app` of
+  `654444d` verified by the preflight (environment preview, this project,
+  TEST Supabase, test-mode Stripe, webhook secret set; protection = Vercel
+  Authentication, bypassed via the sanctioned secret); SM-001 passed on
+  desktop and 390px; proofs P1a/P6a passed; both fixture accounts signed in
+  (premium entitlement added through the TEST connection). **Phase 0 is
+  complete pending the owner's merge of PR #36**; the feature list awaits
+  approval before any product spec is written.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).
