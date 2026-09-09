@@ -104,6 +104,15 @@ open detail visibly marked "confirm".
   owner to match them against Bouncing Forward's Stripe payments.
   `tests/e2e/tools/bootstrap-local-runner.mjs` added so the owner creates
   the TEST fixture accounts and `.env.e2e.local` without values in chat.
+  **Preview evidence (9 Sep 2026):** PR #36 green (Code Check + Vercel);
+  Preview `bouncing-forward-2d25v8xkf-86400-s-projects.vercel.app` of
+  `654444d` verified by the preflight (environment preview, this project,
+  TEST Supabase, test-mode Stripe, webhook secret set; protection = Vercel
+  Authentication, bypassed via the sanctioned secret); SM-001 passed on
+  desktop and 390px; proofs P1a/P6a passed; both fixture accounts signed in
+  (premium entitlement added through the TEST connection). **Phase 0 is
+  complete pending the owner's merge of PR #36**; the feature list awaits
+  approval before any product spec is written.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).

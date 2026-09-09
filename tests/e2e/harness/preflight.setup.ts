@@ -90,7 +90,23 @@ setup(
       maxRedirects: 0,
       failOnStatusCode: false,
     });
-    const protectedResponse = plain.status() === 401 || plain.status() === 403;
+    // Vercel protection answers either 401/403 or a redirect to its own
+    // sign-in (vercel.com/sso-api). Both mean "protected".
+    const redirectTarget = (() => {
+      try {
+        return new URL(plain.headers()["location"] ?? "", target.origin)
+          .hostname;
+      } catch {
+        return "";
+      }
+    })();
+    const protectedResponse =
+      plain.status() === 401 ||
+      plain.status() === 403 ||
+      (plain.status() >= 300 &&
+        plain.status() < 400 &&
+        (redirectTarget === "vercel.com" ||
+          redirectTarget.endsWith(".vercel.com")));
     let identityHeaders: Record<string, string> = {};
     let served = plain;
 

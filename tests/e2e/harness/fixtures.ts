@@ -67,7 +67,8 @@ async function handOffBypass(
       "x-vercel-set-bypass-cookie": "true",
     },
   });
-  if (res.status() !== 200) {
+  // Vercel answers the hand-off with 200, or 307 back to the same page while setting the cookie.
+  if (res.status() !== 200 && res.status() !== 307) {
     throw new Error(
       `[launch-gate] The Preview did not accept the automation bypass (HTTP ${res.status()}).`,
     );

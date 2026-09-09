@@ -43,7 +43,10 @@ test("@smoke SM-001 homepage loads with no errors", async ({
   await expect(page.locator("#byc-email")).toBeVisible();
   await expect(page.getByRole("contentinfo")).toBeVisible();
 
-  await page.waitForLoadState("networkidle");
+  // "networkidle" never settles on Vercel Previews (the Vercel toolbar keeps a
+  // connection open), so wait for load plus a short bounded settle instead.
+  await page.waitForLoadState("load");
+  await page.waitForTimeout(1500);
   expect(failedSameOrigin, "Same-origin requests failed").toEqual([]);
   expect(consoleErrors, "Browser console reported errors").toEqual([]);
 });
