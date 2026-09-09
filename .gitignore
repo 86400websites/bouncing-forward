@@ -54,3 +54,6 @@ next-env.d.ts
 
 # keep the env template tracked
 !.env.example
+
+# build-deliverable archives are not source
+/bouncing-forward-30august-4.40.zip
