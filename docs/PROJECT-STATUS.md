@@ -1,6 +1,6 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 9 September 2026 (Launch Gate preparation on `codex/testing-readiness`)._
+_Last updated: 10 September 2026 (Launch Gate Phase 2 — suite written on `claude/t1-gate-suite`)._
 
 ## Where the project stands
 
@@ -113,6 +113,55 @@ open detail visibly marked "confirm".
   (premium entitlement added through the TEST connection). **Phase 0 is
   complete pending the owner's merge of PR #36**; the feature list awaits
   approval before any product spec is written.
+- 10 September 2026: PR #36 was merged into `main` on 9 September
+  (`07ef8c3`) and Production has served that commit since — the Google
+  verification file answers 200 and the live sitemap no longer lists
+  `/podcast` (both observed read-only). **Phase 0 is complete.** Two
+  records are still owed: the owner's one-line dated "setup done"
+  confirmation, and the independent review verdict for PR #36
+  (`docs/code-reviews/T0-testing-readiness-review.md` still reads "review
+  not yet returned" although the PR is merged — record the verdict, or
+  note that the review was skipped). **Phase 1:** `docs/FEATURE-LIST.md`
+  refreshed to draft v3 at head `07ef8c3` on branch `claude/t1-gate-suite`
+  (uncommitted; Commit/Push: NO): one line added (IN-010, the read-only
+  deployment identity route `/api/health`, found in code), stale
+  statements corrected, per-item DONE/OWED on "Before tests can run";
+  **awaiting owner approval** before any product spec is written. Owed
+  before the full run (not before approval): bypass-secret rotation, TEST
+  Supabase URL configuration for the Phase 2 Preview, the Stripe sandbox
+  webhook destination plus one test event, and the Mailchimp read-back
+  keys present in `.env.e2e.local`. The morning check stays disabled.
+- 10 September 2026 (later): the owner **approved** `docs/FEATURE-LIST.md` v3
+  in chat. **Phase 2 complete** on `claude/t1-gate-suite` (uncommitted;
+  Commit/Push: NO): one Playwright test per approved line — 136 registered
+  tests in 42 files (every line on desktop, read-only lines again at 390 px,
+  the 12 MANUAL lines registered with their human steps), shared harness
+  helpers (identities, TEST-only admin, Stripe test-mode + signed events,
+  Mailchimp read-back, `cleanup` teardown project, `report-rows.mjs`), one
+  `data-testid` hook in `auth-form.tsx`. Typecheck, lint and Prettier clean.
+  Local read-only dry run against a production build wired to TEST: 40 of 45
+  selected lines pass; the 5 failures are real findings — PG-003 scaffold
+  line, PG-011 renders 13 FAQ items (line says 14), PG-018 no share image on
+  the dynamic pages, PR-002 / PR-004 no rate or guess limits. **Blocker
+  found by the scan, not tested:** `/api/newsletter` accepts `source:
+"premium"` and so mails the shared access code to anyone (proposed line
+  FM-011 awaits approval; fix = allow-list the tag). Next: PR → Preview →
+  owner actions 2, 4, 5 and 7 of "Before tests can run" → Phase 3 full run
+  on that Preview → report → fix sprint(s) → full re-run → GO/NO-GO.
+  **Later the same evening (owner, in chat):** Commit/Push authorised for
+  the Phase 2 branch; bypass secret rotated; TEST Supabase Site URL set to
+  the gate branch's Preview address with a `/**` redirect for it and a
+  wildcard for every Preview of the project; the Stripe sandbox destination
+  created at that address with both checkout events (checked read-only);
+  setup confirmed done ("Yes setup done"); FM-011 approved as a line, with
+  its fix to ship as a separate small PR proven by the suite. **Keep the
+  branch `claude/t1-gate-suite` after it merges** — its Preview alias is
+  what those settings point at; later gate runs merge `main` into it and
+  test its Preview (`tests/e2e/README.md`, "Running the gate again later").
+  Committed as `aaf502d` and pushed; the gate alias served that commit
+  within a minute and the preflight, SM-001 (desktop + 390 px), P1a and
+  P6a passed on it with the rotated bypass secret. Independent review and
+  the PR are the owner's next steps; Phase 3 runs in a new session.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).

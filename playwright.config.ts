@@ -20,6 +20,10 @@ if (existsSync(HARNESS_ENV_FILE)) process.loadEnvFile(HARNESS_ENV_FILE);
  *   - no traces, screenshots, videos or HTML report (nothing secret-bearing
  *     is ever written to disk or uploaded);
  *   - one worker, no retries (a retry must not hide a reproducible defect);
+ *   - the `cleanup` project is the preflight's teardown: throwaway TEST
+ *     users and shared-audience test members recorded in
+ *     qa-evidence/fixtures.json are removed after every run;
+ *   - the `mobile-390` features project skips `@desktop-only` specs;
  *   - Production is reachable only through the `morning` project, which
  *     exists only when PLAYWRIGHT_TARGET=production-morning and selects
  *     `@morning` specs alone.
@@ -35,7 +39,17 @@ const mobile390 = {
 };
 
 const previewProjects = [
-  { name: "preflight", testMatch: /harness\/preflight\.setup\.ts/ },
+  {
+    name: "preflight",
+    testMatch: /harness\/preflight\.setup\.ts/,
+    // Runs after every project that depends on the preflight — whether
+    // the specs passed or not — so recorded fixtures are always cleaned.
+    teardown: "cleanup",
+  },
+  {
+    name: "cleanup",
+    testMatch: /harness\/cleanup\.teardown\.ts/,
+  },
   {
     name: "auth-free",
     testMatch: /harness\/auth-free\.setup\.ts/,
@@ -75,6 +89,9 @@ const previewProjects = [
   {
     name: "mobile-390",
     testDir: "tests/e2e/features",
+    // Everything NOT tagged @desktop-only (writes and expensive lines run
+    // once, on desktop — tests/e2e/features/README.md).
+    grepInvert: /@desktop-only/,
     dependencies: ["preflight", "auth-free", "auth-premium"],
     use: mobile390,
   },

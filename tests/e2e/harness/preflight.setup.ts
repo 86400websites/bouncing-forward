@@ -233,6 +233,35 @@ setup(
       }
     }
 
+    if (target.mode === "local") {
+      // A local production build carries the developer's own environment:
+      // the same wiring rules as a Preview apply, minus the environment /
+      // commit / project identity checks that only a deployment can answer.
+      expect(
+        health.supabaseProjectRef,
+        "The local build's public Supabase client is wired to the PRODUCTION project. Refusing.",
+      ).not.toBe(PROD_SUPABASE_REF);
+      expect(
+        health.privilegedSupabaseRef,
+        "The local build's privileged Supabase key belongs to the PRODUCTION project. Refusing.",
+      ).not.toBe(PROD_SUPABASE_REF);
+      expect(
+        health.supabaseProjectRef === null ||
+          health.supabaseProjectRef === TEST_SUPABASE_REF,
+        `The local build's public Supabase client is wired to project "${health.supabaseProjectRef}", not the TEST project.`,
+      ).toBe(true);
+      expect(
+        health.privilegedSupabaseRef === null ||
+          health.privilegedSupabaseRef === "opaque" ||
+          health.privilegedSupabaseRef === TEST_SUPABASE_REF,
+        `The local build's privileged Supabase key belongs to project "${health.privilegedSupabaseRef}", not the TEST project.`,
+      ).toBe(true);
+      expect(
+        health.stripeMode,
+        "The local build's Stripe key is LIVE. Refusing — local runs must use test-mode keys.",
+      ).not.toBe("live");
+    }
+
     if (target.mode === "production-morning") {
       expect(health.environment, "Target does not report production.").toBe(
         "production",
