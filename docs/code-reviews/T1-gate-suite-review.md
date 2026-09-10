@@ -44,7 +44,7 @@ if the range, head, PR, or scope does not agree.
 - Tests: `PLAYWRIGHT_TARGET=preview PLAYWRIGHT_BASE_URL=<gate alias> pnpm exec playwright test --list` — 137 tests in 42 files; the full suite has not run on a Preview yet (Phase 3)
 - Production build: `pnpm build` — pass (run for the local dry run)
 - Current CI evidence for HEAD_SHA: Code Check on the PR once opened (Prettier is checked LF-normalised; this checkout is CRLF)
-- Current tested Preview evidence for HEAD_SHA: pending — the operator runs `pnpm test:e2e:smoke` and `pnpm test:e2e:proofs` on the gate alias right after the push; results in the PR description
+- Current tested Preview evidence for HEAD_SHA: at `aaf502d` on the gate alias — preflight PASS (rotated bypass accepted; TEST wiring; test-mode Stripe), smoke 4 passed (SM-001 desktop + 390 px), proofs 4 passed (P1a, P6a), 10 September 2026; recorded in the sprint record
 - Local evidence: read-only dry run against a production build wired to TEST — 40 of 45 selected lines pass; the 5 failures are product findings (PG-003, PG-011, PG-018, PR-002, PR-004)
 
 Run commands only with the existing environment. Do not install or change anything to make a check pass.

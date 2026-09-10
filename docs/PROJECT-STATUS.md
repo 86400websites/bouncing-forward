@@ -158,6 +158,10 @@ open detail visibly marked "confirm".
   branch `claude/t1-gate-suite` after it merges** — its Preview alias is
   what those settings point at; later gate runs merge `main` into it and
   test its Preview (`tests/e2e/README.md`, "Running the gate again later").
+  Committed as `aaf502d` and pushed; the gate alias served that commit
+  within a minute and the preflight, SM-001 (desktop + 390 px), P1a and
+  P6a passed on it with the rotated bypass secret. Independent review and
+  the PR are the owner's next steps; Phase 3 runs in a new session.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).
