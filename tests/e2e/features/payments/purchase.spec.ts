@@ -163,7 +163,10 @@ test(
         "[launch-gate] PY-003 needs PY-001's buyer (the purchase did not complete).",
       );
     const b = await buyerB(target, "PY-003");
-    await page.context().clearCookies();
+    // Only the site's session cookies: clearing everything would also drop
+    // the deployment-protection bypass cookie and send the next navigation
+    // to Vercel's sign-in page instead of the site.
+    await page.context().clearCookies({ name: /^sb-/ });
     await loginAs(page, b, "free");
     await page.goto("/account?checkout=success");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(THANK_YOU);
@@ -184,7 +187,10 @@ test(
     expect(await entitlementsFor(target, b.id)).toEqual([]);
     expect((await api.get(BOOK)).status(), "a visitor's download").toBe(401);
 
-    await page.context().clearCookies();
+    // Only the site's session cookies: clearing everything would also drop
+    // the deployment-protection bypass cookie and send the next navigation
+    // to Vercel's sign-in page instead of the site.
+    await page.context().clearCookies({ name: /^sb-/ });
     await loginAs(page, buyer, "premium");
     const asBuyer = await apiForPage(page, playwright, target, "buyer");
     try {
@@ -228,7 +234,10 @@ test(
         "[launch-gate] PY-015 needs PY-001's buyer and session (the purchase did not complete).",
       );
     const b = await buyerB(target, "PY-015");
-    await page.context().clearCookies();
+    // Only the site's session cookies: clearing everything would also drop
+    // the deployment-protection bypass cookie and send the next navigation
+    // to Vercel's sign-in page instead of the site.
+    await page.context().clearCookies({ name: /^sb-/ });
     await loginAs(page, b, "free");
     for (const path of [
       "/account?checkout=success",
@@ -293,7 +302,10 @@ test(
         "[launch-gate] PY-005 needs E2E_PREMIUM_USER_EMAIL / E2E_PREMIUM_USER_PASSWORD.",
       );
     const b = await buyerB(target, "PY-005");
-    await page.context().clearCookies();
+    // Only the site's session cookies: clearing everything would also drop
+    // the deployment-protection bypass cookie and send the next navigation
+    // to Vercel's sign-in page instead of the site.
+    await page.context().clearCookies({ name: /^sb-/ });
     await loginAs(page, b, "free");
     await page.goto("/premium");
     const posts: string[] = [];

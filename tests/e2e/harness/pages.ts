@@ -18,7 +18,11 @@ import type { ResolvedTarget } from "./target";
 export type SameOriginClient = {
   get(
     path: string,
-    options?: { maxRedirects?: number; headers?: { [key: string]: string } },
+    options?: {
+      maxRedirects?: number;
+      headers?: { [key: string]: string };
+      timeout?: number;
+    },
   ): Promise<APIResponse>;
 };
 
@@ -198,7 +202,13 @@ export async function expectPdf(
   options?: { label?: string; attachment?: boolean },
 ): Promise<{ response: APIResponse; filename: string | null }> {
   const label = options?.label ?? path.split("?")[0];
-  const response = await client.get(path, { maxRedirects: 0 });
+  // The paid PDFs are 1.5–2.5 MB and are streamed uncached (private,
+  // no-store) from the function, so a slow link needs more than the default
+  // action timeout to finish the body. Still bounded.
+  const response = await client.get(path, {
+    maxRedirects: 0,
+    timeout: 120_000,
+  });
   expect(
     response.status(),
     `${label} did not answer 200 (got ${response.status()}).`,

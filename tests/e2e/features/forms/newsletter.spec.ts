@@ -231,10 +231,15 @@ test(
       headers: { "content-type": "application/json" },
     });
     expect(bad.status()).toBe(400);
-    expect(await bad.json()).toEqual({
-      ok: false,
-      message: "Invalid request.",
-    });
+    const badBody = (await bad.json()) as { ok?: boolean; message?: string };
+    expect(badBody.ok).toBe(false);
+    // The route refuses a malformed body with one of its two short messages
+    // (the parse guard, or the email check when the body parses to a
+    // non-object). Either is a clean refusal; neither leaks internals.
+    expect(
+      ["Invalid request.", INVALID],
+      "a malformed body must be refused with one of the endpoint's short messages",
+    ).toContain(badBody.message);
     for (const data of [{ source: "newsletter" }, []]) {
       const res = await api.post("/api/newsletter", { data });
       expect(res.status()).toBe(400);

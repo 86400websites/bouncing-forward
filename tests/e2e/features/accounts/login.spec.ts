@@ -1,6 +1,11 @@
 import { test, expect } from "../../harness/fixtures";
 import { expectVisitorRedirectedToLogin } from "../../harness/pages";
-import { fillQuietly, statePath, submitLogin } from "../../harness/auth";
+import {
+  fillQuietly,
+  signIn,
+  statePath,
+  submitLogin,
+} from "../../harness/auth";
 import { randomPassword } from "../../harness/identities";
 import { openAs } from "../../harness/roles";
 
@@ -41,6 +46,10 @@ test(
       await noSupabaseCookie(context, target.origin),
       "a session cookie survived Log out",
     ).toBe(true);
+    // Supabase ends EVERY session this account has, including the one the
+    // auth-free setup project saved for the specs that follow. Sign back in
+    // so the shared saved session stays valid for the rest of the run.
+    await signIn(page, target.fixtures.free, "free");
   },
 );
 
