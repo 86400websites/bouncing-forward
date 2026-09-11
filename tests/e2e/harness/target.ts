@@ -381,8 +381,23 @@ export function describeTarget(target: ResolvedTarget, env: Env) {
   };
 }
 
-/** True when a test title carries the tag the current mode requires. */
-export function titleAllowedForMode(title: string, mode: TargetMode): boolean {
-  if (mode === "production-morning") return /@morning\b/.test(title);
-  return true;
+/**
+ * True when a test carries the tag the current mode requires.
+ *
+ * Both places a tag can live are checked, because Playwright keeps a
+ * structured `tag: ["@morning"]` out of `testInfo.title`: the feature specs
+ * declare their tags structurally, while the smoke and proof specs carry
+ * theirs in the title text. Checking the title alone would refuse every
+ * approved morning check.
+ */
+export function allowedForMode(
+  title: string,
+  tags: readonly string[],
+  mode: TargetMode,
+): boolean {
+  if (mode !== "production-morning") return true;
+  // The runtime reports tags with their "@"; the JSON reporter strips it.
+  // Accept either shape so this guard cannot quietly stop matching.
+  const tagged = tags.some((tag) => tag.replace(/^@/, "") === "morning");
+  return tagged || /@morning\b/.test(title);
 }
