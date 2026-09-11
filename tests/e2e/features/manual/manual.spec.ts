@@ -32,10 +32,10 @@ function manual(
 
 manual(
   "MN-001",
-  '"Buy on Amazon" opens the correct live listing',
+  "Each Amazon format link opens the correct live listing",
   [],
   "PG-002 and PG-008 (the links are asserted present and safe; only the listing itself needs a human)",
-  '1) Open the Preview address recorded in qa-evidence/preflight.json under "origin". 2) Go to /book. Two black round buttons read "Buy on Amazon": one under the opening text next to "Buy the Book Package — $9.99", one at the bottom next to "Go All In". Click each; each must open a NEW browser tab and leave the Preview tab where it was. 3) The new tab\'s address starts with https://www.amazon.com/Bouncing-Forward-Hardships-Stepping-Resilience/dp/B0DWRVYCHS and shows the Bouncing Forward listing by Maher Kaddoura (Kindle, hardcover and softcover). 4) Logged out (or in a private window) go to /premium: there is no "Buy on Amazon" button; under the buy button the line "Prefer a printed copy?" carries the link "The hardcover and softcover are on Amazon." Click it — same new tab, same listing. 5) Evidence: one screenshot of the Amazon tab (title + address bar) and a three-line note (Book hero button / Book closing button / Premium link — new tab yes/no, correct listing yes/no) in qa-evidence/manual/MN-001/. PASS only if all three opened the same listing in a new tab.',
+  '1) Open the Preview address recorded in qa-evidence/preflight.json under "origin". 2) Go to /book. Two CTA rows each carry four black round buttons labelled Kindle, Hardcover, Paperback and Workbook. Click all eight; each must open a NEW browser tab and leave the Preview tab where it was. 3) Confirm each tab shows the Bouncing Forward listing by Maher Kaddoura in the format on the button: Kindle = dp/B0DWRVYCHS, Hardcover = dp/B0HH3N6SQ1, Paperback = dp/B0HJD4DTFW, Workbook = dp/B0HHDXSSK3. 4) Logged out (or in a private window) go to /premium: under the buy button the line "Prefer a printed copy? On Amazon:" carries the same four labelled links. Click each - same new tab, same listings. 5) Evidence: one screenshot per distinct listing (title + address bar) and a short note per button (Book hero row / Book closing row / Premium line - new tab yes/no, correct format yes/no) in qa-evidence/manual/MN-001/. PASS only if every link opened its own correct listing in a new tab.',
 );
 
 manual(

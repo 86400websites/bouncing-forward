@@ -33,15 +33,27 @@ const BOOLEAN_KEYS = [
   "stripePriceConfigured",
   "webhookSecretConfigured",
 ];
+/**
+ * On the live site the route answers a deliberately smaller set: the four
+ * facts plus `ok`, and nothing that describes a deployment or a service's
+ * configuration. The approved line records exactly this difference.
+ */
+const PRODUCTION_KEYS = [
+  "commit",
+  "environment",
+  "ok",
+  "stripeMode",
+  "supabaseProjectRef",
+];
 
 test(
   "IN-010 the deployment identity address answers only facts, never a secret value",
   {
-    tag: ["@IN-010", "@integrations"],
+    tag: ["@IN-010", "@integrations", "@morning"],
     annotation: {
       type: "note",
       description:
-        "Production is never requested by this suite. The live route was observed read-only on 10 September 2026 to answer only ok, environment, commit, supabaseProjectRef and stripeMode — a @morning candidate for Phase 5.",
+        "Approved as a @morning check on 11 September 2026, so this is one of the few lines the suite may request on Production. There it asserts the deliberately smaller shape the approved line records: ok, environment, commit, supabaseProjectRef and stripeMode only, with the live values. The read is public and changes nothing.",
     },
   },
   async ({ api, target }) => {
@@ -51,11 +63,15 @@ test(
     expect(res.headers()["cache-control"] ?? "").toContain("no-store");
     const raw = await res.text();
     const body = JSON.parse(raw) as Record<string, unknown>;
-    expect(Object.keys(body).sort()).toEqual(NON_PRODUCTION_KEYS);
+    const production = target.mode === "production-morning";
+    const expectedKeys = production ? PRODUCTION_KEYS : NON_PRODUCTION_KEYS;
+    expect(Object.keys(body).sort()).toEqual(expectedKeys);
     expect(body.ok).toBe(true);
-    for (const key of BOOLEAN_KEYS)
-      expect(typeof body[key], `${key} must be a boolean`).toBe("boolean");
-    for (const key of NON_PRODUCTION_KEYS) {
+    if (!production) {
+      for (const key of BOOLEAN_KEYS)
+        expect(typeof body[key], `${key} must be a boolean`).toBe("boolean");
+    }
+    for (const key of expectedKeys) {
       if (BOOLEAN_KEYS.includes(key) || key === "ok") continue;
       expect(
         body[key] === null || typeof body[key] === "string",
@@ -75,6 +91,15 @@ test(
       expect(body.supabaseProjectRef).toBe(TEST_SUPABASE_REF);
       expect([TEST_SUPABASE_REF, "opaque"]).toContain(
         body.privilegedSupabaseRef,
+      );
+    } else if (production) {
+      // The live site: the four facts must be the real ones, and nothing
+      // that describes a deployment or a service may appear at all.
+      expect(body.environment).toBe("production");
+      expect(body.stripeMode).toBe("live");
+      expect(body.supabaseProjectRef).toBe(PROD_SUPABASE_REF);
+      expect(commit, "the live site must report its commit").toMatch(
+        /^[0-9a-f]{40}$/i,
       );
     } else {
       expect(body.stripeMode).not.toBe("live");

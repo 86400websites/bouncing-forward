@@ -1,16 +1,24 @@
-# Morning Check — DISABLED until the Launch Gate passes and the owner approves
-# the @morning selection (docs/testing-setup/templates/MORNING-CHECK-TEMPLATE.md,
-# skill Phase 5). No cron is configured. To enable later, in one reviewed PR:
-#   1. add the schedule trigger, e.g.
-#        schedule:
-#          - cron: "30 1 * * *"   # daily 01:30 UTC
-#   2. set the repository variable MORNING_CHECK_ENABLED=true
-#   3. set PRODUCTION_URL (variable) to exactly https://www.bouncing-forward.com
-#      and MORNING_TEST_EMAIL / MORNING_TEST_PASSWORD (secrets)
-# The harness refuses to run against Production with any bypass, TEST or
-# privileged variable present, and runs only specs tagged @morning.
+# Morning Check — the daily watch on the live site.
+#
+# The owner approved the @morning selection on 11 September 2026: six
+# read-only checks that create no data and need no account —
+#   PG-001 every public page loads with no console errors
+#   PG-007 Home shows the three tiers and both free PDFs download
+#   AC-011 a visitor CANNOT download the paid files
+#   PG-005 the sitemap and robots files are correct
+#   PG-015 every page carries the security headers
+#   IN-010 the identity route answers only facts
+#
+# It stays inert until the repository variable MORNING_CHECK_ENABLED is "true",
+# so merging this file changes nothing on its own. Also set PRODUCTION_URL to
+# exactly https://www.bouncing-forward.com. MORNING_TEST_EMAIL and
+# MORNING_TEST_PASSWORD are optional and unused by this selection: none of the
+# six logs in. The harness refuses to run against Production with any bypass,
+# TEST or privileged variable present, and runs only specs tagged @morning.
 name: Morning Check
 on:
+  schedule:
+    - cron: "30 1 * * *" # daily 01:30 UTC = 07:00 Asia/Kolkata
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,10 +36,35 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
-      - name: Refuse to run when no @morning spec is selected
+      # Structured tags never appear in --list's text output, so the
+      # selection is read from the JSON reporter instead of grepped.
+      - name: Refuse to run unless every selected check is tagged @morning
         run: |
-          pnpm exec playwright test --project=morning --list | tee selected.txt
-          grep -q "@morning" selected.txt || { echo "::error::No @morning specs selected — nothing would be checked."; exit 1; }
+          pnpm exec playwright test --project=morning --list --reporter=json > selected.json
+          node -e "
+            const report = JSON.parse(require('fs').readFileSync('selected.json', 'utf8'));
+            const specs = [];
+            const walk = (suite) => {
+              for (const spec of suite.specs ?? []) specs.push(spec);
+              for (const child of suite.suites ?? []) walk(child);
+            };
+            for (const suite of report.suites ?? []) walk(suite);
+            const selected = specs.filter((spec) =>
+              (spec.tests ?? []).some((t) => t.projectName === 'morning'));
+            const untagged = selected.filter((spec) =>
+              !(spec.tags ?? []).some((tag) => String(tag).replace(/^@/, '') === 'morning'));
+            if (selected.length === 0) {
+              console.error('::error::No @morning checks selected — nothing would be checked.');
+              process.exit(1);
+            }
+            if (untagged.length > 0) {
+              console.error('::error::Selected without the @morning tag: ' +
+                untagged.map((s) => s.title).join(', '));
+              process.exit(1);
+            }
+            console.log('Selected ' + selected.length + ' approved @morning checks:');
+            for (const spec of selected) console.log('  - ' + spec.title);
+          "
         env:
           PLAYWRIGHT_TARGET: production-morning
           PLAYWRIGHT_BASE_URL: ${{ vars.PRODUCTION_URL }}

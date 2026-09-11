@@ -5,13 +5,13 @@ import {
   settle,
   watchSameOriginFailures,
 } from "../../harness/pages";
-import { AMAZON_URL, FREE_CHAPTER_PDF, JOURNAL_PDF } from "./inventory";
+import { AMAZON_FORMATS, FREE_CHAPTER_PDF, JOURNAL_PDF } from "./inventory";
 
 /** Section A — page content promises (PG-007 … PG-012). Read-only; both projects. */
 
 test(
   "PG-007 Home shows the three tiers and its two free downloads actually download",
-  { tag: ["@PG-007", "@pages"] },
+  { tag: ["@PG-007", "@pages", "@morning"] },
   async ({ page, api }) => {
     await page.goto("/");
     for (const name of ["Free", "All In", "Premium"]) {
@@ -47,24 +47,33 @@ test(
 );
 
 test(
-  "PG-008 The Book page offers Buy on Amazon (new tab), the free first chapter, and Buy the Book Package → Premium",
+  "PG-008 The Book page offers every Amazon format (new tab), the free first chapter, and Buy the Book Package → Premium",
   {
     tag: ["@PG-008", "@pages"],
     annotation: {
       type: "note",
       description:
-        'The list says "Buy the Book Package → Premium"; the component label is "Buy the Book Package — $9.99". The Amazon listing itself is MN-001.',
+        'The list says "Buy the Book Package → Premium"; the component label is "Buy the Book Package — $9.99". Since 11 September 2026 the single "Buy on Amazon" button is four labelled links, one per format (Kindle, Hardcover, Paperback, Workbook). The listings themselves are MN-001.',
     },
   },
   async ({ page, api }) => {
     await page.goto("/book");
-    const amazon = page.getByRole("link", { name: "Buy on Amazon" });
-    await expect(amazon).toHaveCount(2);
-    for (const link of await amazon.all()) {
-      await expect(link).toHaveAttribute("href", AMAZON_URL);
-      await expect(link).toHaveAttribute("target", "_blank");
-      await expect(link).toHaveAttribute("rel", /noopener/);
-      await expect(link).toHaveAttribute("rel", /noreferrer/);
+    // One labelled link per format, in both CTA rows on the page.
+    for (const format of AMAZON_FORMATS) {
+      const links = page.getByRole("link", {
+        name: format.label,
+        exact: true,
+      });
+      await expect(
+        links,
+        `The Book page offers "${format.label}" in both CTA rows`,
+      ).toHaveCount(2);
+      for (const link of await links.all()) {
+        await expect(link).toHaveAttribute("href", format.href);
+        await expect(link).toHaveAttribute("target", "_blank");
+        await expect(link).toHaveAttribute("rel", /noopener/);
+        await expect(link).toHaveAttribute("rel", /noreferrer/);
+      }
     }
     const chapter = page.getByRole("link", {
       name: "Read the first chapter free →",

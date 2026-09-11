@@ -5,11 +5,7 @@ import {
   type APIResponse,
   type BrowserContext,
 } from "@playwright/test";
-import {
-  resolveTarget,
-  titleAllowedForMode,
-  type ResolvedTarget,
-} from "./target";
+import { resolveTarget, allowedForMode, type ResolvedTarget } from "./target";
 
 /**
  * Shared fixtures for every spec (docs/ENVIRONMENT-PARITY.md §10).
@@ -26,9 +22,9 @@ import {
  *                   admitted the same way; refuses absolute URLs.
  * - `consoleErrors` collects console errors and uncaught page errors.
  *
- * Production-morning mode additionally refuses any test whose title lacks
- * the `@morning` tag (an automatic fixture, so it applies to every test in
- * every file).
+ * Production-morning mode additionally refuses any test that does not carry
+ * the `@morning` tag, in its structured tags or in its title (an automatic
+ * fixture, so it applies to every test in every file).
  *
  * The admission helpers are exported so harness/roles.ts can build
  * role-bound contexts and request contexts the same way.
@@ -263,7 +259,7 @@ export const test = base.extend<{
 
   morningGuard: [
     async ({ target }, provide, testInfo) => {
-      if (!titleAllowedForMode(testInfo.title, target.mode)) {
+      if (!allowedForMode(testInfo.title, testInfo.tags, target.mode)) {
         throw new Error(
           `[launch-gate] "${testInfo.title}" is not tagged @morning and the target is Production. Refusing.`,
         );
