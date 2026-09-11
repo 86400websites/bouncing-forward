@@ -6,13 +6,13 @@ import { BLOG_POSTS, PUBLIC_PAGES } from "./inventory";
 /** Section A — search-engine facing behaviour (PG-013, PG-014, PG-018, PG-019). */
 
 test(
-  "PG-013 Privacy and Terms render Heather's copy with every open detail marked confirm, hidden from search engines",
+  "PG-013 Privacy and Terms render Heather's copy with no open details left to confirm, still hidden from search engines",
   {
     tag: ["@PG-013", "@pages"],
     annotation: {
       type: "note",
       description:
-        "PROJECT-STATUS open confirmations 1–4 and 6 were still open on 10 September 2026, so the current state (markers present, noindex on) is asserted. When the owner settles them (MN-006) the line flips and this test changes with the owner's approval.",
+        "The owner settled every open detail on 11 September 2026 (MN-006): the operator is named, the refund paragraph and the governing-law section were removed rather than filled in, and the reply window is fixed at 30 days. No confirm marker remains. The pages stay noindexed by the owner's choice, which is the one half of the line's flip still outstanding, so noindex is still asserted.",
     },
   },
   async ({ page }) => {
@@ -20,27 +20,29 @@ test(
       {
         path: "/privacy",
         h1: "Privacy Policy",
-        marks: [
-          "Half a Life / Maher Kaddoura — confirm legal entity name and country",
-          "within 30 days — confirm",
+        settled: [
+          "This website is operated by 86400.",
+          "Write to info@bouncing-forward.com and we will reply within 30 days.",
         ],
+        gone: ["Depending on where you live", "owned and operated"],
       },
       {
         path: "/terms",
         h1: "Terms of Use",
-        marks: [
-          "Confirm legal entity name and country.",
+        settled: ["This site is operated by 86400."],
+        gone: [
           "choose one:",
-          "country — confirm with Maher, e.g. Jordan / United Kingdom / South Africa",
+          "The law that applies",
+          "Because the Book Package is a download that opens immediately",
         ],
       },
     ];
-    for (const { path, h1, marks } of pages) {
+    for (const { path, h1, settled, gone } of pages) {
       const response = await page.goto(path);
       expect(response?.status()).toBe(200);
       await expect(page.getByRole("heading", { level: 1 })).toHaveText(h1);
       await expect(
-        page.getByText("Last updated: 4 September 2026"),
+        page.getByText("Last updated: 11 September 2026"),
       ).toBeVisible();
       await expect(
         page.getByRole("heading", { level: 2, name: "1. Who we are" }),
@@ -49,14 +51,30 @@ test(
         "content",
         /noindex/,
       );
-      const all = page.locator("mark[title='To confirm before launch']");
-      await expect(all, `${path}: confirm markers`).toHaveCount(marks.length);
-      for (const text of marks)
+      await expect(
+        page.locator("mark[title='To confirm before launch']"),
+        `${path}: no confirm marker may remain`,
+      ).toHaveCount(0);
+      for (const text of settled)
         await expect(
-          all.filter({ hasText: text }),
-          `${path}: marker "${text}"`,
+          page.getByText(text, { exact: false }),
+          `${path}: settled copy "${text}"`,
         ).toBeVisible();
+      for (const text of gone)
+        await expect(
+          page.getByText(text, { exact: false }),
+          `${path}: removed copy "${text}" is still on the page`,
+        ).toHaveCount(0);
     }
+    // Contact is now section 12 on Terms, because the governing-law section
+    // was removed rather than renumbered around.
+    await page.goto("/terms");
+    await expect(
+      page.getByRole("heading", { level: 2, name: "12. Contact" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 2, name: /^13\./ }),
+    ).toHaveCount(0);
   },
 );
 
