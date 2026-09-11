@@ -1,7 +1,7 @@
 # Codex Review Brief — T1 — gate-suite
 
 > Saved before review. Append the reviewer's returned record below; the reviewer does not edit the repository.
-> Status: **review not yet returned** (brief prepared 10 September 2026). Merge only after an APPROVE at the reviewed head.
+> Status: **review skipped by owner decision.** PR #37 (`claude/t1-gate-suite` at `8b5460c`) was merged into `main` on 10 September 2026 without an independent review; the owner stated this knowingly at the start of the 10–11 September session ("I did not ran the independent review for last merge and I'm aware"). The same branch was reviewed at its later head `48b959a` for PR #38 — see `docs/code-reviews/T2-gate-run-and-critical-fixes-review.md` — which covers everything this brief asked for plus the fixes. This brief is kept as prepared.
 
 You are the independent, findings-only reviewer for this PR. AGENTS.md governs this review. Do not edit,
 stage, commit, push, merge, install dependencies, or run migrations. Review issues introduced by the pinned
