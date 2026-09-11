@@ -61,7 +61,11 @@ async function expectRefused(
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Reset your password.",
   );
-  await expect(page.getByRole("alert")).toHaveText(NOTICE);
+  // Scoped to the notice itself: Next's route announcer is also role="alert"
+  // (and always empty), so an unscoped match is a strict-mode violation.
+  await expect(page.getByRole("alert").filter({ hasText: NOTICE })).toHaveText(
+    NOTICE,
+  );
   await expect(page.locator("#fp-email")).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Send reset link", exact: true }),
@@ -221,7 +225,10 @@ test(
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       "Choose a new password.",
     );
-    await context.clearCookies();
+    // Only the site's own session cookies. Clearing everything would also
+    // drop the deployment-protection bypass cookie, and the next navigation
+    // would land on Vercel's sign-in page instead of the site.
+    await context.clearCookies({ name: /^sb-/ });
     await page.goto(path);
     await expectRefused(page, target);
     expect(

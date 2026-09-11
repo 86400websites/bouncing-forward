@@ -125,6 +125,12 @@ export async function POST(request: Request) {
   };
   try {
     event = JSON.parse(payload) as typeof event;
+    // "null", a bare string and a number are all valid JSON. Reading a field
+    // off them would throw after the signature check and answer 500 instead
+    // of the friendly refusal this endpoint promises.
+    if (event === null || typeof event !== "object" || Array.isArray(event)) {
+      throw new Error("Invalid payload.");
+    }
   } catch {
     return NextResponse.json(
       { ok: false, message: "Invalid payload." },

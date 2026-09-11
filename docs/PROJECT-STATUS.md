@@ -162,6 +162,48 @@ open detail visibly marked "confirm".
   within a minute and the preflight, SM-001 (desktop + 390 px), P1a and
   P6a passed on it with the rotated bypass secret. Independent review and
   the PR are the owner's next steps; Phase 3 runs in a new session.
+- 11 September 2026 — **Launch Gate Phase 3 done: the first full Preview run, and its verdict is NO-GO.**
+  Report: `docs/test-reports/2026-09-11-test-report.md`. Target: the gate alias at
+  head `8b5460c` (preflight PASS — preview environment, TEST database both
+  clients, Stripe test mode, protection bypassed). Final full run:
+  **104 passed · 16 failed · 13 skipped · 4 blocked** (64 of 94 approved lines
+  PASS, 13 FAIL, 12 MANUAL pending, 5 N/A or blocked). Cleanup green on every
+  run (22 of 23 fixtures removed, 1 manual, 0 errors) — no residual test data.
+  **The site is in better shape than the first run suggested:** the reported
+  password-reset bug and contact-form bug both **fail to reproduce** (AC-003a–g
+  and FM-007–FM-009 pass), a real $9.99 test purchase completed end to end with
+  the access record written and both downloads opening (PY-001), the shared
+  Stripe account's foreign events are ignored safely (PY-012), and every
+  server-side gate holds for a visitor and a non-owner (PR-005, PR-007, AC-010–AC-013).
+  **Four new findings** (details and severities in the report): (1) a person who
+  previously came off the mailing list and signs up again is labelled but never
+  put back on the list, so they get no email — this also makes the gate
+  non-repeatable, because each run's cleanup archives the test contact
+  (FM-002/005/006, High); (2) the buyer's `premium` label — which triggers the
+  Book Package access email — is applied best-effort and its failure is
+  silently swallowed (FM-010, High, intermittent); (3) a `null` JSON body makes
+  `/api/newsletter` answer 500 instead of a friendly 400, and `/api/premium` is
+  written the same way (PR-006, Medium); (4) the Course page intermittently logs
+  a permissions-policy console complaint from the YouTube embeds at 390px
+  (PG-001, Low). Known failures unchanged: FM-011 (approved Blocker),
+  PR-001–PR-004 (no rate limits, no human check), PG-003, PG-011, PG-018.
+  **Suite corrections made this session (tests only — no file under `src/` was
+  touched, and no approved line was edited):** the shared free session was being
+  destroyed mid-run because logging that account out ends every session it has;
+  four `clearCookies()` calls were discarding the deployment-protection bypass
+  cookie and landing on Vercel's sign-in page; a notice check matched Next's
+  invisible route announcer; PDF downloads and page waits needed bounded but
+  longer limits for a slow link; the Preview's own floating toolbar was
+  swallowing a tap at 390px; two checks demanded one exact wording where the
+  route legitimately uses either of two polite refusals. Files: `playwright.config.ts`,
+  `tests/e2e/harness/{fixtures,pages}.ts`, `tests/e2e/features/accounts/{login,password-reset}.spec.ts`,
+  `tests/e2e/features/forms/newsletter.spec.ts`, `tests/e2e/features/payments/{checkout,purchase}.spec.ts`,
+  `tests/e2e/features/protection/pr-006-error-hygiene.spec.ts`. **Uncommitted — Commit/Push: NO.**
+  PY-003, PY-005, PY-013 and PY-015 were blocked in the final full run by
+  FM-010 failing earlier in the same serial file; all four passed in a targeted
+  re-run at the same head. **Owner decisions owed:** PG-011 (14 vs 13 questions)
+  and approval of proposed line FM-012 (returning unsubscriber), both stated in
+  the report.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).

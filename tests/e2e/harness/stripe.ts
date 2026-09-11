@@ -157,7 +157,7 @@ export function signedWebhookRequest(
     timestampOffsetSeconds?: number;
     tamperBody?: boolean;
   },
-): { data: string; headers: Record<string, string> } {
+): { data: Buffer; headers: Record<string, string> } {
   const secret = options?.secretOverride ?? webhookSecret(target);
   const body = typeof payload === "string" ? payload : JSON.stringify(payload);
   const timestamp =
@@ -173,7 +173,12 @@ export function signedWebhookRequest(
       : `${body} `
     : body;
   return {
-    data,
+    // Raw bytes, not a string: with a JSON content-type the request layer
+    // re-encodes a string that is not valid JSON, so the body Stripe verifies
+    // would stop matching the body that was signed and a deliberately
+    // malformed payload would be refused as an invalid signature instead of
+    // reaching the handler's "Invalid payload." branch.
+    data: Buffer.from(data, "utf8"),
     headers: {
       "content-type": "application/json",
       "stripe-signature": signature,

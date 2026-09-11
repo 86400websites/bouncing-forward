@@ -220,7 +220,10 @@ test(
       "the checkout was not prefilled with the buyer's address (value withheld)",
     ).toBe(true);
 
-    await page.context().clearCookies();
+    // Only the site's own session cookies — clearing everything would also
+    // drop the deployment-protection bypass cookie and send the next
+    // navigation to Vercel's sign-in page instead of /login.
+    await page.context().clearCookies({ name: /^sb-/ });
     if (user && !user.emailConfirmedAt) await confirmUserEmail(target, user.id);
     await page.goto("/login?intent=premium");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Log in.");

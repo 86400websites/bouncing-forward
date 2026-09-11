@@ -46,7 +46,9 @@ test(
         }),
         {
           status: 400,
-          message: "Invalid request.",
+          // Either short refusal is fine: the parse guard, or the email
+          // check when the body parses to something that is not an object.
+          message: ["Invalid request.", "Please enter a valid email address."],
           label: "newsletter bad JSON",
         },
       );

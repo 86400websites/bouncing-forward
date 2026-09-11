@@ -115,7 +115,12 @@ export default defineConfig({
   workers: 1,
   retries: 0,
   forbidOnly: Boolean(process.env.CI),
-  timeout: 45_000,
+  // Sized for a remote Preview over a slow link: the first full run produced
+  // false failures where the site had already answered correctly (a 2.5 MB
+  // PDF that did not finish inside 15 s, /login that did not load inside
+  // 30 s, and a cleanup pass that needed ~55 s). Still bounded, still no
+  // retries — a reproducible defect is never hidden.
+  timeout: 90_000,
   expect: { timeout: 10_000 },
   reporter: [["list"], ["json", { outputFile: "qa-evidence/last-run.json" }]],
   use: {
@@ -123,8 +128,8 @@ export default defineConfig({
     trace: "off",
     screenshot: "off",
     video: "off",
-    actionTimeout: 15_000,
-    navigationTimeout: 30_000,
+    actionTimeout: 30_000,
+    navigationTimeout: 60_000,
     locale: "en-US",
   },
   projects: productionMorning ? morningProjects : previewProjects,

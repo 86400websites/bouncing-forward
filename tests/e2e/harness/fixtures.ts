@@ -103,10 +103,36 @@ async function requestHasBypassCookie(
  * Preview issues no cookie, the header is attached per same-origin request
  * and any redirect to another origin is refused while it is attached.
  */
+/**
+ * Vercel's Preview toolbar injects a floating widget of its own
+ * (`vercel-live-feedback`) which can sit over the page and swallow clicks —
+ * at 390px it covered the quick-look answer buttons. It belongs to the
+ * preview host, not to the site, so it is hidden in every context. No site
+ * element is touched and no site behaviour changes.
+ */
+export async function hidePreviewOverlays(
+  context: BrowserContext,
+): Promise<void> {
+  await context.addInitScript(() => {
+    const hide = () => {
+      const style = document.createElement("style");
+      style.textContent =
+        "vercel-live-feedback, vercel-toolbar { display: none !important; pointer-events: none !important; }";
+      document.head?.appendChild(style);
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", hide, { once: true });
+    } else {
+      hide();
+    }
+  });
+}
+
 export async function admitContext(
   context: BrowserContext,
   target: ResolvedTarget,
 ): Promise<void> {
+  await hidePreviewOverlays(context);
   if (!target.bypassSecret) return;
   if (!(await hasBypassCookie(context, target.origin))) {
     await handOffBypass(context.request, target);

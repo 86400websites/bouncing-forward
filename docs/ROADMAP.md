@@ -50,7 +50,8 @@ Every sprint gets a record at `docs/sprint-prompts/[SPRINT_ID]-[SLUG].md`.
 ## Launch Gate
 
 - [ ] All launch-scope sprints are Done; accepted deferrals cite a decision ID and backlog owner.
-- [x] Launch Gate harness installed and proven on a verified Preview (sprint T0, PR #36 merged 9 September 2026 — `docs/sprint-prompts/T0-testing-readiness.md`). `docs/FEATURE-LIST.md` v3 approved by the owner on 10 September 2026; the suite (one test per line) is written on `claude/t1-gate-suite`; **the full Preview run, report and GO/NO-GO are pending.**
+- [x] Launch Gate harness installed and proven on a verified Preview (sprint T0, PR #36 merged 9 September 2026 — `docs/sprint-prompts/T0-testing-readiness.md`). `docs/FEATURE-LIST.md` v3 approved by the owner on 10 September 2026; the suite (one test per line) is written on `claude/t1-gate-suite`.
+- [ ] **Launch Gate passed (GO).** First full Preview run completed 10–11 September 2026 at head `8b5460c` on the gate alias — **NO-GO**, recorded in `docs/test-reports/2026-09-11-test-report.md` (104 passed · 16 failed · 13 skipped · 4 blocked; 64 of 94 lines PASS). Open before the next full run: FM-011 (approved Blocker), the mailing-list rejoin + buyer-label findings (FM-002/005/006/010), PR-001–PR-004 (rate limits + human check), PR-006, PG-018, PG-003, the PG-011 decision, and the 12 MANUAL lines.
 - [ ] Full `QA-CHECKLIST.md`, `SECURITY-CHECKLIST.md`, and `LAUNCH-CHECKLIST.md` pass.
 - [ ] Primary journey works on the real domain.
 - [ ] Content sites have an approved editorial workflow, editor roles, media ownership, redirects, backup/export plan, and client training.
