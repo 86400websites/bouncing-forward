@@ -17,9 +17,24 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
   "https://bouncing-forward.vercel.app";
 
-/** Live Amazon listing (BF-Website-Copy + mockup). Opens in a new tab. */
-export const AMAZON_URL =
+/**
+ * Live Amazon listings, one per format. Every link opens in a new tab.
+ * The Kindle listing is the original one; the owner supplied the hardcover,
+ * paperback and workbook listings on 11 September 2026.
+ */
+export const AMAZON_KINDLE_URL =
   "https://www.amazon.com/Bouncing-Forward-Hardships-Stepping-Resilience/dp/B0DWRVYCHS";
+export const AMAZON_HARDCOVER_URL = "https://www.amazon.com/dp/B0HH3N6SQ1";
+export const AMAZON_PAPERBACK_URL = "https://www.amazon.com/dp/B0HJD4DTFW";
+export const AMAZON_WORKBOOK_URL = "https://www.amazon.com/dp/B0HHDXSSK3";
+
+/** Display order used everywhere the formats are offered. */
+export const AMAZON_FORMATS = [
+  { label: "Kindle", href: AMAZON_KINDLE_URL },
+  { label: "Hardcover", href: AMAZON_HARDCOVER_URL },
+  { label: "Paperback", href: AMAZON_PAPERBACK_URL },
+  { label: "Workbook", href: AMAZON_WORKBOOK_URL },
+] as const;
 
 /**
  * ⚠️ AWAITING MAHER/HEATHER SIGN-OFF (DESIGN.md §12).

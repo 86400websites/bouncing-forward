@@ -21,7 +21,7 @@ const SAMPLE = [
 
 test(
   "PG-015 every page answers with the security headers",
-  { tag: ["@PG-015", "@pages"] },
+  { tag: ["@PG-015", "@pages", "@morning"] },
   async ({ api, target }, testInfo) => {
     const hsts: string[] = [];
     for (const path of SAMPLE) {

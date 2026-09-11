@@ -9,7 +9,7 @@ import { PUBLIC_PAGES } from "./inventory";
 
 test(
   "PG-001 every public page loads with no errors, on desktop and on a 390px phone",
-  { tag: ["@PG-001", "@pages"] },
+  { tag: ["@PG-001", "@pages", "@morning"] },
   async ({ page, target, consoleErrors }) => {
     test.setTimeout(240_000);
     for (const { path, h1 } of PUBLIC_PAGES) {

@@ -1,7 +1,7 @@
 import { test, expect } from "../../harness/fixtures";
 import { getSameOrigin, sameOriginPath } from "../../harness/pages";
 import {
-  AMAZON_URL,
+  AMAZON_FORMATS,
   BLOG_POSTS,
   NOINDEX_PAGES,
   PUBLIC_PAGES,
@@ -112,15 +112,20 @@ test(
         `${link.from}: external link ${link.href} lacks noreferrer`,
       ).toContain("noreferrer");
     }
-    const amazonOn = (path: string) =>
-      external.filter((l) => l.from === path && l.href === AMAZON_URL).length;
-    expect(
-      amazonOn("/book"),
-      "The Book page links the Amazon listing twice",
-    ).toBe(2);
-    expect(amazonOn("/premium"), "Premium links the Amazon listing once").toBe(
-      1,
-    );
+    // Every format is offered in both CTA rows on The Book page and once
+    // under the Premium buy button.
+    const amazonOn = (path: string, href: string) =>
+      external.filter((l) => l.from === path && l.href === href).length;
+    for (const format of AMAZON_FORMATS) {
+      expect(
+        amazonOn("/book", format.href),
+        `The Book page links the ${format.label} listing twice`,
+      ).toBe(2);
+      expect(
+        amazonOn("/premium", format.href),
+        `Premium links the ${format.label} listing once`,
+      ).toBe(1);
+    }
 
     for (const p of [...samePaths].sort()) {
       const { status, response } = await getSameOrigin(api, p, {
@@ -196,7 +201,7 @@ test(
 test(
   "PG-005 the sitemap and robots files are served and list only real, indexable pages",
   {
-    tag: ["@PG-005", "@pages"],
+    tag: ["@PG-005", "@pages", "@morning"],
     annotation: {
       type: "note",
       description:

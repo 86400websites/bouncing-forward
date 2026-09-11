@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { AMAZON_URL } from "@/lib/site";
+import { AmazonFormats } from "@/components/site/amazon-formats";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import { BeginYourCrossing } from "@/components/site/begin-your-crossing";
 import { PremiumAccess } from "@/components/premium/premium-access";
@@ -56,15 +56,8 @@ export default async function PremiumPage() {
                 owned ? "sr-only" : "text-muted-foreground mt-4 text-sm"
               }
             >
-              Prefer a printed copy?{" "}
-              <a
-                href={AMAZON_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-accent-text font-semibold underline-offset-2 hover:underline"
-              >
-                The hardcover and softcover are on Amazon.
-              </a>
+              Prefer a printed copy? On Amazon:{" "}
+              <AmazonFormats variant="inline" />.
             </p>
           </SlideUp>
           <FadeIn>

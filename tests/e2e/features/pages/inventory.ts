@@ -185,8 +185,22 @@ export const NOINDEX_PAGES = [
   "/terms",
 ];
 
-export const AMAZON_URL =
-  "https://www.amazon.com/Bouncing-Forward-Hardships-Stepping-Resilience/dp/B0DWRVYCHS";
+/**
+ * One Amazon listing per format, in the order the pages offer them. The
+ * Kindle listing is the original one; the hardcover, paperback and workbook
+ * listings were supplied by the owner on 11 September 2026.
+ */
+export const AMAZON_FORMATS = [
+  {
+    label: "Kindle",
+    href: "https://www.amazon.com/Bouncing-Forward-Hardships-Stepping-Resilience/dp/B0DWRVYCHS",
+  },
+  { label: "Hardcover", href: "https://www.amazon.com/dp/B0HH3N6SQ1" },
+  { label: "Paperback", href: "https://www.amazon.com/dp/B0HJD4DTFW" },
+  { label: "Workbook", href: "https://www.amazon.com/dp/B0HHDXSSK3" },
+] as const;
+
+export const AMAZON_URLS = AMAZON_FORMATS.map((f) => f.href);
 export const FREE_CHAPTER_PDF =
   "/downloads/Bouncing-Forward-Chapter-1-Free-A4.pdf";
 export const JOURNAL_PDF = "/downloads/BF-7-Step-Reflection-Journal.pdf";

@@ -21,7 +21,7 @@ const WORKBOOK = "/api/premium/download?file=workbook";
 
 test(
   "AC-011 a visitor cannot download the complete book or the workbook by typing the download URL, with or without a made-up code",
-  { tag: ["@AC-011", "@accounts"] },
+  { tag: ["@AC-011", "@accounts", "@morning"] },
   async ({ api }) => {
     for (const path of [
       BOOK,
