@@ -26,17 +26,28 @@ Book/Author og:image, own og for Log In/Create Account), `/learn` and
 **/privacy** and **/terms** pages carrying Heather's copy with every
 open detail visibly marked "confirm".
 
-## Open confirmations (marked in accent on /privacy and /terms)
+## Open confirmations
 
-1. Legal entity name + country (Privacy §1, Terms §1)
-2. Refund policy — choose one of the two drafted options (Terms §5)
-3. Governing-law country (Terms §12)
-4. Reply-within-30-days promise (Privacy §7)
+Items 1–4 were settled by the owner on 11 September 2026 (sprint T3, PR #39) and
+no confirm marker remains on /privacy or /terms:
+
+1. ~~Legal entity name + country~~ — settled: "operated by 86400" on both pages
+2. ~~Refund policy~~ — settled by removing the paragraph (the owner's other site
+   states none); the fix-or-refund promise stays
+3. ~~Governing-law country~~ — settled by removing the section; Contact is Terms §12
+4. ~~Reply-within-30-days promise~~ — settled: "we will reply within 30 days"
+
+Still open:
+
 5. Enterprise page: is the webinar free? keep "partnership with Alliance"?
-6. Remove `noindex` from /privacy + /terms once 1–4 are settled
+6. Remove `noindex` from /privacy + /terms — **1–4 are now settled, so this is
+   ready whenever the owner says so** (one line in each page's metadata)
 7. Darlene: the two free PDFs print the wrong domain
    ("bouncingforward.com" — no hyphen) — fix inside the PDFs
 8. Mailchimp journey emails: rename "The First Week" wording (Heather)
+9. Privacy intro wording (review Should-fix, 11 Sep): the paragraph above §1
+   still says Bouncing Forward "is run by Maher Kaddoura and is part of Half a
+   Life", beside "operated by 86400" in §1
 
 ## Launch gates still open (Mohammad's system)
 
@@ -204,6 +215,27 @@ open detail visibly marked "confirm".
   re-run at the same head. **Owner decisions owed:** PG-011 (14 vs 13 questions)
   and approval of proposed line FM-012 (returning unsubscriber), both stated in
   the report.
+- 11 September 2026 (later) — **T2 and T3 merged; the site is launch-ready by the
+  owner's decisions.** PR #38 (`0b5b66c`, review APPROVE at `48b959a`) shipped the
+  suite corrections and the critical fixes: **FM-011 the Blocker is closed on the live
+  site** (a `premium` tag can no longer be handed out by the public sign-up), PR-006's
+  null-body 500s are gone on all three endpoints, the buyer's tag failure now makes
+  Stripe retry instead of vanishing, and a returning subscriber is asked to be
+  re-subscribed with the provider required to confirm it. PR #39 (`67a9935`, review
+  REQUEST CHANGES at `2b23f42` → fixed → APPROVE at `7aa1819`) shipped the four Amazon
+  listings, the six-check morning check (**Morning Check #1: Success**), and the settled
+  Privacy/Terms copy (operator 86400; refund and governing-law paragraphs removed;
+  30-day reply; dated 11 September; noindex kept by owner decision). GSC verified,
+  sitemap submitted, 21 discovered. **Unproven, not disproven:** returning-subscriber
+  recovery and buyer `premium` tagging, both blocked by Mailchimp's temporary
+  per-address signup restriction on the test mailbox — one controlled sign-up check
+  then a full gate run when it lifts. **Owner-deferred, recorded:** PR-001–PR-004
+  (Upstash + Turnstile), error tracking, uptime monitoring, the second capture path for
+  the primary conversion, the deliberate-failure test of the morning-check email, and
+  the three cosmetic items. **Owner decisions open:** PG-011 (14 vs 13), proposed line
+  FM-012, lifting noindex on the legal pages, and the Privacy intro wording (review
+  Should-fix). Records: `docs/sprint-prompts/T2-*.md`, `T3-*.md`,
+  `docs/code-reviews/T2-*-review.md`, `T3-*-review.md`.
 - Sentry error tracking — needs the free account + DSN.
 - Upstash + Turnstile form abuse controls — needs the two free
   accounts (4 values into Vercel).
