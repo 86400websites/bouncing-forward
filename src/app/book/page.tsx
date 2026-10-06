@@ -9,11 +9,10 @@ import {
 } from "@/components/motion/primitives";
 import {
   BeginYourCrossing,
-  ExternalCta,
   PrimaryCta,
 } from "@/components/site/begin-your-crossing";
 import { NumberedCard } from "@/components/site/numbered-card";
-import { AMAZON_URL } from "@/lib/site";
+import { AmazonFormats } from "@/components/site/amazon-formats";
 
 export const metadata: Metadata = {
   title: { absolute: "The Book | Bouncing Forward by Maher Kaddoura" },
@@ -138,7 +137,7 @@ export default function BookPage() {
                 >
                   Buy the Book Package — $9.99
                 </Link>
-                <ExternalCta href={AMAZON_URL} label="Buy on Amazon" />
+                <AmazonFormats />
               </div>
               <div className="mt-5">
                 <a
@@ -245,7 +244,7 @@ export default function BookPage() {
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <PrimaryCta href="/all-in" label="Go All In" />
-            <ExternalCta href={AMAZON_URL} label="Buy on Amazon" />
+            <AmazonFormats />
           </div>
         </FadeIn>
       </section>
