@@ -24,6 +24,9 @@ export function mailchimpConfigured(): boolean {
 export async function mailchimpSubscribe(opts: {
   email: string;
   firstName?: string;
+  lastName?: string;
+  /** Extra Mailchimp merge fields (e.g. COUNTRY) — caller's audience must define them. */
+  mergeFields?: Record<string, string>;
   tags?: string[];
   resubscribe?: boolean;
 }): Promise<SubscribeResult> {
