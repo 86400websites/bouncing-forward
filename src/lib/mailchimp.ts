@@ -23,6 +23,9 @@ export function mailchimpConfigured(): boolean {
 export async function mailchimpSubscribe(opts: {
   email: string;
   firstName?: string;
+  lastName?: string;
+  /** Extra Mailchimp merge fields (e.g. COUNTRY) — caller's audience must define them. */
+  mergeFields?: Record<string, string>;
   tags?: string[];
 }): Promise<SubscribeResult> {
   const apiKey = process.env.MAILCHIMP_API_KEY ?? "";
@@ -52,7 +55,11 @@ export async function mailchimpSubscribe(opts: {
       body: JSON.stringify({
         email_address: email,
         status_if_new: "subscribed",
-        merge_fields: opts.firstName ? { FNAME: opts.firstName } : {},
+        merge_fields: {
+          ...(opts.firstName ? { FNAME: opts.firstName } : {}),
+          ...(opts.lastName ? { LNAME: opts.lastName } : {}),
+          ...(opts.mergeFields ?? {}),
+        },
       }),
       cache: "no-store",
     });

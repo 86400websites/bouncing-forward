@@ -140,6 +140,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Live webinar announcement (urgent, 5 Oct brief) ──── */}
+      <section className="bg-brand-accent">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 px-5 py-5 text-center sm:flex-row sm:gap-5 sm:px-6 lg:px-8">
+          <p className="text-primary font-[family-name:var(--font-display)] font-bold">
+            Live webinar · 21 October — What’s your next move... when life
+            changes?
+          </p>
+          <Link
+            href="/webinar"
+            className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-5 py-2 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            Reserve your seat →
+          </Link>
+        </div>
+      </section>
+
       {/* ── Screen 2 — Four questions ────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
