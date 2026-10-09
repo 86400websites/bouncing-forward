@@ -117,6 +117,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       </button>
       <p
         aria-live="polite"
+        data-testid="auth-error"
         className={error ? "text-sm text-red-600" : "sr-only"}
       >
         {error}

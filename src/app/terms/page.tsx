@@ -9,21 +9,10 @@ export const metadata: Metadata = {
     description:
       "The terms for using bouncing-forward.com — written to be read, not skipped.",
   },
-  // Kept until the confirm-items below are settled (per the 4 Sep fix list).
+  // The confirm items are settled (11 Sep 2026). Kept noindexed until the
+  // owner decides these pages should appear in search results.
   robots: { index: false, follow: false },
 };
-
-/** Accent-highlighted marker for details Heather/Maher must confirm. */
-function Confirm({ children }: { children: React.ReactNode }) {
-  return (
-    <mark
-      title="To confirm before launch"
-      className="bg-brand-accent/25 text-foreground rounded-sm px-1 font-semibold"
-    >
-      {children}
-    </mark>
-  );
-}
 
 const h2 = "mt-10 text-xl font-extrabold leading-tight sm:text-2xl";
 const p = "mt-4 leading-relaxed text-muted-foreground";
@@ -41,7 +30,7 @@ export default function TermsPage() {
           Terms of Use
         </h1>
         <p className="text-muted-foreground mt-3 text-sm">
-          Last updated: 4 September 2026
+          Last updated: 11 September 2026
         </p>
 
         <p className={p}>
@@ -53,10 +42,9 @@ export default function TermsPage() {
 
         <h2 className={h2}>1. Who we are</h2>
         <p className={p}>
-          Bouncing Forward is run by Maher Kaddoura and is part of Half a Life.{" "}
-          <Confirm>Confirm legal entity name and country.</Confirm> When we say
-          &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;, we mean
-          Bouncing Forward.
+          This site is operated by 86400. By using it, or by buying anything on
+          it, you agree to what follows. If you do not agree, please do not use
+          the site. You can reach us any time at info@bouncing-forward.com.
         </p>
 
         <h2 className={h2}>2. What Bouncing Forward is, and is not</h2>
@@ -117,15 +105,6 @@ export default function TermsPage() {
         <p className={p}>
           Payment for the Book Package is taken by Stripe. We never see your
           card details.
-        </p>
-        <p className={p}>
-          Because the Book Package is a download that opens immediately,{" "}
-          <Confirm>
-            choose one: &ldquo;we do not offer refunds once it has been
-            opened&rdquo; / &ldquo;we offer a full refund within 14 days if you
-            have not downloaded the book or workbook&rdquo;
-          </Confirm>
-          .
         </p>
         <p className={p}>
           If a payment goes through and the Book Package does not open, write to
@@ -213,18 +192,7 @@ export default function TermsPage() {
           If you keep using the site after that, the new terms apply.
         </p>
 
-        <h2 className={h2}>12. The law that applies</h2>
-        <p className={p}>
-          These terms are governed by the laws of{" "}
-          <Confirm>
-            country — confirm with Maher, e.g. Jordan / United Kingdom / South
-            Africa
-          </Confirm>
-          . If there is a dispute we cannot settle by talking, the courts of
-          that country will decide it.
-        </p>
-
-        <h2 className={h2}>13. Contact</h2>
+        <h2 className={h2}>12. Contact</h2>
         <p className={p}>
           Questions about these terms: info@bouncing-forward.com
         </p>

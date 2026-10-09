@@ -7,7 +7,7 @@ import { mailchimpSubscribe } from "@/lib/mailchimp";
  * Body: { email: string; firstName?: string; source?: string; company?: string }
  *  - `company` is a honeypot field: real people never fill it. If present,
  *    we pretend success and do nothing.
- *  - `source` becomes a Mailchimp tag ("newsletter", "full-assessment", …)
+ *  - `source` becomes an approved public Mailchimp tag only,
  *    so the team can segment where each subscriber came from.
  *
  * Environment: see .env.local.example. The heavy lifting lives in
@@ -27,6 +27,9 @@ export async function POST(request: Request) {
   let body: Body;
   try {
     body = (await request.json()) as Body;
+    if (body === null || typeof body !== "object") {
+      throw new Error("Invalid request.");
+    }
   } catch {
     return NextResponse.json(
       { ok: false, message: "Invalid request." },
@@ -49,6 +52,14 @@ export async function POST(request: Request) {
       ? body.source
       : "newsletter";
 
+  // Paid-email tags must only come from the verified Stripe webhook.
+  if (source !== "newsletter" && source !== "full-assessment") {
+    return NextResponse.json(
+      { ok: false, message: "Invalid request." },
+      { status: 400 },
+    );
+  }
+
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json(
       { ok: false, message: "Please enter a valid email address." },
@@ -56,7 +67,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = await mailchimpSubscribe({ email, firstName, tags: [source] });
+  const result = await mailchimpSubscribe({
+    email,
+    firstName,
+    tags: [source],
+    resubscribe: true,
+  });
   if (result.ok) return NextResponse.json({ ok: true });
   return NextResponse.json(
     {
