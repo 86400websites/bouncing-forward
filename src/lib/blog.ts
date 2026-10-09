@@ -1,8 +1,10 @@
 /**
  * Blog content — Bouncing Forward.
  *
- * Copy source: Bouncing_Forward_Blog_Series.docx, verbatim (10 posts).
- * Generated from the deck; body text is not paraphrased.
+ * Copy source: Bouncing_Forward_Blog_Series.docx, verbatim (posts 1–8);
+ * Bouncing_Forward_Blog_Posts.docx (Heather, 9 Oct 2026), verbatim
+ * (posts 9–13, released weekly via `publishOn`). Body text is not
+ * paraphrased.
  *
  * `image` blocks carry the deck's art direction for each post's single
  * illustration slot. No blog art exists yet, so those render as a captioned
@@ -20,7 +22,16 @@ export type Post = {
   subtitle: string;
   seoTitle: string;
   seoDescription: string;
-  heroImage: string;
+  heroImage?: string;
+  /** Meta keywords from the copy doc (posts 9+). */
+  keywords?: string[];
+  /**
+   * First day the post is public, as YYYY-MM-DD in South African time
+   * (SAST). Omitted = always public. Heather's cadence: one new post a
+   * week — the pages revalidate hourly, so each one goes live on its
+   * date with no redeploy.
+   */
+  publishOn?: string;
   blocks: Block[];
 };
 
@@ -1059,10 +1070,642 @@ export const POSTS: Post[] = [
       },
     ],
   },
+  {
+    number: 9,
+    slug: "the-story-you-tell",
+    title: "The Story You Tell About What Happened",
+    subtitle:
+      "The facts of a setback are fixed. The story you build around them is still being written.",
+    seoTitle: "The Story You Tell About What Happened | Bouncing Forward",
+    seoDescription:
+      "The facts of a setback are fixed. The story you build around them is not. How to separate the two and write a fairer account that points you forward.",
+    keywords: [
+      "setback",
+      "reframing a setback",
+      "self-talk after a setback",
+      "learning from setbacks",
+      "moving forward",
+      "resilience",
+    ],
+    publishOn: "2026-10-09",
+    blocks: [
+      {
+        type: "p",
+        text: "Every setback comes with two things. What happened, and the story you tell yourself about what happened.",
+      },
+      {
+        type: "p",
+        text: "The first part is fixed. The job ended. The relationship finished. The plan fell through. Those facts are not going anywhere.",
+      },
+      {
+        type: "p",
+        text: "The second part is far more flexible than it feels. And more often than not, it is the story, not the facts, that decides how long you stay stuck.",
+      },
+      {
+        type: "h2",
+        text: "The Story Arrives First",
+      },
+      {
+        type: "p",
+        text: "Think about the first few days after a setback. Before you have had time to think anything through, a story has already formed.",
+      },
+      {
+        type: "p",
+        text: "It usually sounds something like this. I should have seen it coming. This always happens to me. I am too old to start again. Nobody will want me now.",
+      },
+      {
+        type: "p",
+        text: "These stories arrive quickly because the mind hates a gap. It wants an explanation, any explanation, and it grabs the nearest one. The trouble is that the nearest one is usually the harshest.",
+      },
+      {
+        type: "p",
+        text: "Left unchecked, that first draft quietly hardens into the official version. You repeat it to yourself until it stops feeling like a story at all and starts feeling like the truth.",
+      },
+      {
+        type: "h2",
+        text: "Facts and Interpretations",
+      },
+      {
+        type: "p",
+        text: "Here is a useful exercise. Take the story you have been telling and sort it into two piles.",
+      },
+      {
+        type: "p",
+        text: "In the first pile, put only the facts. What actually happened, the way a camera would have recorded it.",
+      },
+      {
+        type: "p",
+        text: "In the second pile, put everything else. The conclusions, the predictions, the judgments about what it says about you.",
+      },
+      {
+        type: "p",
+        text: 'Most people are surprised by how small the first pile is, and how big the second one has grown. "The company restructured and my role was cut" is a fact. "I am clearly not good enough" is an interpretation. They feel like the same thing. They are not.',
+      },
+      {
+        type: "quote",
+        text: "The facts of a setback are fixed. The meaning you give them is still open.",
+      },
+      {
+        type: "h2",
+        text: "Looking Back to Learn",
+      },
+      {
+        type: "p",
+        text: "This is not about pretending things were better than they were, or spinning a setback into something cheerful. A story that ignores what hurt is just as unhelpful as one that blames you for everything.",
+      },
+      {
+        type: "p",
+        text: "The aim is a fairer account. One that asks what you can learn rather than what you did wrong.",
+      },
+      {
+        type: "p",
+        text: "What did this teach me about what I value? What would I do differently, and what would I do exactly the same? What did I handle better than I gave myself credit for at the time?",
+      },
+      {
+        type: "p",
+        text: "Those questions look backward, but they point forward. They turn the setback from a verdict into a source of information you can actually use.",
+      },
+      {
+        type: "h2",
+        text: "Writing the Next Chapter",
+      },
+      {
+        type: "p",
+        text: "Once you see that the story is yours to shape, something shifts. You stop being only the person this happened to. You become the person deciding what it means.",
+      },
+      {
+        type: "p",
+        text: "That is a glorious amount of power to get back.",
+      },
+      {
+        type: "p",
+        text: "Perhaps the new version sounds like this. That chapter ended, and it taught me what I need from the next one. Or, I came through something hard, and I know more about myself because of it.",
+      },
+      {
+        type: "p",
+        text: "Neither of those denies what happened. Both of them leave the door open.",
+      },
+      {
+        type: "p",
+        text: "So here is something worth mulling over. If someone you cared about told you the story you have been telling yourself, would you let them keep it? Or would you help them write a fairer one?",
+      },
+      {
+        type: "p",
+        text: "You deserve the same help. Start with the facts, question the rest, and keep the pen in your own hand.",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 10,
+    slug: "acceptance-is-not-agreeing",
+    title: "Acceptance Is Not Agreeing It Was Fair",
+    subtitle:
+      "You can accept what happened and still believe it should never have happened at all.",
+    seoTitle: "Acceptance Is Not Agreeing It Was Fair | Bouncing Forward",
+    seoDescription:
+      "Accepting a setback is not approving of it. Why acceptance carries no verdict on fairness, and how it gives you solid ground to decide what comes next.",
+    keywords: [
+      "acceptance",
+      "accepting a setback",
+      "unfairness",
+      "letting go of resistance",
+      "moving forward",
+      "resilience",
+    ],
+    publishOn: "2026-10-16",
+    blocks: [
+      {
+        type: "p",
+        text: "Few words cause more resistance after a setback than this one. Acceptance.",
+      },
+      {
+        type: "p",
+        text: "Someone suggests it, usually kindly, and something in you digs in its heels. Accept it? Accept being let go after eleven years of loyalty? Accept the diagnosis, the betrayal, the business that collapsed through no fault of yours?",
+      },
+      {
+        type: "p",
+        text: "The resistance makes complete sense. Because somewhere along the way, acceptance got tangled up with approval. And nobody should be asked to approve of something that hurt them.",
+      },
+      {
+        type: "h2",
+        text: "The Mix-Up at the Heart of It",
+      },
+      {
+        type: "p",
+        text: 'Here is the muddle. Many people hear "accept it" as "agree that it was fine." Or "stop being upset about it." Or, worst of all, "admit you deserved it."',
+      },
+      {
+        type: "p",
+        text: "None of those is acceptance.",
+      },
+      {
+        type: "p",
+        text: "Acceptance is simply acknowledging what is true right now. This happened. This is where I am. These are the facts I am working with.",
+      },
+      {
+        type: "p",
+        text: "That is all. It carries no verdict about whether it was fair. It asks for no forgiveness. It does not require you to like a single thing about it.",
+      },
+      {
+        type: "h2",
+        text: "Why Refusing Feels Like Loyalty",
+      },
+      {
+        type: "p",
+        text: "Think about why holding out feels so important. Refusing to accept a setback can feel like protecting something: your sense of justice, your dignity, the version of events in which this was wrong.",
+      },
+      {
+        type: "p",
+        text: "It is as though accepting it would let the unfairness off the hook.",
+      },
+      {
+        type: "p",
+        text: "But the harsh reality is that refusing to accept what happened does not undo it. It only keeps you standing at the scene, arguing with something that has already left.",
+      },
+      {
+        type: "p",
+        text: "Meanwhile, your energy goes into the argument rather than into what comes next.",
+      },
+      {
+        type: "quote",
+        text: "Acceptance carries no verdict about whether it was fair. It only tells you where you are standing.",
+      },
+      {
+        type: "h2",
+        text: "What Acceptance Makes Possible",
+      },
+      {
+        type: "p",
+        text: "Think of acceptance as reading the map before you set out. You cannot plan a route from a place you refuse to admit you are standing in.",
+      },
+      {
+        type: "p",
+        text: 'Once you can say "this is where I am," a whole set of useful questions opens up. What do I still have? What can I change? What is mine to deal with, and what belongs to someone else?',
+      },
+      {
+        type: "p",
+        text: "Those questions are unavailable to someone still insisting it cannot be true.",
+      },
+      {
+        type: "p",
+        text: "People often describe the moment of acceptance as a surprising relief. Not because the situation improved, but because they stopped spending every day pushing against a closed door. The effort that went into resisting is suddenly free for something more useful.",
+      },
+      {
+        type: "h2",
+        text: "Holding Both at Once",
+      },
+      {
+        type: "p",
+        text: "The most freeing discovery is that acceptance and a sense of injustice can live side by side.",
+      },
+      {
+        type: "p",
+        text: "You can say: this was unfair, and it happened. I wish it had gone differently, and here I am. Someone let me down, and I am deciding what to do next.",
+      },
+      {
+        type: "p",
+        text: "Both halves of each sentence are true. Neither cancels the other.",
+      },
+      {
+        type: "p",
+        text: "You might find, perhaps, that once you stop needing acceptance to mean approval, it becomes much easier to reach. It was never asking you to surrender your view of what happened. It was only asking you to stand on solid ground while you decide where to go.",
+      },
+      {
+        type: "p",
+        text: "When all is said and done, acceptance is not the end of your story about the setback. It is the beginning of your story after it.",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 11,
+    slug: "when-everyone-else-has-moved-on",
+    title: "When Everyone Else Has Moved On",
+    subtitle:
+      "Their timeline was never yours to keep. Yours is allowed to run at its own pace.",
+    seoTitle: "When Everyone Else Has Moved On | Bouncing Forward",
+    seoDescription:
+      "When the calls thin out and everyone else has moved on, it is easy to feel left behind. How to stop borrowing their timeline and set your own pace.",
+    keywords: [
+      "feeling left behind",
+      "support after a setback",
+      "comparing yourself",
+      "your own pace",
+      "moving forward",
+      "resilience",
+    ],
+    publishOn: "2026-10-23",
+    blocks: [
+      {
+        type: "p",
+        text: "At first, people show up. They call, they check in, they ask how you are and wait for the real answer.",
+      },
+      {
+        type: "p",
+        text: "Then, gradually, life pulls them back to their own concerns. The calls thin out. The questions get lighter. Conversations drift to holidays and work and whatever is happening in the news.",
+      },
+      {
+        type: "p",
+        text: "And you are left with the odd sensation of standing still while the world around you has quietly started walking again.",
+      },
+      {
+        type: "h2",
+        text: "This Is Not a Sign That They Stopped Caring",
+      },
+      {
+        type: "p",
+        text: "It is tempting to read the silence as indifference. More often than not, it is something far more ordinary.",
+      },
+      {
+        type: "p",
+        text: "Most people simply do not know how long a setback lasts. They assume the hard part is the first few weeks, because that is where all the drama sits. They have no idea that the real work often begins once the noise dies down.",
+      },
+      {
+        type: "p",
+        text: "Others worry that raising it will reopen something. So they stay quiet, believing they are being kind.",
+      },
+      {
+        type: "p",
+        text: "Neither of these is abandonment. It is a gap in understanding, and it is far more common than anyone admits.",
+      },
+      {
+        type: "h2",
+        text: "The Comparison That Keeps You Stuck",
+      },
+      {
+        type: "p",
+        text: "The harder part is what happens inside your own head. When everyone else has moved on, it is very easy to start asking what is wrong with you.",
+      },
+      {
+        type: "p",
+        text: "Shouldn't I be past this by now? Why can they talk about it so casually when I still cannot?",
+      },
+      {
+        type: "p",
+        text: "This is a comparison with no fair basis. They were standing near the setback. You were standing in it. Of course you are moving at a different pace. You are carrying a different load.",
+      },
+      {
+        type: "p",
+        text: "Measuring yourself against their timeline is like comparing your journey with a passenger who got off three stops ago.",
+      },
+      {
+        type: "quote",
+        text: "They were standing near the setback. You were standing in it.",
+      },
+      {
+        type: "h2",
+        text: "Setting Your Own Pace",
+      },
+      {
+        type: "p",
+        text: "So what helps, when you are no longer in step with the people around you?",
+      },
+      {
+        type: "p",
+        text: "Start by giving yourself permission to be exactly where you are. Progress after a setback is real, but it is rarely visible from the outside, and it is never on anyone else's schedule.",
+      },
+      {
+        type: "p",
+        text: "Then, notice your own markers rather than borrowing theirs. Perhaps you got through a whole morning without the familiar heaviness. Perhaps you made a decision you had been avoiding. Perhaps you laughed and meant it. These are the signposts that actually matter, and only you can see them.",
+      },
+      {
+        type: "p",
+        text: 'It can also help to tell one or two people plainly where you are. Not as a complaint, simply as information. "I\'m still finding my feet with this. It would help if you asked now and then." Most people are relieved to be told what is useful.',
+      },
+      {
+        type: "h2",
+        text: "Moving On Versus Moving Forward",
+      },
+      {
+        type: "p",
+        text: "There is an important difference hiding in all of this.",
+      },
+      {
+        type: "p",
+        text: "The people around you have moved on, which means they have turned their attention elsewhere. That is natural, and it is fine.",
+      },
+      {
+        type: "p",
+        text: "Your task is different. You are not trying to move on, as if the setback could be stepped over and left behind. You are moving forward, which means taking what happened with you and building something from it.",
+      },
+      {
+        type: "p",
+        text: "That takes longer. It is supposed to. And when you get there, you will have something they do not: the hard-won steadiness of someone who went through it at their own pace and came out sure-footed.",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 12,
+    slug: "small-decisions-rebuild-confidence",
+    title: "The Small Decisions That Rebuild Your Confidence",
+    subtitle:
+      "When the big choices feel impossible, the small ones quietly do the rebuilding.",
+    seoTitle:
+      "The Small Decisions That Rebuild Your Confidence | Bouncing Forward",
+    seoDescription:
+      "A setback shakes your trust in your own judgment. How small, low-stakes decisions quietly rebuild confidence until the big choices feel manageable.",
+    keywords: [
+      "confidence after a setback",
+      "decision making",
+      "self-trust",
+      "small steps",
+      "moving forward",
+      "resilience",
+    ],
+    publishOn: "2026-10-30",
+    blocks: [
+      {
+        type: "p",
+        text: "One of the least talked-about effects of a setback is what it does to your trust in yourself.",
+      },
+      {
+        type: "p",
+        text: "You made choices that led here, or you failed to see it coming, or you simply could not stop it. Whatever the story, a little voice starts asking whether your judgment can still be relied on.",
+      },
+      {
+        type: "p",
+        text: "Consequently, decisions that used to take seconds start to take days. Which job to apply for. Whether to sell the house. What to say to the people involved. Even what to cook tonight can feel strangely heavy.",
+      },
+      {
+        type: "h2",
+        text: "Why Big Decisions Freeze Us",
+      },
+      {
+        type: "p",
+        text: "After a setback, the stakes of every choice seem higher. You have just seen how badly things can go, and you are understandably reluctant to risk it again.",
+      },
+      {
+        type: "p",
+        text: "So the big decisions pile up. And the longer they wait, the bigger they look.",
+      },
+      {
+        type: "p",
+        text: "This is not weakness. It is a perfectly sensible response to having had the ground move under you. But left alone, it can turn into a kind of paralysis, where waiting feels safer than choosing, and the waiting itself becomes the problem.",
+      },
+      {
+        type: "h2",
+        text: "Confidence Is Built, Not Found",
+      },
+      {
+        type: "p",
+        text: "Here is something worth knowing. Confidence rarely returns all at once, in a single moment of clarity. It is rebuilt, one small decision at a time.",
+      },
+      {
+        type: "p",
+        text: "Every time you make a choice and see it through, you gather a little evidence that your judgment still works. Every small piece of evidence makes the next decision slightly easier.",
+      },
+      {
+        type: "p",
+        text: "The good news is that the decisions do not have to be big to count. In fact, the smaller and lower-stakes they are, the better they work as building material.",
+      },
+      {
+        type: "quote",
+        text: "Every choice you see through is a small piece of evidence that your judgment still works.",
+      },
+      {
+        type: "h2",
+        text: "What Small Decisions Look Like",
+      },
+      {
+        type: "p",
+        text: "Think about the choices sitting just within reach. Not the life-changing ones. The ones you could make today.",
+      },
+      {
+        type: "p",
+        text: "Replying to the message you have been putting off. Deciding which one thing you will deal with this week and letting the rest wait. Choosing to say yes to a coffee, or no to an obligation that drains you. Clearing one drawer, one inbox, one corner of the mess.",
+      },
+      {
+        type: "p",
+        text: "None of these will change your life on its own. That is precisely the point. They are small enough to get right, and getting them right is what rebuilds the muscle.",
+      },
+      {
+        type: "p",
+        text: "It helps to notice them, too. At the end of a day, ask yourself what you decided and followed through on. You will often find more than you expected.",
+      },
+      {
+        type: "h2",
+        text: "From Small to Sure-Footed",
+      },
+      {
+        type: "p",
+        text: "Something shifts as the small decisions add up. The voice that questioned your judgment gets quieter, not because someone argued it down, but because you kept quietly proving it wrong.",
+      },
+      {
+        type: "p",
+        text: "At some point, the bigger decision that felt impossible a few months ago starts to look manageable. Not easy, but manageable. You have a track record now, however modest, and it carries weight.",
+      },
+      {
+        type: "p",
+        text: "This is how most people move forward after a setback. Not with one bold leap, but with a series of small, sure-footed steps that eventually add up to a new direction.",
+      },
+      {
+        type: "p",
+        text: "So if a big decision is waiting and you cannot face it yet, that is fine. Make a small one instead. Then another. You are building the confidence you will need when the big one's time comes.",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 13,
+    slug: "what-do-you-want-now",
+    title: "What Do You Want Now That the Old Plan Is Gone?",
+    subtitle:
+      "A setback clears the page. That is unsettling, and it is also an invitation.",
+    seoTitle:
+      "What Do You Want Now That the Old Plan Is Gone? | Bouncing Forward",
+    seoDescription:
+      "When the old plan falls apart, the question of what you want comes back. Simple prompts to start wanting again, and why a sketch beats a blueprint.",
+    keywords: [
+      "starting over",
+      "new goals",
+      "life after a setback",
+      "what do I want",
+      "imagining a new future",
+      "resilience",
+    ],
+    publishOn: "2026-11-06",
+    blocks: [
+      {
+        type: "p",
+        text: "Most of us have not asked ourselves what we want in a very long time.",
+      },
+      {
+        type: "p",
+        text: "We asked once, years ago. We made a plan. Then we got busy following it. The career path, the relationship, the house, the retirement date. The plan did the wanting for us, and we simply kept walking.",
+      },
+      {
+        type: "p",
+        text: "Then a setback arrives and the plan falls apart. Suddenly the question we stopped asking is standing right in front of us again. And many people find, to their surprise, that they have no idea how to answer it.",
+      },
+      {
+        type: "h2",
+        text: "Why the Question Feels So Hard",
+      },
+      {
+        type: "p",
+        text: "Part of the difficulty is practice. Wanting is a skill, and like any skill, it gets rusty when it is not used.",
+      },
+      {
+        type: "p",
+        text: "Another part is fear. After a setback, wanting something feels risky. You have just seen how quickly plans can collapse. Why build another one?",
+      },
+      {
+        type: "p",
+        text: "And part of it is loyalty to the old plan. Imagining something different can feel like admitting the old dream is truly gone, and that can sting.",
+      },
+      {
+        type: "p",
+        text: "All of this is understandable. But staying in the blank space indefinitely has a cost. Without a sense of what you want, every day becomes something to get through rather than something to build.",
+      },
+      {
+        type: "h2",
+        text: "Start Smaller Than You Think",
+      },
+      {
+        type: "p",
+        text: 'The question "what do I want from my life?" is far too big to answer cold. It tends to produce either nothing at all or something so grand it feels out of reach.',
+      },
+      {
+        type: "p",
+        text: "So start smaller. Try questions like these.",
+      },
+      {
+        type: "p",
+        text: "What do I want more of this month? What do I want less of? When did I last lose track of time, and what was I doing? What did I set aside years ago that still tugs at me now and then? If nobody else's expectations mattered, what would I try first?",
+      },
+      {
+        type: "p",
+        text: "You are not looking for a perfect answer. You are looking for a thread to pull.",
+      },
+      {
+        type: "quote",
+        text: "Wanting is a skill, and like any skill, it gets rusty when it is not used.",
+      },
+      {
+        type: "h2",
+        text: "The Gift Hidden in the Blank Page",
+      },
+      {
+        type: "p",
+        text: "Here is something worth mulling over. The old plan was made by an earlier version of you, with less experience and fewer hard lessons behind them.",
+      },
+      {
+        type: "p",
+        text: "The person asking the question now knows more. You know what really matters to you, because a setback has a way of making that very clear. You know what you can survive. You know which parts of the old plan you were following out of habit rather than desire.",
+      },
+      {
+        type: "p",
+        text: "That is valuable knowledge. A plan built on it is likely to fit you far better than the one that came before.",
+      },
+      {
+        type: "p",
+        text: "People who rebuild after a setback often say the new direction suits them more than the old one ever did. Not because the setback was good, but because it forced a question they would never otherwise have asked.",
+      },
+      {
+        type: "h2",
+        text: "Let It Be a Sketch, Not a Blueprint",
+      },
+      {
+        type: "p",
+        text: "Whatever you come up with, hold it lightly at first. Think of it as a sketch rather than a blueprint. Something to test, adjust and redraw.",
+      },
+      {
+        type: "p",
+        text: "Try one small thing in the direction of what you want. See how it feels. Then adjust.",
+      },
+      {
+        type: "p",
+        text: "The point is not to lock in a new plan immediately. It is to start wanting again, and to let that wanting pull you forward.",
+      },
+      {
+        type: "p",
+        text: "So here is the question, and it is worth sitting with for a while. Now that the old plan is gone, what do you want?",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
 ];
 
+/** Today's date (YYYY-MM-DD) in South African time — the release clock. */
+function todaySAST(now: Date = new Date()): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Africa/Johannesburg",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+}
+
+export function isPublished(post: Post, now: Date = new Date()): boolean {
+  return !post.publishOn || post.publishOn <= todaySAST(now);
+}
+
+/** Public posts in series order (oldest first). */
+export function publishedPosts(now: Date = new Date()): Post[] {
+  return POSTS.filter((p) => isPublished(p, now));
+}
+
+/** A public post by slug; scheduled-but-not-yet-live posts return undefined. */
 export function getPost(slug: string): Post | undefined {
-  return POSTS.find((p) => p.slug === slug);
+  const post = POSTS.find((p) => p.slug === slug);
+  return post && isPublished(post) ? post : undefined;
 }
 
 /** First paragraph of a post, used as the listing excerpt. */

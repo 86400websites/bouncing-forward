@@ -10,7 +10,10 @@ import {
   BeginYourCrossing,
   PrimaryCta,
 } from "@/components/site/begin-your-crossing";
-import { POSTS } from "@/lib/blog";
+import { publishedPosts } from "@/lib/blog";
+
+/* Weekly posts go live on their `publishOn` date — re-check hourly. */
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: { absolute: "The Blog | Honest Words for the Hardest Seasons" },
@@ -50,10 +53,10 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── Posts (image + title + standfirst, clickable) ────── */}
+      {/* ── Posts (newest first; title + standfirst, clickable) ── */}
       <section className="mx-auto max-w-7xl px-5 pt-8 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
         <Stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {POSTS.map((post) => (
+          {[...publishedPosts()].reverse().map((post) => (
             <StaggerItem key={post.slug} className="h-full">
               <article className="h-full">
                 <Link

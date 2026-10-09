@@ -1,6 +1,6 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 9 October 2026 (webinar homepage promo block)._
+_Last updated: 9 October 2026 (webinar promo block; weekly blog posts 9–13; Monthly Letter No. 2)._
 
 ## Where the project stands
 
@@ -25,6 +25,24 @@ Book/Author og:image, own og for Log In/Create Account), `/learn` and
 (**files must be renamed — see RENAME-THESE.txt**), and the new
 **/privacy** and **/terms** pages carrying Heather's copy with every
 open detail visibly marked "confirm".
+
+## Content drop — 9 Oct (Heather)
+
+- **Blog posts 9–13** added verbatim from Bouncing_Forward_Blog_Posts.docx
+  with their meta title / description / keywords / slug. Heather's
+  cadence is one new post a week, so each carries a `publishOn` date
+  (SAST) and the blog revalidates hourly: no redeploy needed. Schedule:
+  9 Oct the-story-you-tell · 16 Oct acceptance-is-not-agreeing · 23 Oct
+  when-everyone-else-has-moved-on · 30 Oct
+  small-decisions-rebuild-confidence · 6 Nov what-do-you-want-now.
+  Change a date in `src/lib/blog.ts`. Listing now shows newest first;
+  scheduled posts 404 until their date.
+- **Monthly Letter No. 2** + **The Walking Pages (No. 2)** exported to
+  PDF (A4, Merriweather/Inter as designed) and listed first in the All In
+  library. Emailing the letter to the list is a separate Mailchimp send
+  (exclude the `webinar` tag per the standing rule).
+- **Not in this repo:** UnRetire's 5 blog posts (need the UnRetire repo);
+  stories for both sites (Heather sending later).
 
 ## Webinar — 21 Oct, 10:00 + 19:00 SAST, Heather Meyer
 
