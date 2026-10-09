@@ -1,10 +1,10 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 4 September 2026 (Heather's final fix-list + legal pages sprint)._
+_Last updated: 9 October 2026 (webinar homepage promo block)._
 
 ## Where the project stands
 
-The site is **live and selling** at https://bouncing-forward.vercel.app —
+The site is **live and selling** at https://bouncing-forward.com —
 Stripe live mode verified with a real discounted purchase, Supabase
 accounts + entitlements in production, three Mailchimp journeys active
 from the authenticated info@bouncing-forward.com domain, nine course
@@ -25,6 +25,25 @@ Book/Author og:image, own og for Log In/Create Account), `/learn` and
 (**files must be renamed — see RENAME-THESE.txt**), and the new
 **/privacy** and **/terms** pages carrying Heather's copy with every
 open detail visibly marked "confirm".
+
+## Webinar — 21 Oct, 10:00 + 19:00 SAST, Heather Meyer
+
+Live: `/webinar` registration page + `/api/webinar` (Mailchimp tags
+`webinar-oct21-1000` / `-1900`, two confirmation journeys active); thin
+accent announcement band under the Home hero.
+
+**9 Oct:** Home promo block added directly under the packages section
+(Heather's 6 Oct direction) — Roelien's no-photo graphic
+(`public/assets/webinar/bf-webinar-promo.png`, resized 3780→2048 px),
+then the approved /webinar details and a "Reserve your seat →" button.
+Anchor: `/#webinar`.
+
+Still open: keep or drop the hero band now the block exists (Heather);
+20 Oct reminder + join-link campaigns to the two tag segments;
+post-session workbook email. **Standing rule:** every broad send
+(Monthly Letter) targets a segment excluding the `webinar` tag.
+Unretire wants the same mechanism — awaiting their copy/HTML + repo
+access.
 
 ## Open confirmations (marked in accent on /privacy and /terms)
 
