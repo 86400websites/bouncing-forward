@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createCheckoutSession } from "@/lib/stripe/checkout";
 import { accountsConfigured, hasPremium } from "@/lib/auth/entitlements";
+import { originFromOriginHeader } from "@/lib/request-origin";
 
 export const runtime = "nodejs";
 
@@ -25,10 +26,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
 
-  const origin =
-    request.headers.get("origin") ??
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    "http://localhost:3000";
+  // Return to this deployment only when the browser's Origin is one of ours.
+  const origin = originFromOriginHeader(request.headers.get("origin"));
 
   if (await hasPremium()) {
     return NextResponse.json({ url: `${origin}/account` });

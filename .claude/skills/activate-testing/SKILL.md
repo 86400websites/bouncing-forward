@@ -14,6 +14,7 @@ Read, don't restate — these bind every phase:
 - `docs/testing-setup/TESTING-GUIDE.md` — the promises made to the owner. Never break them.
 - `docs/testing-setup/SETUP-CHECKLIST.md` — Phase 0 definition of done.
 - `docs/TECH-ARCHITECTURE.md` — stack, commands, environments, the single site-URL variable.
+- `docs/ENVIRONMENT-PARITY.md` — §12 target preflight and applicable proofs, §10 harness and evidence safety. Setup proofs do not replace the owner-approved feature list.
 - `docs/SECURITY-CHECKLIST.md` §5 — the abuse controls the suite must verify.
 - `docs/SUPABASE-MCP-SAFETY.md` and `docs/ENV-VARS-SAFETY.md` — non-production rules; names only, never values.
 - `docs/QA-CHECKLIST.md` and `docs/WORKFLOW.md` — the sprint loop that fixes what this gate finds.
@@ -35,7 +36,7 @@ Scan the **actual codebase end to end** — the code is the source of truth, bec
 2. Read the predevelopment feature/scope/copy docs and cross-check both ways:
    - **Promised but missing in code** → report to the owner immediately as a pre-test finding.
    - **Built but undocumented** → include on the list, marked `(found in code, not in docs)`.
-3. Fill `docs/FEATURE-LIST.md` from `templates/FEATURE-LIST-TEMPLATE.md`: one plain-English line per feature with a stable ID. Always include the template's standard baseline lines (every page renders error-free, denied-state per protected boundary, abuse controls, 404, mobile, links).
+3. Fill `docs/FEATURE-LIST.md` from `docs/testing-setup/templates/FEATURE-LIST-TEMPLATE.md`: one plain-English line per feature with a stable ID. Always include the template's standard baseline lines (every page renders error-free, denied-state per protected boundary, abuse controls, 404, mobile, links).
 4. **STOP. Present the list to the owner for approval.** Do not write a single test before written approval. After approval, any change to the list goes back to the owner — never silently edit an approved line.
 
 ### Phase 2 — WRITE TESTS (one per approved line)
@@ -51,8 +52,9 @@ Scan the **actual codebase end to end** — the code is the source of truth, bec
 ### Phase 3 — RUN (full) → REPORT
 
 - Target the **deployed Preview** of the release candidate (`PLAYWRIGHT_BASE_URL`), test-mode keys, bypass header if configured. Record the URL and head SHA.
-- Run the **full suite**. Artifacts (screenshots, traces) go to a gitignored `qa-evidence/` folder — never committed.
-- Fill `docs/test-reports/[YYYY-MM-DD]-test-report.md` from `templates/TEST-REPORT-TEMPLATE.md`: one row per feature, PASS/FAIL, every failure explained **in plain words a non-technical owner understands**, with severity (Blocker / High / Medium / Low per the template's definitions) and a suggested fix.
+- Confirm applicable §12 Preview proofs are current before the full run; production-only checks stay with the launch checklist.
+- Run the **full suite**. Only secret-free evidence goes to gitignored `qa-evidence/`; disable credential-bearing traces, snapshots and reports per `docs/ENVIRONMENT-PARITY.md` §10. Gitignore alone does not protect uploaded artifacts.
+- Fill `docs/test-reports/[YYYY-MM-DD]-test-report.md` from `docs/testing-setup/templates/TEST-REPORT-TEMPLATE.md`: one row per feature, PASS/FAIL, every failure explained **in plain words a non-technical owner understands**, with severity (Blocker / High / Medium / Low per the template's definitions) and a suggested fix.
 
 ### Phase 4 — FIX LOOP → VERDICT
 
@@ -64,7 +66,7 @@ Scan the **actual codebase end to end** — the code is the source of truth, bec
 ### Phase 5 — MORNING CHECK (after GO)
 
 - Propose the 5–7 most critical, **safe-to-repeat** specs (pages render clean, login with the dedicated test account, member access allowed / visitor denied, conversion page behaves). Nothing that creates real data — no purchases, no emails to real inboxes, no signups. Tag approved specs `@morning`.
-- Enable `.github/workflows/morning-check.yml` per `templates/MORNING-CHECK-TEMPLATE.md` (daily cron against the production URL, notify on failure only). **The morning check is read-only + test-account-login against production; every other run in this skill targets Preview.** Confirm with the owner that the failure-notification email is verified.
+- Enable `.github/workflows/morning-check.yml` per `docs/testing-setup/templates/MORNING-CHECK-TEMPLATE.md` (daily cron against the production URL, notify on failure only). **The morning check is read-only + test-account-login against production; every other run in this skill targets Preview.** Confirm with the owner that the failure-notification email is verified.
 
 ## Later re-runs
 
