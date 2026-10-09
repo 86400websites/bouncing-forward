@@ -3,12 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn, SlideUp } from "@/components/motion/primitives";
 import { BeginYourCrossing } from "@/components/site/begin-your-crossing";
-import { POSTS, getPost } from "@/lib/blog";
+import { getPost, publishedPosts } from "@/lib/blog";
 
 type Params = { params: Promise<{ slug: string }> };
 
+/* Scheduled posts 404 until their `publishOn` date, then render on the
+   first request after it (dynamicParams) — re-checked hourly. */
+export const revalidate = 3600;
+
 export function generateStaticParams() {
-  return POSTS.map((post) => ({ slug: post.slug }));
+  return publishedPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -18,6 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: { absolute: post.seoTitle },
     description: post.seoDescription,
+    ...(post.keywords ? { keywords: post.keywords } : {}),
     openGraph: {
       type: "article",
       title: post.seoTitle,
@@ -31,9 +36,10 @@ export default async function BlogPostPage({ params }: Params) {
   const post = getPost(slug);
   if (!post) notFound();
 
-  const index = POSTS.findIndex((p) => p.slug === post.slug);
-  const previous = index > 0 ? POSTS[index - 1] : null;
-  const next = index < POSTS.length - 1 ? POSTS[index + 1] : null;
+  const live = publishedPosts();
+  const index = live.findIndex((p) => p.slug === post.slug);
+  const previous = index > 0 ? live[index - 1] : null;
+  const next = index < live.length - 1 ? live[index + 1] : null;
 
   return (
     <>

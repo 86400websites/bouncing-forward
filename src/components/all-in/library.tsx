@@ -22,7 +22,17 @@ const bookGroup: Item[] = [
   },
 ];
 
+/* Newest letter first. Copy source for No. 2: Monthly Letter Number 2.docx
+   + PDF Worksheet Month 2.docx (Heather, 9 Oct 2026), exported verbatim. */
 const letterGroup: Item[] = [
+  {
+    title: "The Monthly Letter — No. 2",
+    href: "/downloads/all-in/monthly-letter-2.pdf",
+  },
+  {
+    title: "The Walking Pages — worksheet for Letter No. 2",
+    href: "/downloads/all-in/monthly-letter-2-the-walking-pages.pdf",
+  },
   {
     title: "The Monthly Letter — No. 1",
     href: "/downloads/all-in/monthly-letter-1.pdf",
