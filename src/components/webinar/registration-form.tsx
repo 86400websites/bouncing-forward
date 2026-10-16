@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { WEBINAR_ZOOM_LINKS, type WebinarSession } from "@/lib/webinar";
 
 /**
  * Webinar registration form — fields, copy, validation hints and the
@@ -35,7 +36,7 @@ export function WebinarRegistrationForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("South Africa");
-  const [session, setSession] = useState("10:00 SAST");
+  const [session, setSession] = useState<WebinarSession>("10:00 SAST");
   const [touched, setTouched] = useState(false);
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
@@ -102,12 +103,26 @@ export function WebinarRegistrationForm() {
         <p className="text-muted-foreground mt-3 leading-relaxed">
           We’ve sent a confirmation to{" "}
           <span className="text-foreground font-semibold">{email.trim()}</span>.
-          Your joining link will follow closer to the day.
         </p>
-        <div className="mt-6">
+        <div className="border-border mt-6 border-t pt-6">
+          <p className="font-bold">One last step: get your Zoom link.</p>
+          <p className="text-muted-foreground mt-2 leading-relaxed">
+            Register for your session on Zoom and Zoom will email you your
+            personal joining link.
+          </p>
+          <a
+            href={WEBINAR_ZOOM_LINKS[session]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring mt-5 inline-flex items-center rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            Register on Zoom · {session} →
+          </a>
+        </div>
+        <div className="mt-5">
           <Link
             href="/"
-            className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-7 py-3 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="text-brand-accent-text hover:text-foreground font-[family-name:var(--font-display)] text-sm font-bold transition-colors"
           >
             Explore Bouncing Forward
           </Link>
