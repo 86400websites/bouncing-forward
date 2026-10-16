@@ -6,6 +6,7 @@ import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { createCheckoutSession } from "@/lib/stripe/checkout";
 import { accountsConfigured } from "@/lib/auth/entitlements";
+import { originFromHost } from "@/lib/request-origin";
 
 /**
  * Sign up / log in / logout / password reset — plus the "intent"
@@ -14,12 +15,14 @@ import { accountsConfigured } from "@/lib/auth/entitlements";
  * Package" is one continuous motion even for a brand-new visitor.
  */
 
+/** This deployment's address for auth emails and Stripe return links —
+ *  the request host when it is one of ours, else the configured site URL. */
 async function getOrigin(): Promise<string> {
   const h = await headers();
-  const host = h.get("x-forwarded-host") ?? h.get("host");
-  const proto = h.get("x-forwarded-proto") ?? "https";
-  if (host) return `${proto}://${host}`;
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  return originFromHost(
+    h.get("x-forwarded-host") ?? h.get("host"),
+    h.get("x-forwarded-proto"),
+  );
 }
 
 export type Intent = "premium" | "account";

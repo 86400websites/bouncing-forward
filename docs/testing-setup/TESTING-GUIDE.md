@@ -16,7 +16,7 @@ The point: you find the broken things. Not your users, not the client, not three
 
 _(Not to be confused with the global browser tools from `docs/BROWSER-TOOLS.md` — those let Claude Code look at pages while working. Playwright here is the permanent test suite that lives in the repo forever.)_
 
-**The morning check — the watchman.** After launch, GitHub (which you already use) re-runs the 5–7 most critical tests against the live site every morning. If one fails, you get an email. **Silence means all green** — no news is good news. This is how you catch the form that silently stopped working three weeks after launch.
+**The morning check — the watchman.** After launch, GitHub (which you already use) re-runs the 5–7 most critical tests against the live site every morning. If one fails, you get an email. **Check that the latest scheduled run succeeded** — no email alone is not proof. These safe checks cover selected page/login behavior; provider alerts and separate delivery checks cover failed email delivery or payment processing.
 
 Error tracking (Sentry) is the third part of the full picture, but it has its own folder: `docs/error-tracking/`. Testing prevents bugs before launch; error tracking catches whatever slips through after.
 

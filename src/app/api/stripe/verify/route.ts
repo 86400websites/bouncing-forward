@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import { codesConfigured, firstCode } from "@/lib/premium";
+import {
+  classifyCheckoutSession,
+  type CheckoutSessionLike,
+} from "@/lib/stripe/identify";
 
 /**
  * GET /api/stripe/verify?session_id=cs_… — called by the Premium page
@@ -36,8 +40,10 @@ export async function GET(request: Request) {
   }
 
   try {
+    // Line items are expanded so an old Payment-Link session can be
+    // recognised by the price it bought (lib/stripe/identify.ts).
     const res = await fetch(
-      `https://api.stripe.com/v1/checkout/sessions/${sessionId}`,
+      `https://api.stripe.com/v1/checkout/sessions/${sessionId}?expand[]=line_items`,
       {
         headers: { Authorization: `Bearer ${secretKey}` },
         cache: "no-store",
@@ -49,7 +55,15 @@ export async function GET(request: Request) {
         { status: 400 },
       );
     }
-    const session = (await res.json()) as { payment_status?: string };
+    const session = (await res.json()) as CheckoutSessionLike;
+    // Shared Stripe account: a paid session that is not a Bouncing Forward
+    // purchase must never unlock the Book Package.
+    if (!classifyCheckoutSession(session).ours) {
+      return NextResponse.json(
+        { ok: false, message: "We couldn’t confirm that payment." },
+        { status: 400 },
+      );
+    }
     const settled =
       session.payment_status === "paid" ||
       session.payment_status === "no_payment_required";

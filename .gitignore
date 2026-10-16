@@ -12,6 +12,18 @@
 
 # testing
 /coverage
+/qa-evidence/
+/playwright-report/
+/test-results/
+/playwright/.auth/
+/tests/.auth/
+/tests/e2e/.auth/
+
+# local-only material: the development reference pack, a stray pnpm store,
+# and the downloaded copy of the Google verification file (served from public/)
+/development/
+/.pnpm-store/
+/google777f049a86d5990c.html
 
 # next.js
 /.next/
@@ -42,3 +54,6 @@ next-env.d.ts
 
 # keep the env template tracked
 !.env.example
+
+# build-deliverable archives are not source
+/bouncing-forward-30august-4.40.zip

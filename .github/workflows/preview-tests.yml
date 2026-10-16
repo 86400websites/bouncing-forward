@@ -1,0 +1,91 @@
+# Launch Gate — run the Playwright suite against a verified Preview deployment.
+# Manual only. Secrets are referenced by name; the harness preflight verifies
+# the deployment's project, environment, commit and wiring through the
+# deployment's own read-only /api/health route (VERCEL_TOKEN/VERCEL_PROJECT_ID
+# are an optional extra cross-check) and refuses Production
+# (docs/ENVIRONMENT-PARITY.md §10, §12).
+name: Preview Tests
+on:
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: "Preview deployment origin (https://….vercel.app, no path)"
+        required: true
+        type: string
+      expected_sha:
+        description: "Full 40-character commit SHA the Preview must serve"
+        required: true
+        type: string
+      suite:
+        description: "Which projects to run"
+        required: true
+        default: smoke
+        type: choice
+        options:
+          - smoke
+          - proofs
+          - full
+permissions:
+  contents: read
+jobs:
+  preview-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Select projects
+        id: select
+        run: |
+          case "${{ inputs.suite }}" in
+            smoke)  echo "args=--project=smoke-desktop --project=smoke-mobile-390" >> "$GITHUB_OUTPUT" ;;
+            proofs) echo "args=--project=proofs" >> "$GITHUB_OUTPUT" ;;
+            full)   echo "args=" >> "$GITHUB_OUTPUT" ;;
+          esac
+      - name: Refuse a "full" run that selects no feature specs
+        if: ${{ inputs.suite == 'full' }}
+        run: |
+          pnpm exec playwright test --list | tee selected.txt
+          grep -q "^\s*\[desktop\] ›" selected.txt || { echo "::error::No feature specs selected — the full gate cannot pass on setup checks alone."; exit 1; }
+        env:
+          PLAYWRIGHT_TARGET: preview
+          PLAYWRIGHT_BASE_URL: ${{ inputs.preview_url }}
+      - name: Run against the verified Preview
+        run: pnpm exec playwright test ${{ steps.select.outputs.args }}
+        env:
+          PLAYWRIGHT_TARGET: preview
+          PLAYWRIGHT_BASE_URL: ${{ inputs.preview_url }}
+          PLAYWRIGHT_EXPECTED_SHA: ${{ inputs.expected_sha }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TEAM_ID: ${{ vars.VERCEL_TEAM_ID }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+          E2E_FREE_USER_EMAIL: ${{ secrets.E2E_FREE_USER_EMAIL }}
+          E2E_FREE_USER_PASSWORD: ${{ secrets.E2E_FREE_USER_PASSWORD }}
+          E2E_PREMIUM_USER_EMAIL: ${{ secrets.E2E_PREMIUM_USER_EMAIL }}
+          E2E_PREMIUM_USER_PASSWORD: ${{ secrets.E2E_PREMIUM_USER_PASSWORD }}
+          E2E_SUPABASE_URL: ${{ secrets.E2E_SUPABASE_URL }}
+          E2E_SUPABASE_SECRET_KEY: ${{ secrets.E2E_SUPABASE_SECRET_KEY }}
+          E2E_STRIPE_SECRET_KEY: ${{ secrets.E2E_STRIPE_SECRET_KEY }}
+          E2E_STRIPE_WEBHOOK_SECRET: ${{ secrets.E2E_STRIPE_WEBHOOK_SECRET }}
+          E2E_LEGACY_ACCESS_CODE: ${{ secrets.E2E_LEGACY_ACCESS_CODE }}
+          E2E_OWNER_MAILBOX: ${{ secrets.E2E_OWNER_MAILBOX }}
+          E2E_MAILCHIMP_API_KEY: ${{ secrets.E2E_MAILCHIMP_API_KEY }}
+          E2E_MAILCHIMP_AUDIENCE_ID: ${{ secrets.E2E_MAILCHIMP_AUDIENCE_ID }}
+          E2E_MAILCHIMP_SERVER_PREFIX: ${{ secrets.E2E_MAILCHIMP_SERVER_PREFIX }}
+      - name: Keep the sanitised run record (names, hosts, SHAs — no values)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          # Only the preflight record is uploaded. The JSON test report can
+          # carry typed values inside error messages, so it stays on the runner.
+          name: launch-gate-run-record
+          path: qa-evidence/preflight.json
+          if-no-files-found: ignore
+          retention-days: 14

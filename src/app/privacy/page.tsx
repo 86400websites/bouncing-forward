@@ -9,21 +9,10 @@ export const metadata: Metadata = {
     description:
       "What information Bouncing Forward collects, why, and what you can do about it — in plain English.",
   },
-  // Kept until the confirm-items below are settled (per the 4 Sep fix list).
+  // The confirm items are settled (11 Sep 2026). Kept noindexed until the
+  // owner decides these pages should appear in search results.
   robots: { index: false, follow: false },
 };
-
-/** Accent-highlighted marker for details Heather/Maher must confirm. */
-function Confirm({ children }: { children: React.ReactNode }) {
-  return (
-    <mark
-      title="To confirm before launch"
-      className="bg-brand-accent/25 text-foreground rounded-sm px-1 font-semibold"
-    >
-      {children}
-    </mark>
-  );
-}
 
 const h2 = "mt-10 text-xl font-extrabold leading-tight sm:text-2xl";
 const p = "mt-4 leading-relaxed text-muted-foreground";
@@ -41,7 +30,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="text-muted-foreground mt-3 text-sm">
-          Last updated: 4 September 2026
+          Last updated: 11 September 2026
         </p>
 
         <p className={p}>
@@ -54,13 +43,9 @@ export default function PrivacyPage() {
 
         <h2 className={h2}>1. Who we are</h2>
         <p className={p}>
-          The website is owned and operated by{" "}
-          <Confirm>
-            Half a Life / Maher Kaddoura — confirm legal entity name and country
-          </Confirm>
-          . When we say &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;,
-          we mean Bouncing Forward. You can reach us at
-          info@bouncing-forward.com.
+          This website is operated by 86400. When we say &ldquo;we&rdquo;,
+          &ldquo;us&rdquo; or &ldquo;our&rdquo;, we mean Bouncing Forward. You
+          can reach us at info@bouncing-forward.com.
         </p>
 
         <h2 className={h2}>2. What we collect, and why</h2>
@@ -186,10 +171,7 @@ export default function PrivacyPage() {
           </li>
         </ul>
         <p className={p}>
-          Write to info@bouncing-forward.com and we will reply{" "}
-          <Confirm>within 30 days — confirm</Confirm>. Depending on where you
-          live, you may have further rights under local privacy law, and we will
-          respect them.
+          Write to info@bouncing-forward.com and we will reply within 30 days.
         </p>
 
         <h2 className={h2}>8. Keeping it safe</h2>

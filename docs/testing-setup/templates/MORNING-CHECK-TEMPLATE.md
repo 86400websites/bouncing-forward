@@ -1,6 +1,6 @@
 # Morning Check — Daily Watch on the Live Site
 
-> After the Launch Gate passes, GitHub re-runs the 5–7 most critical tests against the **live** site every morning and notifies the owner **only on failure**. Silence = all green. This is how a silently broken form or an expired key gets caught before a customer notices — it fulfils the uptime/conversion-canary requirement in `docs/LAUNCH-CHECKLIST.md`.
+> After the Launch Gate passes, GitHub re-runs the 5–7 owner-approved safe checks against the live site daily and notifies on failure. Confirm a recent successful run as well as the alert channel: silence alone does not prove a run happened. These checks cover selected pages/login behavior; provider alerts or separate approved checks must cover actual form delivery and payment processing.
 
 ## Rules
 
@@ -8,6 +8,9 @@
 - [ ] The selection (5–7 specs, tagged `@morning`) is proposed by Claude Code and **approved by the owner** before the workflow is enabled.
 - [ ] Failure notifications verified: the owner has confirmed receiving GitHub's failure email once (see below).
 - [ ] Any morning-check failure is handled through `docs/error-tracking/` as an incident — same lane as everything else.
+
+- [ ] Follow `docs/ENVIRONMENT-PARITY.md` §10: validate the Production target and selected specs; allow only the dedicated account credentials, never Preview bypass or privileged provider secrets. Account login creates session/audit activity; it is the narrow approved exception to public reads.
+- [ ] Verify a recent scheduled success and investigate missing runs; record a missed-run alert mechanism where uptime monitoring is required.
 
 ## The workflow file → `.github/workflows/morning-check.yml`
 
