@@ -19,9 +19,89 @@ export const metadata: Metadata = {
   },
 };
 
-/* Copy source: Website_Rebrief_31_July_2026.docx — Stories (/stories), verbatim. */
+/* Copy source: Website_Rebrief_31_July_2026.docx — Stories (/stories), verbatim.
+   October stories (first six cards): Stories October Posting 1 - 6.docx,
+   verbatim; newest first. */
 
 const stories: Story[] = [
+  {
+    tag: "Compass · Resilience",
+    headline: "From a Borrowed Bedroom to a Law in Her Name",
+    person: "Tiffany Aliche · USA",
+    image: {
+      src: "/assets/stories/story-10.png",
+      alt: "Illustration — a woman writing figures in a notebook on a bed, a single lamp beside her",
+    },
+    story:
+      "A preschool teacher who followed every money rule, she lost her job, savings and credit in the 2008 recession and moved back in with family. Instead of hiding the shame, she learned all she could about money and taught other women, one living room at a time. As The Budgetnista she has helped millions rebuild, and a New Jersey school law now carries her name.",
+    quote:
+      "Resilience is not avoiding the fall. It is turning what knocked you down into the lesson you hand to everyone coming after you.",
+  },
+  {
+    tag: "Compass · Support",
+    headline: "The Layoff He Announced Himself",
+    person: "Sree Sreenivasan · USA",
+    image: {
+      src: "/assets/stories/story-11.png",
+      alt: "Illustration — four people walking together along a city sidewalk, their footsteps behind them",
+    },
+    story:
+      "He was the Metropolitan Museum of Art's first chief digital officer until he lost the job in 2016. Instead of staying quiet, he posted the news himself, asked the world what he should do next and invited people on his daily walks. Thousands answered, and the conversations led to a role with the City of New York, teaching and consulting.",
+    quote:
+      "Support only reaches you when people know you need it. Saying it out loud is often where the next door opens.",
+  },
+  {
+    tag: "Compass · Support",
+    headline: "A Room for Everyone Told to Keep Quiet",
+    person: "Nora McInerny · USA",
+    image: {
+      src: "/assets/stories/story-12.png",
+      alt: "Illustration — people talking around a long table under a single lamp",
+    },
+    story:
+      'In a few weeks in 2014, she lost a pregnancy, her father and her husband, and was left raising a toddler at 31. When people wanted a clean answer to "How are you?", she wrote the honest one. Strangers replied in their thousands, so she built places for them, from her podcast Terrible, Thanks for Asking to a community where hard stories are welcome.',
+    quote:
+      "You do not move on from a loss like that. You move forward with it, and you never have to do it alone.",
+  },
+  {
+    tag: "Compass · Optimism",
+    headline: "The Map He Never Had",
+    person: "Matt Haig · United Kingdom",
+    image: {
+      src: "/assets/stories/story-13.png",
+      alt: "Illustration — a man with an open book by a window as the rain clears to blue sky",
+    },
+    story:
+      "At 24, depression brought him to the edge. Time, the people who loved him and small steps on impossible days carried him through, though for years he told almost no one. Then he wrote the map he had needed. Reasons to Stay Alive became a global bestseller, and The Midnight Library carried its message to millions more: stay.",
+    quote:
+      "Optimism is not pretending the storm is small. It is knowing the storm passes, and that you are still here when it does.",
+  },
+  {
+    tag: "Compass · Adaptability",
+    headline: "The Heaviest Thing She Ever Lifted",
+    person: "Joan MacDonald · Canada",
+    image: {
+      src: "/assets/stories/story-14.png",
+      alt: "Illustration — an older woman climbing stairs with a light dumbbell in her hand",
+    },
+    story:
+      "At 70, she could barely manage the stairs, was on several medications and was told things would only get worse. She took her daughter's advice and picked up the weights, learning the gym machines and the app that tracked her training. A decade on she is strong, off the medications, and followed by millions who see proof it is never too late to start.",
+    quote:
+      "Adaptability has no age limit. It begins the day you choose to learn something new, however awkward the first try feels.",
+  },
+  {
+    tag: "Compass · Resilience",
+    headline: "A Hundred Days of No",
+    person: "Jia Jiang · USA",
+    image: {
+      src: "/assets/stories/story-15.png",
+      alt: "Illustration — a man presenting doughnuts arranged as five interlocking rings",
+    },
+    story:
+      "He left a corporate job to build a business, and one investor's no nearly made him quit. So he went looking for rejection on purpose, asking strangers for something absurd every day for 100 days. When a baker said yes to doughnuts shaped like the Olympic rings, the video went viral. His TED talk and book Rejection Proof have since helped millions stop fearing no.",
+    quote:
+      "Resilience grows each time you walk toward what you fear and find you are still standing on the other side.",
+  },
   {
     headline: "Buying Shoes Where Gangs Once Ruled",
     image: {
