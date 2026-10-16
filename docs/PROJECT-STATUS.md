@@ -1,6 +1,6 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 9 October 2026 (webinar promo block; weekly blog posts 9–13; Monthly Letter No. 2)._
+_Last updated: 16 October 2026 (October stories added to /stories)._
 
 ## Where the project stands
 
@@ -25,6 +25,17 @@ Book/Author og:image, own og for Log In/Create Account), `/learn` and
 (**files must be renamed — see RENAME-THESE.txt**), and the new
 **/privacy** and **/terms** pages carrying Heather's copy with every
 open detail visibly marked "confirm".
+
+## Stories — 16 Oct
+
+Six October stories added at the top of /stories, verbatim from
+Stories October Posting 1 - 6.docx (Tiffany Aliche, Sree Sreenivasan,
+Nora McInerny, Matt Haig, Joan MacDonald, Jia Jiang), with Frank-style
+illustrations `public/assets/stories/story-10.png` … `story-15.png`.
+Cards now support an optional Compass tag and "Name · Country" line
+(older cards unchanged). Open: the doc says twelve cards but holds six,
+and ends with a stray illustration brief ("…n open front door with a
+welcome mat…") — ask Heather whether a 7th story is missing.
 
 ## Content drop — 9 Oct (Heather)
 

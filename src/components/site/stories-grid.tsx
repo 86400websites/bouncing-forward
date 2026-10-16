@@ -13,7 +13,11 @@ import { cn } from "@/lib/utils";
  */
 
 export type Story = {
+  /** Compass eyebrow, e.g. "Compass · Resilience" (October stories on). */
+  tag?: string;
   headline: string;
+  /** "Name · Country" line (October stories on). */
+  person?: string;
   image: { src: string; alt: string } | null;
   story: string;
   quote: string;
@@ -58,9 +62,26 @@ function StoryTile({ story, index }: { story: Story; index: number }) {
           )}
         </div>
         <div className="flex items-start justify-between gap-3 p-5">
-          <h3 className="group-hover:text-brand-accent-text text-lg leading-snug font-bold">
-            {story.headline}
-          </h3>
+          <div>
+            {story.tag ? (
+              <p className="text-brand-accent-text text-xs font-bold tracking-[0.08em] uppercase">
+                {story.tag}
+              </p>
+            ) : null}
+            <h3
+              className={cn(
+                "group-hover:text-brand-accent-text text-lg leading-snug font-bold",
+                story.tag && "mt-1",
+              )}
+            >
+              {story.headline}
+            </h3>
+            {story.person ? (
+              <p className="text-muted-foreground mt-1 text-sm">
+                {story.person}
+              </p>
+            ) : null}
+          </div>
           <ChevronDownIcon
             aria-hidden="true"
             className={cn(
