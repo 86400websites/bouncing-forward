@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { bodyFont, displayFont } from "@/lib/fonts";
+import { Analytics } from "@vercel/analytics/next";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -43,6 +44,7 @@ export default function RootLayout({
           <PageFoot />
           <SiteFooter />
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   );
