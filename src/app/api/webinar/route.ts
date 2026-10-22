@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { mailchimpConfigured, mailchimpSubscribe } from "@/lib/mailchimp";
+import { isWebinarOver, WEBINAR_SESSION_TAGS } from "@/lib/webinar";
 
 export const runtime = "nodejs";
 
@@ -14,12 +15,20 @@ export const runtime = "nodejs";
  * their own tags (per Heather's brief, 5 Oct).
  */
 
-const SESSIONS: Record<string, string> = {
-  "10:00 SAST": "webinar-oct21-1000",
-  "19:00 SAST": "webinar-oct21-1900",
-};
+const SESSIONS: Record<string, string> = WEBINAR_SESSION_TAGS;
 
 export async function POST(request: NextRequest) {
+  // Event over: no new registrations (keeps old session tags clean).
+  if (isWebinarOver()) {
+    return NextResponse.json(
+      {
+        ok: false,
+        message: "This webinar has taken place. Registration is closed.",
+      },
+      { status: 410 },
+    );
+  }
+
   let body: {
     first_name?: string;
     last_name?: string;
@@ -78,21 +87,44 @@ export async function POST(request: NextRequest) {
   }
 
   const tags = ["webinar", sessionTag];
-  // Try with the COUNTRY merge field; if the audience doesn't define
-  // it, Mailchimp may refuse — retry without so no registration is lost.
+  // Registering is an explicit opt-in: restore a previously unsubscribed
+  // or archived contact (as the newsletter does), otherwise Mailchimp
+  // tags them but never sends the confirmation journey.
+  // COUNTRY needs a matching audience field; if Mailchimp rejects the
+  // merge fields, retry without it so no registration is lost.
   let result = await mailchimpSubscribe({
     email,
     firstName,
     lastName,
     mergeFields: country ? { COUNTRY: country } : undefined,
     tags,
+    resubscribe: true,
   });
-  if (!result.ok && result.status === 400 && country) {
-    result = await mailchimpSubscribe({ email, firstName, lastName, tags });
+  if (
+    !result.ok &&
+    result.upstreamStatus === 400 &&
+    /merge field/i.test(result.upstreamDetail ?? "") &&
+    country
+  ) {
+    console.warn(
+      "Webinar registration: retrying without COUNTRY —",
+      result.upstreamDetail,
+    );
+    result = await mailchimpSubscribe({
+      email,
+      firstName,
+      lastName,
+      tags,
+      resubscribe: true,
+    });
   }
 
   if (!result.ok) {
-    console.error("Webinar registration failed:", result.message);
+    console.error(
+      "Webinar registration failed:",
+      result.upstreamStatus ?? result.status,
+      result.upstreamDetail || result.message,
+    );
     return NextResponse.json(
       {
         ok: false,

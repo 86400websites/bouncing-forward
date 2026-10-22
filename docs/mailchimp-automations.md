@@ -6,11 +6,12 @@ forever.
 
 The site sends these tags automatically:
 
-| Tag               | Set when…                                             |
-| ----------------- | ----------------------------------------------------- |
-| `newsletter`      | someone submits the "Send me the 7 Step Journal" form |
-| `full-assessment` | someone completes the Full Assessment and gives email |
-| `premium`         | someone buys the $9.99 Book Package (via Stripe)      |
+| Tag                         | Set when…                                             |
+| --------------------------- | ----------------------------------------------------- |
+| `newsletter`                | someone submits the "Send me the 7 Step Journal" form |
+| `full-assessment`           | someone completes the Full Assessment and gives email |
+| `premium`                   | someone buys the $9.99 Book Package (via Stripe)      |
+| `webinar` + one session tag | someone registers on /webinar (see Webinars below)    |
 
 ---
 
@@ -58,6 +59,58 @@ relationship.)
 first code in `PREMIUM_ACCESS_CODES`. The buyer is now also on
 the list for the weekly note and the Monthly Letter — exactly as
 the brief specifies.
+
+---
+
+## Webinars — one confirmation workflow per session
+
+Set up once per webinar, before the registration page goes live.
+
+**What the site sends** (`/api/webinar`, configured in `src/lib/webinar.ts`):
+
+- Merge fields: `FNAME`, `LNAME`, `COUNTRY` (see "Audience fields" below).
+- Tags: `webinar` (generic — used only to exclude registrants from broad
+  sends) **plus exactly one session tag**, e.g. `webinar-oct21-1000`.
+- Status: subscribed. A previously unsubscribed/archived person who
+  registers is restored (explicit opt-in), so the journey can reach them.
+- After `WEBINAR_ENDS_AT` the page shows "has taken place" and the API
+  stops accepting registrations.
+
+**Rules (these prevent the 21 Oct issues):**
+
+1. **One journey per session tag.** Start point: _Tag added_ → the
+   session tag. Never trigger on the generic `webinar` tag — anyone from
+   a past webinar already has it, so the journey would never fire for them.
+2. **Use new session tags for every webinar** (e.g. `webinar-nov04-1900`).
+   Re-using a tag means past registrants never get the new confirmation.
+3. **The Zoom link goes in the confirmation email from day one.** Do not
+   publish the registration page until each journey's button has its
+   session's Zoom link (the same link as `WEBINAR_ZOOM_LINKS`).
+4. **Greeting:** insert the name with Mailchimp's merge tag `*|FNAME|*`
+   (or Personalize → First name). Never type a placeholder such as
+   `<<First Name>>` — it is sent literally. Contacts without a first
+   name get the audience default (see below).
+5. **Journey settings:** contacts may enter once; journey **Active**
+   (pausing to edit is fine — always resume and re-check status).
+6. **Broad sends** (Monthly Letter, invites): exclude the `webinar` tag
+   while an event is open, so registrants aren't invited again.
+7. **Links in invites** should point to `/webinar` (so people get the
+   tag, confirmation and reminders) rather than straight to Zoom —
+   Zoom-direct registrants never reach Mailchimp.
+
+**Audience fields (Mailchimp → Audience → Settings → Audience fields and
+\*|MERGE|\* tags):**
+
+- `FNAME` — set **Default merge tag value** to `friend` so a missing
+  name reads "Hi friend," instead of "Hi ,".
+- `COUNTRY` — add a **Text** field with merge tag `COUNTRY`. If it is
+  missing, the site retries without it (registration still succeeds,
+  country is not stored).
+
+**Before going live — test with a brand-new address per session**
+(e.g. `name+wb1@gmail.com`; a re-used address already has the tag, so
+no email fires): register → contact shows both tags and FNAME/COUNTRY →
+confirmation arrives with the name and the correct session's Zoom button.
 
 ---
 
