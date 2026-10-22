@@ -83,7 +83,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── Screen 1 — Hero ──────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-5 pt-16 pb-12 sm:px-6 sm:pt-20 sm:pb-16 lg:px-8 lg:pt-24 lg:pb-20">
+      <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <FadeIn>
@@ -137,22 +137,6 @@ export default function HomePage() {
               className="w-full rounded-xl"
             />
           </FadeIn>
-        </div>
-      </section>
-
-      {/* ── Live webinar announcement (urgent, 5 Oct brief) ──── */}
-      <section className="bg-brand-accent">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 px-5 py-5 text-center sm:flex-row sm:gap-5 sm:px-6 lg:px-8">
-          <p className="text-primary font-[family-name:var(--font-display)] font-bold">
-            Live webinar · 21 October — What’s your next move... when life
-            changes?
-          </p>
-          <Link
-            href="/webinar"
-            className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-5 py-2 font-[family-name:var(--font-display)] text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
-          >
-            Reserve your seat →
-          </Link>
         </div>
       </section>
 
@@ -376,53 +360,6 @@ export default function HomePage() {
             </div>
           </FadeIn>
         </div>
-      </section>
-
-      {/* ── Webinar promo (Heather, 6 Oct: under the packages) ── */}
-      {/* Graphic: Roelien's no-photo version. Details + button reuse the
-          approved /webinar copy verbatim. */}
-      <section
-        id="webinar"
-        aria-labelledby="webinar-promo-heading"
-        className="mx-auto max-w-5xl scroll-mt-24 px-5 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24"
-      >
-        <h2 id="webinar-promo-heading" className="sr-only">
-          Live webinar: What’s your next move... when life changes?
-        </h2>
-        <FadeIn>
-          <Link
-            href="/webinar"
-            className="focus-visible:outline-ring border-border block overflow-hidden rounded-xl border shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2"
-          >
-            <Image
-              src="/assets/webinar/bf-webinar-promo.png"
-              alt="Bouncing Forward — A live conversation. What’s your next move... when life changes?"
-              width={2048}
-              height={1024}
-              sizes="(min-width: 1024px) 64rem, 100vw"
-              className="h-auto w-full"
-            />
-          </Link>
-        </FadeIn>
-        <SlideUp delay={0.06}>
-          <div className="mt-8 flex flex-col items-center gap-5 text-center">
-            <div>
-              <p className="text-lg leading-relaxed">
-                A live conversation with{" "}
-                <span className="font-bold">Heather Meyer</span>
-              </p>
-              <p className="text-muted-foreground mt-1 text-lg leading-relaxed">
-                21 October 2026 · 10:00 and 19:00 SAST
-              </p>
-            </div>
-            <Link
-              href="/webinar"
-              className="bg-primary text-primary-foreground hover:bg-brand-primary-hover focus-visible:outline-ring inline-flex items-center rounded-full px-8 py-4 font-[family-name:var(--font-display)] text-base font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              Reserve your seat →
-            </Link>
-          </div>
-        </SlideUp>
       </section>
 
       {/* ── Screen 5 — The next step is yours ────────────────── */}

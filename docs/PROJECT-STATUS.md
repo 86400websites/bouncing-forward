@@ -1,6 +1,6 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 16 October 2026 (October stories added to /stories)._
+_Last updated: 22 October 2026 (webinar wrap-up + registration hardening)._
 
 ## Where the project stands
 
@@ -25,6 +25,24 @@ Book/Author og:image, own og for Log In/Create Account), `/learn` and
 (**files must be renamed — see RENAME-THESE.txt**), and the new
 **/privacy** and **/terms** pages carrying Heather's copy with every
 open detail visibly marked "confirm".
+
+## Webinar wrap-up + registration hardening — 22 Oct
+
+- 21 Oct webinar held. Homepage hero band + promo block removed (hero
+  spacing restored to pre-band). `/webinar` stays live (old ads/emails
+  link to it) and switches automatically after `WEBINAR_ENDS_AT` to a
+  "has taken place" state (noindex); `/api/webinar` returns 410 after it.
+- Team meeting issues (names, links, missing confirmations) reviewed.
+  Code fixes: `mailchimp.ts` now actually sends `LNAME` + extra merge
+  fields (it silently dropped them); webinar registrants are restored
+  like newsletter sign-ups (unsubscribed contacts were tagged but never
+  emailed); COUNTRY retry keys on Mailchimp's real 400; session tags live
+  beside the Zoom links in `src/lib/webinar.ts`. New unit tests:
+  `tests/unit/webinar-registration.test.mjs`.
+- Playbook for future webinars + required Mailchimp settings:
+  `docs/mailchimp-automations.md` → Webinars.
+- Open: `package.json` has no `test:unit` script, so Code Check's unit
+  step is skipped (`--if-present`) and no unit tests run in CI.
 
 ## Stories — 16 Oct
 

@@ -11,7 +11,16 @@ import { createHash } from "node:crypto";
 
 export type SubscribeResult =
   | { ok: true }
-  | { ok: false; status: number; message: string; retryable: boolean };
+  | {
+      ok: false;
+      status: number;
+      message: string;
+      retryable: boolean;
+      /** Mailchimp's own HTTP status — server-side decisions/logging only. */
+      upstreamStatus?: number;
+      /** Mailchimp's error title/detail — server logs only, never sent to the browser. */
+      upstreamDetail?: string;
+    };
 
 export function mailchimpConfigured(): boolean {
   const key = process.env.MAILCHIMP_API_KEY ?? "";
@@ -58,7 +67,11 @@ export async function mailchimpSubscribe(opts: {
         email_address: email,
         status_if_new: "subscribed",
         ...(opts.resubscribe ? { status: "subscribed" } : {}),
-        merge_fields: opts.firstName ? { FNAME: opts.firstName } : {},
+        merge_fields: {
+          ...(opts.firstName ? { FNAME: opts.firstName } : {}),
+          ...(opts.lastName ? { LNAME: opts.lastName } : {}),
+          ...(opts.mergeFields ?? {}),
+        },
       }),
       cache: "no-store",
     });
@@ -95,6 +108,8 @@ export async function mailchimpSubscribe(opts: {
           ? "That email address doesn’t look right — please check it."
           : "Something went wrong on our side — please try again in a moment.",
         retryable: !fake && (res.status === 429 || res.status >= 500),
+        upstreamStatus: res.status,
+        upstreamDetail: [err?.title, err?.detail].filter(Boolean).join(": "),
       };
     }
 
