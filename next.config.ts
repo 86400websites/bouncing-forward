@@ -57,6 +57,10 @@ const nextConfig: NextConfig = {
       },
       { source: "/workshops", destination: "/enterprise", permanent: true },
       { source: "/enterprises", destination: "/enterprise", permanent: true },
+      // 21 Oct 2026 webinar is over (Heather, 25 Oct): hide the page by
+      // sending old ad/email links home. Temporary (307) so /webinar can be
+      // reused for the next event — delete this entry to bring it back.
+      { source: "/webinar", destination: "/", permanent: false },
       ...blog.map(([from, to]) => ({
         source: `/blog/${from}`,
         destination: `/blog/${to}`,
