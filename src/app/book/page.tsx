@@ -13,6 +13,7 @@ import {
 } from "@/components/site/begin-your-crossing";
 import { NumberedCard } from "@/components/site/numbered-card";
 import { AmazonFormats } from "@/components/site/amazon-formats";
+import { ReviewCard } from "@/components/site/review-card";
 
 export const metadata: Metadata = {
   title: { absolute: "The Book | Bouncing Forward by Maher Kaddoura" },
@@ -27,6 +28,61 @@ export const metadata: Metadata = {
 };
 
 /* Copy source: Bouncing_Forward_Website_Copy.docx — Page 2 (The Book), verbatim. */
+
+/* Reader reviews — Bouncing_Forward_Book_Reviews.docx (Heather, 28 Oct
+   2026), verbatim; apostrophes normalised to the site's typographic ones. */
+const reviews = [
+  {
+    quote:
+      "Bouncing Forward is really an amazing book that makes you think differently about how you deal with life’s challenges. I found its message inspiring, showing that even after something terrible happens, good can still come from it.",
+    name: "Amanda van Wyk",
+  },
+  {
+    quote:
+      "Bouncing Forward doesn’t pretend a setback is a gift. It hands you four honest steps (Accept, Reflect, Imagine, Act) and one question that changes everything: where’s here? It’s the most practical book on hard times I’ve read.",
+    name: "Sozana Blidy",
+  },
+  {
+    quote:
+      "When life throws us into dark places we sometimes decide to stay there or live in the past. “Bouncing Forward” has been a great book that showed me how to accept what happened and gave me the tools to start bouncing forward again with my life. It is a great book with valuable tools that helps you manage the setbacks we all face throughout our lives.",
+    name: "Roelien Morisson",
+  },
+  {
+    quote:
+      "I’ve read Bouncing Forward three times, and I’ve found it valuable each time. The part that made the most sense to me is that after loss, a setback or trauma, you’re learning how to live with what has happened. In a way, it’s like learning to walk again. The person you were yesterday hadn’t experienced what you have today, so you can’t expect yourself to carry on exactly as before. For me, this book helped put that into words. You adapt, find your feet and learn how to move forward, carrying that experience with you and growing from it.",
+    name: "Darlene van Wyk",
+  },
+  {
+    quote:
+      "After years of trauma this book helped to restore structure and purpose to my daily life afterwards, a must read.",
+    name: "Yvonne van der Merwe",
+  },
+  {
+    quote:
+      "Bouncing Forward has had a profound impact on my life. Maher Kaddoura’s way of explaining the way forward makes such sense and delivers such wisdom. I wish I’d read this book years ago. It would have helped me navigate life through the challenges I have faced along the way.",
+    name: "Heather Meyer",
+  },
+  {
+    quote:
+      "I love the way the book is written so simply, truthfully and sincerely. It takes courage and generosity to share your own journey from grief in a way that uplifts others.",
+    name: "Sarah Alkour",
+  },
+  {
+    quote:
+      "There is such genuine warmth and kindness in the way Maher’s story brought the Bouncing Forward idea to life. This alone is enough reason to read the book even if you aren’t facing a setback.",
+    name: "Jamil Anabtawi",
+  },
+  {
+    quote:
+      "I love the way Maher weaves his story into the way Bouncing Forward works. This made the whole concept so relatable.",
+    name: "Lara Sanousian",
+  },
+  {
+    quote:
+      "Bouncing Forward is a reminder that the most important messages are often the simplest, delivered with emotional clarity and honesty that only comes with deep retrospection. What connected with me most is that bouncing forward is a social process. One of the four components Maher sets out is Support from one’s network. That is daunting, because it asks us to involve others in our troubles, but it is also the most impacting. In an age where relationships are increasingly transactional and isolated, I appreciated the message that we should step outside our own experience of difficulty, to show empathy to ourselves and to others.",
+    name: "Rohan Hazell",
+  },
+];
 
 const compass = [
   {
@@ -230,6 +286,27 @@ export default function BookPage() {
             {compass.map((c) => (
               <StaggerItem key={c.title} className="h-full">
                 <NumberedCard {...c} iconClassName="bg-white" />
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* ── Reader reviews (Heather, 28 Oct) ─────────────────── */}
+      <section aria-labelledby="reviews-heading" className="bg-muted">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <SlideUp>
+            <h2
+              id="reviews-heading"
+              className="mx-auto max-w-3xl text-center text-3xl leading-tight font-extrabold sm:text-4xl"
+            >
+              Here’s what our readers say about Bouncing Forward
+            </h2>
+          </SlideUp>
+          <Stagger className="mt-12 grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3 lg:[&>*:last-child:nth-child(3n+1)]:col-start-2">
+            {reviews.map((r) => (
+              <StaggerItem key={r.name}>
+                <ReviewCard quote={r.quote} name={r.name} />
               </StaggerItem>
             ))}
           </Stagger>
