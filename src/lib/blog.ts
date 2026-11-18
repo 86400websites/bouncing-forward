@@ -3,7 +3,9 @@
  *
  * Copy source: Bouncing_Forward_Blog_Series.docx, verbatim (posts 1–8);
  * Bouncing_Forward_Blog_Posts.docx (Heather, 9 Oct 2026), verbatim
- * (posts 9–13, released weekly via `publishOn`). Body text is not
+ * (posts 9–13, released weekly via `publishOn`);
+ * Bouncing Forward Blog Posts November.docx (Heather, 17 Nov 2026),
+ * verbatim (posts 14–17, weekly from 13 Nov). Body text is not
  * paraphrased.
  *
  * `image` blocks carry the deck's art direction for each post's single
@@ -11,9 +13,21 @@
  * placeholder until the illustrations are commissioned.
  */
 
-export type BlockType = "p" | "h2" | "quote" | "image" | "closing";
+export type BlockType = "p" | "h2" | "quote" | "image" | "closing" | "list";
 
-export type Block = { type: BlockType; text: string; src?: string };
+export type ListItem = {
+  /** Optional bold label at the start of the item, e.g. "Column one:". */
+  lead?: string;
+  text: string;
+};
+
+export type Block = {
+  type: BlockType;
+  text: string;
+  src?: string;
+  /** Bullet items, for `list` blocks (posts 20+). */
+  items?: ListItem[];
+};
 
 export type Post = {
   number: number;
@@ -1678,6 +1692,523 @@ export const POSTS: Post[] = [
       {
         type: "closing",
         text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 14,
+    slug: "one-change-two-losses",
+    title:
+      "One Change, Two Losses: Why a Setback Can Feel Bigger Than the Facts",
+    subtitle:
+      "Everyone can see what happened. Almost nobody can see the future you lost along with it.",
+    seoTitle: "One Change, Two Losses | Bouncing Forward",
+    seoDescription:
+      "A setback often takes two things: what happened, and the future you had pictured. Why naming the second loss makes the whole thing lighter.",
+    keywords: [
+      "setback",
+      "when plans change",
+      "invisible loss",
+      "moving forward after a setback",
+      "resilience",
+    ],
+    publishOn: "2026-11-13",
+    blocks: [
+      {
+        type: "p",
+        text: "When a plan changes, the people around you usually respond to what they can see. The job that ended. The contract that fell through. The move that didn't happen. They ask about it, they sympathize, and after a while they assume you're through the worst of it.",
+      },
+      {
+        type: "p",
+        text: "Yet many people find that the weight lasts far longer than the facts seem to explain. The situation is manageable on paper. So why does it still feel so heavy?",
+      },
+      {
+        type: "p",
+        text: "Often it's because one event created two losses, and only one of them is visible.",
+      },
+      {
+        type: "h2",
+        text: "The Loss Everyone Can See",
+      },
+      {
+        type: "p",
+        text: "The first loss is the obvious one. It's the thing that happened: the role that was cut, the decision someone else made, the door that closed. It has a date. You can describe it in a sentence. Other people understand it, and they can help you deal with it.",
+      },
+      {
+        type: "p",
+        text: "It's also the loss you can act on. Updating the CV, making the calls, sorting out the paperwork. Progress here is easy to measure, which is why it tends to get all the attention.",
+      },
+      {
+        type: "p",
+        text: 'This is the loss that gets the phone calls, the advice and the "let me know if you need anything."',
+      },
+      {
+        type: "h2",
+        text: "The Loss Nobody Sees",
+      },
+      {
+        type: "p",
+        text: "The second loss is quieter. It's the future you had pictured.",
+      },
+      {
+        type: "p",
+        text: "Think about what sits behind a plan. A promotion you were working towards. A trip you had already half-planned in your head. The version of yourself you had started becoming: the business owner, the couple in the new home, the person who finally had more time. That future changed at exactly the same moment, yet it leaves no trace anyone else can see.",
+      },
+      {
+        type: "p",
+        text: "So you tend to deal with it on your own. Friends ask how the job search is going. Very few ask how you're coping with the life you thought you'd be living by now.",
+      },
+      {
+        type: "quote",
+        text: "You're handling two losses while the people around you can see one.",
+      },
+      {
+        type: "p",
+        text: "This explains a lot. It's why a change can feel out of proportion to the facts. It's why you can feel tired even when the practical side is under control. And it's why a well-meant \"but you're doing so well\" can leave you feeling strangely unseen.",
+      },
+      {
+        type: "h2",
+        text: "Why Naming It Helps",
+      },
+      {
+        type: "p",
+        text: "Here's the encouraging part. The second loss gets lighter the moment you name it.",
+      },
+      {
+        type: "p",
+        text: "Ask yourself a simple question: which of the two takes up more space in my mind today? For many people, the honest answer is the second one. Less the job itself, and more the plans that were attached to it.",
+      },
+      {
+        type: "p",
+        text: "Once you see that, a few things shift. You stop wondering why you're \"still not over it.\" You can explain to the people close to you what you're really dealing with. And you can separate the two, so that sorting out the practical side no longer has to wait until the bigger feeling has settled.",
+      },
+      {
+        type: "p",
+        text: "It also helps to know that our imagination tends to work against us here. Research shows that when something changes, we usually overestimate how hard it will be and how long it will last. The future we picture on the day of the news is often gloomier than the one that actually arrives.",
+      },
+      {
+        type: "p",
+        text: "Try writing two sentences. One about the future you had pictured. One about what you would like now. Seeing them side by side is often the moment the second loss starts to loosen its grip.",
+      },
+      {
+        type: "h2",
+        text: "What the Change Left Behind",
+      },
+      {
+        type: "p",
+        text: "There's one more thing worth looking at. Make a short list of what helped you through the last difficult season of your life. The thing inside you that kept going. The person who kept showing up. Your ability to find something good in a hard week. Your knack for changing the plan when the plan stopped working.",
+      },
+      {
+        type: "p",
+        text: "Every one of those was yours before this change, and every one of them is still yours. A setback can take a plan, and the future that came with it. It leaves behind everything you need to make the next one.",
+      },
+      {
+        type: "p",
+        text: "The first loss is a fact. The second loss is a picture. And pictures can be redrawn, by the person you are now, with everything you have learned along the way.",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 15,
+    slug: "the-24-hour-move",
+    title:
+      "The 24-Hour Move: Why Your Next Step Should Be Smaller Than You Think",
+    subtitle:
+      "When life changes the plan, the move that works is usually small, specific and done within a day.",
+    seoTitle: "The 24-Hour Move | Bouncing Forward",
+    seoDescription:
+      "After a setback, big plans can freeze you. Why the smallest real step, with a day, a time and a person to tell, gets you moving again.",
+    keywords: [
+      "next step after a setback",
+      "small steps",
+      "taking action",
+      "getting unstuck",
+      "moving forward",
+    ],
+    publishOn: "2026-11-20",
+    blocks: [
+      {
+        type: "p",
+        text: "After a setback, most of us feel we need a plan. A proper one. Where we'll be in a year, what the new career looks like, how everything will fit together.",
+      },
+      {
+        type: "p",
+        text: "It sounds sensible. In practice, it's one of the main reasons people stay stuck. Asking someone in the middle of a change to redesign their whole life at once is a lot to ask. So the plan stays in our heads, half-finished, and nothing moves.",
+      },
+      {
+        type: "p",
+        text: "There's a better place to start: one small move, within the next 24 hours.",
+      },
+      {
+        type: "h2",
+        text: "Start Before You Feel Ready",
+      },
+      {
+        type: "p",
+        text: "Most people wait to feel ready before they act. The trouble is that the feeling of readiness rarely arrives before the first step. When it does arrive, it usually turns up after the third.",
+      },
+      {
+        type: "p",
+        text: "That's worth knowing, because it means nervous action counts. Imperfect action counts. The nerves tend to fade after the step, very seldom before it.",
+      },
+      {
+        type: "p",
+        text: "It's also worth knowing the difference between action and busyness, because they look alike. Endless research. Tidying the desk before the real work. Rewriting a to-do list. That's motion, and motion can be a clever way of avoiding the one thing that would actually move you forward.",
+      },
+      {
+        type: "h2",
+        text: "Make It Small Enough to Finish",
+      },
+      {
+        type: "p",
+        text: "A good 24-hour move takes ten minutes or less. Anything bigger is a project, and projects can wait.",
+      },
+      {
+        type: "p",
+        text: "Here's a simple test: start your step with a verb. Call, send, book, ask, walk. If it starts with a verb, it's a move. If it doesn't, it's still a wish.",
+      },
+      {
+        type: "p",
+        text: 'Think about the difference. "My CV" is a wish. "Send my CV to a friend in the industry and ask what they\'d change" is a move. "Getting fitter" is a wish. "Walk around the block tomorrow morning" is a move. You can picture yourself doing it, and you\'ll know when it\'s done.',
+      },
+      {
+        type: "p",
+        text: "If your step still feels heavy, cut it in half. Then cut it again. The aim is a step so small that skipping it would feel a little silly.",
+      },
+      {
+        type: "quote",
+        text: "If it starts with a verb, it's a move. If it doesn't, it's still a wish.",
+      },
+      {
+        type: "h2",
+        text: "Give It a Day, a Time and a Witness",
+      },
+      {
+        type: "p",
+        text: "This is where good intentions usually get stuck, so add three details. Which day. What time. And the first name of one person you'll tell.",
+      },
+      {
+        type: "p",
+        text: "The day and time matter more than they seem. Research shows that people who decide exactly when and where they'll do something are far more likely to follow through than people who simply intend to. Deciding the \"when\" also quiets the task in your mind, because it no longer has to keep reminding you that it's undone.",
+      },
+      {
+        type: "p",
+        text: "The witness matters too. It can be anyone: a friend, a sister, a colleague, a neighbor. Telling someone turns a private intention into a small promise. And while you're at it, offer to be their witness in return. That's one more person in your support network, added on an ordinary day.",
+      },
+      {
+        type: "h2",
+        text: "The Step Comes First, the Plan Follows",
+      },
+      {
+        type: "p",
+        text: "We tend to imagine that the plan comes first and the steps follow. In real life, it usually works the other way round. You take a step, you learn something, and the next step becomes clearer. The plan takes shape behind you.",
+      },
+      {
+        type: "p",
+        text: "That's how Bouncing Forward itself began. About six months after Maher Kaddoura lost his seventeen-year-old son in a road accident, he sat down with a newspaper and a piece of paper and began counting the accidents on Jordan's roads. That was his first step. Over the years it grew into the Hikmat Road Safety Program: more than 1,200 playgrounds built so children can play away from traffic, 260 schools made safer and 1,800 dangerous road spots fixed. He didn't start with the program. He started with a pen.",
+      },
+      {
+        type: "p",
+        text: 'And when life answers your step with a twist, as it often does, think of the way a car\'s navigation system says "recalculating" and finds a new route to the same place. Change the step, keep the direction. Make it smaller, or later, or different, and keep going.',
+      },
+      {
+        type: "p",
+        text: "So what's your 24-hour move? Write it down, starting with a verb. Add a day, a time and a name.",
+      },
+      {
+        type: "closing",
+        text: "Setbacks don't get the last word.",
+      },
+    ],
+  },
+  {
+    number: 16,
+    slug: "responsibility-or-guilt",
+    title: "Responsibility or Guilt? How to Tell the Difference",
+    subtitle:
+      "If you're the one everyone leans on, part of your load is real responsibility. The rest may be guilt, dressed up as love.",
+    seoTitle: "Responsibility or Guilt? | Bouncing Forward",
+    seoDescription:
+      "When you hold it all together for everyone, guilt quietly adds to your list. How to separate real responsibility from guilt and lighten the load.",
+    keywords: [
+      "guilt",
+      "saying no",
+      "overwhelm",
+      "mental load",
+      "boundaries",
+      "holding it all together",
+    ],
+    publishOn: "2026-11-27",
+    blocks: [
+      {
+        type: "p",
+        text: 'Ask most people who hold it all together why they do so much, and you\'ll hear a version of the same answer. "Someone has to." "They need me." "It\'s just easier if I do it."',
+      },
+      {
+        type: "p",
+        text: "Some of that is true. Some of it isn't. And the part that isn't is often what wears you down the most.",
+      },
+      {
+        type: "p",
+        text: "Most people who are everyone's go-to person are working from two lists at once. One is real responsibility. The other is what guilt has added to it.",
+      },
+      {
+        type: "h2",
+        text: "Two Lists That Look Like One",
+      },
+      {
+        type: "p",
+        text: "On paper, the two lists look identical. Both are full of things you do for people you care about. The difference lies in where each item came from.",
+      },
+      {
+        type: "p",
+        text: "Making sure a parent gets to the doctor is responsibility. Being the only one of the siblings who ever drives them is often guilt.",
+      },
+      {
+        type: "p",
+        text: "Doing good work is responsibility. Apologizing every time you leave on time is guilt.",
+      },
+      {
+        type: "p",
+        text: "Being there for a friend is responsibility. Feeling bad about an hour at the gym is guilt.",
+      },
+      {
+        type: "p",
+        text: "And saying yes to the committee because nobody else put up a hand? That's often guilt too.",
+      },
+      {
+        type: "h2",
+        text: "Guilt Is Very Good at Dressing Up as Love",
+      },
+      {
+        type: "p",
+        text: "Guilt rarely announces itself. It tends to sound caring, responsible and reasonable, which is exactly what makes it so hard to spot.",
+      },
+      {
+        type: "p",
+        text: "The easiest way to catch it is to listen to your reason for doing something. If the reason is \"they'll think I don't care\" or \"I'll feel I've let them down,\" that's guilt talking.",
+      },
+      {
+        type: "p",
+        text: "Often we've already played out the whole conversation in our heads. What they'll say. How disappointed they'll be. Then that imagined conversation feeds the guilt, and we say yes before anyone has even asked twice.",
+      },
+      {
+        type: "p",
+        text: "Here's the encouraging news. Research shows that when we say no, people are far less hurt than we expect. They tend to think about our reasons, while we fixate on the no.",
+      },
+      {
+        type: "quote",
+        text: "Kindness is a choice you make freely. Guilt is a pressure.",
+      },
+      {
+        type: "p",
+        text: "This is about making sure your kindness comes from choice rather than pressure, because only one of those can last.",
+      },
+      {
+        type: "h2",
+        text: "Strengths Without an Off-Switch",
+      },
+      {
+        type: "p",
+        text: 'Guilt also hides inside a handful of familiar sentences. You may recognize one of these: "If I don\'t do it, it won\'t be done properly." "They need to be able to reach me at any time." "This is no time to lower my standards." "Everyone has enough on their plate. I\'ll handle it."',
+      },
+      {
+        type: "p",
+        text: "Each one is built on a genuine strength: responsibility, reliability, high standards, independence. These are qualities to be proud of. The trouble is that they have no off-switch. Left running all day, every day, a strength becomes a drain.",
+      },
+      {
+        type: "p",
+        text: "Being all things to all people is very different from being all you can be. And only one of those leaves room for you to enjoy your own life. Saying no to one thing is often how you keep saying yes to what matters most.",
+      },
+      {
+        type: "h2",
+        text: "A Simple Way to Sort It Out",
+      },
+      {
+        type: "p",
+        text: "Think about everything you do in a week, at home, at work, in your community and for family and friends. Then sort it into three columns.",
+      },
+      {
+        type: "list",
+        text: "",
+        items: [
+          {
+            lead: "Column one:",
+            text: "honestly, only I can do this.",
+          },
+          {
+            lead: "Column two:",
+            text: "someone else could do this, perhaps with a little help at the start.",
+          },
+          {
+            lead: "Column three:",
+            text: "this could wait, or stop, for now.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "One question makes the sorting much easier: if I stopped doing this for a month, who would actually notice? Very often the honest answer is nobody, or only me.",
+      },
+      {
+        type: "p",
+        text: "Column three is often the biggest surprise. Ironing nobody asked for. Baking from scratch when shop-bought would be just as welcome. A third committee.",
+      },
+      {
+        type: "p",
+        text: "Most people find column one is far shorter than they expected. And it's worth one more gentle question: is everything in column one truly something only you can do, or is some of it something you've quietly made your own?",
+      },
+      {
+        type: "p",
+        text: "Pick one item that guilt added. Just one. Then decide what you'll do with it this week.",
+      },
+      {
+        type: "quote",
+        text: "A limit is not a lack of care. It's what keeps your care possible, for the people who need you and for you.",
+      },
+    ],
+  },
+  {
+    number: 17,
+    slug: "im-fine-is-the-opposite-of-an-ask",
+    title: '"I\'m Fine" Is the Opposite of an Ask',
+    subtitle:
+      "If you're everyone's safety net, who catches you? It starts with replacing \"I'm fine\" with a clear, specific ask.",
+    seoTitle: '"I\'m Fine" Is the Opposite of an Ask | Bouncing Forward',
+    seoDescription:
+      "People who hold it all together seldom ask for help. How a clear, specific ask, and knowing when to delegate or ask for support, lightens the load.",
+    keywords: [
+      "asking for help",
+      "delegating",
+      "support",
+      "overwhelm",
+      "mental load",
+      "I'm fine",
+    ],
+    publishOn: "2026-12-04",
+    blocks: [
+      {
+        type: "p",
+        text: "When someone asks how you are, what do you usually say?",
+      },
+      {
+        type: "p",
+        text: "For most of us, the answer is out before we've even thought about it. Fine. Good, thanks. Managing. Holding up.",
+      },
+      {
+        type: "p",
+        text: "If you're the person everyone leans on, that word does a lot of work. The family calls you first. Friends call when things fall apart. At work, you're the one people come to. You are everyone's safety net. So who catches you?",
+      },
+      {
+        type: "h2",
+        text: "Support Can Only Lighten a Load It Can See",
+      },
+      {
+        type: "p",
+        text: 'The people around you can only help with what they know about. And people who hold it all together are experts at editing what they tell. "We\'re managing." "It\'s fine, really." Often with a quick smile that makes it even more convincing.',
+      },
+      {
+        type: "p",
+        text: '"Fine" hides the load from the very people who could help with it. In that sense, "I\'m fine" is the opposite of an ask.',
+      },
+      {
+        type: "p",
+        text: "Think for a moment about who you could give the unedited version to. Just one person.",
+      },
+      {
+        type: "p",
+        text: "And here's something that may make it easier. Research shows we badly underestimate how many people will say yes when we ask directly. Most of them have simply never been asked.",
+      },
+      {
+        type: "h2",
+        text: "Two Kinds of Help",
+      },
+      {
+        type: "p",
+        text: "There are two kinds of help, and they lighten the load in different ways.",
+      },
+      {
+        type: "p",
+        text: "Delegating means handing something over completely, the task and the deciding that goes with it. Your brother takes over your father's appointments, start to finish. It's his now, done his way. That takes something off your list for good.",
+      },
+      {
+        type: "p",
+        text: "Asking for support means the task stays yours, but you stop doing it alone. Someone shares the visits with you, or simply listens while you work out what to do. That makes what you keep lighter.",
+      },
+      {
+        type: "p",
+        text: "Delegating can wake up an old voice: \"Nobody else can do it properly, so I'll just do it myself.\" That's very often where we stop. Asking for support is easier on both sides, because it's smaller and more specific. If handing something over feels like too big a step, start with support.",
+      },
+      {
+        type: "p",
+        text: "And when you do delegate, let go of the how. If you keep checking how it's being done, it's still taking up space in your head.",
+      },
+      {
+        type: "quote",
+        text: "A clear ask gives people something they can actually do.",
+      },
+      {
+        type: "h2",
+        text: "Make the Ask Clear",
+      },
+      {
+        type: "p",
+        text: '"Shout if you need anything" is kind, but it seldom turns into help, because people need to know what to do. The same goes for your own requests. A vague hint is easy to miss. A clear ask is easy to answer.',
+      },
+      {
+        type: "p",
+        text: 'So instead of "I\'m fine," try something specific:',
+      },
+      {
+        type: "list",
+        text: "",
+        items: [
+          {
+            text: '"Could you take Mom to her appointments this month?"',
+          },
+          {
+            text: '"Could each of us bring one dish to the family lunch?"',
+          },
+          {
+            text: '"Could you listen for ten minutes without trying to fix it?"',
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "Each one tells the other person exactly what they're saying yes to, and that's what makes yes easy to say. A clear ask is also kinder to the other person. It spares them the guessing, and gives them the satisfaction of having really helped.",
+      },
+      {
+        type: "h2",
+        text: "Write the Handover Note",
+      },
+      {
+        type: "p",
+        text: "Much of what you do lives only in your head, which is exactly why it feels impossible to hand over. If you were away for a week, would anyone know how?",
+      },
+      {
+        type: "p",
+        text: "So choose one task and write a short handover note: the times, the numbers, how it's done, what to do if something goes wrong. Half a page is enough.",
+      },
+      {
+        type: "p",
+        text: "Picture someone who writes half a page about a parent's medication and appointments and gives it to her sister. A month later, they share the visits, and she has two free afternoons a week.",
+      },
+      {
+        type: "p",
+        text: 'A note like that protects the people you love, and turns "nobody else can do it properly" into "here\'s how."',
+      },
+      {
+        type: "p",
+        text: "If guilt shows up when you ask, notice it, and ask anyway. The nerves usually leave after the ask, rather than before it.",
+      },
+      {
+        type: "p",
+        text: "The next time someone asks how you are, try giving them something to work with. You may be surprised how many people were waiting to be asked.",
       },
     ],
   },
