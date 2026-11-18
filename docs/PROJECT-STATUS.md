@@ -6,9 +6,8 @@ _Last updated: 17 November 2026 (November stories + blog posts 14–17)._
 
 - **Stories:** 3 new cards at the top of /stories, verbatim from
   Bouncing Forward Story Cards_1.docx, images `story-16`…`story-18`.
-  Amy Purdy (4th card in the first doc) left out: no graphic and not in
-  the revised doc. Lindsey Joy Holcomb shown without a country — the doc
-  says "USA (to confirm)".
+  Heather (18 Nov): Amy Purdy left out until she sends a better graphic;
+  Lindsey Joy Holcomb shown without a country (confirmed).
 - **Blog posts 14–17** verbatim from Bouncing Forward Blog Posts
   November.docx, weekly on Fridays: 13 Nov one-change-two-losses (live on
   merge) · 20 Nov the-24-hour-move · 27 Nov responsibility-or-guilt ·
