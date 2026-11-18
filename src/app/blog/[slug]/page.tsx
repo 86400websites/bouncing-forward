@@ -92,6 +92,24 @@ export default async function BlogPostPage({ params }: Params) {
               case "image":
                 /* Post images removed per brief — new simple images to come. */
                 return null;
+              case "list":
+                return (
+                  <ul
+                    key={i}
+                    className="marker:text-brand-accent mt-5 list-disc space-y-2 pl-6 text-lg leading-relaxed"
+                  >
+                    {(block.items ?? []).map((item, j) => (
+                      <li key={j}>
+                        {item.lead ? (
+                          <strong className="font-semibold">
+                            {item.lead}{" "}
+                          </strong>
+                        ) : null}
+                        {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                );
               case "closing":
                 return (
                   <p

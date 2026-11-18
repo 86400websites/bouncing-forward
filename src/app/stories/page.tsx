@@ -20,10 +20,50 @@ export const metadata: Metadata = {
 };
 
 /* Copy source: Website_Rebrief_31_July_2026.docx — Stories (/stories), verbatim.
-   October stories (first six cards): Stories October Posting 1 - 6.docx,
-   verbatim; newest first. */
+   November stories (first three cards): Bouncing Forward Story Cards_1.docx
+   (Heather, 13 Nov 2026), verbatim. October stories (next six):
+   Stories October Posting 1 - 6.docx, verbatim. Newest first. */
 
 const stories: Story[] = [
+  {
+    tag: "Compass · Support",
+    headline: "Back in the Saddle",
+    person: "Flore Espina · Switzerland",
+    image: {
+      src: "/assets/stories/story-16.png",
+      alt: "Illustration — two riders on horseback in a sunlit arena, the rider in front smiling",
+    },
+    story:
+      "At 21, a motorcycle accident and the complications that followed cost the veterinary student her left leg below the knee, and for a year she could not use a prosthesis. Then a German dressage rider offered to ride with her. Slowly, riding became part of her rehabilitation. She completed her veterinary studies and went on to represent Switzerland in para-dressage, and became an Andalusian champion.",
+    quote:
+      "Support sometimes arrives as a simple offer. Saying yes to it can lead you back to what you love.",
+  },
+  {
+    tag: "Compass · Optimism",
+    headline: "The MRI She Turned Into Art",
+    person: "Lindsey Joy Holcomb",
+    image: {
+      src: "/assets/stories/story-17.png",
+      alt: "Illustration — a woman holding a paintbrush beside a brain scan painted on an easel",
+    },
+    story:
+      "A painter and young mother, she noticed her speech faltering while reading bedtime stories. The diagnosis was multiple sclerosis, and the lesions on her MRI were hard to look at. So she painted the scan in black, red and gold, and found energy and determination in it. Others with MS responded, and she started Colors of MS, turning their scans into artwork in colors they chose.",
+    quote:
+      "Optimism is not ignoring what the scan shows. It is choosing to see more in it.",
+  },
+  {
+    tag: "Compass · Resilience",
+    headline: "A Scar, a Search and a Business",
+    person: "Relebohile Moeng · South Africa",
+    image: {
+      src: "/assets/stories/story-18.png",
+      alt: "Illustration — a couple at a kitchen table with handwritten notes and a small bottle of oil",
+    },
+    story:
+      "Retrenched in 2010 and looking for an affordable way to reduce scarring from an accident, she found that cold-pressed argan oil made a difference. With her husband, Fabian, she began researching skin and hair care, and in 2011 they launched Afri-Berry. Breaking into a crowded beauty market was hard, but their products now sit on the shelves of major South African retailers.",
+    quote:
+      "Resilience can turn the thing you needed most into something others can use too.",
+  },
   {
     tag: "Compass · Resilience",
     headline: "From a Borrowed Bedroom to a Law in Her Name",

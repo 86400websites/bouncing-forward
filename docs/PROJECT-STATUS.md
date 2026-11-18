@@ -1,6 +1,21 @@
 # Bouncing Forward — Project Status
 
-_Last updated: 22 October 2026 (webinar wrap-up + registration hardening)._
+_Last updated: 17 November 2026 (November stories + blog posts 14–17)._
+
+## November content — 17 Nov (Heather)
+
+- **Stories:** 3 new cards at the top of /stories, verbatim from
+  Bouncing Forward Story Cards_1.docx, images `story-16`…`story-18`.
+  Amy Purdy (4th card in the first doc) left out: no graphic and not in
+  the revised doc. Lindsey Joy Holcomb shown without a country — the doc
+  says "USA (to confirm)".
+- **Blog posts 14–17** verbatim from Bouncing Forward Blog Posts
+  November.docx, weekly on Fridays: 13 Nov one-change-two-losses (live on
+  merge) · 20 Nov the-24-hour-move · 27 Nov responsibility-or-guilt ·
+  4 Dec im-fine-is-the-opposite-of-an-ask. New `list` block type for
+  bullet lists (optional bold lead). "Reading time" from the doc not shown
+  (no field on the site yet).
+- **Weekly Notes 13–16** are Mailchimp emails, not site content.
 
 ## Where the project stands
 
